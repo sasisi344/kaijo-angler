@@ -1,0 +1,339 @@
+---
+// src/components/widgets/MapApp.astro
+// Map Viewer Component using Leaflet
+// Optimized for Mobile (Phase 4)
+
+export interface Props {
+  height?: string;
+}
+
+const { height = '500px' } = Astro.props;
+---
+
+<div class="relative w-[85%] mx-auto rounded-lg shadow-lg border border-gray-200 dark:border-slate-800 map-wrapper group overflow-hidden">
+  <div id="facility-map" class="w-full rounded-lg transition-all duration-300 aspect-[3/2]" style={`min-height: 400px;`}></div>
+  
+  <!-- Map Action Buttons -->
+  <div class="absolute top-4 right-4 z-[400] flex flex-col gap-2">
+    <button id="dart-btn" class="bg-primary text-white p-2.5 rounded-full shadow-lg hover:bg-primary/90 transition-all hover:scale-110 active:scale-95 flex items-center justify-center animate-bounce-subtle" title="ダーツの旅（ランダム抽出）">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 7c4.76 0 8.5 3.74 8.5 8.5" /><path d="M12 3c7.29 0 13 5.71 13 13" /><path d="M12 11c1.66 0 3 1.34 3 3" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M3.5 12h-1.5" /><path d="M22 12h-1.5" /><path d="M12 2v1.5" /><path d="M12 22v-1.5" /></svg>
+    </button>
+    <div class="h-px bg-gray-200 dark:bg-slate-700 my-1 mx-2"></div>
+    <button id="locate-btn" class="bg-white p-2 rounded shadow-md hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white transition-transform active:scale-95" title="現在地を取得">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M12 12m-8 0a8 8 0 1 0 16 0a8 8 0 1 0 -16 0" /><path d="M12 2l0 2" /><path d="M12 20l0 2" /><path d="M20 12l2 0" /><path d="M2 12l2 0" /></svg>
+    </button>
+    <button id="fullscreen-btn" class="bg-white p-2 rounded shadow-md hover:bg-gray-100 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white transition-transform active:scale-95 flex" title="全画面表示">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l4 0l0 4" /><path d="M14 10l6 -6" /><path d="M8 20l-4 0l0 -4" /><path d="M4 20l6 -6" /><path d="M16 20l4 0l0 -4" /><path d="M14 14l6 6" /><path d="M8 4l-4 0l0 4" /><path d="M4 4l6 6" /></svg>
+    </button>
+  </div>
+
+  <!-- Dart Filter Overlay -->
+  <div id="dart-filter-panel" class="absolute top-4 left-4 z-[400] bg-white/95 dark:bg-slate-900/95 p-4 rounded-xl shadow-2xl border border-gray-100 dark:border-slate-800 w-64 transition-all duration-300 transform -translate-x-[110%] opacity-0 pointer-events-none">
+    <div class="flex justify-between items-center mb-3">
+      <h4 class="text-sm font-bold flex items-center gap-2">
+        <span class="text-lg">🎯</span> ダーツの条件
+      </h4>
+      <button id="close-filter-btn" class="text-muted hover:text-default">
+         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="space-y-3">
+      <div>
+        <label class="text-[10px] text-muted font-bold block mb-1 uppercase tracking-wider">エリア制限</label>
+        <select id="dart-region-select" class="w-full text-xs p-2 bg-gray-50 dark:bg-slate-800 rounded border border-gray-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-primary/20">
+          <option value="all">全国（制限なし）</option>
+          <option value="north">北日本</option>
+          <option value="kanto">関東地方</option>
+          <option value="tokai">東海地方</option>
+          <option value="hokuriku">北陸地方</option>
+          <option value="kinki">近畿地方</option>
+          <option value="chugoku">中国地方</option>
+          <option value="shikoku">四国地方</option>
+          <option value="kyushu-n">九州北部</option>
+          <option value="kyushu-s-o">九州南部・沖縄</option>
+        </select>
+      </div>
+      <button id="execute-dart-btn" class="w-full bg-primary text-white py-2.5 rounded-lg text-xs font-bold shadow-md hover:bg-primary/90 transition-all active:scale-95 flex items-center justify-center gap-2">
+        <span>ダーツを投げる！</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 7c4.76 0 8.5 3.74 8.5 8.5" /><path d="M12 3c7.29 0 13 5.71 13 13" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading Animation Overlay -->
+  <div id="dart-loading" class="absolute inset-0 z-[1000] bg-slate-900/40 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+     <div class="flex flex-col items-center gap-4">
+        <div class="relative">
+          <div class="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
+          <div class="absolute inset-0 flex items-center justify-center text-2xl">🎯</div>
+        </div>
+        <div class="text-white font-bold tracking-widest text-lg animate-pulse">ダーツを投げています...</div>
+     </div>
+  </div>
+</div>
+
+<style is:global>
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s infinite ease-in-out;
+  }
+  
+  #dart-filter-panel.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Fix tailwind interfering with leaflet elements */
+  .leaflet-container {
+    z-index: 10;
+    font-family: inherit;
+    background: #f8fafc; /* slate-50 */
+  }
+
+  /* Marker Cluster Custom Styles */
+  .marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
+    background-color: rgba(3, 105, 161, 0.6) !important; /* Tailwind sky-700 */
+  }
+  .marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div {
+    background-color: rgba(3, 105, 161, 0.9) !important;
+    color: white !important;
+    font-weight: bold;
+  }
+
+  .leaflet-popup-content-wrapper {
+    @apply dark:bg-slate-900 dark:text-slate-200 border-0 shadow-2xl;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .leaflet-popup-content {
+    margin: 0;
+    width: 280px !important;
+  }
+  .leaflet-popup-tip {
+    @apply dark:bg-slate-900;
+  }
+
+  /* Fullscreen helper class */
+  .map-fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    border-radius: 0 !important;
+  }
+  .map-fullscreen #facility-map {
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+</style>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  
+  const CLUSTER_CSS = 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css';
+  const CLUSTER_DEFAULT_CSS = 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css';
+  const CLUSTER_JS = 'https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js';
+
+  // Prefecture to Custom Region Mapping
+  const PREF_TO_REGION = {
+    '北海道': 'north', 'hokkaido': 'north', '青森県': 'north', 'aomori': 'north', '宮城県': 'north', 'miyagi': 'north', '山形県': 'north', 'yamagata': 'north',
+    '千葉県': 'kanto', 'chiba': 'kanto', '神奈川県': 'kanto', 'kanagawa': 'kanto',
+    '愛知県': 'tokai', 'aichi': 'tokai', '静岡県': 'tokai', 'shizuoka': 'tokai', '三重県': 'tokai', 'mie': 'tokai',
+    '福井県': 'hokuriku', 'fukui': 'hokuriku', '石川県': 'hokuriku', 'ishikawa': 'hokuriku', '新潟県': 'hokuriku', 'niigata': 'hokuriku', '富山県': 'hokuriku', 'toyama': 'hokuriku',
+    '大阪府': 'kinki', 'osaka': 'kinki', '京都府': 'kinki', 'kyoto': 'kinki', '兵庫県': 'kinki', 'hyogo': 'kinki', '和歌山県': 'kinki', 'wakayama': 'kinki',
+    '広島県': 'chugoku', 'hiroshima': 'chugoku', '山口県': 'chugoku', 'yamaguchi': 'chugoku',
+    '徳島県': 'shikoku', 'tokushima': 'shikoku', '愛媛県': 'shikoku', 'ehime': 'shikoku', '高知県': 'shikoku', 'kochi': 'shikoku',
+    '福岡県': 'kyushu-n', 'fukuoka': 'kyushu-n', '佐賀県': 'kyushu-n', 'saga': 'kyushu-n', '大分県': 'kyushu-n', 'oita': 'kyushu-n', '長崎県': 'kyushu-n', 'nagasaki': 'kyushu-n',
+    '鹿児島県': 'kyushu-s-o', 'kagoshima': 'kyushu-s-o', '宮崎県': 'kyushu-s-o', 'miyazaki': 'kyushu-s-o', '熊本県': 'kyushu-s-o', 'kumamoto': 'kyushu-s-o'
+  };
+
+  const loadScript = (src) => new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    document.head.appendChild(script);
+  });
+
+  const loadStyle = (href) => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  };
+
+  document.addEventListener('astro:page-load', async () => {
+    const mapContainer = document.getElementById('facility-map');
+    if (!mapContainer) return;
+
+    loadStyle(CLUSTER_CSS);
+    loadStyle(CLUSTER_DEFAULT_CSS);
+    await loadScript(CLUSTER_JS);
+
+    const map = L.map('facility-map', {
+      scrollWheelZoom: true,
+    }).setView([36.2048, 138.2529], 5); 
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    const getCustomIcon = (color) => L.icon({
+      iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    const icons = {
+      blue: getCustomIcon('blue'),
+      green: getCustomIcon('green'),
+      orange: getCustomIcon('orange'),
+      red: getCustomIcon('red') // For dart target
+    };
+
+    try {
+      const res = await fetch('/api/facilities.json');
+      const facilities = await res.json();
+      const markerMap = new Map();
+
+      // @ts-ignore
+      const markers = L.markerClusterGroup({
+        showCoverageOnHover: false,
+        spiderfyOnMaxZoom: true,
+        zoomToBoundsOnClick: true
+      });
+
+      facilities.forEach(facility => {
+        if (!facility.lat || !facility.lng) return;
+
+        let markerIcon = icons.blue;
+        if (facility.region === 'east-japan') markerIcon = icons.green;
+        else if (facility.region === 'center-japan') markerIcon = icons.orange;
+
+        const marker = L.marker([facility.lat, facility.lng], { icon: markerIcon });
+        
+        const popupContent = `
+          <div class="flex flex-col group/popup">
+            <div class="relative overflow-hidden h-32 bg-slate-100">
+               ${facility.image ? 
+                 `<img src="${facility.image}" alt="${facility.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover/popup:scale-110" loading="lazy" />` : 
+                 '<div class="w-full h-full flex items-center justify-center text-slate-400 text-xs">No Image</div>'}
+               <div class="absolute top-2 left-2 px-2 py-0.5 bg-white/90 dark:bg-slate-800/90 rounded text-[10px] font-bold shadow-sm">
+                 ${facility.prefecture}
+               </div>
+            </div>
+            <div class="p-4 bg-white dark:bg-slate-900 border-t dark:border-slate-800">
+              <h3 class="text-sm font-bold mb-1.5 line-clamp-2 leading-snug">${facility.title}</h3>
+              <div class="flex items-center gap-2 mb-3">
+                ${facility.rating ? `<span class="text-[11px] text-amber-500 font-bold">★ ${facility.rating}</span>` : ''}
+              </div>
+              <a href="/fishing-facility/${facility.slug}" class="block w-full text-center bg-primary hover:bg-primary/90 text-white py-2.5 rounded-lg text-xs font-bold transition-all shadow-md hover:shadow-lg active:scale-[0.98]">
+                釣り場の詳細を見る
+              </a>
+            </div>
+          </div>
+        `;
+        
+        marker.bindPopup(popupContent);
+        markers.addLayer(marker);
+        markerMap.set(facility.slug, marker);
+      });
+
+      map.addLayer(markers);
+
+      // Dart Logic
+      const dartBtn = document.getElementById('dart-btn');
+      const filterPanel = document.getElementById('dart-filter-panel');
+      const closeFilterBtn = document.getElementById('close-filter-btn');
+      const executeDartBtn = document.getElementById('execute-dart-btn');
+      const regionSelect = document.getElementById('dart-region-select') as HTMLSelectElement;
+      const loadingOverlay = document.getElementById('dart-loading');
+
+      dartBtn?.addEventListener('click', () => {
+        filterPanel?.classList.toggle('active');
+      });
+
+      closeFilterBtn?.addEventListener('click', () => {
+        filterPanel?.classList.remove('active');
+      });
+
+      executeDartBtn?.addEventListener('click', async () => {
+        const selectedRegion = regionSelect.value;
+        filterPanel?.classList.remove('active');
+
+        // Filter facilities
+        const eligibleFacilities = facilities.filter(f => {
+          if (selectedRegion === 'all') return true;
+          return PREF_TO_REGION[f.prefecture] === selectedRegion;
+        });
+
+        if (eligibleFacilities.length === 0) {
+          alert('選択したエリアに該当する釣り場が見つかりませんでした。');
+          return;
+        }
+
+        // Show Animation
+        loadingOverlay?.classList.remove('opacity-0', 'pointer-events-none');
+        
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Dramatic pause
+
+        const target = eligibleFacilities[Math.floor(Math.random() * eligibleFacilities.length)];
+        const marker = markerMap.get(target.slug);
+
+        if (marker) {
+          loadingOverlay?.classList.add('opacity-0', 'pointer-events-none');
+          
+          // Fly to location
+          map.flyTo([target.lat, target.lng], 14, {
+            duration: 2
+          });
+
+          map.once('moveend', () => {
+            markers.zoomToShowLayer(marker, () => {
+              marker.openPopup();
+            });
+          });
+        }
+      });
+
+      // Locate Button Logic
+      document.getElementById('locate-btn')?.addEventListener('click', () => {
+        map.locate({setView: true, maxZoom: 13});
+      });
+
+      // Fullscreen Toggle Logic
+      const fsBtn = document.getElementById('fullscreen-btn');
+      const wrapper = document.querySelector('.map-wrapper');
+      fsBtn?.addEventListener('click', () => {
+        wrapper?.classList.toggle('map-fullscreen');
+        document.body.classList.toggle('overflow-hidden');
+        map.invalidateSize(); // Fix gray boxes after expansion
+        
+        // Change icon based on state
+        const isFS = wrapper?.classList.contains('map-fullscreen');
+        fsBtn.innerHTML = isFS ? 
+          `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14l6 0l0 6" /><path d="M10 14l-6 6" /><path d="M20 10l-6 0l0 -6" /><path d="M14 10l6 -6" /><path d="M4 10l6 0l0 -6" /><path d="M10 10l-6 -6" /><path d="M20 14l-6 0l0 6" /><path d="M14 14l6 6" /></svg>` : 
+          `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l4 0l0 4" /><path d="M14 10l6 -6" /><path d="M8 20l-4 0l0 -4" /><path d="M4 20l6 -6" /><path d="M16 20l4 0l0 -4" /><path d="M14 14l6 6" /><path d="M8 4l-4 0l0 4" /><path d="M4 4l6 6" /></svg>`;
+      });
+
+      map.on('locationfound', (e) => {
+        L.circle(e.latlng, e.accuracy).addTo(map);
+        markers.addLayer(L.marker(e.latlng).bindPopup("現在地"));
+      });
+
+    } catch (e) {
+      console.error("Failed to load map data", e);
+    }
+  });
+</script>

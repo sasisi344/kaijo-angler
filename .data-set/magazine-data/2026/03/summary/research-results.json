@@ -1,0 +1,23 @@
+{
+  "period": {
+    "month": "2026-03",
+    "weeks": ["W10", "W11", "W12", "W13"]
+  },
+  "monthly_mvp": [
+    { "name": "雑賀崎シーパーク", "reason": "シマアジ放流祭りの成功" },
+    { "name": "フィッシングパーク・トリトン", "reason": "ファミリー層の予約数過去最大" }
+  ],
+  "top_fish": "マダイ（桜鯛シーズンに突入し活性上昇）",
+  "average_activity": {
+    "mie": 78,
+    "wakayama": 88,
+    "shizuoka": 65
+  },
+  "total_mentions": {
+    "マダイ": 542,
+    "シマアジ": 218,
+    "サクラマス": 145
+  },
+  "timestamp": "2026-03-31T23:59:59Z",
+  "project_id": "kaijo-angler"
+}

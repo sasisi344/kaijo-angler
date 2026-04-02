@@ -1,0 +1,86 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="relative flex items-center w-full md:w-48 lg:w-64 group">
+  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-muted">
+    <Icon name="tabler:search" class="w-4 h-4" />
+  </div>
+  <input
+    type="search"
+    id="global-search-input"
+    class="block w-full p-1.5 pl-9 text-xs lg:text-sm text-default bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary transition-all outline-none"
+    placeholder="検索..."
+    autocomplete="off"
+  />
+  
+  <!-- Search Results Dropdown -->
+  <div 
+    id="search-results" 
+    class="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-lg shadow-xl hidden z-[100] max-h-80 overflow-y-auto"
+  >
+    <div id="search-results-list" class="flex flex-col p-2">
+      <!-- Results injected here -->
+    </div>
+  </div>
+</div>
+
+<script>
+  let searchIndex = [];
+  
+  const searchInput = document.getElementById('global-search-input') as HTMLInputElement;
+  const resultsDiv = document.getElementById('search-results');
+  const resultsList = document.getElementById('search-results-list');
+
+  async function initSearch() {
+    try {
+      const response = await fetch('/api/search.json');
+      searchIndex = await response.json();
+    } catch (e) {
+      console.error('Search index load failed', e);
+    }
+  }
+
+  function renderResults(results) {
+    if (!results.length) {
+      resultsList.innerHTML = '<div class="p-3 text-sm text-muted text-center">結果が見つかりませんでした</div>';
+    } else {
+      resultsList.innerHTML = results.map(item => `
+        <a href="${item.href}" class="p-3 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-md transition-colors border-b last:border-0 border-gray-100 dark:border-slate-800 block">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[10px] px-1.5 py-0.5 bg-primary/10 text-primary rounded font-bold">${item.type}</span>
+            <span class="text-sm font-bold text-default line-clamp-1">${item.title}</span>
+          </div>
+          <div class="text-[11px] text-muted line-clamp-1">${item.excerpt}</div>
+        </a>
+      `).join('');
+    }
+    resultsDiv?.classList.remove('hidden');
+  }
+
+  searchInput?.addEventListener('focus', () => {
+    if (searchIndex.length === 0) initSearch();
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value.toLowerCase();
+    if (val.length < 1) {
+      resultsDiv?.classList.add('hidden');
+      return;
+    }
+
+    const filtered = searchIndex.filter(item => 
+      item.title.toLowerCase().includes(val) || 
+      item.excerpt.toLowerCase().includes(val)
+    ).slice(0, 8);
+
+    renderResults(filtered);
+  });
+
+  // Close on click outside
+  document.addEventListener('click', (e) => {
+    if (!searchInput?.contains(e.target as Node) && !resultsDiv?.contains(e.target as Node)) {
+      resultsDiv?.classList.add('hidden');
+    }
+  });
+</script>

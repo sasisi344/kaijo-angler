@@ -1,0 +1,54 @@
+{
+  "logo": "/images/logo.svg",
+  "logo_alt": "海上アングラー",
+  "nav_items": [
+    {
+      "link": "/",
+      "text": "ホーム",
+      "dropdown": []
+    },
+    {
+      "link": "/fishing-facility/",
+      "text": "釣り場を探す",
+      "dropdown": [
+        {
+          "dropdown_text": "東日本",
+          "dropdown_link": "/fishing-facility/east-japan/"
+        },
+        {
+          "dropdown_text": "中部",
+          "dropdown_link": "/fishing-facility/center-japan/"
+        },
+        {
+          "dropdown_text": "西日本",
+          "dropdown_link": "/fishing-facility/west-japan/"
+        }
+      ]
+    },
+    {
+      "link": "/tactics/",
+      "text": "攻略法",
+      "dropdown": []
+    },
+    {
+      "link": "/blog/",
+      "text": "ブログ",
+      "dropdown": []
+    },
+    {
+      "link": "/about/",
+      "text": "サイトについて",
+      "dropdown": []
+    },
+    {
+      "link": "/contact/",
+      "text": "お問い合わせ",
+      "dropdown": []
+    }
+  ],
+  "enable_nav_btn": false,
+  "nav_btn": {
+    "text": "Get Started",
+    "link": "/signup/"
+  }
+}

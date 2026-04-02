@@ -1,0 +1,12 @@
+{
+  "id": "tackle/aji-strategy-set",
+  "name": "アジ・小魚数釣り サビキ爆釣セット",
+  "brand": "ハヤブサ(Hayabusa)",
+  "description": "海上釣り堀の外側に寄るアジやイワシを効率よく釣るための、信頼のサビキ仕掛けとコマセカゴのセット。",
+  "categories": ["仕掛け", "セット"],
+  "targetFish": ["アジ", "イワシ", "サバ"],
+  "methods": ["サビキ釣り"],
+  "isRecommended": true,
+  "link": "https://amzn.to/4boGpoe",
+  "image": "https://m.media-amazon.com/images/I/713AQRXY5yL._AC_SL1500_.jpg"
+}

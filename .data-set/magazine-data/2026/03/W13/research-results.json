@@ -1,0 +1,27 @@
+{
+  "period": {
+    "start": "2026-03-24",
+    "end": "2026-03-31",
+    "week": "W13"
+  },
+  "area_activity": {
+    "mie-minamiise": 85,
+    "mie-toba": 70,
+    "wakayama-saikazaki": 95,
+    "wakayama-yuasa": 80
+  },
+  "facility_weights": {
+    "fishing-park-triton": 8.5,
+    "fishing-land-sadamaru": 9.2,
+    "saikazaki-turibori": 9.5,
+    "maruhisa-fishing-park": 7.8
+  },
+  "fish_keywords": {
+    "マダイ": 142,
+    "シマアジ": 86,
+    "サクラマス": 54,
+    "ヒラメ": 22
+  },
+  "timestamp": "2026-03-31T23:59:59Z",
+  "project_id": "kaijo-angler"
+}

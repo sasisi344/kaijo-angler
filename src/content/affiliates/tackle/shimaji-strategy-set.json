@@ -1,0 +1,12 @@
+{
+  "id": "tackle/shimaji-strategy-set",
+  "name": "オーナー(OWNER) T-6289 結び一発！海上釣堀ｾｯﾄ見釣りｼﾏｱｼﾞ",
+  "brand": "オーナー(OWNER)",
+  "description": "口が弱いシマアジのためのクッションゴムと、吸い込みの良い小針を組み合わせた専用セット。",
+  "categories": ["仕掛け", "セット"],
+  "targetFish": ["シマアジ"],
+  "methods": ["ウキ釣り", "脈釣り"],
+  "isRecommended": true,
+  "link": "https://amzn.to/4sVoOdf",
+  "image": "https://m.media-amazon.com/images/I/61W4uaZv3nL._AC_SL1000_.jpg"
+}

@@ -1,0 +1,151 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Headline from '~/components/blog/Headline.astro';
+import beginnerCover from '~/content/blog/tactics/beginner/cover.jpg';
+import fishStrategyCover from '~/content/blog/tactics/fish-strategy/cover.jpg';
+import gearCover from '~/content/blog/tactics/gear/cover.jpg';
+
+const allTactics = await getCollection('tactics');
+
+// Filter for index pages or major category pages
+// In this collection, each subfolder has an index.mdx
+const categoryIndices = allTactics.filter((post) => post.id.endsWith('index'));
+
+// Map to specific categories
+const beginnerGuide = categoryIndices.find((p) => p.id.startsWith('beginner/'));
+const fishStrategy = categoryIndices.find((p) => p.id.startsWith('fish-strategy/'));
+const gearGuide = categoryIndices.find((p) => p.id.startsWith('gear/'));
+
+const metadata = {
+  title: '海上釣り堀 攻略法 (必釣タクティクス) — 海上アングラー',
+  description: '海上釣り堀で釣果を伸ばすための必須攻略法を、初心者・魚種別・道具別に詳しく解説。お土産を確実に確保するための秘訣が満載です。',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="必釣タクティクス"
+    title="海上釣り堀 攻略法"
+    subtitle="「どうすれば釣れる？」その答えがここにあります。初心者ガイドから魚種別の徹底攻略、最新の道具選びまで、あなたの釣果を劇的に改善するノウハウを伝授します。"
+  />
+
+  <!-- Main Categories -->
+  <section class="px-6 py-12 mx-auto max-w-7xl">
+    <Headline 
+      title="カテゴリーから探す" 
+      subtitle="目指すレベルや目的に合わせて、最適な攻略法をチェックしましょう。" 
+    />
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+      <!-- Beginner Card -->
+      <article class="flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+        <a href="/tactics/beginner" class="block h-full flex flex-col">
+          <div class="relative h-48 bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+            <img 
+              src={beginnerCover.src} 
+              alt="初心者ガイド" 
+              class="object-cover w-full h-full opacity-80" 
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30">
+              <span class="text-white text-2xl font-bold">初心者ガイド</span>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <h3 class="text-xl font-bold mb-3 tracking-tight">海上釣り堀の基本をマスター</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              必要な道具、服装、エチケット、そして初めての釣り堀での一日の流れを分かりやすく解説。初心者の方が「まず一匹」を釣るための最短ルートをご案内します。
+            </p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Fish Strategy Card -->
+      <article class="flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border-2 border-primary">
+        <a href="/tactics/fish-strategy" class="block h-full flex flex-col">
+          <div class="relative h-48 bg-orange-100 dark:bg-orange-900 flex items-center justify-center">
+            <img 
+              src={fishStrategyCover.src} 
+              alt="魚種別攻略" 
+              class="object-cover w-full h-full opacity-80" 
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30">
+              <span class="text-white text-2xl font-bold">魚種別攻略</span>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <h3 class="text-xl font-bold mb-3 tracking-tight">ターゲットを仕留める必勝法</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              マダイ、ブリ、シマアジ、そして幻のクエまで。全12魚種の習性を知り尽くし、最適なタナ、エサ、仕掛けを使い分けて釣果を爆発させるための専門ガイドです。
+            </p>
+          </div>
+        </a>
+      </article>
+
+      <!-- Gear Card -->
+      <article class="flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+        <a href="/tactics/gear" class="block h-full flex flex-col">
+          <div class="relative h-48 bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
+            <img 
+              src={gearCover.src} 
+              alt="仕掛け・道具" 
+              class="object-cover w-full h-full opacity-80" 
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30">
+              <span class="text-white text-2xl font-bold">仕掛け・道具</span>
+            </div>
+          </div>
+          <div class="p-6 flex-grow">
+            <h3 class="text-xl font-bold mb-3 tracking-tight">最強のタックルを揃える</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              ロッド選びから、リールの設定、最強の結び方（ノット）、おすすめの最新モデルレビューまで。道具のポテンシャルを最大限に引き出すための知識を網羅しています。
+            </p>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Popular Topics -->
+  <Features
+    id="topics"
+    tagline="注目トピック"
+    title="まず読んでおきたい攻略法"
+    subtitle="多くの釣り人が参考にしている、海上釣り堀で最も重要なポイントをピックアップしました。"
+    items={[
+      {
+        title: '棚（タナ）取りの重要性',
+        description: '「釣りは棚に始まって棚に終わる」。魚のいる正確な深さを図り、そこにエサを届けるための極意を解説。',
+        icon: 'tabler:ruler-measure',
+      },
+      {
+        title: 'エサのローテーション術',
+        description: 'マダイが反応しない時、次に何を付けるべきか？ダンゴ、エビ、青イソメを切り替えるタイミングを伝受。',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'アワセのタイミング',
+        description: 'ウキが沈んだ瞬間、いつ竿を立てるべきか？魚種ごとのアタリの出方と、空振りを防ぐフッキングのコツ。',
+        icon: 'tabler:target',
+      },
+      {
+        title: '青物の鳴動と取り込み',
+        description: '大型青物が掛かった時の「青です！」のコールと、他の釣り人と絡まないための強気のやり取り方法。',
+        icon: 'tabler:fish-hook',
+      },
+    ]}
+  />
+
+  <!-- CTA -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="bg-primary/10 dark:bg-primary/20 p-12 rounded-2xl text-center">
+      <h2 class="text-3xl font-bold mb-6">攻略法を学んだら、次は実践！</h2>
+      <p class="text-lg text-muted mb-8 max-w-2xl mx-auto">
+        学んだノウハウを試すのに最適な釣り場を見つけましょう。設備充実の初心者向けから、大型魚の聖地まで幅広く掲載しています。
+      </p>
+      <a href="/fishing-facility" class="btn-primary py-3 px-8 text-xl">釣り場を探す</a>
+    </div>
+  </section>
+</Layout>

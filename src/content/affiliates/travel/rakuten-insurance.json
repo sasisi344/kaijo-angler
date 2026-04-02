@@ -1,0 +1,9 @@
+{
+  "id": "travel/rakuten-insurance",
+  "name": "楽天 国内旅行保険",
+  "brand": "Rakuten",
+  "description": "1泊2日100円〜入れる安心。釣行時の怪我や入院に備えて、入っておきたい国内旅行保険です。",
+  "html": "<a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892569562&vc_url=https%3A%2F%2Fhoken.rakuten.co.jp%2Ftravel%2Fdomestic%2F\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892569562\" height=\"1\" width=\"0\" border=\"0\">楽天の国内旅行保険</a>",
+  "categories": ["保険", "安全"],
+  "isRecommended": true
+}

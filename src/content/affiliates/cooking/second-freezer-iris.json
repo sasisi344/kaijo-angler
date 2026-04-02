@@ -1,0 +1,11 @@
+{
+  "id": "cooking/second-freezer-iris",
+  "name": "アイリスオーヤマ 冷凍庫 60L 小型",
+  "brand": "アイリスオーヤマ",
+  "description": "海上釣り堀で釣れた大量の高級魚を保存するための専用冷凍庫。スリムタイプで置き場所にも困りません。",
+  "link": "https://amzn.to/example-freezer",
+  "image": "https://m.media-amazon.com/images/I/example-f.jpg",
+  "categories": ["家電", "保存"],
+  "targetFish": ["真鯛", "青物", "シマアジ"],
+  "isRecommended": true
+}

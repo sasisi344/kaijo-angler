@@ -1,0 +1,9 @@
+{
+  "id": "travel/jalan-rentacar",
+  "name": "じゃらんレンタカー",
+  "brand": "Recruit",
+  "description": "日本全国のレンタカーを比較・予約。お得なポイントやクーポンも。釣り遠征に最適な一台が見つかります。",
+  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892569550\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892569550\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892569550\" border=\"0\"></a></noscript>",
+  "categories": ["交通", "レンタカー"],
+  "isRecommended": true
+}

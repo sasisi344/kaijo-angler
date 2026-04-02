@@ -1,0 +1,451 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Headline from '~/components/blog/Headline.astro';
+import FacilityMap from '~/components/widgets/FacilityMap.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('fishing-facility');
+  
+  // 1. Facility pages
+  const facilityPaths = posts.map((post) => {
+    // Ensure ID is normalized (Loader sometimes returns \ on Windows)
+    const normalizedId = post.id.replace(/\\/g, '/');
+    const slug = (post.slug || normalizedId).replace(/\/index$/, '');
+    return {
+      params: { slug },
+      props: { type: 'facility', post: { ...post, id: normalizedId } },
+    };
+  });
+
+  // 2. Region and Prefecture index pages
+  const paths = new Set<string>();
+  posts.forEach(post => {
+    const normalizedId = post.id.replace(/\\/g, '/');
+    const id = normalizedId.replace(/\/index$/, '');
+    const parts = id.split('/');
+    if (parts.length >= 1) paths.add(parts[0]); // Region (e.g., east-japan)
+    if (parts.length >= 2) paths.add(`${parts[0]}/${parts[1]}`); // Prefecture (e.g., east-japan/hokkaido)
+  });
+
+  const indexPaths = Array.from(paths).map(slug => ({
+    params: { slug },
+    props: { type: 'index', slug },
+  }));
+
+  // Filter out any slugs that are already handled as facilities
+  const facilitySlugs = new Set(facilityPaths.map(p => p.params.slug));
+  const uniqueIndexPaths = indexPaths.filter(p => !facilitySlugs.has(p.params.slug));
+
+  return [...facilityPaths, ...uniqueIndexPaths];
+}
+
+const { type, post, slug } = Astro.props;
+
+let metadata, Content, items = [];
+let allFish: string[] = [];
+
+if (type === 'facility') {
+  const rendered = await render(post);
+  Content = rendered.Content;
+  metadata = {
+    title: post.data.title,
+    description: post.data.description || post.data.excerpt,
+  };
+
+  // Fetch child items if this page has any
+  const allPostsForItems = await getCollection('fishing-facility');
+  const ensureDate = (d) => {
+    if (d instanceof Date) return d;
+    if (typeof d === 'string') return new Date(d);
+    return new Date(0);
+  };
+
+  items = allPostsForItems
+    .filter((p) => {
+      const match = p.id.startsWith(post.id + '/') && p.id !== post.id;
+      return match;
+    })
+    .sort((a, b) => {
+      const dateA = ensureDate(a.data.publishDate || a.data.date || a.data.updated || a.data.lastmod);
+      const dateB = ensureDate(b.data.publishDate || b.data.date || b.data.updated || b.data.lastmod);
+      
+      if (dateA && dateB && dateB.getTime() !== dateA.getTime()) {
+        return dateB.getTime() - dateA.getTime();
+      }
+      return (a.data.title || '').localeCompare(b.data.title || '');
+    })
+    .map((p) => ({
+      ...p.data,
+      id: p.id,
+      slug: (p.slug || p.id),
+      image: p.data.featureimage || p.data.image,
+      facility_details: p.data.facility_details,
+      google_maps: p.data.google_maps,
+    }));
+
+  const uniqueFish = new Set<string>();
+  items.forEach(item => {
+    if (item.facility_details?.target_fish) {
+      item.facility_details.target_fish.forEach(f => uniqueFish.add(f));
+    }
+  });
+  allFish = Array.from(uniqueFish).sort();
+} else {
+  // It's an index page (without a corresponding index.md)
+  const allPosts = await getCollection('fishing-facility');
+  
+  // Find items that are directly under this slug or in subfolders
+  // We want to show facilities (those ending in /index in filesystem, or just children)
+  items = allPosts.filter(p => {
+    const pid = p.id.replace(/\\/g, '/').replace(/\/index$/, '');
+    return pid.startsWith(slug + '/') && pid.split('/').length === slug.split('/').length + 1;
+  }).map(p => ({
+    ...p.data,
+    id: p.id.replace(/\\/g, '/'),
+    slug: (p.slug || p.id).replace(/\\/g, '/').replace(/\/index$/, ''),
+    image: p.data.image || p.data.featureimage,
+  }));
+
+  // If items is empty, maybe it's a region and we should show prefectures?
+  let isRegion = slug.split('/').length === 1;
+  let subItems = [];
+  if (isRegion) {
+     const prefectures = new Set<string>();
+     allPosts.forEach(p => {
+       const pid = p.id.replace(/\\/g, '/').replace(/\/index$/, '');
+       if (pid.startsWith(slug + '/')) {
+         const parts = pid.split('/');
+         if (parts.length > 1) prefectures.add(parts[1]);
+       }
+     });
+     subItems = Array.from(prefectures).map(pref => ({
+       title: pref,
+       slug: `${slug}/${pref}`,
+     }));
+  }
+
+  metadata = {
+    title: `釣り場を探す - ${slug}`,
+  };
+}
+---
+
+<Layout metadata={metadata}>
+  {type === 'facility' ? (
+    <>
+      <Hero tagline={post.data.category} title={post.data.title}>
+        <Fragment slot="subtitle">
+          {post.data.description}
+        </Fragment>
+      </Hero>
+
+      <article class="px-6 pb-16 mx-auto max-w-4xl">
+        {post.data.google_maps?.latitude && post.data.google_maps?.longitude && (
+          <section id="map-section" class="mb-12">
+            <h2 class="text-2xl font-bold mb-4">釣り場の場所</h2>
+            <div class="not-prose">
+              <FacilityMap 
+                lat={post.data.google_maps.latitude} 
+                lng={post.data.google_maps.longitude} 
+                title={post.data.title} 
+              />
+            </div>
+            <p class="text-xs text-muted mt-2 text-right">※地図上のピンは目安です。詳細な場所は現地の指示に従ってください。</p>
+          </section>
+        )}
+        {items.length > 0 && (
+          <div class="pt-8 mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-8 font-heading text-center">
+              施設一覧
+            </h2>
+            {allFish.length > 0 && (
+            <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-6 mb-8 shadow-sm">
+              <h3 class="text-sm font-bold text-slate-700 dark:text-slate-300 mb-4 uppercase tracking-wider">条件で絞り込む</h3>
+              <form id="facility-filter-form" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <div class="flex flex-col">
+                  <label for="filter-fish" class="text-xs text-slate-500 dark:text-slate-400 mb-1">釣れる魚</label>
+                  <select id="filter-fish" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm rounded-md px-3 py-2 w-full focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                    <option value="">すべて</option>
+                    {allFish.map(fish => <option value={fish}>{fish}</option>)}
+                  </select>
+                </div>
+
+                <div class="flex flex-col">
+                  <label for="filter-rental" class="text-xs text-slate-500 dark:text-slate-400 mb-1">レンタル釣具</label>
+                  <select id="filter-rental" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm rounded-md px-3 py-2 w-full focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                    <option value="">こだわらない</option>
+                    <option value="true">あり</option>
+                  </select>
+                </div>
+
+                <div class="flex flex-col">
+                  <label for="filter-toilet" class="text-xs text-slate-500 dark:text-slate-400 mb-1">トイレ</label>
+                  <select id="filter-toilet" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm rounded-md px-3 py-2 w-full focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                    <option value="">こだわらない</option>
+                    <option value="true">あり</option>
+                  </select>
+                </div>
+
+                <div class="flex flex-col justify-end">
+                  <button type="button" id="filter-reset" class="text-xs text-slate-500 hover:text-primary transition underline mb-[2px] self-start md:self-auto text-left py-2">
+                     条件をクリア
+                  </button>
+                </div>
+              </form>
+            </div>
+            )}
+
+            <div id="facility-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+              {items.map((item, index) => {
+                const rentalVal = item.facility_details?.amenities?.rental_tackle;
+                const rental = rentalVal === true || rentalVal === 'true' || rentalVal === 'あり' || !!rentalVal;
+                const toiletVal = item.facility_details?.amenities?.toilet;
+                const toilet = toiletVal === 'true' || toiletVal === 'あり' || !!toiletVal;
+                const fishList = item.facility_details?.target_fish?.join(',') || '';
+                const isHidden = index >= 6;
+                
+                return (
+                <a 
+                  href={`/fishing-facility/${item.slug}`} 
+                  class={`block group transition-all duration-300 ${isHidden ? 'hidden opacity-0 facility-hidden-default' : 'facility-visible-default'}`}
+                  data-facility-item
+                  data-rental={rental ? 'true' : 'false'}
+                  data-toilet={toilet ? 'true' : 'false'}
+                  data-fish={fishList}
+                >
+                  <div class="relative h-48 mb-4 overflow-hidden rounded-lg shadow-lg bg-gray-200 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                    {item.image ? (
+                       <img 
+                         src={typeof item.image === 'object' ? (item.image as any).src : item.image} 
+                         alt={item.title} 
+                         class="object-cover w-full h-full transition duration-300 group-hover:scale-110" 
+                       />
+                    ) : (
+                       <div class="flex items-center justify-center w-full h-full text-gray-400">
+                         No Image
+                       </div>
+                    )}
+                  </div>
+                  <h3 class="text-lg font-bold mb-2 group-hover:text-primary transition duration-300 line-clamp-2">{item.title}</h3>
+                  <div class="flex flex-wrap gap-1 mb-2">
+                    {rental && <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-[10px] px-2 py-0.5 rounded-[4px] border border-blue-200 dark:border-blue-800">レンタル有</span>}
+                    {toilet && <span class="bg-teal-100 dark:bg-teal-900/40 text-teal-800 dark:text-teal-300 text-[10px] px-2 py-0.5 rounded-[4px] border border-teal-200 dark:border-teal-800">トイレ有</span>}
+                  </div>
+                  <p class="text-muted line-clamp-2 text-xs text-slate-500 mb-2 leading-relaxed">
+                    {item.google_maps?.business_hours || '時間: 施設へお問い合わせ'}
+                    <br/>
+                    {item.facility_details?.average_price ? `予算: ${item.facility_details.average_price}` : ''}
+                  </p>
+                  <div class="flex flex-wrap gap-1 mt-auto">
+                    {(item.facility_details?.target_fish || []).slice(0, 3).map(fish => (
+                      <span class="text-[10px] border border-slate-200 dark:border-slate-700 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 shadow-sm">
+                        {fish}
+                      </span>
+                    ))}
+                    {(item.facility_details?.target_fish?.length > 3) && <span class="text-[10px] text-slate-400 mt-0.5">他</span>}
+                  </div>
+                </a>
+              )})}
+            </div>
+ 
+            {items.length > 6 && (
+              <div class="mt-12 text-center" id="load-more-container">
+                <button
+                  id="load-more-btn"
+                  class="btn-secondary px-8 py-3 rounded-full font-bold hover:bg-primary hover:text-white transition duration-300 border border-gray-300 dark:border-slate-700 shadow-sm"
+                >
+                  もっと詳しく見る
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        <div class="prose prose-lg prose-md dark:prose-invert max-w-none pt-8 border-t border-gray-200 dark:border-slate-800">
+
+          <Content />
+        </div>
+      </article>
+
+      <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+          const btn = document.getElementById('load-more-btn');
+          const container = document.getElementById('load-more-container');
+          const gridItems = Array.from(document.querySelectorAll('[data-facility-item]'));
+          const hiddenByDefaultItems = document.querySelectorAll('.facility-hidden-default');
+          
+          if (btn && container) {
+            btn.addEventListener('click', () => {
+              const hiddenItems = Array.from(hiddenByDefaultItems).filter(
+                item => !item.classList.contains('filtered-out') && item.classList.contains('facility-hidden-default')
+              );
+              
+              const itemsToReveal = hiddenItems.slice(0, 6);
+              itemsToReveal.forEach(item => {
+                item.classList.remove('hidden', 'facility-hidden-default');
+                setTimeout(() => {
+                  item.style.opacity = '1';
+                  item.style.transition = 'opacity 0.5s ease-in-out';
+                }, 10);
+              });
+              
+              if (hiddenItems.length <= 6) {
+                container.style.display = 'none';
+              }
+            });
+          }
+
+          // Filter logic
+          const form = document.getElementById('facility-filter-form');
+          if (form) {
+            const filterFish = document.getElementById('filter-fish');
+            const filterRental = document.getElementById('filter-rental');
+            const filterToilet = document.getElementById('filter-toilet');
+            const filterReset = document.getElementById('filter-reset');
+
+            const updateFilter = () => {
+              const fishVal = filterFish.value;
+              const rentalVal = filterRental.value;
+              const toiletVal = filterToilet.value;
+
+              gridItems.forEach(item => {
+                const itemFish = item.getAttribute('data-fish') || '';
+                const itemRental = item.getAttribute('data-rental');
+                const itemToilet = item.getAttribute('data-toilet');
+
+                let match = true;
+                if (fishVal && !itemFish.split(',').includes(fishVal)) match = false;
+                if (rentalVal && itemRental !== rentalVal) match = false;
+                if (toiletVal && itemToilet !== toiletVal) match = false;
+
+                if (match) {
+                  item.classList.remove('hidden', 'opacity-0', 'filtered-out');
+                  item.style.opacity = '1';
+                } else {
+                  item.classList.add('hidden', 'opacity-0', 'filtered-out');
+                  item.style.opacity = '0';
+                }
+              });
+
+              // Toggle load more button depending on active filters
+              if (container) {
+                 if (fishVal || rentalVal || toiletVal) {
+                    container.style.display = 'none';
+                 } else {
+                    // Reset to original limited view state
+                    container.style.display = 'block';
+                    gridItems.forEach((item, idx) => {
+                       if (idx >= 6) {
+                          item.classList.add('hidden', 'opacity-0', 'facility-hidden-default');
+                          item.style.opacity = '0';
+                       } else {
+                          item.classList.remove('hidden', 'opacity-0', 'facility-hidden-default');
+                          item.style.opacity = '1';
+                       }
+                    });
+                 }
+              }
+            };
+
+            filterFish.addEventListener('change', updateFilter);
+            filterRental.addEventListener('change', updateFilter);
+            filterToilet.addEventListener('change', updateFilter);
+            
+            filterReset.addEventListener('click', () => {
+              filterFish.value = '';
+              filterRental.value = '';
+              filterToilet.value = '';
+              updateFilter();
+            });
+          }
+        });
+      </script>
+    </>
+  ) : (
+    <>
+      <section class="px-6 py-16 mx-auto max-w-4xl">
+        <Headline>
+          {slug}
+        </Headline>
+        
+        {items.length > 0 && (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {items.map((item) => (
+              <a href={`/fishing-facility/${item.slug}`} class="block group">
+                <div class="relative h-48 mb-4 overflow-hidden rounded-lg shadow-lg">
+                  {item.image ? (
+                     <img 
+                       src={typeof item.image === 'object' ? (item.image as any).src : item.image} 
+                       alt={item.title} 
+                       class="object-cover w-full h-full transition duration-300 group-hover:scale-110" 
+                     />
+                  ) : (
+                     <div class="flex items-center justify-center w-full h-full bg-gray-200 dark:bg-slate-800">
+                       <span class="text-gray-400">No Image</span>
+                     </div>
+                  )}
+                </div>
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition duration-300">{item.title}</h3>
+                <p class="text-muted line-clamp-2">{item.description}</p>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {items.length === 0 && (
+           <div class="mt-8">
+             <p class="text-xl mb-4">エリアを選択してください：</p>
+             <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
+               {slug === 'east-japan' && (
+                 <>
+                   <li><a href="/fishing-facility/east-japan/hokkaido" class="text-primary hover:underline">北海道</a></li>
+                   <li><a href="/fishing-facility/east-japan/aomori" class="text-primary hover:underline">青森県</a></li>
+                   <li><a href="/fishing-facility/east-japan/miyagi" class="text-primary hover:underline">宮城県</a></li>
+                   <li><a href="/fishing-facility/east-japan/yamagata" class="text-primary hover:underline">山形県</a></li>
+                   <li><a href="/fishing-facility/east-japan/chiba" class="text-primary hover:underline">千葉県</a></li>
+                   <li><a href="/fishing-facility/east-japan/kanagawa" class="text-primary hover:underline">神奈川県</a></li>
+                 </>
+               )}
+               {slug === 'center-japan' && (
+                 <>
+                   <li><a href="/fishing-facility/center-japan/niigata" class="text-primary hover:underline">新潟県</a></li>
+                   <li><a href="/fishing-facility/center-japan/toyama" class="text-primary hover:underline">富山県</a></li>
+                   <li><a href="/fishing-facility/center-japan/ishikawa" class="text-primary hover:underline">石川県</a></li>
+                   <li><a href="/fishing-facility/center-japan/fukui" class="text-primary hover:underline">福井県</a></li>
+                   <li><a href="/fishing-facility/center-japan/shizuoka" class="text-primary hover:underline">静岡県</a></li>
+                   <li><a href="/fishing-facility/center-japan/aichi" class="text-primary hover:underline">愛知県</a></li>
+                 </>
+               )}
+               {slug === 'west-japan' && (
+                 <>
+                   <li><a href="/fishing-facility/west-japan/mie" class="text-primary hover:underline">三重県</a></li>
+                   <li><a href="/fishing-facility/west-japan/kyoto" class="text-primary hover:underline">京都府</a></li>
+                   <li><a href="/fishing-facility/west-japan/osaka" class="text-primary hover:underline">大阪府</a></li>
+                   <li><a href="/fishing-facility/west-japan/hyogo" class="text-primary hover:underline">兵庫県</a></li>
+                   <li><a href="/fishing-facility/west-japan/wakayama" class="text-primary hover:underline">和歌山県</a></li>
+                   <li><a href="/fishing-facility/west-japan/tokushima" class="text-primary hover:underline">徳島県</a></li>
+                   <li><a href="/fishing-facility/west-japan/kagawa" class="text-primary hover:underline">香川県</a></li>
+                   <li><a href="/fishing-facility/west-japan/ehime" class="text-primary hover:underline">愛媛県</a></li>
+                   <li><a href="/fishing-facility/west-japan/shikoku-area/kochi" class="text-primary hover:underline">高知県</a></li>
+                   <li><a href="/fishing-facility/west-japan/hiroshima" class="text-primary hover:underline">広島県</a></li>
+                   <li><a href="/fishing-facility/west-japan/yamaguchi" class="text-primary hover:underline">山口県</a></li>
+                   <li><a href="/fishing-facility/west-japan/fukuoka" class="text-primary hover:underline">福岡県</a></li>
+                   <li><a href="/fishing-facility/west-japan/saga" class="text-primary hover:underline">佐賀県</a></li>
+                   <li><a href="/fishing-facility/west-japan/nagasaki" class="text-primary hover:underline">長崎県</a></li>
+                   <li><a href="/fishing-facility/west-japan/kumamoto" class="text-primary hover:underline">熊本県</a></li>
+                   <li><a href="/fishing-facility/west-japan/oita" class="text-primary hover:underline">大分県</a></li>
+                   <li><a href="/fishing-facility/west-japan/miyazaki" class="text-primary hover:underline">宮崎県</a></li>
+                   <li><a href="/fishing-facility/west-japan/kagoshima" class="text-primary hover:underline">鹿児島県</a></li>
+                   <li><a href="/fishing-facility/west-japan/okinawa" class="text-primary hover:underline">沖縄県</a></li>
+                 </>
+               )}
+             </ul>
+           </div>
+        )}
+      </section>
+    </>
+  )}
+</Layout>

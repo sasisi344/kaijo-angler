@@ -1,0 +1,9 @@
+{
+  "id": "travel/jalan-activity",
+  "name": "じゃらん 遊び・体験予約",
+  "brand": "リクルート",
+  "description": "オトクなクーポンを配布中。ネット予約率No.1で、海上釣り堀以外の観光アクティビティも手軽に予約可能。",
+  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892569555\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892569555\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892569555\" border=\"0\"></a></noscript>",
+  "categories": ["アクティビティ", "レジャー"],
+  "isRecommended": true
+}

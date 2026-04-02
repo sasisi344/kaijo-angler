@@ -1,0 +1,48 @@
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+
+> @onwidget/astrowind@1.0.0-beta.52 build
+> astro build
+
+22:27:40 [astrowind] Astrowind `./src/config.yaml` has been loaded.
+22:27:40 [content] Syncing content
+22:27:41 [content] Synced content
+22:27:41 [types] Generated 1.08s
+22:27:41 [build] output: "static"
+22:27:41 [build] mode: "static"
+22:27:41 [build] directory: C:\Users\sasis\344ob\344ob\08_blog-master\02_kaijo-angler\dist\
+22:27:41 [build] Collecting build info...
+22:27:41 [build] ✓ Completed in 1.33s.
+22:27:41 [build] Building static entrypoints...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+22:27:52 [vite] [32m✓ built in 11.17s[39m
+22:27:52 [build] ✓ Completed in 11.21s.
+
+ building client (vite) 
+22:27:52 [vite] transforming...
+22:27:53 [vite] [32m✓[39m 22 modules transformed.
+22:27:53 [vite] rendering chunks...
+22:27:53 [vite] computing gzip size...
+22:27:53 [vite] [2mdist/[22m[35m_astro/leaflet.Dgihpmma.css                                           [39m[1m[2m 15.04 kB[22m[1m[22m[2m │ gzip:  6.38 kB[22m
+22:27:53 [vite] [2mdist/[22m[36m_astro/FacilityMap.astro_astro_type_script_index_0_lang.DubTt1st.js   [39m[1m[2m  0.66 kB[22m[1m[22m[2m │ gzip:  0.44 kB[22m
+22:27:53 [vite] [2mdist/[22m[36m_astro/MapApp.astro_astro_type_script_index_0_lang.B0HtGfRr.js        [39m[1m[2m  4.92 kB[22m[1m[22m[2m │ gzip:  2.13 kB[22m
+22:27:53 [vite] [2mdist/[22m[36m_astro/ClientRouter.astro_astro_type_script_index_0_lang.DZnDNxNb.js  [39m[1m[2m 14.84 kB[22m[1m[22m[2m │ gzip:  5.08 kB[22m
+22:27:53 [vite] [2mdist/[22m[36m_astro/leaflet.Cdnvc_Z7.js                                            [39m[1m[2m149.70 kB[22m[1m[22m[2m │ gzip: 43.40 kB[22m
+22:27:53 [vite] [32m✓ built in 802ms[39m
+
+ generating static routes 
+22:27:53 ▶ src/pages/404.astro
+22:27:53   └─ /404.html (+31ms) 
+22:27:54 ▶ src/pages/about.astro
+[LocalImageUsedWrongly] `Image`'s and `getImage`'s `src` parameter must be an imported image or an URL, it cannot be a string filepath. Received `~/../public/images/about/hero.png`.
+  Hint:
+    If you want to use an image from your `src` folder, you need to either import it or if the image is coming from a content collection, use the image() schema helper https://docs.astro.build/en/guides/images/#images-in-content-collections. See https://docs.astro.build/en/guides/images/#src-required for more information on the `src` property.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/local-image-used-wrongly/
+  Stack trace:
+    at Object.validateOptions (file:///C:/Users/sasis/344ob/344ob/08_blog-master/02_kaijo-angler/dist/chunks/_astro_assets_8l0lDaBw.mjs:153:15)
+    at async getImage (file:///C:/Users/sasis/344ob/344ob/08_blog-master/02_kaijo-angler/dist/chunks/_astro_assets_8l0lDaBw.mjs:1454:44)
+    at async Promise.all (index 0)
+    at async file:///C:/Users/sasis/344ob/344ob/08_blog-master/02_kaijo-angler/dist/chunks/Image_BKNCbhfE.mjs:29:13
+22:27:54   └─ /about/index.html

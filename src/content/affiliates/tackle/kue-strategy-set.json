@@ -1,0 +1,12 @@
+{
+  "id": "tackle/kue-strategy-set",
+  "name": "OWNER(オーナー) スーパークエ仕掛",
+  "brand": "オーナーばり(OWNER)",
+  "description": "底に潜む巨大なクエやハタを狙い撃つための、超極太仕様の仕掛けセット。",
+  "categories": ["仕掛け", "セット"],
+  "targetFish": ["クエ", "ハタ"],
+  "methods": ["脈釣り", "ズボ釣り"],
+  "isRecommended": true,
+  "link": "https://amzn.to/41jVxNB",
+  "image": "https://m.media-amazon.com/images/I/81plIMIKwYL._AC_SL1500_.jpg"
+}

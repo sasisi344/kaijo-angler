@@ -1,0 +1,8 @@
+{
+  "id": "travel/yahoo-travel",
+  "name": "Yahoo!トラベル",
+  "brand": "Yahoo! JAPAN",
+  "description": "PayPayポイントが貯まる・使える。ヤフーパックやセールが魅力。PayPayユーザーにおすすめです。",
+  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892569540\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892569540\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892569540\" border=\"0\"></a></noscript>",
+  "categories": ["宿泊", "旅行"]
+}

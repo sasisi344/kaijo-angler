@@ -1,0 +1,150 @@
+--- Frontmatter Errors Found ---
+
+File: src\content\blog\fishing-facility\center-japan\aichi\bakucho-mihama-fishing-park\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\aichi\shinmaiko-marine-park-fishing\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\aichi\shinojima-tsuri-tengoku\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\akaguri-sea-fishing-park\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\blue-park-ano\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\fishing-land-hyuga\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\fishing-rainbow\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\hiruga-sea-fishing-pond\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\marine-garden-leisure\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\obama-city-fishing-coop-raft\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\sea-fishing-park-mikata\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\seapark-nyu\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\tsuruga-city-sea-fishing-park\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\fukui\wakasa-takahama-sea-fishing-park\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\ishikawa\fishing-bridge-akasaki\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\ishikawa\notojima-sea-fishing-center\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\niigata\naoetsu-port-3rd-east-breakwater\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\niigata\niigata-east-port-2nd-east-breakwater\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\shizuoka\araibenten-sea-fishing-park\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\shizuoka\atami-port-sea-fishing-facility\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\shizuoka\fishing-park-toi\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\shizuoka\ikadatsuri-tokai\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\shizuoka\kaijo-tsuribori-maruya\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\shizuoka\kaijo-tsuribori-taikoubou\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\center-japan\toyama\ishida-fisherina\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\east-japan\aomori\asamushi-sea-fishing-park\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\east-japan\chiba\original-maker-sea-fishing-park\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+  - amenities.toilet should be a string, not boolean
+  - amenities.parking should be a string, not boolean
+
+File: src\content\blog\fishing-facility\east-japan\hokkaido\tomakomai-facility\tomakomai-port-sea-fishing-facility\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\east-japan\hokkaido\yuharai-pond\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\east-japan\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\east-japan\kanagawa\jogashima-js-fishing\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\east-japan\kanagawa\miura-kaiou\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\east-japan\miyagi\sendai-port-central-park-sea-square\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+  - amenities.toilet should be a string, not boolean
+  - amenities.parking should be a string, not boolean
+
+File: src\content\blog\fishing-facility\east-japan\yamagata\yura-marine-fishing-pond\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+  - amenities.toilet should be a string, not boolean
+  - amenities.parking should be a string, not boolean
+
+File: src\content\blog\fishing-facility\west-japan\hyogo\himeji-city-fishing-center\index.mdx
+  - Category should be "施設紹介"
+
+File: src\content\blog\fishing-facility\west-japan\hyogo\kobe-hiraiso-sea-fishing-park\index.mdx
+  - Category should be "施設紹介"
+
+File: src\content\blog\fishing-facility\west-japan\hyogo\suma-sea-fishing-park\index.mdx
+  - Category should be "施設紹介"
+
+File: src\content\blog\fishing-facility\west-japan\index.mdx
+  - facility_details contains extra fields (region/prefecture)
+
+File: src\content\blog\fishing-facility\west-japan\kochi\kochi\kaijo-tsuribori-yukimaru\index.mdx
+  - Use "publishDate" instead of "pubDate"
+  - Use "image" instead of "cover"
+  - facility_details should be an object, not an array
+
+File: src\content\blog\fishing-facility\west-japan\kochi\kochi\raft-fishing-takahashi\index.mdx
+  - Use "publishDate" instead of "pubDate"
+  - Use "image" instead of "cover"
+  - facility_details should be an object, not an array
+
+File: src\content\blog\fishing-facility\west-japan\kochi\kochi\tsuri-ikada-fukaura\index.mdx
+  - Use "publishDate" instead of "pubDate"
+  - Use "image" instead of "cover"
+  - facility_details should be an object, not an array
+
+File: src\content\blog\fishing-facility\west-japan\mie\kashikojima-fishing-park-kaiyuen\index.md
+  - Category should be "施設紹介"
+
+File: src\content\blog\fishing-facility\west-japan\mie\matsunase-fishing-park\index.md
+  - Category should be "施設紹介"
+
+File: src\content\blog\fishing-facility\west-japan\mie\tsuribori-denpachiya\index.md
+  - Category should be "施設紹介"
+
+Total files with errors: 45

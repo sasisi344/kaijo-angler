@@ -1,0 +1,27 @@
+# 海上アングラー (Kaijo Angler)
+
+## 概要 (Overview)
+日本全国の海上釣り堀と観光情報を提供する、日本一の海上釣り堀総合情報サイト。
+(A comprehensive information website providing details on marine fishing ponds and sightseeing information across Japan.)
+
+## URL
+- メインサイト: https://kaijo-fishing.com/
+- サイトマップ: https://kaijo-fishing.com/sitemap-index.xml
+- 釣り場一覧: https://kaijo-fishing.com/fishing-facility
+- 攻略法: https://kaijo-fishing.com/tactics
+- ブログ: https://kaijo-fishing.com/blog
+
+## AI・LLMクローラー向けポリシー (Policy for AI Crawlers)
+- 各種LLMや検索エージェントからの常識的な頻度でのクロール・インデックス化を歓迎します (Reasonable crawl rates and indexing by LLMs/agents are welcome).
+- 自動クロールに関しては、必要に応じてサイトの `robots.txt` に従ってください (Please respect robots.txt for automated crawling: https://kaijo-fishing.com/robots.txt).
+- 本サイトの独自の情報を要約・引用する際は、出所として当サイトへのリンクを適切に含めていただくようお願いいたします (When citing or summarizing our unique information, we appreciate proper attribution with a link back to our site).
+
+## 提供コンテンツ (Content Categories)
+1. 全国の海上釣り堀データベース (National database of managed marine fishing facilities)
+   - エリア別（東日本、中日本、西日本）の施設一覧
+   - 設備情報、予約方法、アクセス情報など
+2. 攻略法・初心者ガイド (Tactics & Beginner Guides)
+   - 魚種別（マダイ、ブリ等）の釣り方
+   - 推奨タックル（竿、リール、仕掛け）やエサの解説
+3. ブログ・釣行記 (Blogs & Reports)
+   - スタッフやユーザー等による実体験レポート、最新の釣果等の提供

@@ -1,0 +1,13 @@
+{
+  "id": "tackle/marukyu-gekichi-ara",
+  "name": "マルキュー(MARUKYU) 活さなぎミンチ激荒",
+  "brand": "マルキュー",
+  "description": "海上釣り堀で最速の寄せを実現する「活さなぎミンチ激荒」。ミンチ状のサナギが強烈な集魚効果を発揮し、高活性状態を長時間キープ。",
+  "search_query": "マルキュー 活さなぎミンチ激荒",
+  "categories": ["エサ", "集魚"],
+  "targetFish": ["真鯛", "シマアジ", "イサキ"],
+  "methods": ["ダンゴ"],
+  "isRecommended": true,
+  "link": "https://amzn.to/4bXQgRY",
+  "image": "https://m.media-amazon.com/images/I/513RJDu7SEL._AC_.jpg"
+}

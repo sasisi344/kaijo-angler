@@ -1,0 +1,303 @@
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+20:46:26 [astrowind] Astrowind `./src/config.yaml` has been loaded.
+20:46:27 [content] Syncing content
+20:46:27 [content] Synced content
+20:46:27 [types] Generated 997ms
+20:46:27 [check] Getting diagnostics for Astro files in C:\Users\sasis\344ob\344ob\08_blog-master\02_kaijo-angler...
+[96mscripts/maintenance/fix-markdown-bold.mjs[0m:[93m28[0m:[93m68[0m - [93mwarning[0m[90m ts(6133): [0m'match' is declared but its value is never read.
+
+[7m28[0m                     const newContent = content.replace(boldRegex, (match, p1) => {
+[7m  [0m [93m                                                                   ~~~~~[0m
+
+[96msrc/components/widgets/MapApp.astro[0m:[93m210[0m:[93m11[0m - [93mwarning[0m[90m ts(6387): [0mThe signature '(latlng: LatLngExpression, radius: number, options?: CircleMarkerOptions | undefined): Circle<any>' of 'L.circle' is deprecated.
+
+[7m210[0m         L.circle(e.latlng, e.accuracy).addTo(map);
+[7m   [0m [93m          ~~~~~~[0m
+[96msrc/components/widgets/MapApp.astro[0m:[93m174[0m:[93m79[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'f' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m174[0m                 ${facility.target_fish ? facility.target_fish.slice(0, 3).map(f => `<span class="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800/50 text-[10px] rounded border border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">${f}</span>`).join('') : ''}
+[7m   [0m [93m                                                                              ~[0m
+[96msrc/components/widgets/MapApp.astro[0m:[93m145[0m:[93m26[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'facility' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m145[0m       facilities.forEach(facility => {
+[7m   [0m [93m                         ~~~~~~~~[0m
+[96msrc/components/widgets/MapApp.astro[0m:[93m118[0m:[93m28[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'color' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m118[0m     const getCustomIcon = (color) => L.icon({
+[7m   [0m [93m                           ~~~~~[0m
+[96msrc/components/widgets/MapApp.astro[0m:[93m91[0m:[93m22[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'href' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m91[0m   const loadStyle = (href) => {
+[7m  [0m [93m                     ~~~~[0m
+[96msrc/components/widgets/MapApp.astro[0m:[93m84[0m:[93m23[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'src' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m84[0m   const loadScript = (src) => new Promise((resolve) => {
+[7m  [0m [93m                      ~~~[0m
+
+[96msrc/pages/api/facilities.json.ts[0m:[93m18[0m:[93m10[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'null'.
+
+[7m18[0m          imageUrl = typeof featureimage === 'object' ? (featureimage as { src: string }).src : featureimage;
+[7m  [0m [91m         ~~~~~~~~[0m
+[96msrc/pages/api/facilities.json.ts[0m:[93m16[0m:[93m10[0m - [91merror[0m[90m ts(2322): [0mType 'string' is not assignable to type 'null'.
+
+[7m16[0m          imageUrl = typeof image === 'object' ? (image as { src: string }).src : image;
+[7m  [0m [91m         ~~~~~~~~[0m
+
+[96msrc/pages/column/[...slug].astro[0m:[93m25[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'category' does not exist on type '{ title: string; publishDate?: string | Date | undefined; image?: { height: number; width: number; src: string; format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif"; } | undefined; draft?: boolean | undefined; tags?: string[] | undefined; description?: string | undefined; }'.
+
+[7m25[0m   <Hero tagline={post.data.category} title={post.data.title}>
+[7m  [0m [91m                           ~~~~~~~~[0m
+
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m385[0m:[93m58[0m - [91merror[0m[90m ts(2339): [0mProperty 'description' does not exist on type 'never'.
+
+[7m385[0m                 <p class="text-muted line-clamp-2">{item.description}</p>
+[7m   [0m [91m                                                         ~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m384[0m:[93m107[0m - [91merror[0m[90m ts(2339): [0mProperty 'title' does not exist on type 'never'.
+
+[7m384[0m                 <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition duration-300">{item.title}</h3>
+[7m   [0m [91m                                                                                                          ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m377[0m:[93m54[0m - [91merror[0m[90m ts(2339): [0mProperty 'title' does not exist on type 'never'.
+
+[7m377[0m                      <img src={item.image} alt={item.title} class="object-cover w-full h-full transition duration-300 group-hover:scale-110" />
+[7m   [0m [91m                                                     ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m377[0m:[93m37[0m - [91merror[0m[90m ts(2339): [0mProperty 'image' does not exist on type 'never'.
+
+[7m377[0m                      <img src={item.image} alt={item.title} class="object-cover w-full h-full transition duration-300 group-hover:scale-110" />
+[7m   [0m [91m                                    ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m376[0m:[93m25[0m - [91merror[0m[90m ts(2339): [0mProperty 'image' does not exist on type 'never'.
+
+[7m376[0m                   {item.image ? (
+[7m   [0m [91m                        ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m374[0m:[93m50[0m - [91merror[0m[90m ts(2339): [0mProperty 'slug' does not exist on type 'never'.
+
+[7m374[0m               <a href={`/fishing-facility/${item.slug}`} class="block group">
+[7m   [0m [91m                                                 ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m261[0m:[93m24[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m261[0m                 title={post.data.title}
+[7m   [0m [91m                       ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m260[0m:[93m22[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m260[0m                 lng={post.data.google_maps.longitude}
+[7m   [0m [91m                     ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m259[0m:[93m22[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m259[0m                 lat={post.data.google_maps.latitude}
+[7m   [0m [91m                     ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m255[0m:[93m47[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m255[0m           {post.data.google_maps?.latitude && post.data.google_maps?.longitude && (
+[7m   [0m [91m                                              ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m255[0m:[93m12[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m255[0m           {post.data.google_maps?.latitude && post.data.google_maps?.longitude && (
+[7m   [0m [91m           ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m235[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m235[0m                     {(item.facility_details?.target_fish?.length > 3) && <span class="text-[10px] text-slate-400 mt-0.5">他</span>}
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m230[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m230[0m                     {(item.facility_details?.target_fish || []).slice(0, 3).map(fish => (
+[7m   [0m [91m                           ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m227[0m:[93m73[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m227[0m                     {item.facility_details?.average_price ? `予算: ${item.facility_details.average_price}` : ''}
+[7m   [0m [91m                                                                        ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m227[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m227[0m                     {item.facility_details?.average_price ? `予算: ${item.facility_details.average_price}` : ''}
+[7m   [0m [91m                          ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m225[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'google_maps' does not exist on type 'never'.
+
+[7m225[0m                     {item.google_maps?.business_hours || '時間: 施設へお問い合わせ'}
+[7m   [0m [91m                          ~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m219[0m:[93m122[0m - [91merror[0m[90m ts(2339): [0mProperty 'title' does not exist on type 'never'.
+
+[7m219[0m                   <h3 class="text-lg font-bold mb-2 group-hover:text-primary transition duration-300 line-clamp-2">{item.title}</h3>
+[7m   [0m [91m                                                                                                                         ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m210[0m:[93m36[0m - [91merror[0m[90m ts(2339): [0mProperty 'title' does not exist on type 'never'.
+
+[7m210[0m                          alt={item.title}
+[7m   [0m [91m                                   ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m209[0m:[93m95[0m - [91merror[0m[90m ts(2339): [0mProperty 'image' does not exist on type 'never'.
+
+[7m209[0m                          src={typeof item.image === 'object' ? (item.image as any).src : item.image}
+[7m   [0m [91m                                                                                              ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m209[0m:[93m70[0m - [91merror[0m[90m ts(2339): [0mProperty 'image' does not exist on type 'never'.
+
+[7m209[0m                          src={typeof item.image === 'object' ? (item.image as any).src : item.image}
+[7m   [0m [91m                                                                     ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m209[0m:[93m43[0m - [91merror[0m[90m ts(2339): [0mProperty 'image' does not exist on type 'never'.
+
+[7m209[0m                          src={typeof item.image === 'object' ? (item.image as any).src : item.image}
+[7m   [0m [91m                                          ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m207[0m:[93m27[0m - [91merror[0m[90m ts(2339): [0mProperty 'image' does not exist on type 'never'.
+
+[7m207[0m                     {item.image ? (
+[7m   [0m [91m                          ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m199[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'slug' does not exist on type 'never'.
+
+[7m199[0m                   href={`/fishing-facility/${item.slug}`}
+[7m   [0m [91m                                                  ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m194[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m194[0m                 const fishList = item.facility_details?.target_fish?.join(',') || '';
+[7m   [0m [91m                                      ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m192[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m192[0m                 const toiletVal = item.facility_details?.amenities?.toilet;
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m190[0m:[93m40[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m190[0m                 const rentalVal = item.facility_details?.amenities?.rental_tackle;
+[7m   [0m [91m                                       ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m140[0m:[93m12[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m140[0m           {post.data.description}
+[7m   [0m [91m           ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m138[0m:[93m49[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m138[0m       <Hero tagline={post.data.category} title={post.data.title}>
+[7m   [0m [91m                                                ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m138[0m:[93m22[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m138[0m       <Hero tagline={post.data.category} title={post.data.title}>
+[7m   [0m [91m                     ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m123[0m:[93m6[0m - [91merror[0m[90m ts(2322): [0mType '{ title: string; slug: string; }[]' is not assignable to type 'never[]'.
+  Type '{ title: string; slug: string; }' is not assignable to type 'never'.
+
+[7m123[0m      subItems = Array.from(prefectures).map(pref => ({
+[7m   [0m [91m     ~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m112[0m:[93m18[0m - [91merror[0m[90m ts(18048): [0m'slug' is possibly 'undefined'.
+
+[7m112[0m   let isRegion = slug.split('/').length === 1;
+[7m   [0m [91m                 ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m107[0m:[93m14[0m - [91merror[0m[90m ts(2339): [0mProperty 'slug' does not exist on type '{ id: string; body?: string | undefined; collection: "fishing-facility"; data: { title: string; publishDate?: string | Date | undefined; image?: { height: number; width: number; src: string; format: "svg" | ... 6 more ... | "avif"; } | undefined; ... 15 more ...; facilityType?: string | undefined; }; rendered?: Rend...'.
+
+[7m107[0m     slug: (p.slug || p.id).replace(/\\/g, '/').replace(/\/index$/, ''),
+[7m   [0m [91m             ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m103[0m:[93m68[0m - [91merror[0m[90m ts(18048): [0m'slug' is possibly 'undefined'.
+
+[7m103[0m     return pid.startsWith(slug + '/') && pid.split('/').length === slug.split('/').length + 1;
+[7m   [0m [91m                                                                   ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m101[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ id: string; slug: any; image: { height: number; width: number; src: string; format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif"; } | undefined; title: string; publishDate?: string | ... 1 more ... | undefined; ... 14 more ...; facilityType?: string | undefined; }[]' is not assignable to type 'never[]'.
+  Type '{ id: string; slug: any; image: { height: number; width: number; src: string; format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif"; } | undefined; title: string; publishDate?: string | ... 1 more ... | undefined; ... 14 more ...; facilityType?: string | undefined; }' is not assignable to type 'never'.
+
+[7m101[0m   items = allPosts.filter(p => {
+[7m   [0m [91m  ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m91[0m:[93m12[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m91[0m       item.facility_details.target_fish.forEach(f => uniqueFish.add(f));
+[7m  [0m [91m           ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m90[0m:[93m14[0m - [91merror[0m[90m ts(2339): [0mProperty 'facility_details' does not exist on type 'never'.
+
+[7m90[0m     if (item.facility_details?.target_fish) {
+[7m  [0m [91m             ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m82[0m:[93m16[0m - [91merror[0m[90m ts(2339): [0mProperty 'slug' does not exist on type '{ id: string; body?: string | undefined; collection: "fishing-facility"; data: { title: string; publishDate?: string | Date | undefined; image?: { height: number; width: number; src: string; format: "svg" | ... 6 more ... | "avif"; } | undefined; ... 15 more ...; facilityType?: string | undefined; }; rendered?: Rend...'.
+
+[7m82[0m       slug: (p.slug || p.id),
+[7m  [0m [91m               ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m67[0m:[93m64[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m67[0m       const match = p.id.startsWith(post.id + '/') && p.id !== post.id;
+[7m  [0m [91m                                                               ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m67[0m:[93m37[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m67[0m       const match = p.id.startsWith(post.id + '/') && p.id !== post.id;
+[7m  [0m [91m                                    ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m65[0m:[93m3[0m - [91merror[0m[90m ts(2322): [0mType '{ id: string; slug: any; image: { height: number; width: number; src: string; format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif"; } | undefined; facility_details: { average_price?: string | undefined; target_fish?: string[] | undefined; reservation?: string | undefined; amenities?: { ...; } | ...' is not assignable to type 'never[]'.
+  Type '{ id: string; slug: any; image: { height: number; width: number; src: string; format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif"; } | undefined; facility_details: { average_price?: string | undefined; target_fish?: string[] | undefined; reservation?: string | undefined; amenities?: { ...; } | ...' is not assignable to type 'never'.
+
+[7m65[0m   items = allPostsForItems
+[7m  [0m [91m  ~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m54[0m:[93m43[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m54[0m     description: post.data.description || post.data.excerpt,
+[7m  [0m [91m                                          ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m54[0m:[93m18[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m54[0m     description: post.data.description || post.data.excerpt,
+[7m  [0m [91m                 ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m53[0m:[93m12[0m - [91merror[0m[90m ts(18048): [0m'post' is possibly 'undefined'.
+
+[7m53[0m     title: post.data.title,
+[7m  [0m [91m           ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m50[0m:[93m33[0m - [91merror[0m[90m ts(2345): [0mArgument of type '{ id: string; body?: string | undefined; collection: "fishing-facility"; data: { title: string; publishDate?: string | Date | undefined; image?: { height: number; width: number; src: string; format: "svg" | ... 6 more ... | "avif"; } | undefined; ... 15 more ...; facilityType?: string | undefined; }; rendered?: Rend...' is not assignable to parameter of type '{ id: string; body?: string | undefined; collection: "affiliates"; data: { name: string; id: string; targetFish: string[]; methods: string[]; categories: string[]; isRecommended: boolean; link?: string | undefined; ... 6 more ...; search_query?: string | undefined; }; rendered?: RenderedContent | undefined; filePath...'.
+  Type 'undefined' is not assignable to type '{ id: string; body?: string | undefined; collection: "affiliates"; data: { name: string; id: string; targetFish: string[]; methods: string[]; categories: string[]; isRecommended: boolean; link?: string | undefined; ... 6 more ...; search_query?: string | undefined; }; rendered?: RenderedContent | undefined; filePath...'.
+
+[7m50[0m   const rendered = await render(post);
+[7m  [0m [91m                                ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m15[0m:[93m24[0m - [91merror[0m[90m ts(2339): [0mProperty 'slug' does not exist on type '{ id: string; body?: string | undefined; collection: "fishing-facility"; data: { title: string; publishDate?: string | Date | undefined; image?: { height: number; width: number; src: string; format: "svg" | ... 6 more ... | "avif"; } | undefined; ... 15 more ...; facilityType?: string | undefined; }; rendered?: Rend...'.
+
+[7m15[0m     const slug = (post.slug || normalizedId).replace(/\/index$/, '');
+[7m  [0m [91m                       ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m230[0m:[93m81[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'fish' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m230[0m                     {(item.facility_details?.target_fish || []).slice(0, 3).map(fish => (
+[7m   [0m [93m                                                                                ~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m113[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'subItems' is declared but its value is never read.
+
+[7m113[0m   let subItems = [];
+[7m   [0m [93m      ~~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m91[0m:[93m49[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'f' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m91[0m       item.facility_details.target_fish.forEach(f => uniqueFish.add(f));
+[7m  [0m [93m                                                ~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m59[0m:[93m23[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'd' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m59[0m   const ensureDate = (d) => {
+[7m  [0m [93m                      ~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m46[0m:[93m15[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'Content' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m46[0m let metadata, Content, items = [];
+[7m  [0m [93m              ~~~~~~~[0m
+[96msrc/pages/fishing-facility/[...slug].astro[0m:[93m46[0m:[93m5[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'metadata' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m46[0m let metadata, Content, items = [];
+[7m  [0m [93m    ~~~~~~~~[0m
+
+[96msrc/pages/fishing-facility/index.astro[0m:[93m12[0m:[93m21[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'd' implicitly has an 'any' type, but a better type may be inferred from usage.
+
+[7m12[0m const ensureDate = (d) => {
+[7m  [0m [93m                    ~[0m
+[96msrc/pages/fishing-facility/index.astro[0m:[93m6[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Grid' is declared but its value is never read.
+
+[7m6[0m import Grid from '~/components/blog/Grid.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/fishing-facility/index.astro[0m:[93m5[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'Features' is declared but its value is never read.
+
+[7m5[0m import Features from '~/components/widgets/Features.astro';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/tactics/[...slug].astro[0m:[93m47[0m:[93m76[0m - [91merror[0m[90m ts(2339): [0mProperty 'category' does not exist on type '{ title: string; publishDate?: string | Date | undefined; image?: { height: number; width: number; src: string; format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif"; } | undefined; draft?: boolean | undefined; tags?: string[] | undefined; description?: string | undefined; }'.
+
+[7m47[0m               <span class="text-xs text-primary font-bold mb-1">{item.data.category}</span>
+[7m  [0m [91m                                                                           ~~~~~~~~[0m
+[96msrc/pages/tactics/[...slug].astro[0m:[93m30[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'category' does not exist on type '{ title: string; publishDate?: string | Date | undefined; image?: { height: number; width: number; src: string; format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif"; } | undefined; draft?: boolean | undefined; tags?: string[] | undefined; description?: string | undefined; }'.
+
+[7m30[0m   <Hero tagline={post.data.category} title={post.data.title}>
+[7m  [0m [91m                           ~~~~~~~~[0m
+[96msrc/pages/tactics/[...slug].astro[0m:[93m25[0m:[93m51[0m - [91merror[0m[90m ts(2339): [0mProperty 'excerpt' does not exist on type '{ title: string; publishDate?: string | Date | undefined; image?: { height: number; width: number; src: string; format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif"; } | undefined; draft?: boolean | undefined; tags?: string[] | undefined; description?: string | undefined; }'.
+
+[7m25[0m   description: post.data.description || post.data.excerpt,
+[7m  [0m [91m                                                  ~~~~~~~[0m
+
+[96msrc/pages/tactics/index.astro[0m:[93m17[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'gearGuide' is declared but its value is never read.
+
+[7m17[0m const gearGuide = categoryIndices.find((p) => p.id.startsWith('gear/'));
+[7m  [0m [93m      ~~~~~~~~~[0m
+[96msrc/pages/tactics/index.astro[0m:[93m16[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'fishStrategy' is declared but its value is never read.
+
+[7m16[0m const fishStrategy = categoryIndices.find((p) => p.id.startsWith('fish-strategy/'));
+[7m  [0m [93m      ~~~~~~~~~~~~[0m
+[96msrc/pages/tactics/index.astro[0m:[93m15[0m:[93m7[0m - [93mwarning[0m[90m ts(6133): [0m'beginnerGuide' is declared but its value is never read.
+
+[7m15[0m const beginnerGuide = categoryIndices.find((p) => p.id.startsWith('beginner/'));
+[7m  [0m [93m      ~~~~~~~~~~~~~[0m
+
+Result (131 files): 
+- 51 errors
+- 0 warnings
+- 19 hints
+

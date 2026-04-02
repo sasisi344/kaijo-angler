@@ -1,0 +1,37 @@
+{
+  "period": {
+    "start": "2026-03-24",
+    "end": "2026-03-31"
+  },
+  "area_data": [
+    {
+      "id": "wakayama",
+      "score": 100,
+      "top_fish": "マダイ",
+      "volume": 85,
+      "facility_links": [
+        "saikazaki-turibori"
+      ]
+    },
+    {
+      "id": "mie-toba",
+      "score": 75,
+      "top_fish": "サクラマス",
+      "volume": 42,
+      "facility_links": [
+        "fishing-park-triton",
+        "fishing-land-sadamaru"
+      ]
+    }
+  ],
+  "hot_keywords": [
+    "シマアジ",
+    "桜鯛",
+    "カツオの切り身",
+    "タナのばらつき"
+  ],
+  "advice_summary": {
+    "title": "春のタナ攻略とエサのローテーション",
+    "description": "水温上昇に伴い魚の動きが活発になっています。固定のタナにこだわらず、上層から底までこまめに探ることが重要です。また、青物にはアジよりもカツオの切り身、マダイ・シマアジにはシラサエビへの反応が非常に良いため、エサの持参バリエーションを増やしておくのが吉です。"
+  }
+}

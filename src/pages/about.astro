@@ -1,0 +1,130 @@
+---
+import Features2 from "~/components/widgets/Features2.astro";
+import Features3 from "~/components/widgets/Features3.astro";
+import Hero from "~/components/widgets/Hero.astro";
+import Stats from "~/components/widgets/Stats.astro";
+import Steps2 from "~/components/widgets/Steps2.astro";
+import Layout from "~/layouts/PageLayout.astro";
+import heroImage from "~/assets/images/about/hero.png";
+
+const metadata = {
+  title: "海上アングラーについて",
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="About Kaijo Angler"
+    image={{
+      src: heroImage,
+      alt: "海上釣り堀の風景",
+    }}
+  >
+    <Fragment slot="title">
+      海上釣り堀の感動を、<br />
+      <span class="text-accent dark:text-white">すべてのアングラーへ。</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      「海上アングラー」は、日本全国の海上釣り堀ファン、そしてこれから釣りを始めたい初心者の方々に、最高の一日を過ごすための情報を届ける日本最大級の特化型メディアです。
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="数字で見る海上アングラー"
+    stats={[
+      { title: "掲載施設数", amount: "80+" },
+      { title: "月間閲覧数", amount: "10k+" },
+      { title: "攻略記事", amount: "100+" },
+    ]}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="提供するコンテンツ"
+    subtitle="私たちは「情報の正確性」と「アングラー目線」を大切にしています。"
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: "全国の施設ガイド",
+        description:
+          "北海道から沖縄まで、実際に現地を取材・調査した詳細な施設データを提供します。",
+        icon: "tabler:map-pin",
+      },
+      {
+        title: "魚種別・攻略テクニック",
+        description:
+          "真鯛、青物、シマアジ。ターゲットごとの「棚・餌・合わせ」のコツを徹底解説。",
+        icon: "tabler:target",
+      },
+      {
+        title: "最新タックル紹介",
+        description:
+          "初心者におすすめのセットから、玄人も納得の特化竿まで。失敗しない道具選びをサポート。",
+        icon: "tabler:fish",
+      },
+    ]}
+  />
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="私たちのミッション"
+    subtitle="釣りの楽しさを伝え、豊かな海と家族の絆を育む。"
+    items={[
+      {
+        title: "「手ぶら」から始まる感動を",
+        description:
+          "釣りは道具が多くて難しい。そんな先入観を払い、誰もが手軽に海の恵みを楽しめる環境を作ります。",
+      },
+      {
+        title: "持続可能な釣り文化の醸成",
+        description:
+          "マナーやルールを守り、次世代のアングラーに美しい海と豊かな魚影を残すための啓蒙活動を行います。",
+      },
+      {
+        title: "「食」を通じた体験価値の向上",
+        description:
+          "自分で釣った魚を美味しく食べる。その究極の食育体験こそが、海上釣り堀の真の魅力だと信じています。",
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="運営・プロフィール"
+    tagline="About Admin"
+    columns={2}
+    items={[
+      {
+        title: "さしし (運営・執筆)",
+        description:
+          "海釣り経験20年以上のアングラーライター。海上釣り堀を「次世代の持続可能なフィッシングスタイル」と捉え、自身の100回を超える釣行経験から、初心者の方でも最高の一日を過ごせるよう役立つ情報を発信しています。",
+        icon: "tabler:user",
+        callToAction: {
+          text: "公式X (旧Twitter)",
+          href: "https://x.com/sasisi344",
+          target: "_blank",
+        },
+      },
+      {
+        title: "お問い合わせ",
+        description:
+          "取材・撮影依頼、広告掲載、記事内容に関するご相談は、下記Googleフォームよりお気軽にご連絡ください。<br />順次、運営より回答させていただきます。",
+        icon: "tabler:mail",
+        callToAction: {
+          text: "お問い合わせフォーム",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSegPHwMqUtKjHl0y1OTPrNr0aaW7Hmt7jluuZ9FUQYdv362Dg/viewform?usp=sf_link",
+          target: "_blank",
+        },
+      },
+    ]}
+  />
+</Layout>

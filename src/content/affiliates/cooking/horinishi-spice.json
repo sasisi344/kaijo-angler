@@ -1,0 +1,11 @@
+{
+  "id": "cooking/horinishi-spice",
+  "name": "アウトドアスパイス 「ほりにし」",
+  "brand": "ほりにし",
+  "description": "魚料理の味がこれ1本で決まる。海上釣り堀で釣った真鯛やシマアジのグリル、ソテー、ムニエル等、アウトドア感覚で楽しめる万能スパイス。",
+  "search_query": "アウトドアスパイス ほりにし",
+  "categories": ["調味料", "キャンプ"],
+  "targetFish": ["真鯛", "シマアジ", "ブリ"],
+  "methods": [],
+  "isRecommended": true
+}

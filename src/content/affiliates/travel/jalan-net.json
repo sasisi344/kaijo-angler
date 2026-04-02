@@ -1,0 +1,9 @@
+{
+  "id": "travel/jalan-net",
+  "name": "じゃらんnet",
+  "brand": "Recruit",
+  "description": "国内最大級の宿・ホテル予約サイト。限定プランやクーポンが豊富で、釣り場近くの宿探しに便利です。",
+  "html": "<a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892569544\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892569544\" height=\"1\" width=\"1\" border=\"0\">じゃらんnetで宿を探す</a>",
+  "categories": ["宿泊", "旅行"],
+  "isRecommended": true
+}

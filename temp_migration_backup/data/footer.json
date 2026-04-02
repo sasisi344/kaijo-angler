@@ -1,0 +1,51 @@
+{
+  "logo": "/images/footer-logo.svg",
+  "logo_alt": "海上アングラー Logo",
+  "logo_url": "/",
+  "copyright": "海上アングラー. All rights reserved.",
+  "sections": [
+    {
+      "title": "メインページ",
+      "links": [
+        {
+          "text": "ホーム",
+          "link": "/"
+        },
+        {
+          "text": "釣り場を探す",
+          "link": "/fishing-facility/"
+        },
+        {
+          "text": "攻略法",
+          "link": "/tactics/"
+        },
+        {
+          "text": "サイトについて",
+          "link": "/about/"
+        }
+      ]
+    },
+    {
+      "title": "コミュニティ",
+      "links": [
+        {
+          "text": "ブログ",
+          "link": "/blog/"
+        },
+        {
+          "text": "RSS Feed",
+          "link": "/feed.xml"
+        }
+      ]
+    },
+    {
+      "title": "お問い合わせ",
+      "links": [
+        {
+          "text": "お問い合わせ",
+          "link": "/contact/"
+        }
+      ]
+    }
+  ]
+}

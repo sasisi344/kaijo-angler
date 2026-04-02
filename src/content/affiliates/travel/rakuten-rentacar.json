@@ -1,0 +1,9 @@
+{
+  "id": "travel/rakuten-rentacar",
+  "name": "楽天トラベル レンタカー予約",
+  "brand": "楽天",
+  "description": "楽天ポイント利用OK。楽天カードでさらにお得。海上釣り堀への移動を快適にするレンタカー。",
+  "link": "https://travel.rakuten.co.jp/cars/",
+  "categories": ["レンタカー", "移動"],
+  "isRecommended": false
+}

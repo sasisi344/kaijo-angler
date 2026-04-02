@@ -1,0 +1,12 @@
+{
+  "id": "tackle/kawahagi-strategy-set",
+  "name": "OWNER(オーナー) 満点カワハギ2本(直結タイプ)",
+  "brand": "オーナー(OWNER)",
+  "description": "わずかな吸い込みアタリを捉える極小・超鋭利な針と、アサリの付けやすさを追求したセット。",
+  "categories": ["仕掛け", "セット"],
+  "targetFish": ["カワハギ"],
+  "methods": ["胴突き釣り", "脈釣り"],
+  "isRecommended": true,
+  "link": "https://amzn.to/4bEJcbQ",
+  "image": "https://m.media-amazon.com/images/I/71P-C2kwExL._AC_SL1500_.jpg"
+}

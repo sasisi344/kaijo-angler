@@ -1,0 +1,79 @@
+site:
+  name: 海上アングラー
+  site: "https://kaijo-fishing.com/"
+  base: "/"
+  trailingSlash: false
+
+  googleSiteVerificationId: ZbPMaq9Umv53a2Tu-YOmQi0hC3ebVbK1QzAFrFBcWqI
+
+# Default SEO metadata
+metadata:
+  title:
+    default: 海上アングラー
+    template: "%s — 海上アングラー"
+  description: "日本全国の海上釣り堀と観光情報を提供する、日本一の海上釣り堀総合情報サイト。"
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: AstroWind
+    images:
+      - url: "~/assets/images/default.png"
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: "@arthelokyo"
+    site: "@arthelokyo"
+    cardType: summary_large_image
+
+i18n:
+  language: ja
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: true
+    postsPerPage: 6
+
+    post:
+      isEnabled: true
+      permalink: "/blog/%slug%" # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: "blog" # Blog main path, you can change this to "articles" (/articles)
+      robots:
+        index: true
+
+    category:
+      isEnabled: true
+      pathname: "category" # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      robots:
+        index: true
+
+    tag:
+      isEnabled: true
+      pathname: "tag" # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      robots:
+        index: false
+
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: G-QK9T3CH09H # or "G-XXXXXXXXXX"
+
+ui:
+  theme: "system" # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+
+affiliate:
+  amazonTag: "sasisi344-22"
+  valueCommerce:
+    sid: "3758616"
+    yahooPid: "892569590"
+    rakutenPid: "892569593"

@@ -1,0 +1,9 @@
+{
+  "id": "travel/his",
+  "name": "HIS (エイチ・アイ・エス) 国内旅行・ツアー",
+  "brand": "HIS",
+  "description": "24時間サポートと豊富な国内ツアーが魅力。海上釣り堀への遠征旅行を快適にサポートします。",
+  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892569534\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892569534\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892569534\" border=\"0\"></a></noscript>",
+  "categories": ["宿泊・ツアー", "旅行"],
+  "isRecommended": false
+}

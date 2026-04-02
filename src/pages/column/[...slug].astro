@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('column');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const rendered = await render(post);
+const Content = rendered.Content;
+
+const metadata = {
+  title: post.data.title,
+  description: post.data.description,
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero tagline={post.data.category} title={post.data.title}>
+    <Fragment slot="subtitle">
+      {post.data.description}
+    </Fragment>
+  </Hero>
+
+  <article class="px-6 py-16 mx-auto max-w-4xl">
+    <div class="prose prose-lg prose-md dark:prose-invert max-w-none">
+      <Content />
+    </div>
+  </article>
+</Layout>
