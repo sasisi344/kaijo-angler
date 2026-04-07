@@ -11,19 +11,19 @@
 
 ## 画像生成ルール
 - 画像生成には内部の画像生成ツールではなく、APIスクリプトを優先的に使用すること。
-- 使用スクリプト: `.workspace/script/generate-image.js`
+- 使用スクリプト: `scripts/image-tools/generate-image.js`
 - プロンプト生成ルール: `.agents/skills/image-create.md` を厳守し、魚種の特定と適切なサイズ（16:9または6:4）を指定すること。
 
 ## ワークスペース構成と役割
 
 - **src/content/blog/fishing-facility/**: メインコンテンツ（施設紹介記事）。地域・都道府県別に構造化。
 - **scripts/**: プロジェクト管理・自動化用。
-  - **image-tools/**: 画像生成スクリプト ([generate-image.js](cci:7://file:///c:/Users/sasis/344dev/kaijyo-fishing/scripts/image-tools/generate-image.js:0:0-0:0)) と認証情報 ([.env](cci:7://file:///c:/Users/sasis/344dev/kaijyo-fishing/.env:0:0-0:0))。
+  - **image-tools/**: 画像生成スクリプト ([generate-image.js](file:///c:/Users/sasis/344dev/kaijo-angler/scripts/image-tools/generate-image.js)) と認証情報 ([.env](file:///c:/Users/sasis/344dev/kaijo-angler/scripts/image-tools/.env))。
   - **maintenance/**: メンテナンス用。
     - **facility-updates/**: 施設データのスクレイピング・更新ツール。
-    - [check-missing-covers.mjs](cci:7://file:///c:/Users/sasis/344dev/kaijyo-fishing/scripts/check-missing-covers.mjs:0:0-0:0): カバー未設定記事の抽出。
-    - [extract-tackle-data.mjs](cci:7://file:///c:/Users/sasis/344dev/kaijyo-fishing/scripts/extract-tackle-data.mjs:0:0-0:0): タックルデータの集計。
-    - [generate-redirect-map.mjs](cci:7://file:///c:/Users/sasis/344dev/kaijyo-fishing/scripts/generate-redirect-map.mjs:0:0-0:0): リダイレクト用TS生成。
+    - [check-missing-covers.mjs](file:///c:/Users/sasis/344dev/kaijo-angler/scripts/maintenance/check-missing-covers.mjs): カバー未設定記事の抽出。
+    - [extract-tackle-data.mjs](file:///c:/Users/sasis/344dev/kaijo-angler/scripts/maintenance/extract-tackle-data.mjs): タックルデータの集計。
+    - [generate-redirect-map.mjs](file:///c:/Users/sasis/344dev/kaijo-angler/scripts/maintenance/generate-redirect-map.mjs): リダイレクト用TS生成。
 - **.data-set/**: 統合されたナレッジファイル、WPログなど。
 - **.workspace/**: 下書き、タスク、およびレポート。
   - **_draft/**: 記事の下書き。
