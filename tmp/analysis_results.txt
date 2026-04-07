@@ -1,0 +1,145 @@
+--- SECTION 1: LOW CTR < 15% ---
+
+[32;1mQuery[0m
+[32;1m-----                      [0m
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+とっとパーク小島 料金      
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+釣ってみんで釣り堀         
+海上 釣り堀 ランキング 関東
+脇田海釣り桟橋 料金        
+釣ってみんで釣り堀         
+とっ と パーク小島 料金    
+海恵 休業 理由             
+九州 釣り堀                
+脇田海釣り桟橋 料金        
+脇田海釣り桟橋 料金        
+脇田海釣り桟橋 料金        
+脇田海釣り桟橋 料金        
+海上 釣り堀 ランキング     
+舞鶴 釣り堀                
+直島 釣り                  
+豊浜海釣り公園 料金        
+海上釣堀湯浅 レビュー      
+海上釣堀湯浅 レビュー      
+海上釣堀湯浅 レビュー      
+海上 釣り堀 ランキング     
+海上 釣り堀 ランキング     
+
+
+--- SECTION 2: POSITION > 10, IMP >= 20 ---
+
+[32;1mQuery[0m
+[32;1m-----                      [0m
+釣ってみんで釣り堀         
+海上 釣り堀 ランキング 関東
+釣ってみんで釣り堀         
+海恵 休業 理由             
+九州 釣り堀                
+舞鶴 釣り堀                
+あっとしー                 
+海恵 休業 理由             
+海恵 休業 理由             
+海恵 休業 理由             
+海恵 休業 理由             
+太 海 フラワー磯釣りセンタ…
+舞鶴親海公園 釣り 料金     
+天草海上釣り堀 楽つり      
+ジャンボフィッシング村     
+釣り堀 大阪 手ぶら         
+かい えい 釣り堀 休業      
+関西 海上 釣り堀 安い      
+
+
+--- SECTION 3: POSITION <= 15, CTR < 10% ---
+
+[32;1mQuery[0m
+[32;1m-----                      [0m
+関西 海上 釣り堀 ランキング
+とっとパーク小島 料金      
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+関西 海上 釣り堀 ランキング
+釣ってみんで釣り堀         
+海上 釣り堀 ランキング 関東
+脇田海釣り桟橋 料金        
+釣ってみんで釣り堀         
+とっ と パーク小島 料金    
+海恵 休業 理由             
+脇田海釣り桟橋 料金        
+脇田海釣り桟橋 料金        
+脇田海釣り桟橋 料金        
+脇田海釣り桟橋 料金        
+海上 釣り堀 ランキング     
+舞鶴 釣り堀                
+直島 釣り                  
+豊浜海釣り公園 料金        
+海上釣堀湯浅 レビュー      
+海上釣堀湯浅 レビュー      
+海上釣堀湯浅 レビュー      
+海上 釣り堀 ランキング     
+海上 釣り堀 ランキング     
+海上 釣り堀 ランキング     
+海上 釣り堀 ランキング     
+
+
+--- SECTION 4: ACTIVE PAGES ---
+https://kaijo-fishing.com/2025/07/westjapan/kansai/matomekiji-kansai/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/sibusiiruka-kyusyu/
+https://kaijo-fishing.com/blog/sea-fishing-park-mikata/
+https://kaijo-fishing.com/blog/sea-fishing-park-mikata
+https://kaijo-fishing.com/blog/family-tsuribori-tsutteminde/
+https://kaijo-fishing.com/2025/07/westjapan/kansai/tottopark-osaka/
+https://kaijo-fishing.com/2025/07/eastjapan/kanto/kantou-matome/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/wakitaturisanbashi-kyusyu/
+https://kaijo-fishing.com/2025/10/%E3%82%B3%E3%83%A9%E3%83%A0/%E6%B5%B7%E4%B8%8A%E9%87%A3%E3%82%8A%E5%A0%80%E3%81%AE%E6%96%99%E9%87%91%E6%AF%94%E8%BC%83%E3%80%90%E9%96%A2%E6%9D%B1%E3%83%BB%E9%96%A2%E8%A5%BF%E3%83%BB%E4%B9%9D%E5%B7%9E%E3%80%91%E3%82%B3%E3%82%B9/
+https://kaijo-fishing.com/2025/07/chubu/chubu-tokai/toyohamaturi-aichi/
+https://kaijo-fishing.com/2025/07/westjapan/kansai/yuasa-wakayama/
+https://kaijo-fishing.com/blog/wakasa-takahama-sea-fishing-park/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/sakurajimakankjou-kyusyu/
+https://kaijo-fishing.com/blog/family-tsuribori-tsutteminde
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/umiduriland-kyusyu/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/kyusyu-matome/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/jumbfishvill-kyusyu/
+https://kaijo-fishing.com/2025/07/westjapan/shikoku/furusato-sanbashi/
+https://kaijo-fishing.com/2025/07/chubu/chubu-hokuriku/hiruga-fishiland/
+https://kaijo-fishing.com/blog/amakusa-rakutsuri
+https://kaijo-fishing.com/blog/kaijo-tsuribori-tsuriichi/
+https://kaijo-fishing.com/2025/07/chubu/chubu-hokuriku/notojima-rinkaisen/
+https://kaijo-fishing.com/blog/shodoshima-furusatomura-fishing-pier/
+https://kaijo-fishing.com/2026/02/fishingtech/winter-target-kurosoi-salmon-guide/
+https://kaijo-fishing.com/blog/fishing-park-sasukeya/
+https://kaijo-fishing.com/2025/09/westjapan/kansai/akasi-atsea/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/uminguoosima-kyusyu/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/yunojifispark-kyusyu/
+https://kaijo-fishing.com/2025/09/westjapan/kansai/wakayama-kaijyo-matome-sitasyori/
+https://kaijo-fishing.com/2025/07/westjapan/shikoku/hamabe-tosen/
+https://kaijo-fishing.com/blog/wakayama-marinacity-fishing-park/
+https://kaijo-fishing.com/2025/07/westjapan/shikoku/naoshima-turikouen/
+https://kaijo-fishing.com/blog/tsuribori-hamakatsu
+https://kaijo-fishing.com/blog/yunoko-fishing-park/
+https://kaijo-fishing.com/2025/07/chubu/chubu-tokai/parktoi-shizuoka/
+https://kaijo-fishing.com/blog/sea-fishing-land/
+https://kaijo-fishing.com/2025/07/chubu/chubu-hokuriku/hiruga-kaijoturi/
+https://kaijo-fishing.com/2025/09/howto/%E6%B5%B7%E4%B8%8A%E9%87%A3%E3%82%8A%E5%A0%80%E3%81%A7%E3%83%9E%E3%82%B0%E3%83%AD%E3%81%AB%E6%8C%91%E6%88%A6%EF%BC%81%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/kariyawancenter-kyusyu/
+https://kaijo-fishing.com/fishing-facility/west-japan/kumamoto/kaijo-tsuribori-tsuriichi/
+https://kaijo-fishing.com/2025/07/chubu/chubu-tokai/matunasefish-mie/
+https://kaijo-fishing.com/blog/hamabe-tosen-kaijo-tsuribori/
+https://kaijo-fishing.com/fishing-facility/west-japan/osaka/kaijo-tsuribori-misaki
+https://kaijo-fishing.com/blog/naoshima-fishing-park
+https://kaijo-fishing.com/blog/tsuri-ikada-fukaura/
+https://kaijo-fishing.com/2026/01/howto/myakuzuri-guide/
+https://kaijo-fishing.com/2025/07/chubu/chubu-tokai/chubutokai-matome/
+https://kaijo-fishing.com/2025/07/westjapan/kyusyu/takasitobisikma-kyusyu/
