@@ -1,4 +1,12 @@
 ---
+/**
+ * SEO マージ順（lodash.merge の後勝ち。未指定は前段の値が残る）:
+ * 1. フォールバック: noindex/nofollow=true（テンプレ既定の安全側）
+ * 2. `src/config.yaml` の METADATA（サイト全体の robots / description / openGraph / twitter）
+ * 3. ページから渡した `Astro.props`（`robots.index` 等を明示すると 2 を上書き）
+ *
+ * 新規ページで意図せず noindex にならないよう、`robots` は必要なときだけ指定する。
+ */
 import merge from 'lodash.merge';
 import { AstroSeo } from '@astrolib/seo';
 

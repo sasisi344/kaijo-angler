@@ -2,6 +2,9 @@ import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
 import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
+import GithubSlugger from 'github-slugger';
+
+const slugger = new GithubSlugger();
 
 export const readingTimeRemarkPlugin: RemarkPlugin = () => {
   return function (tree, file) {
@@ -44,6 +47,18 @@ export const lazyImagesRehypePlugin: RehypePlugin = () => {
     visit(tree, 'element', function (node) {
       if (node.tagName === 'img') {
         node.properties.loading = 'lazy';
+      }
+    });
+  };
+};
+
+export const customSlugifyRehypePlugin: RehypePlugin = () => {
+  return function (tree) {
+    slugger.reset();
+    visit(tree, 'element', (node) => {
+      if (node.tagName.match(/^h[1-6]$/)) {
+        const text = toString(node);
+        node.properties.id = slugger.slug(text);
       }
     });
   };

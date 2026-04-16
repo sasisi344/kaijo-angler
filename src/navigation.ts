@@ -62,9 +62,10 @@ export const footerData = {
   secondaryLinks: [
     { text: '利用ガイド（サイトマップ）', href: getPermalink('/terms') },
     { text: 'プライバシーポリシー', href: getPermalink('/privacy') },
+    { text: '釣り場更新RSS', href: getAsset('/facilities-rss.xml') },
   ],
   socialLinks: [
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    { ariaLabel: 'ブログRSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   footNote: `
     © 2026 海上アングラー · All rights reserved.

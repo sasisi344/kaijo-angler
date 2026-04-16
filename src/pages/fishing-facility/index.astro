@@ -1,38 +1,36 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '~/layouts/PageLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import Grid from '~/components/blog/Grid.astro';
-import Headline from '~/components/blog/Headline.astro';
-import MapApp from '~/components/widgets/MapApp.astro';
+import { getFishingFacilityEntries } from "~/utils/fishing-facility-collection";
+import { getPrimaryDate } from "~/utils/date-helpers";
+import Layout from "~/layouts/PageLayout.astro";
+import Hero from "~/components/widgets/Hero.astro";
+import Stats from "~/components/widgets/Stats.astro";
+import Headline from "~/components/blog/Headline.astro";
+import MapApp from "~/components/widgets/MapApp.astro";
+import Image from "~/components/common/Image.astro";
+import type { ImageMetadata } from "astro";
 
-const allFacilities = await getCollection('fishing-facility');
-
-const ensureDate = (d) => {
-  if (d instanceof Date) return d;
-  if (typeof d === 'string') return new Date(d);
-  return new Date(0);
-};
+const allFacilities = await getFishingFacilityEntries();
 
 // Sort by date or title
 const facilities = allFacilities
-  .filter((post) => !post.data.draft && !post.id.endsWith('index'))
+  .filter((post) => !post.data.draft && !post.id.endsWith("index"))
   .sort((a, b) => {
-    const dateA = ensureDate(a.data.publishDate || a.data.date || a.data.updated || a.data.lastmod);
-    const dateB = ensureDate(b.data.publishDate || b.data.date || b.data.updated || b.data.lastmod);
-    if (dateA && dateB && dateB.getTime() !== dateA.getTime()) {
+    const dateA = getPrimaryDate(a.data);
+    const dateB = getPrimaryDate(b.data);
+    if (dateB.getTime() !== dateA.getTime()) {
       return dateB.getTime() - dateA.getTime();
     }
-    return (a.data.title || '').localeCompare(b.data.title || '');
+    return (a.data.title || "").localeCompare(b.data.title || "");
   });
 
-const eastJapan = facilities.filter((p) => p.id.startsWith('east-japan/'));
-const centerJapan = facilities.filter((p) => p.id.startsWith('center-japan/'));
-const westJapan = facilities.filter((p) => p.id.startsWith('west-japan/'));
+const eastJapan = facilities.filter((p) => p.id.startsWith("east-japan/"));
+const centerJapan = facilities.filter((p) => p.id.startsWith("center-japan/"));
+const westJapan = facilities.filter((p) => p.id.startsWith("west-japan/"));
 
 const metadata = {
-  title: '釣り場を探す — 海上アングラー',
+  title: "釣り場を探す",
+  description:
+    "日本全国の海上釣り堀・海釣り施設をエリア別に掲載。地図から検索でき、東日本・中日本・西日本の料金・営業時間・ターゲット魚種などを一覧できます。",
 };
 ---
 
@@ -40,14 +38,24 @@ const metadata = {
   <Hero
     tagline="釣り場検索"
     title="あなたにぴったりの釣り場を見つけよう"
-    subtitle="日本全国の海上釣り堀と海釣り施設をエリア別にご紹介。料金、レンタル、放流魚種など最新情報が満載。"
+    subtitle="日本最大級の海上釣り堀データベース。全国100施設以上・50エリア以上をカバー。料金、レンタル、放流魚種など最新情報が満載。"
+  />
+
+  <!-- Stats Widget ****************** -->
+  <Stats
+    stats={[
+      { title: "掲載施設数", amount: "100+" },
+      { title: "対応エリア", amount: "50+" },
+      { title: "対象都道府県", amount: "31" },
+      { title: "情報量国内", amount: "1位" },
+    ]}
   />
 
   <!-- Interactive Map Section -->
   <section id="map-search" class="px-6 py-12 mx-auto max-w-7xl">
-    <Headline 
-      title="地図から探す" 
-      subtitle="日本全国の釣り場をピンで確認できます。東日本(緑)、中日本(オレンジ)、西日本(青)で区分されています。" 
+    <Headline
+      title="地図から探す"
+      subtitle="日本全国の釣り場をピンで確認できます。東日本(緑)、中日本(オレンジ)、西日本(青)で区分されています。"
     />
     <div class="mt-4">
       <MapApp height="500px" />
@@ -56,131 +64,194 @@ const metadata = {
 
   <!-- East Japan List -->
   <section id="east-japan" class="px-6 py-12 mx-auto max-w-7xl">
-    <Headline subtitle="北海道・東北・関東エリアの釣り場">東日本エリア一覧</Headline>
-    <div id="east-japan-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {eastJapan.map((post, index) => (
-        <article class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? 'hidden opacity-0' : ''}`} data-region="east-japan">
-          <a href={`/fishing-facility/${post.id}`} class="block">
-            <div class="relative h-48 bg-gray-200 dark:bg-slate-800">
-              {(() => {
-                const imgMetadata = post.data.image || post.data.featureimage;
-                return imgMetadata ? (
-                  <img 
-                    src={typeof imgMetadata === 'object' ? (imgMetadata as any).src : imgMetadata} 
-                    alt={post.data.title} 
-                    class="object-cover w-full h-full" 
-                  />
-                ) : (
-                  <div class="flex items-center justify-center w-full h-full text-gray-400">No Image</div>
-                );
-              })()}
-            </div>
-            <div class="p-4">
-              <h3 class="text-lg font-bold mb-2 line-clamp-2">{post.data.title}</h3>
-              <p class="text-sm text-muted line-clamp-2">{post.data.description || post.data.excerpt}</p>
-            </div>
-          </a>
-        </article>
-      ))}
+    <Headline subtitle="北海道・東北・関東エリアの釣り場"
+      >東日本エリア一覧</Headline
+    >
+    <div
+      id="east-japan-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+    >
+      {
+        eastJapan.map((post, index) => (
+          <article
+            class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? "hidden opacity-0" : ""}`}
+            data-region="east-japan"
+          >
+            <a href={`/fishing-facility/${post.id}`} class="block">
+              <div class="relative h-48 bg-gray-200 dark:bg-slate-800">
+                {(() => {
+                  const imgMetadata = post.data.image || post.data.featureimage;
+                  return imgMetadata ? (
+                    <Image
+                      src={imgMetadata as ImageMetadata | string}
+                      alt={post.data.title}
+                      width={640}
+                      height={384}
+                      class="object-cover w-full h-full"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="flex items-center justify-center w-full h-full text-gray-400">
+                      No Image
+                    </div>
+                  );
+                })()}
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-bold mb-2 line-clamp-2">
+                  {post.data.title}
+                </h3>
+                <p class="text-sm text-muted line-clamp-2">
+                  {post.data.description || post.data.excerpt}
+                </p>
+              </div>
+            </a>
+          </article>
+        ))
+      }
     </div>
-    {eastJapan.length > 6 && (
-      <div class="mt-8 text-center" id="east-japan-more">
-        <button class="btn-secondary px-8 py-2 rounded-full border border-gray-300 dark:border-slate-700 hover:bg-primary hover:text-white transition" data-load-more="east-japan">もっと見る</button>
-      </div>
-    )}
+    {
+      eastJapan.length > 6 && (
+        <div class="mt-8 text-center" id="east-japan-more">
+          <button
+            class="btn-secondary px-8 py-2 rounded-full border border-gray-300 dark:border-slate-700 hover:bg-primary hover:text-white transition"
+            data-load-more="east-japan"
+          >
+            もっと見る
+          </button>
+        </div>
+      )
+    }
   </section>
 
   <!-- Center Japan List -->
-  <section id="center-japan" class="px-6 py-12 mx-auto max-w-7xl bg-slate-50 dark:bg-slate-800/20">
-    <Headline subtitle="北陸・東海・甲信越エリアの釣り場">中日本エリア一覧</Headline>
-    <div id="center-japan-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {centerJapan.map((post, index) => (
-        <article class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? 'hidden opacity-0' : ''}`} data-region="center-japan">
-          <a href={`/fishing-facility/${post.id}`} class="block">
-            <div class="relative h-48 bg-gray-200 dark:bg-slate-800">
-              {(() => {
-                const imgMetadata = post.data.image || post.data.featureimage;
-                return imgMetadata ? (
-                  <img 
-                    src={typeof imgMetadata === 'object' ? (imgMetadata as any).src : imgMetadata} 
-                    alt={post.data.title} 
-                    class="object-cover w-full h-full" 
-                  />
-                ) : (
-                  <div class="flex items-center justify-center w-full h-full text-gray-400">No Image</div>
-                );
-              })()}
-            </div>
-            <div class="p-4">
-              <h3 class="text-lg font-bold mb-2 line-clamp-2">{post.data.title}</h3>
-              <p class="text-sm text-muted line-clamp-2">{post.data.description || post.data.excerpt}</p>
-            </div>
-          </a>
-        </article>
-      ))}
+  <section
+    id="center-japan"
+    class="px-6 py-12 mx-auto max-w-7xl bg-slate-50 dark:bg-slate-800/20"
+  >
+    <Headline subtitle="北陸・東海・甲信越エリアの釣り場"
+      >中日本エリア一覧</Headline
+    >
+    <div
+      id="center-japan-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+    >
+      {
+        centerJapan.map((post, index) => (
+          <article
+            class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? "hidden opacity-0" : ""}`}
+            data-region="center-japan"
+          >
+            <a href={`/fishing-facility/${post.id}`} class="block">
+              <div class="relative h-48 bg-gray-200 dark:bg-slate-800">
+                {(() => {
+                  const imgMetadata = post.data.image || post.data.featureimage;
+                  return imgMetadata ? (
+                    <Image
+                      src={imgMetadata as ImageMetadata | string}
+                      alt={post.data.title}
+                      width={640}
+                      height={384}
+                      class="object-cover w-full h-full"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="flex items-center justify-center w-full h-full text-gray-400">
+                      No Image
+                    </div>
+                  );
+                })()}
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-bold mb-2 line-clamp-2">
+                  {post.data.title}
+                </h3>
+                <p class="text-sm text-muted line-clamp-2">
+                  {post.data.description || post.data.excerpt}
+                </p>
+              </div>
+            </a>
+          </article>
+        ))
+      }
     </div>
-    {centerJapan.length > 6 && (
-      <div class="mt-8 text-center" id="center-japan-more">
-        <button class="btn-secondary px-8 py-2 rounded-full border border-gray-300 dark:border-slate-700 hover:bg-primary hover:text-white transition" data-load-more="center-japan">もっと見る</button>
-      </div>
-    )}
+    {
+      centerJapan.length > 6 && (
+        <div class="mt-8 text-center" id="center-japan-more">
+          <button
+            class="btn-secondary px-8 py-2 rounded-full border border-gray-300 dark:border-slate-700 hover:bg-primary hover:text-white transition"
+            data-load-more="center-japan"
+          >
+            もっと見る
+          </button>
+        </div>
+      )
+    }
   </section>
 
   <!-- West Japan List -->
   <section id="west-japan" class="px-6 py-12 mx-auto max-w-7xl">
-    <Headline subtitle="近畿・中国・四国・九州・沖縄エリアの釣り場">西日本エリア一覧</Headline>
-    <div id="west-japan-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {westJapan.map((post, index) => (
-        <article class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? 'hidden opacity-0' : ''}`} data-region="west-japan">
-          <a href={`/fishing-facility/${post.id}`} class="block">
-            <div class="relative h-48 bg-gray-200 dark:bg-slate-800">
-              {(() => {
-                const imgMetadata = post.data.image || post.data.featureimage;
-                return imgMetadata ? (
-                  <img 
-                    src={typeof imgMetadata === 'object' ? (imgMetadata as any).src : imgMetadata} 
-                    alt={post.data.title} 
-                    class="object-cover w-full h-full" 
-                  />
-                ) : (
-                  <div class="flex items-center justify-center w-full h-full text-gray-400">No Image</div>
-                );
-              })()}
-            </div>
-            <div class="p-4">
-              <h3 class="text-lg font-bold mb-2 line-clamp-2">{post.data.title}</h3>
-              <p class="text-sm text-muted line-clamp-2">{post.data.description || post.data.excerpt}</p>
-            </div>
-          </a>
-        </article>
-      ))}
+    <Headline subtitle="近畿・中国・四国・九州・沖縄エリアの釣り場"
+      >西日本エリア一覧</Headline
+    >
+    <div
+      id="west-japan-grid"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+    >
+      {
+        westJapan.map((post, index) => (
+          <article
+            class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? "hidden opacity-0" : ""}`}
+            data-region="west-japan"
+          >
+            <a href={`/fishing-facility/${post.id}`} class="block">
+              <div class="relative h-48 bg-gray-200 dark:bg-slate-800">
+                {(() => {
+                  const imgMetadata = post.data.image || post.data.featureimage;
+                  return imgMetadata ? (
+                    <Image
+                      src={imgMetadata as ImageMetadata | string}
+                      alt={post.data.title}
+                      width={640}
+                      height={384}
+                      class="object-cover w-full h-full"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="flex items-center justify-center w-full h-full text-gray-400">
+                      No Image
+                    </div>
+                  );
+                })()}
+              </div>
+              <div class="p-4">
+                <h3 class="text-lg font-bold mb-2 line-clamp-2">
+                  {post.data.title}
+                </h3>
+                <p class="text-sm text-muted line-clamp-2">
+                  {post.data.description || post.data.excerpt}
+                </p>
+              </div>
+            </a>
+          </article>
+        ))
+      }
     </div>
-    {westJapan.length > 6 && (
-      <div class="mt-8 text-center" id="west-japan-more">
-        <button class="btn-secondary px-8 py-2 rounded-full border border-gray-300 dark:border-slate-700 hover:bg-primary hover:text-white transition" data-load-more="west-japan">もっと見る</button>
-      </div>
-    )}
+    {
+      westJapan.length > 6 && (
+        <div class="mt-8 text-center" id="west-japan-more">
+          <button
+            class="btn-secondary px-8 py-2 rounded-full border border-gray-300 dark:border-slate-700 hover:bg-primary hover:text-white transition"
+            data-load-more="west-japan"
+          >
+            もっと見る
+          </button>
+        </div>
+      )
+    }
   </section>
 
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const buttons = document.querySelectorAll('[data-load-more]');
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const region = btn.getAttribute('data-load-more');
-          const hiddenItems = Array.from(document.querySelectorAll(`[data-region="${region}"].hidden`));
-          
-          const itemsToReveal = hiddenItems.slice(0, 6);
-          itemsToReveal.forEach(item => {
-            item.classList.remove('hidden');
-            setTimeout(() => item.classList.remove('opacity-0'), 10);
-          });
-          
-          if (hiddenItems.length <= 6) {
-            btn.parentElement.style.display = 'none';
-          }
-        });
-      });
-    });
+  <script>
+    import "~/scripts/fishing-facility-top-load-more.ts";
   </script>
 </Layout>

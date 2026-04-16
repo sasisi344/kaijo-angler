@@ -14,6 +14,13 @@ const id = ANALYTICS?.vendors?.googleAnalytics?.id;
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', '${id}');
+        document.addEventListener('astro:page-load', function () {
+          if (typeof gtag === 'function') {
+            gtag('config', '${id}', {
+              page_path: window.location.pathname + window.location.search,
+            });
+          }
+        });
       `}
       />
     </>

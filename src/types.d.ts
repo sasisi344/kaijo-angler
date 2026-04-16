@@ -42,6 +42,9 @@ export interface Post {
 
   /**  */
   readingTime?: number;
+
+  /**  */
+  status?: 'closed' | 'suspended';
 }
 
 export interface Taxonomy {

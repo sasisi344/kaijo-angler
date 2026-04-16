@@ -1,22 +1,32 @@
-import { getCollection } from 'astro:content';
+import type { ImageMetadata } from "astro";
+import { getFishingFacilityEntries } from "~/utils/fishing-facility-collection";
 
 export const prerender = true;
 
 export async function GET() {
-  const allFacilities = await getCollection('fishing-facility');
-  
+  const allFacilities = await getFishingFacilityEntries();
+
   const facilities = allFacilities
-    .filter(post => !post.data.draft && !post.id.endsWith('index'))
-    .map(post => {
-      const { title, prefecture, region, facilityType, image, featureimage, google_maps, facility_details } = post.data;
-      
-      // Handle image extraction correctly if it's an object or string
-      let imageUrl: string | null = null;
-      if (image) {
-         imageUrl = typeof image === 'object' ? (image as { src: string }).src : image;
-      } else if (featureimage) {
-         imageUrl = typeof featureimage === 'object' ? (featureimage as { src: string }).src : featureimage;
-      }
+    .filter((post) => !post.data.draft && !post.id.endsWith("index"))
+    .map((post) => {
+      const {
+        title,
+        prefecture,
+        region,
+        facilityType,
+        image,
+        featureimage,
+        google_maps,
+        facility_details,
+      } = post.data;
+
+      const extractSrc = (
+        img: ImageMetadata | string | undefined,
+      ): string | null => {
+        if (!img) return null;
+        return typeof img === "string" ? img : img.src;
+      };
+      const imageUrl = extractSrc(image) ?? extractSrc(featureimage);
 
       return {
         id: post.id,
@@ -36,12 +46,12 @@ export async function GET() {
       };
     })
     // Filter out facilities without coordinates
-    .filter(f => f.lat && f.lng);
+    .filter((f) => f.lat && f.lng);
 
   return new Response(JSON.stringify(facilities), {
     status: 200,
     headers: {
-      'Content-Type': 'application/json'
-    }
+      "Content-Type": "application/json",
+    },
   });
 }

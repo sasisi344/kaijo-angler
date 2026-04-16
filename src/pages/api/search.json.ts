@@ -1,11 +1,12 @@
 import { getCollection } from 'astro:content';
+import { getFishingFacilityEntries } from '~/utils/fishing-facility-collection';
 
 export const prerender = true;
 
 export async function GET() {
   const posts = await getCollection('post');
   const tactics = await getCollection('tactics');
-  const facilities = await getCollection('fishing-facility');
+  const facilities = await getFishingFacilityEntries();
   const columns = await getCollection('column');
 
   const searchIndex = [

@@ -61,6 +61,8 @@ const postCollection = defineCollection({
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
 
+    status: z.enum(['closed', 'suspended']).optional(),
+
     metadata: metadataDefinition(),
   }),
 });
@@ -88,6 +90,7 @@ const fishingFacilityCollection = defineCollection({
     excerpt: z.string().optional(),
     image: image().optional(),
     featureimage: image().optional(),
+    status: z.enum(['closed', 'suspended']).optional(),
     metadata: metadataDefinition(),
     google_maps: z.object({
       map_url: z.string().optional(),

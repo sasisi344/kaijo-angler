@@ -1,3 +1,7 @@
+/**
+ * ブログ記事のみの RSS（`utils/blog` の投稿一覧）。
+ * 釣り場更新は `/facilities-rss.xml` を参照。
+ */
 import { getRssString } from '@astrojs/rss';
 
 import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
@@ -15,7 +19,7 @@ export const GET = async () => {
   const posts = await fetchPosts();
 
   const rss = await getRssString({
-    title: `${SITE.name}’s Blog`,
+    title: `${SITE.name} — ブログ`,
     description: METADATA?.description || '',
     site: import.meta.env.SITE,
 

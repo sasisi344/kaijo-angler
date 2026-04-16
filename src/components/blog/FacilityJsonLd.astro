@@ -1,0 +1,85 @@
+---
+/** Facility page JSON-LD: TouristAttraction + BreadcrumbList (schema.org) */
+import type { FacilityBreadcrumbItem } from "~/utils/fishing-facility-areas";
+import { labelForFishingAreaSlug } from "~/utils/fishing-facility-areas";
+
+export interface Props {
+  name: string;
+  description?: string;
+  canonicalUrl: string;
+  imageUrl?: string | null;
+  address?: string | null;
+  prefecture?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  telephone?: string | null;
+  breadcrumbs: FacilityBreadcrumbItem[];
+}
+
+const {
+  name,
+  description,
+  canonicalUrl,
+  imageUrl,
+  address,
+  prefecture,
+  latitude,
+  longitude,
+  telephone,
+  breadcrumbs,
+} = Astro.props;
+
+const place: Record<string, unknown> = {
+  "@type": ["TouristAttraction", "LocalBusiness"],
+  "@id": `${canonicalUrl}#place`,
+  name,
+  url: canonicalUrl,
+};
+
+if (description) place.description = description;
+if (imageUrl) place.image = [imageUrl];
+
+if (address && address.trim()) {
+  const postalAddress: Record<string, string> = {
+    "@type": "PostalAddress",
+    streetAddress: address,
+    addressCountry: "JP",
+  };
+  if (prefecture && prefecture.trim()) {
+    postalAddress.addressRegion = labelForFishingAreaSlug(prefecture);
+  }
+  place.address = postalAddress;
+}
+
+if (typeof latitude === "number" && typeof longitude === "number") {
+  place.geo = {
+    "@type": "GeoCoordinates",
+    latitude,
+    longitude,
+  };
+}
+
+if (telephone && telephone.trim()) {
+  place.telephone = telephone;
+}
+
+const site = Astro.site ?? new URL("https://example.com");
+const breadcrumbLd = {
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbs.map((b, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: b.name,
+    item: (b.href ? new URL(b.href, site) : new URL(canonicalUrl)).href,
+  })),
+};
+
+const graph = [place, breadcrumbLd];
+
+const json = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": graph,
+});
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

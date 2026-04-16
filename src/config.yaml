@@ -16,15 +16,14 @@ metadata:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: 海上アングラー
     images:
       - url: "~/assets/images/default.png"
         width: 1200
         height: 628
     type: website
+  # 公式 X（Twitter）未掲出のため handle/site は未設定。カード種別のみテンプレート互換で保持。
   twitter:
-    handle: "@arthelokyo"
-    site: "@arthelokyo"
     cardType: summary_large_image
 
 i18n:

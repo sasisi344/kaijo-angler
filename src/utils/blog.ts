@@ -54,6 +54,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     category: rawCategory,
     author,
     draft = false,
+    status,
     metadata = {},
   } = data;
 
@@ -92,6 +93,8 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     draft: draft,
 
     metadata,
+
+    status: status,
 
     Content: Content,
     // or 'content' in case you consume from API

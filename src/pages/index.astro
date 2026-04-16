@@ -1,14 +1,14 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from "~/layouts/PageLayout.astro";
 
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import Hero from "~/components/widgets/Hero.astro";
+import Features from "~/components/widgets/Features.astro";
+import BlogLatestPosts from "~/components/widgets/BlogLatestPosts.astro";
+import Stats from "~/components/widgets/Stats.astro";
+import CallToAction from "~/components/widgets/CallToAction.astro";
 
 const metadata = {
-  title: '海上アングラー — 日本一の海上釣り堀総合情報サイト',
+  title: "海上アングラー — 日本一の海上釣り堀総合情報サイト",
   ignoreTitleTemplate: true,
 };
 ---
@@ -19,14 +19,17 @@ const metadata = {
   <Hero
     actions={[
       {
-        variant: 'primary',
-        text: '釣り場を探す',
-        href: '/fishing-facility',
-        icon: 'tabler:search',
+        variant: "primary",
+        text: "釣り場を探す",
+        href: "/fishing-facility",
+        icon: "tabler:search",
       },
-      { text: '攻略法を学ぶ', href: '/tactics' },
+      { text: "攻略法を学ぶ", href: "/tactics" },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: '海上釣り堀で釣りを楽しむ風景' }}
+    image={{
+      src: "~/assets/images/hero-image.png",
+      alt: "海上釣り堀で釣りを楽しむ風景",
+    }}
   >
     <Fragment slot="title">
       海とつながる、<br />
@@ -34,8 +37,11 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      「海上アングラー」は、日本全国の海上釣り堀情報と周辺の観光スポットを網羅した総合情報サイトです。
-      初心者の方のデビューから、ベテランの攻略法まで、あなたの釣果と体験を最高のものにします。
+      「海上アングラー」は、全国<strong>100施設以上</strong
+      >の海上釣り堀を掲載した日本最大級の特化型情報サイト。
+      <strong>50エリア以上</strong>から近くの釣り場を探し、<strong
+        >90本以上</strong
+      >の攻略記事でしっかり準備して、最高の一日を過ごしましょう。
     </Fragment>
   </Hero>
 
@@ -43,10 +49,10 @@ const metadata = {
 
   <Stats
     stats={[
-      { title: '掲載施設数', amount: '150+' },
-      { title: '検索エリア', amount: '3' },
-      { title: '必釣タクティクス', amount: '100+' },
-      { title: '情報量国内', amount: '1位' },
+      { title: "掲載施設数", amount: "100+" },
+      { title: "検索エリア", amount: "50+" },
+      { title: "必釣タクティクス", amount: "90+" },
+      { title: "情報量国内", amount: "1位" },
     ]}
   />
 
@@ -59,22 +65,22 @@ const metadata = {
     subtitle="釣りの楽しさは「釣る・食べる・遊ぶ」の三拍子。私たちがあなたの釣行を全力でサポートします。"
     items={[
       {
-        title: 'エリア別釣り場検索',
+        title: "エリア別釣り場検索",
         description:
-          '東日本・中日本・西日本の3エリアから、あなたにぴったりの釣り場を見つけましょう。設備やレンタル情報も充実。',
-        icon: 'tabler:map-pin',
+          "東日本・中日本・西日本の3エリアから、あなたにぴったりの釣り場を見つけましょう。設備やレンタル情報も充実。",
+        icon: "tabler:map-pin",
       },
       {
-        title: '釣果を伸ばすタクティクス',
+        title: "釣果を伸ばすタクティクス",
         description:
-          'マダイ、ブリ、カンパチ。ターゲットに合わせた仕掛けやタナ、エサの使い分けなど、実践的な攻略法を伝授します。',
-        icon: 'tabler:fish',
+          "マダイ、ブリ、カンパチ。ターゲットに合わせた仕掛けやタナ、エサの使い分けなど、実践的な攻略法を伝授します。",
+        icon: "tabler:fish",
       },
       {
-        title: '釣り＋観光で最高の思い出を',
+        title: "釣り＋観光で最高の思い出を",
         description:
-          'ただ釣りをするだけではありません。施設の周りにある絶景スポットや、日帰り温泉、美味しいご当地グルメ情報も同時にチェック。',
-        icon: 'tabler:camera',
+          "ただ釣りをするだけではありません。施設の周りにある絶景スポットや、日帰り温泉、美味しいご当地グルメ情報も同時にチェック。",
+        icon: "tabler:camera",
       },
     ]}
   />
@@ -91,15 +97,17 @@ const metadata = {
   <CallToAction
     actions={[
       {
-        variant: 'primary',
-        text: '釣り場を探す',
-        href: '/fishing-facility',
-        icon: 'tabler:search',
+        variant: "primary",
+        text: "釣り場を探す",
+        href: "/fishing-facility",
+        icon: "tabler:search",
       },
     ]}
   >
     <Fragment slot="title">
-      あなたの釣行を<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">もっと楽しく</span>
+      あなたの釣行を<br class="block sm:hidden" /><span
+        class="sm:whitespace-nowrap">もっと楽しく</span
+      >
     </Fragment>
 
     <Fragment slot="subtitle">

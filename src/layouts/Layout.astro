@@ -13,7 +13,8 @@ import Analytics from '~/components/common/Analytics.astro';
 import AdSense from '~/components/common/AdSense.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
-// Comment the line below to disable View Transitions
+// View Transitions: ClientRouter（無効化する場合は下記と body 前のタグを削除）
+// GA は `Analytics.astro` で astro:page-load 時に page_path を送る。AdSense は全ページ読み込みでスクリプトは維持される。
 import { ClientRouter } from 'astro:transitions';
 
 import type { MetaData as MetaDataType } from '~/types';
