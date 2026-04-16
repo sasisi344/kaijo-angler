@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Ise Shima Access Guide Cover</title>
+  <desc id="desc">Cover image for Ise Shima access guide article.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#172554" />
+      <stop offset="50%" stop-color="#9333ea" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <circle cx="1360" cy="200" r="200" fill="#ffffff" fill-opacity="0.12" />
+  <circle cx="300" cy="760" r="170" fill="#ffffff" fill-opacity="0.08" />
+  <rect x="120" y="120" width="1360" height="660" rx="36" fill="#1f1148" fill-opacity="0.45" stroke="#ffffff" stroke-opacity="0.2" />
+  <text x="180" y="270" fill="#f5d0fe" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="600" letter-spacing="2">TRAVEL ACCESS GUIDE</text>
+  <text x="180" y="390" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="104" font-weight="800">ISE / SHIMA</text>
+  <text x="180" y="495" fill="#ffe4e6" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="600">Car, Rail, Flight</text>
+  <text x="180" y="640" fill="#fecdd3" font-family="Inter, Arial, sans-serif" font-size="44">Best Route to Sea Fishing Ponds</text>
+</svg>
