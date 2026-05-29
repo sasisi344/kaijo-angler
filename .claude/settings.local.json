@@ -4,7 +4,8 @@
       "Bash(Get-ChildItem *)",
       "Bash(powershell *)",
       "Bash(Select-Object FullName)",
-      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\fishing-facility\\\\west-japan\\\\hyogo\" | Select-Object -First 1 | ForEach-Object { $_.Name })"
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\fishing-facility\\\\west-japan\\\\hyogo\" | Select-Object -First 1 | ForEach-Object { $_.Name })",
+      "PowerShell(pnpm build *)"
     ]
   }
 }

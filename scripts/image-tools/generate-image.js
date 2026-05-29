@@ -36,7 +36,7 @@ for (const envPath of envPaths) {
 }
 
 const API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = 'gemini-3.1-flash-image-preview';
+const MODEL = 'gemini-3.1-flash-image';
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
 // 引数からプロンプトと出力パスを取得
@@ -48,8 +48,18 @@ if (!prompt || !outputPath) {
     process.exit(1);
 }
 
+const SYSTEM_INSTRUCTION = `You are generating cover images for a Japanese sea fishing pond (海上釣り堀) blog.
+
+Visual rules (always apply):
+- Subject must relate to ocean fishing: fish species (sea bream, yellowtail, amberjack, etc.), fishing equipment, fishing ponds/piers, underwater scenes, ocean scenery, seafood, or fishing culture
+- No text, letters, numbers, watermarks, or labels anywhere in the image
+- Photorealistic style; natural lighting preferred
+- Clean, simple composition suitable for a blog article cover (16:9 or 4:3 ratio feel)
+- High visual quality, publication-ready`;
+
 async function generateImage(prompt) {
     const requestData = {
+        systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
             temperature: 1.0,
