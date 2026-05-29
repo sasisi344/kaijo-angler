@@ -1,0 +1,118 @@
+---
+import { getEntry } from 'astro:content';
+
+interface Props {
+  facilityId: string;
+}
+
+const { facilityId } = Astro.props;
+
+const facility = await getEntry('fishing-facility', facilityId);
+if (!facility) return;
+
+const lat     = facility.data.google_maps?.latitude;
+const lng     = facility.data.google_maps?.longitude;
+const parking = facility.data.facility_details?.amenities?.parking ?? '';
+
+const hasLatLng  = lat != null && lng != null;
+const hasParking = parking !== 'なし' && parking.trim() !== '';
+
+const mapsUrl = hasLatLng
+  ? `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`
+  : null;
+
+function extractVcLink(html: string): string {
+  const m = html.match(/href="(\/\/[^"]+)"/);
+  return m ? 'https:' + m[1] : '';
+}
+
+const [jalanEntry, rakutenEntry, rentacarEntry] = await Promise.all([
+  getEntry('affiliates', 'travel/jalan-net'),
+  getEntry('affiliates', 'travel/rakuten-travel'),
+  getEntry('affiliates', 'travel/jalan-rentacar'),
+]);
+
+const jalanLink    = jalanEntry?.data.html    ? extractVcLink(jalanEntry.data.html)    : '';
+const rakutenLink  = rakutenEntry?.data.html  ? extractVcLink(rakutenEntry.data.html)  : '';
+const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data.html) : '';
+---
+
+<div class="not-prose my-8 rounded-2xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800/60 overflow-hidden">
+
+  <div class="px-5 py-3.5 border-b border-sky-200 dark:border-slate-700 flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-600 dark:text-sky-400 shrink-0">
+      <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </svg>
+    <span class="text-sm font-bold text-sky-900 dark:text-sky-300">この施設へのアクセスを調べる</span>
+  </div>
+
+  <div class="p-5 flex flex-col gap-4">
+
+    {mapsUrl && (
+      <a
+        href={mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-white dark:bg-slate-900 border border-sky-300 dark:border-slate-600 text-sky-700 dark:text-sky-300 font-bold text-sm hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors no-underline shadow-sm"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+        </svg>
+        Google マップでルートを確認
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-50">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    )}
+
+    <div>
+      <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">宿泊を予約する</p>
+      <div class="grid grid-cols-2 gap-2">
+        {jalanLink && (
+          <a
+            href={jalanLink}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="flex items-center justify-center py-2.5 px-3 rounded-lg bg-[#e60012] hover:bg-[#c4000f] text-white font-bold text-sm transition-colors no-underline"
+          >
+            じゃらんnet
+          </a>
+        )}
+        {rakutenLink && (
+          <a
+            href={rakutenLink}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="flex items-center justify-center py-2.5 px-3 rounded-lg bg-[#bf0000] hover:bg-[#a00000] text-white font-bold text-sm transition-colors no-underline"
+          >
+            楽天トラベル
+          </a>
+        )}
+      </div>
+    </div>
+
+    {hasParking && rentacarLink && (
+      <div>
+        <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">レンタカーを探す</p>
+        <a
+          href={rentacarLink}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-slate-700 hover:bg-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500 text-white font-bold text-sm transition-colors no-underline w-full"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 17H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2Z"/>
+            <path d="m3 9 2-4h14l2 4"/>
+            <circle cx="7.5" cy="17" r="1.5"/>
+            <circle cx="16.5" cy="17" r="1.5"/>
+          </svg>
+          じゃらんレンタカーで探す
+        </a>
+      </div>
+    )}
+
+  </div>
+</div>
