@@ -5,7 +5,18 @@
       "Bash(powershell *)",
       "Bash(Select-Object FullName)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\fishing-facility\\\\west-japan\\\\hyogo\" | Select-Object -First 1 | ForEach-Object { $_.Name })",
-      "PowerShell(pnpm build *)"
+      "PowerShell(pnpm build *)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\tactics\\\\fish-strategy\\\\hiramasa\\\\strategy\\\\index.mdx\" | Measure-Object -Line\\).Lines)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\tactics\\\\fish-strategy\\\\shimaji\\\\intermediate\\\\index.mdx\" | Measure-Object -Line\\).Lines)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\tactics\\\\fish-strategy\\\\mejina\\\\advanced\\\\index.mdx\" | Measure-Object -Line\\).Lines)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\tactics\\\\fish-strategy\\\\suzuki\\\\theory\\\\index.mdx\" | Measure-Object -Line\\).Lines)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\tactics\\\\fish-strategy\\\\chinu\\\\intermediate\\\\index.mdx\" | Measure-Object -Line\\).Lines)",
+      "PowerShell(\\(Get-Content \"C:\\\\Users\\\\sasis\\\\344dev\\\\kaijo-angler\\\\src\\\\content\\\\blog\\\\tactics\\\\fish-strategy\\\\fugu\\\\intermediate\\\\index.mdx\" | Measure-Object -Line\\).Lines)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:4322/tactics/fish-strategy/shimaji/theory\")",
+      "Bash(curl -s \"http://localhost:4322/tactics/fish-strategy/shimaji/theory\")",
+      "Bash(kill %1)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:4335/fishing-facility/__TRACKED_VAR__)"
     ]
   }
 }

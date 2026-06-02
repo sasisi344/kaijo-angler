@@ -206,12 +206,22 @@ index.mdx の拡充にあたり、詳細記事のネタを一部要約して引�
 | イシダイ | ✅ 完了 | 2026-06-02 |
 | アジ・サバ・カマス | ✅ 完了 | 2026-06-02 |
 
-### Phase 5：サブ記事リライト（未着手）
+### Phase 5：サブ記事リライト（全完了）
 
-buri / chinu / fugu の各サブ記事（intermediate / advanced / theory / gourmet or strategy）が40〜49行と薄い状態。
+全14魚種×4記事=56サブ記事が130非空行以上に到達済み（post-volume-reflesh.md タスクで実施）。
 
-| 対象 | 記事数 | ステータス |
-|------|--------|-----------|
-| buri（intermediate/advanced/theory/strategy） | 4記事 | ✅ 完了 2026-06-02 |
-| chinu（intermediate/advanced/theory/gourmet） | 4記事 | ✅ 完了 2026-06-02 |
-| fugu（intermediate/advanced/theory/gourmet） | 4記事 | ✅ 完了 2026-06-02 |
+| 対象魚種 | 記事数 | ステータス | 完了日 |
+|---------|--------|-----------|--------|
+| madai / kanpachi / shimaji / kue / kawahagi | 各4記事 | ✅ 完了 | 2026-06-02 |
+| suzuki / chinu / mejina / hiramasa / isaki | 各4記事 | ✅ 完了 | 2026-06-02 |
+| ishidai / aji-asaba-kamasu / buri / fugu | 各4記事 | ✅ 完了 | 2026-06-02 |
+| **合計** | **56記事** | **✅ 全完了** | 2026-06-02 |
+
+### Phase 6：技術的修正
+
+| 項目 | ステータス |
+|------|-----------|
+| `**bold**` → `<strong>` 全変換（94ファイル・3065箇所） | ✅ 完了 2026-06-03 |
+| `kaijo-angler/CLAUDE.md` 新規作成（strongタグルール明記） | ✅ 完了 2026-06-03 |
+| frontmatter の `slug:` / `lastmod:` / `created:` 削除（tactics 95ファイル） | ✅ 完了 2026-06-03 |
+| 詳細記事リンクの英名確認 → 既に全て日本語のため対応不要 | ✅ 確認済み 2026-06-03 |
