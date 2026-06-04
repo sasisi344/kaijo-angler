@@ -2,7 +2,7 @@ site:
   name: 海上アングラー
   site: "https://kaijo-fishing.com/"
   base: "/"
-  trailingSlash: false
+  trailingSlash: true
 
   googleSiteVerificationId: ZbPMaq9Umv53a2Tu-YOmQi0hC3ebVbK1QzAFrFBcWqI
 
