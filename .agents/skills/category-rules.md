@@ -28,6 +28,7 @@
 - **サブカテゴリー**:
     - `travel`: 遠征記・釣行記
     - `trivia`: 魚の知識・料理・豆知識
+    - `ranking`: 地域別海上釣り堀ランキング・まとめ（`category: "釣り場ランキング"`）。ライティング規則は `.agents/skills/ranking-article-rule.md` を参照。
 
 ---
 

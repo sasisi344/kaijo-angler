@@ -71,6 +71,22 @@ const articles = [
     slug: 'aging-fish-science',
     prompt: 'Fresh fish fillet slices on clean crushed ice in a stainless steel tray, glistening moisture, perfect preservation condition, professional food photography lighting, no text, no garnish',
   },
+  {
+    slug: 'tsuyu-rainy-day-strategy',
+    prompt: 'Angler wearing yellow rain jacket and hood standing on a wooden fishing pier during light rain, fishing rod in hand, grey overcast sky, rain droplets on water surface, sea fishing pond facility in background, moody atmospheric photography, no text',
+  },
+  {
+    slug: 'tsuyu-muddy-water-rig-guide',
+    prompt: 'Murky green-brown ocean water in a floating fishing pen, fishing float and line visible entering the water, reduced underwater visibility with silhouettes of fish near the bottom, rainy season atmosphere, close-up water surface perspective, no text, no people',
+  },
+  {
+    slug: 'tsuyu-target-fish-guide',
+    prompt: 'Underwater scene in slightly murky ocean water showing multiple Japanese game fish species: red sea bream, black sea bream, yellowtail amberjack swimming at different depths, soft diffused light from rainy overcast sky above, documentary underwater photography, no text',
+  },
+  {
+    slug: 'typhoon-closure-guide',
+    prompt: 'Dramatic stormy ocean with dark heavy clouds and strong wind whipping up whitecaps on rough waves, empty fishing pier with secured ropes and tied-down equipment, distant silhouette of a harbor breakwater, moody and tense atmosphere, no text, no people',
+  },
 ];
 
 async function run() {
