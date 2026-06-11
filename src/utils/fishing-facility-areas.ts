@@ -137,3 +137,33 @@ export function getFacilityBreadcrumbs(
   out.push({ name: facilityTitle, href: null });
   return out;
 }
+
+export function getFacilityIndexBreadcrumbs(slug: string): FacilityBreadcrumbItem[] {
+  const parts = slug.split('/').filter(Boolean);
+
+  const out: FacilityBreadcrumbItem[] = [
+    { name: 'ホーム', href: '/' },
+    { name: '釣り場を探す', href: '/fishing-facility/' },
+  ];
+
+  if (parts.length === 0) {
+    return [{ name: '釣り場を探す', href: null }];
+  }
+
+  const region = parts[0];
+  const isLast = parts.length === 1;
+  out.push({
+    name: labelForFishingRegionSlug(region),
+    href: isLast ? null : `/fishing-facility/${region}`,
+  });
+
+  if (parts.length >= 2) {
+    const prefSlug = parts[1];
+    out.push({
+      name: labelForFishingAreaSlug(prefSlug),
+      href: null,
+    });
+  }
+
+  return out;
+}

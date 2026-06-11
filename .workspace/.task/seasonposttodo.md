@@ -1,5 +1,8 @@
 # 海上釣り堀 季節性記事タスクリスト (1〜12月)
 
+記事タイトルに「◯月」が二重表現になっているのが多い。「n月」をKWにするなら1箇所だけでいい。
+季節性のある記事なので、サムネイルは「n月」で共通を使っていい。
+
 ## ❄️ 1月
 - [ ] 【1月】極寒の海上釣り堀攻略！低活性な真鯛を「誘い」で食わせる3つのテクニック
 - [ ] 【1月】冬の青物祭りを制する！活きアジを使わない「肝・ササミ」爆釣エサ術
@@ -25,38 +28,41 @@
 - [ ] 【3月】春の海に変化あり？プランクトンの増加と魚の視力の関係を科学する
 
 ## 🌿 4月
-- [ ] 【4月】海上釣り堀は「大型青物」激熱！ブリ・カンパチを確実に仕留める極意
-- [ ] 【4月】GW（ゴールデンウィーク）大特集！混雑回避の予約術と当日の立ち回り
-- [ ] 【4月】春から始める海上釣り堀！初心者が1日で上達するための3ステップ学習法
-- [ ] 【4月】4月に効く「黄色いエサ」の正体？シマアジを狂わせる魔法の配合テク
-- [ ] 【4月】ファミリーフィッシングの聖地！初心者・子供でも安心な足場の良い施設5選
-- [ ] 【4月】入学・就職祝いに釣り体験を！「釣り旅」をプレゼントする時の注意点
+- [ ] 【共通】月別カバー画像 `src/content/blog/column/_covers/april-cover.jpg` を1枚作成し、4月記事6本の `image:` (`../../_covers/april-cover.jpg`) から参照させる（未生成）
+- [x] 【4月】海上釣り堀は「大型青物」激熱！ブリ・カンパチを確実に仕留める極意 → draft: `column/trivia/april-bluefish-season-guide`（draft: true、image: 月共通カバー参照）
+- [x] 【4月】花粉・黄砂シーズンも快適に！海上釣り堀での視界・呼吸器対策ガイド → draft: `column/trivia/april-pollen-yellow-sand-guide`（draft: true、image: 月共通カバー参照、GW予約・混雑は既存記事`column/travel/may-holiday-tsuribori-reservation`と重複のため差し替え）
+- [x] 【4月】春から始める海上釣り堀！初心者が1日で上達するための3ステップ学習法 → draft: `column/trivia/april-beginner-3step-guide`（draft: true、image: 月共通カバー参照）
+- [x] 【4月】水温躍層が崩れる季節！魚が「浮きやすくなる」理由とタナ調整のコツ → draft: `column/trivia/april-thermocline-tana-guide`（draft: true、image: 月共通カバー参照、黄色いエサ企画は`shimaji/index.mdx`の食い渋り対策と重複のため差し替え）
+- [x] 【4月】ファミリーフィッシングの聖地！初心者・子供でも安心な足場の良い施設5選 → draft: `column/travel/april-family-friendly-facilities`（draft: true、image: 月共通カバー参照）
+- [x] 【4月】入学・就職祝いに釣り体験を！「釣り旅」をプレゼントする時の注意点 → draft: `column/trivia/april-fishing-trip-gift-guide`（draft: true、image: 月共通カバー参照）
 
 ## 🌿 5月
-- [ ] 【5月】5月の海上釣り堀は「五目釣り」の王道！多彩な魚種を釣り分けるタナ戦略
-- [ ] 【5月】新緑の釣り旅ガイド：三重県・答志島で楽しむ離島の海上釣り堀体験プラン
-- [ ] 【5月】5月に急増する「エサ取り」対策！本命を確実に食わせるダンゴ使いの極意
-- [ ] 【5月】紫外線を侮るな！5月から始める釣り人のための「日焼け・熱中症」最新対策
-- [ ] 【5月】プロが教える！5月の海上釣り堀で「一番釣れる座席」の選び方と潮読み
-- [ ] 【5月】なぜ5月の鯛は美味いのか？「産卵期（ノッコミ）」の生態と味覚の秘密
+- [x] 【5月】海上釣り堀は「五目釣り」の王道！多彩な魚種を釣り分けるタナ戦略 → draft: `column/trivia/may-gomoku-tana-strategy`（draft: true、image: 月共通カバー参照）
+- [x] 【5月】新緑の釣り旅ガイド：三重県・答志島で楽しむ離島の海上釣り堀体験プラン → draft: `column/travel/may-toshijima-toba-trip`（draft: true、image: 月共通カバー参照。答志島自体に釣り堀施設はないため、鳥羽市「フィッシングパークトリトン」での釣り＋答志島フェリー観光のセットプランとして構成）
+- [x] 【5月】急増する「エサ取り」対策！本命を確実に食わせるダンゴ使いの極意 → draft: `column/trivia/may-bait-stealer-dango-guide`（draft: true、image: 月共通カバー参照）
+- [x] 【5月】紫外線を侮るな！今から始める釣り人のための「日焼け・熱中症」最新対策 → draft: `column/trivia/may-uv-heatstroke-guide`（draft: true、image: 月共通カバー参照）
+- [x] 【5月】「5月病」をリセット！海上釣り堀がもたらす気分転換とリフレッシュ効果 → draft: `column/trivia/may-mental-refresh-guide`（draft: true、image: 月共通カバー参照、座席選び企画は既存記事`column/trivia/seat-selection-strategy`と重複のため差し替え）
+- [x] 【5月】なぜこの時期の鯛は美味いのか？「産卵期（ノッコミ）」の生態と味覚の秘密 → draft: `column/trivia/may-spawning-tai-taste-guide`（draft: true、image: 月共通カバー参照。3月の桜鯛企画(#24)とはタナ・釣り分け技術 vs ノッコミ生態・味覚で角度を分離）
 
 ## 🌿 6月
+- [ ] 【共通】月別カバー画像 `src/content/blog/column/_covers/june-cover.jpg` を1枚作成し、6月の新規記事5本の `image:` (`../../_covers/june-cover.jpg`) から参照させる（未生成。梅雨3記事は既存の個別cover.jpgを使用）
 - [x] 【6月】梅雨の海上釣り堀攻略！「雨の日」こそ爆釣する理由と必須の雨具アイテム → draft: `column/trivia/tsuyu-rainy-day-strategy`
 - [x] 【梅雨】濁り水仕掛けマニュアル → draft: `column/trivia/tsuyu-muddy-water-rig-guide`
 - [x] 【梅雨】梅雨時期の狙い目魚種5選 → draft: `column/trivia/tsuyu-target-fish-guide`
-- [ ] 【6月】6月のシマアジ狂騒曲！繊細なアタリと強烈な引きを制するハリス調整術
-- [ ] 【6月】気圧と魚の活性相関図：6月の梅雨前線がもたらす最高のチャンスとは？
-- [ ] 【6月】雨でも快適！6月の釣り旅におすすめの「屋根付き・室内」釣り堀ガイド
-- [ ] 【6月】6月から始める「夏の仕掛け」準備：細い・強い・目立たない最新ライン選び
-- [ ] 【6月】釣り人の知恵：6月のじめじめを吹き飛ばす「釣り堀での絶品ランチ」特集
+- [x] 【6月】梅雨は「保管」が命！リール・ロッドを錆・カビから守る湿気対策の極意 → draft: `column/trivia/june-tackle-storage-mold-guide`（draft: true、image: 月共通カバー参照、シマアジハリス調整企画は`shimaji/advanced`と重複のため差し替え）
+- [x] 【6月】梅雨明け間近のサイン？水温・濁りの変化で分かる「夏の仕掛け」への切り替えどき → draft: `column/trivia/june-summer-shift-signs-guide`（draft: true、image: 月共通カバー参照、気圧と活性相関図企画は`rainy-day-fishing-truth`と重複のため差し替え）
+- [x] 【6月】雨でも安心！「屋根付き・全天候型」海上釣り堀3選 → draft: `column/travel/june-all-weather-facilities`（draft: true、image: 月共通カバー参照。海釣ぽーと田尻・鵜方浜釣センター・海上釣り堀幸丸を紹介、4月で使用済みの`family-tsuribori-tsutteminde`は除外）
+- [x] 【6月】夏本番に備える「仕掛け」準備：細さ・強さ・視認性で選ぶラインの基本 → draft: `column/trivia/june-summer-rig-prep-guide`（draft: true、image: 月共通カバー参照。素材科学に踏み込む`line-material-science`とは別角度の点検・準備チェックリストとして構成）
+- [x] 釣り人の知恵：6月のじめじめを吹き飛ばす「釣りたて魚」のさっぱりレシピ特集 → draft: `column/trivia/june-fresh-fish-quick-recipe-guide`（draft: true、image: 月共通カバー参照。本格レシピの`true-dai-cooking`とは別に、複数魚種向けの簡単さっぱりレシピとして構成）
 
 ## ☀️ 7月
-- [ ] 【7月】7月の猛暑を乗り切る！「朝イチ」の時合で勝負を決めるスピード釣法
-- [ ] 【7月】夏休み自由研究に！親子で学ぶ「釣り堀の魚의 生態」と実釣レポート作成術
-- [ ] 【7月】7月に大活躍！最強の「夏用クーラーボックス」と保冷力を維持する知恵
-- [ ] 【7月】夏限定のナイター営業！7月の夜の釣り堀で大型青物を狙うスリルと快感
-- [ ] 【7月】7月の釣り旅ガイド：徳島・鳴門で楽しむ「渦潮観光＆海上釣り堀」満喫プラン
-- [ ] 【7月】夏の真実：なぜ海水温は「地上より1ヶ月遅れて」上昇するのか？を解説
+- [ ] 【共通】月別カバー画像 `src/content/blog/column/_covers/july-cover.jpg` を1枚作成し、7月記事6本の `image:` (`../../_covers/july-cover.jpg`) から参照させる（未生成）
+- [x] 【7月】夏の猛暑を乗り切る！「朝イチ」の時合で勝負を決めるスピード釣法 → draft: `column/trivia/july-morning-speed-strategy-guide`（draft: true、image: 月共通カバー参照。「なぜ朝イチが釣れるか」の科学は既存`morning-magic-science`が担当のため、本記事は「動き方・段取り」の実践面に絞って差別化）
+- [x] 【7月】夏休み自由研究に！親子で学ぶ「釣り堀の魚の生態」と実釣レポート作成術 → draft: `column/trivia/july-summer-research-guide`（draft: true、image: 月共通カバー参照）
+- [x] 【7月】大活躍間違いなし！真夏の「保冷剤・氷の使い方」で釣果を持ち帰る知恵 → draft: `column/trivia/july-ice-management-guide`（draft: true、image: 月共通カバー参照。クーラーボックスの「選び方・容量」は既存`tactics/gear/cooler-box-selection`と重複するため、「氷・保冷剤の使い方」に絞って差し替え）
+- [x] 【7月】夏限定のナイター営業！夜の釣り堀で大型青物を狙うスリルと快感 → draft: `column/trivia/july-night-fishing-bluefish-guide`（draft: true、image: 月共通カバー参照。夜釣りの科学は既存`night-fishing-biology`が担当のため、本記事はナイター営業施設の紹介・実践面に絞って差別化。はさま浦釣り堀センター・大阪海上釣り堀サザンを紹介）
+- [x] 【7月】釣り旅ガイド：徳島・鳴門で楽しむ「渦潮観光＆海上釣り堀」満喫プラン → draft: `column/travel/july-naruto-whirlpool-trip`（draft: true、image: 月共通カバー参照。徳島県内の釣り堀施設は2件のみで、鳴門に近い`family-tsuribori-tsutteminde`を採用。4月記事では5施設中の1つとして紹介済みだが、本記事は渦潮観光との組み合わせ旅程として角度を分離）
+- [x] 【7月】夏の真実：なぜ海水温は「地上より1ヶ月遅れて」上昇するのか？を解説 → draft: `column/trivia/july-sea-temperature-lag-guide`（draft: true、image: 月共通カバー参照）
 
 ## ☀️ 8月
 - [ ] 【8月】真夏の海上釣り堀！熱中症を防ぎながら「青物連発」を狙う時短テクニック

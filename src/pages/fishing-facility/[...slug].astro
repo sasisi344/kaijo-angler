@@ -12,11 +12,13 @@ import { findImage } from "~/utils/images";
 import type { MetaData } from "~/types";
 import Image from "~/components/common/Image.astro";
 import FacilityJsonLd from "~/components/blog/FacilityJsonLd.astro";
+import BreadcrumbNav from "~/components/blog/BreadcrumbNav.astro";
 import {
   getFishingFacilityIndexMetadata,
   getFishingFacilityIndexHeadline,
   labelForFishingAreaSlug,
   getFacilityBreadcrumbs,
+  getFacilityIndexBreadcrumbs,
 } from "~/utils/fishing-facility-areas";
 import type { CollectionEntry } from "astro:content";
 import { getFishingFacilityEntries } from "~/utils/fishing-facility-collection";
@@ -37,7 +39,7 @@ export async function getStaticPaths() {
   const posts = await getFishingFacilityEntries();
 
   // 1. Facility pages
-  const facilityPaths = posts.map((post) => {
+  const facilityPaths = posts.filter((post) => !post.data.draft).map((post) => {
     // Ensure ID is normalized (Loader sometimes returns \ on Windows)
     const normalizedId = post.id.replace(/\\/g, "/");
     const slug = (post.data.slug || normalizedId).replace(/\/index$/, "");
@@ -243,37 +245,7 @@ if (type === "facility") {
           telephone={post.data.google_maps?.phone}
           breadcrumbs={facilityBreadcrumbs ?? []}
         />
-        <nav
-          aria-label="パンくず"
-          class="mx-auto max-w-4xl px-6 pt-8 text-sm text-muted"
-        >
-          <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
-            {facilityBreadcrumbs?.map((crumb, i) => (
-              <li class="inline-flex items-center gap-2">
-                {i > 0 && (
-                  <span
-                    class="text-slate-400 dark:text-slate-500"
-                    aria-hidden="true"
-                  >
-                    /
-                  </span>
-                )}
-                {crumb.href ? (
-                  <a
-                    href={crumb.href}
-                    class="hover:text-primary transition-colors"
-                  >
-                    {crumb.name}
-                  </a>
-                ) : (
-                  <span class="text-default font-medium" aria-current="page">
-                    {crumb.name}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ol>
-        </nav>
+        <BreadcrumbNav items={facilityBreadcrumbs ?? []} />
         <Hero tagline={post.data.category} title={post.data.title}>
           <Fragment slot="subtitle">{post.data.description}</Fragment>
         </Hero>
@@ -479,6 +451,7 @@ if (type === "facility") {
       </>
     ) : (
       <>
+        <BreadcrumbNav items={getFacilityIndexBreadcrumbs(slug)} />
         <section class="px-6 py-16 mx-auto max-w-4xl">
           <Headline>{getFishingFacilityIndexHeadline(slug)}</Headline>
 

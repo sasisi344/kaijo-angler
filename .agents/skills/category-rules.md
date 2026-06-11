@@ -77,6 +77,13 @@ facility_details:
     parking: "あり"        # 文字列
 ```
 
+### `draft` フィールドの運用ルール（fishing-facility 含む全コレクション共通）
+
+- `draft: true` を付けたエントリは `getStaticPaths` で除外され、ページが生成されない（sitemapにも載らない）。
+- 施設記事（fishing-facility）は**`draft: true` を使わない**ことを基本とする。施設は1件ごとに「公開してよい」状態で追加し、未完成の施設情報を`draft`のまま長期間置かない。
+- 公開準備中の記事（column/tactics含む）に`draft: true`を付ける場合は、公開時に必ず`draft: false`へ更新すること（タスクリストにdraft解除のチェック項目を入れる）。
+- 同一スラッグで`.md`と`.mdx`の両方を残さない。リライト時は旧ファイルを削除し、`scripts/check-facility-duplicates.mjs`で重複スラッグ・重複タイトルが無いことを確認する。
+
 ---
 
 ## 3. 画像 (image) の運用ルール
