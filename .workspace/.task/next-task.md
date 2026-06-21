@@ -1,14 +1,42 @@
 # 次に控えているタスク
 
-## 重複とみなされているページがある
+## [x] 施設リンクのネストパス形式が全件404していた問題（2026-06-21発見・2026-06-21修正済み）
+
+himeji/nankoのスラッシュ問題を調査中に発見。`/fishing-facility/<region>/<prefecture>/<slug>` 形式（ネストパス）の内部リンクが、`column/ranking`・`column/travel`（access含む）・`column/trivia`・地域インデックス3ページ・施設間クロスリンクなど**42ファイルに253件**存在していたが、実際のライブルートは全施設で例外なく `/fishing-facility/<slug>/`（ベアスラッグ、frontmatterの`slug:`がディレクトリ名と完全一致）だったため**全件404**していた。
+
+- frontmatter `slug:` は全施設でディレクトリ basename と1:1一致することを検証済み（例外ゼロ）→ 機械的フラット化が安全と判断
+- スクリプトで253件全て `/fishing-facility/<slug>/` に一括置換、`astro build`（1637ページ）で正常性確認済み
+- 同じバグが `src/config/facility-redirects.ts`（旧WordPress URL→新URLの301リダイレクトマップ、自動生成）にも存在（108件）→ 同様に修正。加えて手動で2件のtypo起因のミスマッチ（`jougashima-js-fishing`→`jogashima-js-fishing`、`sendai-port-central-park`→`sendai-port-central-park-sea-square`）を発見・修正
+- 副次的に見つかった無関係の誤字リンク（`shodoshima-furusatomura-fishing-pier`内の「直島つり公園」リンクが`aoshima-fishing-park`という誤字で404）も合わせて`naoshima-fishing-park`に修正
+
+スクリプトは使い捨てのため削除済み（git管理外で実行・終了後rm）。
+
+---
+
+## [ ] 施設記事が /blog/ と /fishing-facility/ で重複公開・重複インデックスされている（2026-06-21発見）
+
+W26週次PDCA（[[weekly-task]]）でhimeji-city-fishing-center/nanko-fishing-parkのスラッシュ有無問題を調査した際に発見。トラフィックデータ上の「スラッシュ有無の表記揺れ」は表面的な症状で、根本原因はもっと大きい：
+
+- `src/content/blog/fishing-facility/...` 配下の全施設記事は、`postCollection`（`[...blog]/index.astro`、base: `src/content/blog`）と `fishingFacilityCollection`（`fishing-facility/[...slug].astro`、専用generateId）の**両方のコレクションに同時にマッチし、2つの独立したURLとしてビルドされている**ことを`npx astro build`で実機確認済み（例：`dist/blog/himeji-city-fishing-center/` と `dist/fishing-facility/himeji-city-fishing-center/` が両方生成）。
+- 両ページとも `<link rel="canonical">` が**自分自身を指している**（クロス正規化なし）。`sitemap-filter.ts`（`src/config/sitemap-filter.ts`）もこの重複を除外していないため、**両方がsitemapに載りインデックス対象**になっている。
+- 規模：施設記事は全コレクションの大半を占めるため、おそらく約120記事すべてが同様の重複対象（今回確認したのはhimeji-city-fishing-centerとnanko-fishing-parkの2件のみ）。
+- `vercel.json`のtrailingSlash設定が2026-06-04のコミット（3d25a83）で`false`→`true`に変わっており、これがGSCの「スラッシュ有無」表記揺れのもう一つの要因（リダイレクト方向が反転したため、新旧クロールが混在）。設定自体は現状で正しい（`src/config.yaml`のtrailingSlash:trueと一致）ため、こちらはGoogleの再クロール待ちで自然解消する見込み。
+
+**対応方針は未決定（2026-06-21時点でユーザーに確認済み・別途相談予定）**。候補：
+1. `/fishing-facility/`側に`robots: noindex`＋`canonical`（→`/blog/`）を追加して重複を解消（コード変更は小さいが表示URLは両方残る）
+2. `/fishing-facility/<slug>`を廃止し`/blog/<slug>/`へ301リダイレクト（URL構造はシンプルになるが、`/fishing-facility/[...slug].astro`の地域・都道府県インデックスページ機能との関係を要調査）
+
+対応するなら、まず影響範囲（重複している記事の実数）を`scripts/`配下に診断スクリプトを書いて全件洗い出すところから始めるのが安全。
+
+---
+
+## [x]重複とみなされているページがある
 - https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-misaki/
 岬はアクセスもそれなりにある。修正ポイントとしては、タックルの商品リンクを削除して、Googleの現地レビューを取り込んでオリジナル性を確保といったところか。
 - https://kaijo-fishing.com/fishing-facility/yunoko-fishing-park/
 湯の児フィッシングパークの情報。内容を確認したところ、記事の長さが足りないと感じた。テンプレ的な内容が重複とみなされていると予想。
 - https://kaijo-fishing.com/blog/tactics/fish-strategy/fugu/
 内容を確認したが類似性に繋がる箇所は認められない。長さも十分だし説明もそう。ただテンプレになりすぎて他の魚種と類似部分が多いのではないかと考える。
-
-
 
 ### Check（前週からの改善・要因仮説）
 - 数値変化: ユーザー数320→440（+37.5%）、PV 376→538（+43.1%）、CTR 約4.0%→約4.5%（+13.5%）、平均滞在時間 約48.4秒→約50.3秒（+3.9%）、直帰率 約29.6%→約36.7%（+23.9%）、掲載順位 約11.3→約11.5（+1.4%、わずかに悪化）
@@ -50,3 +78,7 @@ CTR4%は悪すぎるわけじゃないが、まだ改善の余地がある数字
 各地域への交通アクセス手段。「手ぶら」はもっとも自由度が高く道中の荷物も少ないが、交通機関のタイムスケジュールに振り回されることも。特に紀伊半島の南端とか伊豆半島へのアクセスは、メイン駅から到着までかかる時間がバカに出来ないし、飛行機利用だとよりシビアな帰り道などになる。この場合はAIにプランを考えてもらうのもいいけれど、時間に余裕を持たせることが重要。
 
 自動車ならレンタカーか自家用車。自家用車は荷物をつめるし（時間と運転が許されるなら）どこへでも行ける強みがある。
+
+## アフィリエイトの可能性
+
+アクセスが安定してきている。旅行記事を作成してはいないが、ページタイトルとアクセス数を調査して、旅行アフィリエイト・物販のリンクをつけると効果的な記事を抽出する。
