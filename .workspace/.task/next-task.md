@@ -1,5 +1,15 @@
 # 次に控えているタスク
 
+## [ ] 月次モニタリング：GSC再分析（`gsc-postreflesh-task.md` フェーズ5）
+
+**W27（2026-06-29〜2026-07-05、7月最初週）に実行する。**
+
+- GSCから最新のページ単位エクスポート（直近1ヶ月 or 3ヶ月）を取得し、`.workspace/.task/access-data/`配下に保存
+- `node scripts/analyze-facility-ranking.mjs <新エクスポートCSV>`を実行し、フェーズ2のトリアージリスト（公式優勢/情報ギャップ/休業中の3分類）を最新データで更新
+- フェーズ3で対応した高優先度10施設（fishing-park-toi, obama-city-fishing-coop-raft, suihou-fishing-pond, fishing-park-omishima, kaijo-tsuribori-misaki, ikadatsuri-tokai, amakusa-leisure-land, saikakizaki-seapark, kashikojima-fishing-park-kaiyuen, jumbo-fishing-mura）の順位・CTRが改善したか確認
+- フェーズ4で対応したCTR=0%施設・料金系/ランキング系クエリ対象ページのCTRが改善したか確認
+- 詳細手順・対象施設リストは`gsc-postreflesh-task.md`のフェーズ5を参照
+
 ## [x] 施設リンクのネストパス形式が全件404していた問題（2026-06-21発見・2026-06-21修正済み）
 
 himeji/nankoのスラッシュ問題を調査中に発見。`/fishing-facility/<region>/<prefecture>/<slug>` 形式（ネストパス）の内部リンクが、`column/ranking`・`column/travel`（access含む）・`column/trivia`・地域インデックス3ページ・施設間クロスリンクなど**42ファイルに253件**存在していたが、実際のライブルートは全施設で例外なく `/fishing-facility/<slug>/`（ベアスラッグ、frontmatterの`slug:`がディレクトリ名と完全一致）だったため**全件404**していた。

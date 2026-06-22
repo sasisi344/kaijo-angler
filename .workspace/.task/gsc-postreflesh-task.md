@@ -120,17 +120,22 @@
   - saikakizaki-seapark ― 釣り堀/ちょい釣りの選び方・当日参加の代替案・子供利用FAQ3件
   - kashikojima-fishing-park-kaiyuen ― 竿の共有・釣果ゼロ時・アクセス・雨天時FAQ4件
   - jumbo-fishing-mura ― 当日混雑・リリースの満足感・コース選び・入り江の波FAQ4件
-- [ ] 上記以外の施設（公式・大手ポータルが優勢と判定された案件）は本文リライトを見送り、リソースを他施設に再配分（対応不要・現状維持で確定）
+- [x] 上記以外の施設（公式・大手ポータルが優勢と判定された案件）は本文リライトを見送り、リソースを他施設に再配分（対応不要・現状維持で確定）
 
 ### フェーズ4：CTR改善（タイトル・メタディスクリプション）
 
 テンプレ感（本文）よりクリック率に直結する要素。
 
-- [ ] CTR=0%の施設（shimonoseki-fishing-park, kaijo-tsuribori-maruya, naize-fishing-center, ishida-fisherina, marusui-kaisan, kaijo-tsuribori-fukujumaru, umingu-oshima, kaijo-tsuribori-monkey, kaijo-tsuribori-wako, naoetsu-port-3rd-east-breakwater, kamae-sea-fishing-tsunchaoh, koshima-sea-fishing-pond）のtitle・description見直し（oarai-sea-fishing-centerは記事削除済みのため対象外）
-- [ ] 「料金」系クエリ（表示回数12.1%だがクリック5.9%）の該当ページで、title/descriptionに具体的な金額を明記
-- [ ] 「ランキング/比較」系クエリ（表示回数11.2%だがクリック8.6%）の該当ページで、具体的な施設数・順位表現を明記
+- [x] CTR=0%の施設のtitle見直し完了（2026-06-22）。marusui-kaisanは元々title内に価格表記済みのため変更なし。残り11件のtitleに具体的料金を追加：
+  - shimonoseki-fishing-park（大人830円）, kaijo-tsuribori-maruya（13,700円）, naize-fishing-center（4,000円〜）, ishida-fisherina（入場無料）, kaijo-tsuribori-fukujumaru（女性12,000円〜）, umingu-oshima（堤防620円〜）, kaijo-tsuribori-monkey（3時間5,500円〜）, kaijo-tsuribori-wako（女性10,000円〜）, naoetsu-port-3rd-east-breakwater（入場料1,500円）, kamae-sea-fishing-tsunchaoh（女性9,500円〜）, koshima-sea-fishing-pond（半日4,000円〜）
+  - oarai-sea-fishing-centerは記事削除済みのため対象外
+- [x] 「料金」系クエリの該当ページにtitleで具体的な金額を明記（2026-06-22対応）。クエリ別の高表示回数施設のうち、titleに価格が無かった10件を追加修正：totto-park-koshima（大人1,500円）, mukai-pearl-marine（大人6,600円）, futomi-flower-isotsuri-center（1,500円）, anatani-aitai-fishing（女性11,000円〜）, kaijo-tsuribori-at-sea（女性7,700円〜）, suihou-fishing-pond（女性8,000円〜）, jogashima-js-fishing（7,150円〜）, hiruga-sea-fishing-pond（11,000円）, original-maker-sea-fishing-park（920円）, amakusa-leisure-land（入場料500円）。「とっとパーク小島」「あなたに逢い鯛」等のクエリで言及される施設名と実記事のtitleが一致するよう調整済み
+- [x] 「ランキング/比較」系クエリ対応（2026-06-22）。`fishing-facility/east-japan`・`west-japan`・`center-japan`の3地域インデックスページのtitle/descriptionに、各エリアの実施設数（東日本9・西日本79・中日本25）を明記し「ランキングTOP3｜全○施設比較」という具体的な表現に変更。west-japanには「九州」も明記（九州系クエリ27件のカバー漏れ対策）。あわせてeast-japan本文中の三浦半島施設名の重複記載バグ（みうら海王の欠落）も修正
+- 三重県・九州の単体ランキングクエリ（impr一桁〜数十件）は専用ページが無いため対応見送り（投資対効果が低い）
 
 ### フェーズ5：モニタリング運用
+
+**次回実行：W27（2026-06-29〜2026-07-05、7月最初週）。`.workspace/.task/next-task.md`に手順を記載済み。**
 
 - [ ] 月次で`scripts/analyze-facility-ranking.mjs`を最新GSCエクスポートで再実行し、フェーズ2のトリアージリストを更新
 - [ ] フェーズ3で対応した施設の順位・CTRが改善したか、次回エクスポートで効果検証
