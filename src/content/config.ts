@@ -47,7 +47,10 @@ const metadataDefinition = () =>
     .optional();
 
 const postCollection = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: 'src/content/blog' }),
+  loader: glob({
+    pattern: ['**/*.{md,mdx}', '!fishing-facility/**', '!tactics/**', '!column/**'],
+    base: 'src/content/blog',
+  }),
   schema: ({ image }) => z.object({
     publishDate: z.date().or(z.string()).optional(),
     updateDate: z.date().or(z.string()).optional(),

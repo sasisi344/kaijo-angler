@@ -23,7 +23,12 @@ himeji/nankoのスラッシュ問題を調査中に発見。`/fishing-facility/<
 
 ---
 
-## [ ] 施設記事が /blog/ と /fishing-facility/ で重複公開・重複インデックスされている（2026-06-21発見）
+## [x] 施設記事が /blog/ と /fishing-facility/ で重複公開・重複インデックスされている（2026-06-21発見・2026-07-07修正済み）
+
+**修正内容（2026-07-07）**: 調査の結果、この問題は`fishing-facility/`だけでなく`tactics/`（195記事）・`column/`（222記事）にも同型で存在し、対象は約649記事（サイトほぼ全体）に及ぶことが判明。`src/content/config.ts`の`postCollection`のglobパターンから`fishing-facility/`・`tactics/`・`column/`を除外し（`pattern: ['**/*.{md,mdx}', '!fishing-facility/**', '!tactics/**', '!column/**']`）、各専用ルート（`/fishing-facility/`・`/tactics/`・`/column/`）側を正規URLとして残す方針で解消。`astro build`で`dist/blog/fishing-facility|tactics|column/`が生成されなくなったこと、各専用ルートは地図・構造化データ等の機能を保持したまま存続することを確認済み。ナビゲーション「ブログ記事一覧」（`/blog/`）はintelligence記事23件のみの表示になる仕様変更を伴うが、ユーザー承認済み。詳細は[[weekly-task]]のW28-Act参照。
+
+<details>
+<summary>旧・発見時の記録（2026-06-21）</summary>
 
 W26週次PDCA（[[weekly-task]]）でhimeji-city-fishing-center/nanko-fishing-parkのスラッシュ有無問題を調査した際に発見。トラフィックデータ上の「スラッシュ有無の表記揺れ」は表面的な症状で、根本原因はもっと大きい：
 
@@ -37,6 +42,8 @@ W26週次PDCA（[[weekly-task]]）でhimeji-city-fishing-center/nanko-fishing-pa
 2. `/fishing-facility/<slug>`を廃止し`/blog/<slug>/`へ301リダイレクト（URL構造はシンプルになるが、`/fishing-facility/[...slug].astro`の地域・都道府県インデックスページ機能との関係を要調査）
 
 対応するなら、まず影響範囲（重複している記事の実数）を`scripts/`配下に診断スクリプトを書いて全件洗い出すところから始めるのが安全。
+
+</details>
 
 ---
 
