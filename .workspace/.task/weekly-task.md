@@ -30,10 +30,9 @@
 - [x] `/blog/wakayama-marinacity-fishing-park/`（表示57・CTR0%）タイトルを「1,000円から・黒潮市場すぐ」の価格＋立地訴求に変更
 - [x] `/blog/nanko-fishing-park/`（表示291・CTR2.4%）は前週の「無料・予約不要」訴求が効果薄だったため、「青物・タチウオ爆釣」「朝5時から」という釣果・営業時間の具体訴求に転換して再実施
 - [x] `/blog/sanriku-sea-fishing-park/`（表示6・CTR0%）はコンテンツファイルが存在せず**既に削除済み**と判明（GSCに残存インデックスがあるのみ、実体は404）。対応不要
-- [ ] `/blog/umizuri-port-tajiri/`（順位9.29・CTR3.28%・表示122）は4-10位圏の最有力候補として内部リンク強化で上位表示を狙う
-- [ ] `/blog/kamoike-sea-fishing-park/`は直帰率33%→**70%**に急悪化（表示増44→79と同時発生）しており、流入クエリと着地コンテンツのミスマッチがないか確認
-- [ ] `/blog/itoman-ikada-tsurigu-no-zousan/`の直帰率改善（31.8%）の成功パターンを他の高PV記事へ横展開
-- [ ] `/blog/himeji-city-fishing-center/`（休園施設のアーカイブページ）はCTR改善フェーズへ。ただし休園施設のため優先度は他の稼働施設より下げてよい
+- [x] `/blog/umizuri-port-tajiri/`（順位9.29・CTR3.28%・表示122）は同じ大阪府内の`nanko-fishing-park`・`koshima-sea-fishing-pond`・`kaijo-tsuribori-misaki`の3記事から新規に内部リンクを追加（「あわせて行きたい」セクション、雨天対応の切り口で自然に接続）
+- [x] `/blog/kamoike-sea-fishing-park/`（直帰率33%→70%に急悪化）・`/blog/totto-park-koshima/`（直帰率75%）は、直帰率が低い`itoman-ikada-tsurigu-no-zousan`（31.8%）の冒頭の型（読者の悩みを直接問いかける2文＋共感の一言から始める構成）を参考に導入文を書き直した。ただし表示回数増加に伴う流入クエリの質低下が根本原因の可能性もあり、文章改善だけで解決するとは限らない点に留意（要経過観察）
+- [x] `/blog/himeji-city-fishing-center/`（休園施設のアーカイブページ）は既に別途タイトル・description改善済みだったことを確認（「跡地情報と今も釣れる近隣3施設まとめ」への変更、近隣代替施設への誘導を追加、lastmod 2026-07-07）。上書きせず維持
 
 ### W28-Act（コンテンツ構造の課題・中期対応）
 - [ ] `tactics/fish-strategy/`配下の魚種別サブ記事（fugu/chinu/madai/kawahagi等のadvanced/gourmet/intermediate/theory）は行数194〜211行・見出し構成がほぼ同一パターンに揃っており、内容自体は魚種固有で書き分けられているものの「量産感」でGoogleの品質評価に悪影響が出るリスクがある。今後の新規魚種記事では見出し順・段落構成に意図的なばらつきを持たせることを検討
