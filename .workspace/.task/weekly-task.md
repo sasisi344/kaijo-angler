@@ -35,7 +35,7 @@
 - [x] `/blog/himeji-city-fishing-center/`（休園施設のアーカイブページ）は既に別途タイトル・description改善済みだったことを確認（「跡地情報と今も釣れる近隣3施設まとめ」への変更、近隣代替施設への誘導を追加、lastmod 2026-07-07）。上書きせず維持
 
 ### W28-Act（コンテンツ構造の課題・中期対応）
-- [ ] `tactics/fish-strategy/`配下の魚種別サブ記事（fugu/chinu/madai/kawahagi等のadvanced/gourmet/intermediate/theory）は行数194〜211行・見出し構成がほぼ同一パターンに揃っており、内容自体は魚種固有で書き分けられているものの「量産感」でGoogleの品質評価に悪影響が出るリスクがある。今後の新規魚種記事では見出し順・段落構成に意図的なばらつきを持たせることを検討
+- [ ] `tactics/fish-strategy/`配下の魚種別サブ記事（fugu/chinu/madai/kawahagi等のadvanced/gourmet/intermediate/theory）は非空行128〜140行・見出し構成がほぼ同一パターンに揃っており、内容自体は魚種固有で書き分けられているものの「量産感」でGoogleの品質評価に悪影響が出るリスクがある。個別記事のリライト方針の検討・優先度トリアージ・実装手順は[[fishstrategy-check]]に切り出して管理する
 - [ ] 施設記事のうち非空行80〜86行程度で分量が薄い候補: `west-japan/kochi/kochi/tsuri-ikada-fukaura`, `raft-fishing-takahashi`, `west-japan/miyazaki/shibushi-bay-daikoku-dolphin-land`, `west-japan/tokushima/hamabe-tosen-kaijo-tsuribori`, `west-japan/kumamoto/{kaijo-tsuribori-tsuriichi, sea-fishing-land, amakusa-rakutsuri}`, `west-japan/okinawa/{motobu-fishing-ikada-umiseikatsu, itoman-ikada-tsurigu-no-zousan}`, `west-japan/tokushima/family-tsuribori-tsutteminde`。`yunoko-fishing-park`は実際には中位の分量（139行）で、薄さより内容の一般化・テンプレ感が課題と判明
 - [ ] `kaijo-tsuribori-misaki/index.mdx`はタックル商品リンクが**0件**（施設記事190件中で唯一のリンクなし記事）で、ユーザーが記憶していた「リンク過多」とは逆の状態だった。着手前に現物を再確認すること
 - [ ] 施設記事は93/190がTackleCard等の商品リンクを一律5件挿入するテンプレートになっており、機械的な印象を与えていないか一部サンプルで確認する
