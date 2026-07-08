@@ -17,6 +17,7 @@ import {
   responsiveTablesRehypePlugin,
   lazyImagesRehypePlugin,
   customSlugifyRehypePlugin,
+  trailingSlashLinksRehypePlugin,
 } from "./src/utils/frontmatter";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { facilityRedirects } from "./src/config/facility-redirects";
@@ -37,6 +38,10 @@ const whenExternalScripts = (
 export default defineConfig({
   output: "static",
   site: "https://kaijo-fishing.com",
+  // Astrowind 統合も yaml から trailingSlash をセットするが、
+  // `updateConfig` 経由だと image.endpoint.route の末尾スラッシュ補正が走らず
+  // dev の `/_image` が 404 になる。ここでも明示してスキーマ変換を通す。
+  trailingSlash: "always",
   redirects: facilityRedirects,
 
   integrations: [
@@ -90,6 +95,10 @@ export default defineConfig({
 
   image: {
     domains: ["cdn.pixabay.com"],
+    // trailingSlash: always 向け。未指定だと `/_image` が生成され `/_image/` ルートと不一致になる
+    endpoint: {
+      route: "/_image/",
+    },
   },
 
   markdown: {
@@ -110,6 +119,7 @@ export default defineConfig({
       ],
       responsiveTablesRehypePlugin,
       lazyImagesRehypePlugin,
+      trailingSlashLinksRehypePlugin,
     ],
   },
 

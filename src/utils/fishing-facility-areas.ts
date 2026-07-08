@@ -1,4 +1,6 @@
 /** Region slug \u2192 Japanese labels for /fishing-facility routes */
+import { getPermalink } from '~/utils/permalinks';
+
 export const FISHING_FACILITY_REGION_LABEL: Record<string, string> = {
   'east-japan': '\u6771\u65e5\u672c',
   'center-japan': '\u4e2d\u65e5\u672c',
@@ -124,13 +126,13 @@ export function getFacilityBreadcrumbs(
   ];
 
   const region = parts[0];
-  out.push({ name: labelForFishingRegionSlug(region), href: `/fishing-facility/${region}` });
+  out.push({ name: labelForFishingRegionSlug(region), href: getPermalink(`fishing-facility/${region}`) });
 
   if (parts.length >= 3) {
     const prefSlug = parts[1];
     out.push({
       name: labelForFishingAreaSlug(prefSlug),
-      href: `/fishing-facility/${region}/${prefSlug}`,
+      href: getPermalink(`fishing-facility/${region}/${prefSlug}`),
     });
   }
 
@@ -154,7 +156,7 @@ export function getFacilityIndexBreadcrumbs(slug: string): FacilityBreadcrumbIte
   const isLast = parts.length === 1;
   out.push({
     name: labelForFishingRegionSlug(region),
-    href: isLast ? null : `/fishing-facility/${region}`,
+    href: isLast ? null : getPermalink(`fishing-facility/${region}`),
   });
 
   if (parts.length >= 2) {

@@ -40,7 +40,7 @@ if (product) {
     const srcMatches = [...product.html.matchAll(/src="([^"]+)"/g)];
     const productImages = srcMatches
       .map(m => m[1])
-      .filter(src => !src.includes('/ir?') && !src.includes('1x1'));
+      .filter(src => !src.includes('/ir?') && !src.includes('1x1') && !src.includes('valuecommerce.com/servlet/'));
       
     if (productImages.length > 0) {
       finalImage = productImages[0];
@@ -142,10 +142,10 @@ if (product) {
 
       <div class="mt-auto pt-4 flex flex-col gap-3">
         {isService ? (
-          <a 
-            href={finalLink} 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <a
+            href={finalLink}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
             class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors text-sm shadow-md hover:shadow-lg active:translate-y-0.5 no-underline"
           >
             公式サイトで詳細を見る

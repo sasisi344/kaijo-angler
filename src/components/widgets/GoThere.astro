@@ -54,6 +54,9 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
         href={mapsUrl}
         target="_blank"
         rel="noopener noreferrer"
+        data-gothere-link
+        data-gothere-facility={facilityId}
+        data-gothere-type="maps"
         class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-white dark:bg-slate-900 border border-sky-300 dark:border-slate-600 text-sky-700 dark:text-sky-300 font-bold text-sm hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors no-underline shadow-sm"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -76,6 +79,9 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
             href={jalanLink}
             target="_blank"
             rel="noopener noreferrer nofollow"
+            data-gothere-link
+            data-gothere-facility={facilityId}
+            data-gothere-type="jalan"
             class="flex items-center justify-center py-2.5 px-3 rounded-lg bg-[#e60012] hover:bg-[#c4000f] text-white font-bold text-sm transition-colors no-underline"
           >
             じゃらんnet
@@ -86,6 +92,9 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
             href={rakutenLink}
             target="_blank"
             rel="noopener noreferrer nofollow"
+            data-gothere-link
+            data-gothere-facility={facilityId}
+            data-gothere-type="rakuten"
             class="flex items-center justify-center py-2.5 px-3 rounded-lg bg-[#bf0000] hover:bg-[#a00000] text-white font-bold text-sm transition-colors no-underline"
           >
             楽天トラベル
@@ -101,6 +110,9 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
           href={rentacarLink}
           target="_blank"
           rel="noopener noreferrer nofollow"
+          data-gothere-link
+          data-gothere-facility={facilityId}
+          data-gothere-type="rentacar"
           class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-slate-700 hover:bg-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500 text-white font-bold text-sm transition-colors no-underline w-full"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -116,3 +128,19 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
 
   </div>
 </div>
+
+<script is:inline>
+  if (!window.__gothereTrackingInit) {
+    window.__gothereTrackingInit = true;
+    document.addEventListener('click', function (e) {
+      const el = e.target.closest('[data-gothere-link]');
+      if (!el) return;
+      if (typeof gtag === 'function') {
+        gtag('event', 'gothere_click', {
+          facility_id: el.dataset.gothereFacility || '',
+          link_type: el.dataset.gothereType || '',
+        });
+      }
+    });
+  }
+</script>

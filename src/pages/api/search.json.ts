@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 import { getFishingFacilityEntries } from '~/utils/fishing-facility-collection';
+import { getPermalink } from '~/utils/permalinks';
 
 export const prerender = true;
 
@@ -13,25 +14,25 @@ export async function GET() {
     ...posts.filter(p => !p.data.draft).map(p => ({
       title: p.data.title,
       excerpt: p.data.excerpt || '',
-      href: `/blog/${p.id}`,
+      href: getPermalink(`blog/${p.id}`),
       type: '記事'
     })),
     ...tactics.filter(p => !p.data.draft && !p.id.endsWith('index')).map(p => ({
       title: p.data.title,
       excerpt: p.data.excerpt || '',
-      href: `/tactics/${p.id}`,
+      href: getPermalink(`tactics/${p.id}`),
       type: '攻略法'
     })),
     ...facilities.filter(p => !p.data.draft && !p.id.endsWith('index')).map(p => ({
       title: p.data.title,
       excerpt: p.data.prefecture || '',
-      href: `/fishing-facility/${p.id}`,
+      href: getPermalink(`fishing-facility/${p.id}`),
       type: '釣り場'
     })),
     ...columns.filter(p => !p.data.draft && !p.id.endsWith('index')).map(p => ({
       title: p.data.title,
       excerpt: '',
-      href: `/column/${p.id}`,
+      href: getPermalink(`column/${p.id}`),
       type: 'コラム'
     }))
   ];

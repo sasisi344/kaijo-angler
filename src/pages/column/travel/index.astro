@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Headline from '~/components/blog/Headline.astro';
+import PostCard from './_PostCard.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const allColumn = await getCollection('column');
+
+const travelPosts = allColumn
+  .filter((post) => !post.data.draft && post.id.startsWith('travel/'))
+  .sort((a, b) => new Date(b.data.publishDate ?? 0).getTime() - new Date(a.data.publishDate ?? 0).getTime());
+
+const isAccessGuide = (id: string) => id.startsWith('travel/access/');
+const isSeasonalGuide = (id: string) =>
+  /^travel\/(january|february|march|april|may|june|july|august|september|october|november|december)-/.test(id);
+
+const tripPlans = travelPosts.filter((p) => !isAccessGuide(p.id) && !isSeasonalGuide(p.id));
+const seasonalGuides = travelPosts.filter((p) => isSeasonalGuide(p.id));
+const accessGuides = travelPosts.filter((p) => isAccessGuide(p.id));
+
+const metadata = {
+  title: '釣り旅ガイド — 遠征×釣りのモデルコース集 | 海上アングラー',
+  description:
+    '海上釣り堀を軸にした遠征・旅行プランを地域別・季節別にまとめました。家族旅行やご当地グルメと組み合わせたモデルコース、現地までのアクセス方法まで徹底解説します。',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="釣り旅ガイド"
+    title="遠征・旅行×釣り"
+    subtitle={`釣るだけじゃもったいない。<strong>${travelPosts.length}本以上</strong>の記事で、海上釣り堀を軸にした旅行プランをご紹介。地域のグルメや観光と組み合わせた家族旅行モデルコースから、季節ごとのおすすめプラン、現地までのアクセス方法まで、遠征釣行の計画に役立つ情報を網羅しています。`}
+  />
+
+  {
+    tripPlans.length > 0 && (
+      <section class="px-6 py-12 mx-auto max-w-7xl">
+        <Headline title="エリア別モデルプラン" subtitle="全国の海上釣り堀を軸にした、釣り旅の具体的なモデルコースをご紹介します。" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {tripPlans.map((post) => <PostCard post={post} />)}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    seasonalGuides.length > 0 && (
+      <section class="px-6 py-12 mx-auto max-w-7xl bg-slate-50 dark:bg-slate-900/40 rounded-3xl">
+        <Headline title="季節の釣り旅ガイド" subtitle="月ごとのおすすめの過ごし方や、季節に合わせた釣行プランをまとめました。" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {seasonalGuides.map((post) => <PostCard post={post} />)}
+        </div>
+      </section>
+    )
+  }
+
+  {
+    accessGuides.length > 0 && (
+      <section class="px-6 py-12 mx-auto max-w-7xl">
+        <Headline title="エリア別アクセスガイド" subtitle="現地までの交通手段やルートを、エリアごとに詳しく解説します。" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {accessGuides.map((post) => <PostCard post={post} />)}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- CTA -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="bg-primary/10 dark:bg-primary/20 p-12 rounded-2xl text-center">
+      <h2 class="text-3xl font-bold mb-6">旅の行き先を決めたら、釣り場をチェック！</h2>
+      <p class="text-lg text-muted mb-8 max-w-2xl mx-auto">
+        全国<strong>100施設以上・50エリア以上</strong>の海上釣り堀から、家族連れにも安心な設備充実の施設を探せます。
+      </p>
+      <a href={getPermalink('fishing-facility')} class="btn-primary py-3 px-8 text-xl">釣り場を探す</a>
+    </div>
+  </section>
+</Layout>

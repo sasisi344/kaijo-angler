@@ -25,6 +25,10 @@ export const headerData = {
       ],
     },
     {
+      text: '釣り旅ガイド',
+      href: getPermalink('/column/travel'),
+    },
+    {
       text: 'ブログ',
       href: getBlogPermalink(),
     },
@@ -46,6 +50,7 @@ export const footerData = {
       title: 'コンテンツ',
       links: [
         { text: '必釣タクティクス', href: getPermalink('/tactics') },
+        { text: '釣り旅ガイド', href: getPermalink('/column/travel') },
         { text: 'ブログ記事一覧', href: getBlogPermalink() },
         { text: '初心者ガイド', href: getPermalink('/tactics/beginner') },
       ],

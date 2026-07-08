@@ -7,7 +7,7 @@ import Hero from "~/components/widgets/Hero.astro";
 import Headline from "~/components/blog/Headline.astro";
 import FacilityMap from "~/components/widgets/FacilityMap.astro";
 import FacilityStatusAlert from "~/components/blog/FacilityStatusAlert.astro";
-import { getCanonical } from "~/utils/permalinks";
+import { getCanonical, getPermalink } from "~/utils/permalinks";
 import { findImage } from "~/utils/images";
 import type { MetaData } from "~/types";
 import Image from "~/components/common/Image.astro";
@@ -210,7 +210,7 @@ if (type === "facility") {
     subItems = Array.from(prefectures)
       .map((pref) => ({
         label: labelForFishingAreaSlug(pref),
-        href: `/fishing-facility/${slug}/${pref}`,
+        href: getPermalink(`fishing-facility/${slug}/${pref}`),
       }))
       .sort((a, b) => a.label.localeCompare(b.label, "ja"));
   }
@@ -361,7 +361,7 @@ if (type === "facility") {
 
                   return (
                     <a
-                      href={`/fishing-facility/${item.slug}`}
+                      href={getPermalink(`fishing-facility/${item.slug}`)}
                       class={`block group transition-all duration-300 ${isHidden ? "hidden opacity-0 facility-hidden-default" : "facility-visible-default"}`}
                       data-facility-item
                       data-rental={rental ? "true" : "false"}
@@ -458,7 +458,7 @@ if (type === "facility") {
           {items.length > 0 && (
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               {items.map((item) => (
-                <a href={`/fishing-facility/${item.slug}`} class="block group">
+                <a href={getPermalink(`fishing-facility/${item.slug}`)} class="block group">
                   <div class="relative h-48 mb-4 overflow-hidden rounded-lg shadow-lg">
                     {item.image ? (
                       <Image

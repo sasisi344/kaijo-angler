@@ -4,6 +4,7 @@ import { getRssString } from "@astrojs/rss";
 import { SITE } from "astrowind:config";
 import { getFishingFacilityEntries } from "~/utils/fishing-facility-collection";
 import { getPrimaryDate } from "~/utils/date-helpers";
+import { getPermalink } from "~/utils/permalinks";
 
 /** Fishing-facility RSS only; blog feed remains `/rss.xml`. */
 export const GET: APIRoute = async () => {
@@ -20,7 +21,7 @@ export const GET: APIRoute = async () => {
         /\/index$/,
         "",
       );
-      const link = new URL(`/fishing-facility/${slug}`, site).href;
+      const link = new URL(getPermalink(`fishing-facility/${slug}`), site).href;
       const pubDate = getPrimaryDate(p.data);
       return {
         link,

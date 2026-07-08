@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import { getPermalink } from '~/utils/permalinks';
 
 export async function getStaticPaths() {
   const posts = await getCollection('tactics');
@@ -45,7 +46,7 @@ const metadata = {
         <h2 class="text-2xl font-bold mb-8">関連する攻略記事</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {subItems.map(item => (
-            <a href={`/tactics/${item.id}`} class="flex flex-col bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all hover:-translate-y-1">
+            <a href={getPermalink(`tactics/${item.id}`)} class="flex flex-col bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all hover:-translate-y-1">
               <span class="text-xs text-primary font-bold mb-1">{item.data.category}</span>
               <h3 class="text-lg font-bold mb-2 leading-tight">{item.data.title}</h3>
               <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">{item.data.description}</p>

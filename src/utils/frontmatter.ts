@@ -63,3 +63,41 @@ export const customSlugifyRehypePlugin: RehypePlugin = () => {
     });
   };
 };
+
+/** trailingSlash: always 向け。MD/MDX 内の相対・サイト内リンクに末尾 `/` を付ける */
+export const trailingSlashLinksRehypePlugin: RehypePlugin = () => {
+  const hasExtension = /\.[a-zA-Z0-9]{1,8}$/;
+
+  return function (tree) {
+    visit(tree, 'element', (node) => {
+      if (node.tagName !== 'a' || typeof node.properties?.href !== 'string') return;
+
+      const href = node.properties.href as string;
+      if (
+        !href ||
+        href.startsWith('#') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:') ||
+        href.startsWith('javascript:') ||
+        href.startsWith('http://') ||
+        href.startsWith('https://') ||
+        href.startsWith('//')
+      ) {
+        return;
+      }
+
+      const hashIndex = href.indexOf('#');
+      const queryIndex = href.indexOf('?');
+      let splitAt = href.length;
+      if (hashIndex >= 0) splitAt = Math.min(splitAt, hashIndex);
+      if (queryIndex >= 0) splitAt = Math.min(splitAt, queryIndex);
+
+      const path = href.slice(0, splitAt);
+      const suffix = href.slice(splitAt);
+      if (!path || path.endsWith('/')) return;
+      if (hasExtension.test(path)) return;
+
+      node.properties.href = `${path}/${suffix}`;
+    });
+  };
+};

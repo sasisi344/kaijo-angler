@@ -1,0 +1,44 @@
+---
+import Image from '~/components/common/Image.astro';
+import type { CollectionEntry } from 'astro:content';
+import { getPermalink } from '~/utils/permalinks';
+
+interface Props {
+  post: CollectionEntry<'column'>;
+}
+
+const { post } = Astro.props;
+const publishDate = post.data.publishDate ? new Date(post.data.publishDate) : undefined;
+const dateLabel = publishDate
+  ? new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'long' }).format(publishDate)
+  : undefined;
+const href = getPermalink(`column/${post.id}`);
+---
+
+<article class="flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300">
+  <a href={href} class="block h-full flex flex-col">
+    <div class="relative h-44 bg-slate-200 dark:bg-slate-800">
+      {
+        post.data.image && (
+          <Image
+            src={post.data.image}
+            alt={post.data.title}
+            class="w-full h-full object-cover"
+            widths={[400, 800]}
+            width={400}
+            sizes="(max-width: 900px) 400px, 800px"
+            aspectRatio="16:9"
+            layout="cover"
+            loading="lazy"
+            decoding="async"
+          />
+        )
+      }
+    </div>
+    <div class="p-5 flex-grow flex flex-col">
+      {dateLabel && <span class="text-xs text-primary font-bold mb-1">{dateLabel}</span>}
+      <h3 class="text-lg font-bold mb-2 leading-snug line-clamp-2">{post.data.title}</h3>
+      <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-3">{post.data.description}</p>
+    </div>
+  </a>
+</article>
