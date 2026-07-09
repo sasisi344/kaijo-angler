@@ -134,3 +134,38 @@
 - column コレクションの frontmatter：title / publishDate / category / draft / tags / description / image（slug 不要、ディレクトリ名がURLになる）
 - 内部リンクの正例：`/column/travel/access/access-kinki`、`/fishing-facility/west-japan/wakayama`、施設は flat slug（`/fishing-facility/kakata-fishing-pond/`）
 - 料金・ダイヤは「目安＋公式確認の注記」スタイルで統一
+
+---
+
+## 旅行先アフィリエイトの追加
+
+- バナー付きリンク
+<a href="https://px.a8.net/svt/ejp?a8mat=4B7VL9+740KAY+5WNK+5Z6WX" rel="nofollow">
+<img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=260708013430&wid=008&eno=01&mid=s00000027560001004000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B7VL9+740KAY+5WNK+5Z6WX" alt="">
+
+- SNS投稿用
+https://px.a8.net/svt/ejp?a8mat=4B7VL9+740KAY+5WNK+5Z6WX
+
+- テキストリンク
+<a href="https://px.a8.net/svt/ejp?a8mat=4B7VL9+740KAY+5WNK+5YJRM" rel="nofollow">貸別荘・コテージ・ヴィラの一棟貸し予約サイト｜TABILMO(タビルモ)</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4B7VL9+740KAY+5WNK+5YJRM" alt="">
+
+## なぜ「TABILMO」を選んだか？
+貸別荘・コテージを1棟貸しするサービス。なぜこれを選んだかといえば、海上釣り堀の施設がある地域といえば、別荘地とか避暑地が選ばれることが多い。リゾート系ホテルが近隣にあることもあるし、もし優雅な旅をしたいとか、家族のみの空間が必要とか、中規模の人数でBBQを楽しみながら夜を明かし、翌朝は釣り堀にいくなどの楽しみ方がある。
+
+- 利用ガイド: https://tabilmo.com/tips/user-guide/
+
+私が思うに、会社の慰安とか軽い同僚での旅行などにも向いている。海上釣り堀は社員旅行の先とかアクティビティを楽しむなかでも向いているが、人数が多くなると主催が悩むのは宿泊先だ。
+共通項として、当サイトでは「海上釣り堀に行くため、前日入りするのに適した宿泊先を探す」の目的で選んでいる。料金はビジネスホテルと比べれば高いが、複数人でシェアする考えだと利用しやすい。
+なのでユースケースとしては、夏のアクティビティ・避暑目的ならプール付き物件を選ぶとか、キャンプ可能なコテージを選択する。普段は都会に住んでいるなら、軽井沢とか山間部にある別荘でゆったり時間が流れるのを体感するとかの方法がある。
+
+### 伊勢エリアとか紀伊半島・四国などの地域で利用がおすすめ
+
+- 伊勢志摩の宿: https://tabilmo.com/villas/tokai/mie/area-219/villa/1330
+こういった例もある。伊勢志摩はいわずとしれたリゾートだけど、ホテルが極端にリゾートにふりきったり、エキチカはいいけどそれだと釣り堀まで遠いし……という難点がある。でも貸別荘を探せばより施設に近いエリアを選択することもできる。
+
+- 四国の宿: https://tabilmo.com/villas/chugoku/hiroshima/area-311/villa/1923
+ペット同伴可能な宿もあることがいい。景観を重視した立地にある物件を狙うのもいい。
+
+統合的に考えると、数日の休日で地方を散策する拠点にするのがけっこう使いやすい。ただ、連休の予約は競争になるから探すのが難点。平日なら割引されたりとサービスがあるので、計画的に有休をとるなどして調整するのもあり。ただ、海上釣り堀は平日で休む場所があったり、放流しない時があるので注意されたい。

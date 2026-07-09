@@ -1,0 +1,49 @@
+{
+  "period": {
+    "month": "2026-07",
+    "weeks": ["W27", "W28", "W29", "W30", "W31"]
+  },
+  "monthly_mvp": [
+    { "name": "フィッシングパークトリトン", "reason": "朝一便のブリ・カンパチ爆釣が月間通じて安定" },
+    { "name": "雑賀崎シーパーク", "reason": "マダイ居食い攻略の成功報告が最多" },
+    { "name": "ひるが海上釣堀", "reason": "水温上昇に強い北陸エリアの避難先として急浮上" }
+  ],
+  "top_fish": "ブリ・カンパチ（早朝限定の爆発力）、マダイ（深ダナ居食い攻略が主流に）",
+  "average_activity": {
+    "mie": 82,
+    "wakayama": 85,
+    "chiba": 74,
+    "fukui": 79,
+    "hyogo": 76
+  },
+  "total_mentions": {
+    "ブリ・カンパチ": 486,
+    "マダイ": 398,
+    "イサキ": 156,
+    "熱中症対策": 210
+  },
+  "news": [
+    {
+      "source_url": "https://www.jma.go.jp/",
+      "summary": "気象庁発表：7月の日本近海表層水温は平年比+0.8℃、太平洋側で高水温傾向が続く"
+    },
+    {
+      "source_url": "https://awaji-janohire.example/news",
+      "summary": "淡路じゃのひれフィッシングパークが7月から早朝5時開門プランを試験導入"
+    }
+  ],
+  "gear_reviews": [
+    {
+      "product": "tackle/logos-hyotenka-pack",
+      "source_url": "https://amzn.to/4ssBmcs",
+      "summary": "真夏の保冷力レビューが継続的に高評価。エサ・釣果の鮮度維持に有効との声多数"
+    },
+    {
+      "product": "tackle/blue-target-set",
+      "source_url": "https://amzn.to/4bAEZpn",
+      "summary": "PE2号からPE3号以上への切り替えを後押しするレビューが複数施設の現場報告と一致"
+    }
+  ],
+  "timestamp": "2026-07-31T23:59:59Z",
+  "project_id": "kaijo-angler"
+}

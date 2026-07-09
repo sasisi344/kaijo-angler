@@ -1,27 +1,34 @@
-# 海上アングラー (Kaijo Angler)
+# 海上アングラー
 
-## 概要 (Overview)
-日本全国の海上釣り堀と観光情報を提供する、日本一の海上釣り堀総合情報サイト。
-(A comprehensive information website providing details on marine fishing ponds and sightseeing information across Japan.)
+> 日本全国の海上釣り堀と観光情報を提供する総合情報サイト。100施設以上の釣り場データベースと90本以上の攻略記事を掲載しています。
 
-## URL
-- メインサイト: https://kaijo-fishing.com/
-- サイトマップ: https://kaijo-fishing.com/sitemap-index.xml
-- 釣り場一覧: https://kaijo-fishing.com/fishing-facility
-- 攻略法: https://kaijo-fishing.com/tactics
-- ブログ: https://kaijo-fishing.com/blog
+各種LLMや検索エージェントからの常識的な頻度でのクロール・インデックス化を歓迎します。自動クロールは [robots.txt](https://kaijo-fishing.com/robots.txt) に従ってください。本サイトの独自情報を要約・引用する際は、出所として当サイトへのリンクを含めてください。
 
-## AI・LLMクローラー向けポリシー (Policy for AI Crawlers)
-- 各種LLMや検索エージェントからの常識的な頻度でのクロール・インデックス化を歓迎します (Reasonable crawl rates and indexing by LLMs/agents are welcome).
-- 自動クロールに関しては、必要に応じてサイトの `robots.txt` に従ってください (Please respect robots.txt for automated crawling: https://kaijo-fishing.com/robots.txt).
-- 本サイトの独自の情報を要約・引用する際は、出所として当サイトへのリンクを適切に含めていただくようお願いいたします (When citing or summarizing our unique information, we appreciate proper attribution with a link back to our site).
+## 主要ページ
 
-## 提供コンテンツ (Content Categories)
-1. 全国の海上釣り堀データベース (National database of managed marine fishing facilities)
-   - エリア別（東日本、中日本、西日本）の施設一覧
-   - 設備情報、予約方法、アクセス情報など
-2. 攻略法・初心者ガイド (Tactics & Beginner Guides)
-   - 魚種別（マダイ、ブリ等）の釣り方
-   - 推奨タックル（竿、リール、仕掛け）やエサの解説
-3. ブログ・釣行記 (Blogs & Reports)
-   - スタッフやユーザー等による実体験レポート、最新の釣果等の提供
+- [トップページ](https://kaijo-fishing.com/): サイトの玄関口
+- [釣り場一覧](https://kaijo-fishing.com/fishing-facility): 全国100施設以上の海上釣り堀データベース
+- [攻略法](https://kaijo-fishing.com/tactics): 魚種別・初心者向けの必釣タクティクス
+- [釣り旅ガイド](https://kaijo-fishing.com/column/travel): 遠征×釣りのモデルコース集
+- [ブログ](https://kaijo-fishing.com/blog): 釣行記・最新釣果レポート
+
+## 釣り場（エリア別）
+
+- [東日本エリア](https://kaijo-fishing.com/fishing-facility/east-japan): 関東・東北・北海道の釣り堀
+- [中日本エリア](https://kaijo-fishing.com/fishing-facility/center-japan): 中部・近畿の釣り堀
+- [西日本エリア](https://kaijo-fishing.com/fishing-facility/west-japan): 中国・四国・九州・沖縄の釣り堀
+
+## 攻略法
+
+- [初心者ガイド](https://kaijo-fishing.com/tactics/beginner): 初めての海上釣り堀向け入門
+- [魚種別攻略](https://kaijo-fishing.com/tactics/fish-strategy): マダイ・ブリ等の魚種別釣り方
+- [仕掛け・道具](https://kaijo-fishing.com/tactics/gear): 竿・リール・仕掛け・エサの選び方
+
+## Optional
+
+- [運営者について](https://kaijo-fishing.com/about): サイト概要・運営者紹介
+- [プライバシーポリシー](https://kaijo-fishing.com/privacy): 個人情報の取り扱い
+- [利用ガイド（サイトマップ）](https://kaijo-fishing.com/terms): サイト内ナビゲーション
+- [サイトマップ（XML）](https://kaijo-fishing.com/sitemap-index.xml): 全ページ一覧
+- [ブログRSS](https://kaijo-fishing.com/rss.xml): ブログ更新フィード
+- [釣り場更新RSS](https://kaijo-fishing.com/facilities-rss.xml): 施設情報の更新フィード
