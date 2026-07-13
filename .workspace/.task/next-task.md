@@ -1,5 +1,34 @@
 # 次に控えているタスク
 
+## Act候補（W29 GSCデータ由来、2026-07-14追加・並列着手）
+
+- [ ] `/blog/himeji-city-fishing-center`等の404多発上位LP（101件・201セッション）への301リダイレクト → [[weekly-PPDCA-task-07W29]]で既にタスク化済み・重複作業不要（本項目はここに一覧化するためのポインタ）
+- [x] `src/content/blog/fishing-facility/west-japan/mie/matsunase-fishing-park/index.mdx`：CTR・順位悪化（6.09%→4.44%、順位12.5→16.76）の要因調査（2026-07-14実施）。title・description・本文（料金表・魚種・攻略法・アクセス・観光導線）ともに検索意図とのズレや陳腐化は見当たらず、コンテンツ側に明確な改善余地なしと判断。下落幅の大きさから404流入分断（旧`/blog/`URL未リダイレクト）による評価分散が濃厚とみて<strong>編集は保留</strong>。301リダイレクト完了後にW30以降のデータで再判定する
+- [x] `src/content/blog/column/ranking/kansai/index.mdx`：内部リンク強化完了（2026-07-14）。関西施設5記事（suihou-fishing-pond, kaijo-tsuribori-at-sea, umizuri-port-tajiri, kaijo-tsuribori-misaki, awaji-janohire-fishing-park）から`/column/ranking/kansai/`への内部リンクを既存文体に合わせて追加。事前調査時点で既存リンクは0件だった
+- [x] `src/content/blog/fishing-facility/west-japan/tokushima/family-tsuribori-tsutteminde/index.mdx`：クエリ「釣ってみんで釣り堀」対応でタイトル・meta descriptionリライト完了（2026-07-14）。title冒頭に「（屋内釣り堀）」を挿入しクエリとのマッチをタイトル先頭付近に集約、descriptionも「屋内型の釣り堀」を明示的に再配置
+- [x] `src/content/blog/fishing-facility/west-japan/miyazaki/shibushi-bay-daikoku-dolphin-land/index.mdx`：内部リンク強化完了（2026-07-14）。鹿児島の鴨池海づり公園・桜島海づり公園への内部リンクと九州ランキング記事へのリンクを追加、鴨池側からも相互リンクを追加
+  - 📌 発見: `column/ranking/kyushu-okinawa/index.mdx`は福岡・佐賀・長崎・熊本・大分のみが対象で、宮崎・鹿児島の施設（イルカランド・鴨池・桜島）が掲載対象外になっているコンテンツギャップを発見。九州ランキング記事への宮崎・鹿児島施設の追加を別タスク候補として検討する
+- [x] `src/content/blog/fishing-facility/center-japan/fukui/wakasa-takahama-sea-fishing-park/index.mdx`：レビュー系ニーズ対応コンテンツ強化完了（2026-07-14）。「実際に釣れた魚と訪問レビュー」セクションを新設し、季節別釣果傾向（春サヨリ・夏アジサバ・秋アオリイカ・冬根魚）と現地レビュー（混雑度・足場注意点・設備）を追加。lastmod更新済み。非空行数約100→115行
+
+## [ ] 観光×海上釣り堀マネタイズ：施設記事への観光導線ブロック標準装備（2026-07-14方針決定）
+
+**中期方針の背景**: アクセスは維持・毎週向上中、競合もほぼ不在のため大きなSEO施策は不要な段階。今後の課題は「アクセスがある1記事のマネタイズ」。現状Adsense頼みだが、W29データでクリック上位施設記事（糸満=沖縄、イルカランド=宮崎、脇田=福岡、若狭高浜=福井、賢島=伊勢志摩）がほぼ全て観光地であることが判明し、読者属性が旅行者と重なる。既存のtravelモデルプラン記事への遷移を挟むより、施設記事内で観光アフィリエイトを完結させる構造を狙う。詳細は[[project-monetization-tourism]]（メモリ）・[[fishstrategy-check]]「W29 サイト全体解析」参照。
+
+### 前提条件（先に完了させる）
+
+- [ ] `/blog/xxx`旧URL→実コンテンツへの301リダイレクト（[[weekly-PPDCA-task-07W29]]で着手中）。旧URL経由の流入がサイト検索流入の約85%を占めるため、これが終わるまで観光導線を作っても届く読者が少ない
+- [ ] TABILMO P1クリック実績計測（2026-07-23〜08-06、GA4探索レポートで`gothere_click`確認、[[next-task]]内・後述の既存P1項目参照）。宿泊系アフィリの反応を見てから拡張のgo/no-go判断
+
+### TODO（W31あたり、上記2件が終わってから着手）
+
+- [ ] 観光導線ブロックのテンプレート設計（レンタカー・宿泊・アクティビティ系AffiliateCard＋travelモデルプランへの内部リンクを1セクションにまとめる）。既存の`AffiliateCard`/`GoThere`コンポーネントとASP（じゃらん・楽天・TABILMO）をそのまま使う想定、新規コンポーネント開発は不要
+- [ ] アクティビティ系ASP（じゃらん遊び体験・アクティビティジャパン等）で「手ぶら体験」を扱っているか確認。海上釣り堀の「手ぶらセット」訴求と直結するため相性が良いと予想
+- [ ] 試験導入の対象記事5本を選定（W29クリック上位から）: itoman-ikada-tsurigu-no-zousan（糸満・沖縄）、shibushi-bay-daikoku-dolphin-land（イルカランド・宮崎）、waita-sea-fishing-pier（脇田・福岡）、wakasa-takahama-sea-fishing-park（若狭高浜・福井、CTR20.8%で特に優先）、kashikojima-fishing-park-kaiyuen（賢島・伊勢志摩）
+- [ ] 姫路市立遊漁センター（himeji-city-fishing-center）は休園アーカイブ記事のためマネタイズ対象から除外
+- [ ] 試験導入後、GA4`gothere_click`でクリック率を既存travel記事（jalan-net/rakuten-travel/tabilmo）と比較し、横展開のgo/no-goを判断
+
+---
+
 ## [ ] 月次モニタリング：GSC再分析（`gsc-postreflesh-task.md` フェーズ5）
 
 **W27（2026-06-29〜2026-07-05、7月最初週）に実行する。**
@@ -99,3 +128,59 @@ CTR4%は悪すぎるわけじゃないが、まだ改善の余地がある数字
 ## アフィリエイトの可能性
 
 アクセスが安定してきている。旅行記事を作成してはいないが、ページタイトルとアクセス数を調査して、旅行アフィリエイト・物販のリンクをつけると効果的な記事を抽出する。
+
+---
+
+## TABILMO・旅行宿泊アフィリエイト（2026-07-09 着手後）
+
+### 完了済み（参照）
+
+- `src/content/affiliates/travel/tabilmo.json` 登録（A8・`id="travel/tabilmo"`）
+- 記事 `src/content/blog/column/travel/tabilmo-villa-stay-guide/index.mdx` 新規作成
+- `ensei-guide`「前泊のすすめ」に `<AffiliateCard id="travel/tabilmo" />` と双方向内部リンクを追加
+- `public/llms.txt` を llms.txt 仕様準拠に修正（H1＋blockquote＋Markdownリンク形式）
+
+### [ ] P1：クリック実績の計測（2〜4週間後・GA4管理画面）
+
+**ensei-guide・tabilmo-villa-stay-guide 公開後、2026-07-23〜08-06 頃を目安に実施。**
+
+- GA4 探索レポートで `gothere_click`（facility_id / link_type）の集計を確認（`kpi-improvement-tasks.md` Phase 2・`travelplan.md` §効果測定参照）
+- 宿泊系 AffiliateCard のクリック比較：`travel/jalan-net` / `travel/rakuten-travel` / `travel/tabilmo`
+- ページ単位エクスポートではイベントが含まれないため、**探索レポートでの手動確認が必須**
+- 結果を `.task/travelplan.md` または週次PDCAに記録し、横展開の go/no-go を判断
+
+### [ ] P2：モデルプラン記事への TABILMO 横展開（P1の結果を見てから）
+
+**travelplan.md では「第二候補」として見送り済み。クリック実績が取れたら再開。**
+
+- 対象10本の「宿泊先選び」セクションに、<strong>3名以上・一棟貸し向け</strong>の1段落＋条件付き `<AffiliateCard id="travel/tabilmo" />` を追加
+  - `wakayama-kii-trip` / `shirahama-onsen-trip` / `ise-shima-model-plan` / `awaji-family-trip` / `kagawa-shodoshima-trip` / `shimanami-cycling-fishing` / `chiba-minamiboso-trip` / `fukui-mikata-goko` / `hamanako-unagi-trip` / `kumamoto-amakusa-trip`
+  - `kanagawa-miura-trip` は日帰り前提のため「1泊にする場合のみ」注記付きで検討
+- じゃらん・楽天と併記し、ホテル vs 一棟貸しの使い分けを1〜2文で明示
+- 詳細ガイドは `/column/travel/tabilmo-villa-stay-guide` へ内部リンク
+
+### [ ] P2：TABILMO エリア別ディープリンクの検証と登録
+
+**未検証のディープリンク一括埋め込みは禁止（kaijo-ui-components SKILL §3.3）。ASP確認後のみ実施。**
+
+- A8 管理画面で、以下のような物件・エリアURLにアフィリパラメータを付与できるか確認
+  - 伊勢志摩例：`tabilmo.com/villas/tokai/mie/area-219/villa/1330`
+  - 四国・広島例：`tabilmo.com/villas/chugoku/hiroshima/area-311/villa/1923`
+- 検証OKなら `src/content/affiliates/travel/` にエリア別 id（例：`travel/tabilmo-mie`）を追加し、該当モデルプラン記事から参照
+- 検証NGなら汎用 `travel/tabilmo` のまま維持（現状方針）
+
+### [ ] P3：tabilmo-villa-stay-guide の cover 画像
+
+- 他 travel 記事同様 `image: ./cover.jpg`（または cover.svg）を追加し、一覧・OG表示を整える
+- 画像生成は明示指示があるまで保留（CLAUDE.md 準拠）
+
+### [ ] P3：llms.txt デプロイ後の Page Insights 再確認
+
+- 本番 `https://kaijo-fishing.com/llms.txt` が H1＋blockquote＋リンク形式で配信されているか確認
+- Page Insights の「llms.txt 推奨事項」警告が解消されたかチェック
+
+### [ ] 保留（travelplan.md 既存方針どおり）
+
+- **GoThere Phase 2**（Geolocation 出発地推定・フェリー必須フラグ）— 任意
+- **施設×最寄り宿データ整備** — jalan/rakuten エリアコード深いリンクのASP仕様確認まで凍結
+- **access-setouchi / 九州アクセスハブ / 飛行機遠征ガイド** — travel-hub.md 凍結判断の再評価後
