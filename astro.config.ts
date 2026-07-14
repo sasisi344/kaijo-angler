@@ -21,6 +21,7 @@ import {
 } from "./src/utils/frontmatter";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { facilityRedirects } from "./src/config/facility-redirects";
+import { blogLegacyRedirects } from "./src/config/blog-legacy-redirects";
 import { sitemapPageFilter } from "./src/config/sitemap-filter";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -42,7 +43,7 @@ export default defineConfig({
   // `updateConfig` 経由だと image.endpoint.route の末尾スラッシュ補正が走らず
   // dev の `/_image` が 404 になる。ここでも明示してスキーマ変換を通す。
   trailingSlash: "always",
-  redirects: facilityRedirects,
+  redirects: { ...facilityRedirects, ...blogLegacyRedirects },
 
   integrations: [
     tailwind({

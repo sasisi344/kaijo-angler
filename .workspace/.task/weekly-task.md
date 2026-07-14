@@ -3,6 +3,19 @@
 
 ---
 
+## 保留中：将来のGSC/GA4データが必要なタスク一覧（2026-07-14整理）
+
+対応済みだが効果測定に未来週のデータが要るもの・データ待ちで着手を保留しているものを集約。週次データ収集時にここを確認し、該当週のデータが揃ったら[[weekly-task]]の該当週セクションで判定してチェックを消し込む。
+
+- [ ] **301リダイレクトの効果測定（W30〜）**: 2026-07-14に`src/config/blog-legacy-redirects.ts`で旧`/blog/`URL 287件を301化（[[weekly-PPDCA-task-07W29]]）。Googleの再クロール後、W30以降のGSCで404流入分断が解消したか（旧URLと新URLの表示・クリックが正しく1本化されるか）を確認する
+- [ ] **W29で悪化と判定された施設記事の再判定（W30〜）**: `umizuri-port-tajiri`（順位8.4→12.3悪化）・`matsunase-fishing-park`（順位12.5→16.8悪化）・`kariyawan-fishing-center`（順位15.7→18.2悪化）・`tsuri-ikada-fukaura`（クリック2.8→0）は301未設定による404流入分断が原因の可能性があり、リダイレクト適用後のW30データで悪化が継続するか見てから着手判断（[[fishstrategy-check]]C層）。`matsunase-fishing-park`は個別に編集保留中（[[next-task]]参照）
+- [ ] **fish-strategy（魚種別攻略記事）リライト効果測定 フェーズ4（W30〜）**: 2026-07-08〜09に14魚種56ファイルの「量産感」対策リライトを実施済み。比較対象はW28以前 vs W30以降（W29は移行期のためベースラインのみ扱い）。表示回数・CTR・順位の変化を確認し、方針の有効性を判定する（[[fishstrategy-check]]フェーズ4）
+- [ ] **月次モニタリング：GSC再分析フェーズ5**: 元は「W27（2026-06-29〜2026-07-05）に実行」の予定だったが未着手のまま日付超過。次回のページ単位エクスポート取得時に`node scripts/analyze-facility-ranking.mjs`でフェーズ2トリアージリストを更新し、フェーズ3対応10施設・フェーズ4対応記事の順位/CTR改善を確認する（[[next-task]]・旧`gsc-postreflesh-task.md`参照）
+- [ ] **TABILMO（旅行宿泊アフィリ）P1クリック実績計測**: 2026-07-23〜08-06頃、GA4探索レポートで`gothere_click`（facility_id / link_type）を確認し、`travel/jalan-net`・`travel/rakuten-travel`・`travel/tabilmo`のクリックを比較。結果次第でP2（モデルプラン記事への横展開）のgo/no-goを判断（[[next-task]]）
+- [ ] **観光×海上釣り堀マネタイズ施策のgo/no-go判断**: 上記TABILMO P1実績と301リダイレクト効果測定の両方が出そろってから、観光導線ブロックの試験導入（W31目標）に着手するかどうかを判断する（[[next-task]]・[[project-monetization-tourism]]）
+
+---
+
 ### Do（実施施策）
 - [[06-W25]]で提示したアクションプランを実施済み：`/blog/himeji-city-fishing-center/`（統合表示165・順位約5.95・CTR約9.7%）の内部リンク強化、`/blog/tactics/fish-strategy/isaki/gourmet/`の導入文・内部リンク見直し、`/blog/cloudy-day-advantage/`のタイトル・meta description見直しを実施
 
