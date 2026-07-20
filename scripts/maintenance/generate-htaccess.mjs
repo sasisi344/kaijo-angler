@@ -4,6 +4,17 @@ import path from 'path';
 const TS_CONFIG = 'src/config/facility-redirects.ts';
 const HTACCESS_FILE = 'public/.htaccess';
 
+// 2026-W30 PPDCA: /blog/{slug}/ 配下でGSCクリック上位の404 URLを優先的に301リダイレクト
+// (全287件の移行は src/config/blog-legacy-redirects.ts にあるが、Astroのstatic redirectsは
+//  200+noindexのmeta-refreshになりSEO的に不十分なため、.htaccessでの真の301が必要な分だけ個別対応)
+const PRIORITY_BLOG_LEGACY_SLUGS = [
+    'itoman-ikada-tsurigu-no-zousan',
+    'himeji-city-fishing-center',
+    'shibushi-bay-daikoku-dolphin-land',
+    'yuharai-pond',
+    'nanko-fishing-park',
+];
+
 try {
     const content = fs.readFileSync(TS_CONFIG, 'utf-8');
     const lines = content.split('\n');
@@ -17,6 +28,12 @@ try {
             htaccessContent += `  Redirect 301 ${match[1]} ${match[2]}\n`;
         }
     });
+
+    htaccessContent += `\n  # priority /blog/ legacy redirects (2026-W30)\n`;
+    PRIORITY_BLOG_LEGACY_SLUGS.forEach(slug => {
+        htaccessContent += `  Redirect 301 /blog/${slug}/ /fishing-facility/${slug}/\n`;
+    });
+
     htaccessContent += `</IfModule>\n`;
 
     fs.writeFileSync(HTACCESS_FILE, htaccessContent);
