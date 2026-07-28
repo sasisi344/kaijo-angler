@@ -20,7 +20,6 @@ import {
   trailingSlashLinksRehypePlugin,
 } from "./src/utils/frontmatter";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { facilityRedirects } from "./src/config/facility-redirects";
 import { blogLegacyRedirects } from "./src/config/blog-legacy-redirects";
 import { sitemapPageFilter } from "./src/config/sitemap-filter";
 
@@ -43,7 +42,9 @@ export default defineConfig({
   // `updateConfig` 経由だと image.endpoint.route の末尾スラッシュ補正が走らず
   // dev の `/_image` が 404 になる。ここでも明示してスキーマ変換を通す。
   trailingSlash: "always",
-  redirects: { ...facilityRedirects, ...blogLegacyRedirects },
+  // 旧WordPress の日付型URL（/2025/07/... 等133件）は 2026-07-29 に削除。
+  // W29 GSC実績でクリック0・表示39回、GA4セッション0のため保持コストに見合わないと判断。
+  redirects: { ...blogLegacyRedirects },
 
   integrations: [
     tailwind({
