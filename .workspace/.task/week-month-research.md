@@ -32,21 +32,12 @@
 npm install leaflet.heat
 ```
 
-- [x] <strong>Step 1</strong>: 既存の施設記事から座標データを一括抽出するスクリプトの作成
-- [x] <strong>Step 2</strong>: サンプルデータによる Leaflet ヒートマップのプロトタイプ作成（コンポーネント化）
-- [x] <strong>Step 3</strong>: <strong>2026年2月・3月期データによるスクリプトの効率化とデータ抽出ロードマップ作成</strong>
 ### 追加ルール & 改善 (2026-04-01)
 - <strong>サムネイルの共通化</strong>: `intelligence` カテゴリのサムネイルは、都度生成せず `src/assets/images/intelligence-default.png` を共通利用する。
 - <strong>ヒートマップの相対評価</strong>: 抽出KWの最大カウントを「赤（1.0）」とする相対スケールを採用。これにより、絶対数が少なくても盛り上がり箇所が視覚的に強調される。
 - <strong>強調タグの変換</strong>: 生産段階の記事では、`**太字**` を `<strong>太字</strong>` に変換して出力する。
 - <strong>テンプレート更新</strong>: 上記ルールに基づき、テンプレートおよび既存記事（2026-03分）を更新済み。
-- [x] <strong>Step 4</strong>: 週刊・月間マガジンの「記事テンプレート」作成（データセット定義含む）
-- [x] <strong>Step 5</strong>: <strong>本番自動化パイプライン（インテリジェンス・オートメーション）の構築</strong>
-  - [x] 収集スクリプト (`collect.js`) の作成
-  - [x] AI解析・構造化プロンプトの固定化 (`analyze.js`)
-  - [x] 自動MDX生成エンジン (`generate.js`) の実装
-  - [x] GitHub Actions による定期実行ワークフローの設定
-- [x] <strong>Step 6</strong>: マガジン記事ページへのヒートマップ埋め込みと公開
+全ステップ（座標抽出・ヒートマッププロトタイプ・記事テンプレート・自動化パイプライン`collect.js`/`analyze.js`/`generate.js`・GitHub Actions・マガジン記事へのヒートマップ埋め込み）は実装済み。以下は運用中のアーキテクチャ・スケジュール仕様（参照用）。
 
 ---
 
