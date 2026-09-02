@@ -1,0 +1,16 @@
+{
+  "id": "travel/jalan-rentacar-okinawa",
+  "name": "じゃらんレンタカー（沖縄キャンペーン）",
+  "brand": "じゃらん",
+  "description": "沖縄の海上釣り堀・海釣り施設への遠征に。那覇空港発をはじめ沖縄本島のレンタカーを比較・予約。",
+  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892690715\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892690715\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892690715\" border=\"0\"></a></noscript>",
+  "categories": [
+    "交通",
+    "レンタカー",
+    "沖縄"
+  ],
+  "targetFish": [],
+  "methods": [],
+  "isRecommended": false,
+  "image": "/images/travel-access-illustration.svg"
+}

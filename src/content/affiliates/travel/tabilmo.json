@@ -1,10 +1,15 @@
 {
   "id": "travel/tabilmo",
-  "name": "TABILMO??????",
+  "name": "TABILMO（タビルモ）",
   "brand": "TABILMO",
-  "description": "???????????????????????????????????????????????????",
+  "description": "一棟貸し・貸別荘に特化した宿泊予約サイト。グループ・家族での釣行旅行に向いた大人数向け宿泊施設を探せます。",
   "link": "https://px.a8.net/svt/ejp?a8mat=4B7VL9+740KAY+5WNK+5YJRM",
-  "html": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4B7VL9+740KAY+5WNK+5Z6WX\" rel=\"nofollow\"><img border=\"0\" width=\"300\" height=\"250\" alt=\"TABILMO ????????\" src=\"https://www24.a8.net/svt/bgt?aid=260708013430&wid=008&eno=01&mid=s00000027560001004000&mc=1\"></a><img border=\"0\" width=\"1\" height=\"1\" src=\"https://www19.a8.net/0.gif?a8mat=4B7VL9+740KAY+5WNK+5Z6WX\" alt=\"\">",
-  "categories": ["??", "??", "????"],
-  "isRecommended": false
+  "html": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4B7VL9+740KAY+5WNK+5Z6WX\" rel=\"nofollow\"><img border=\"0\" width=\"300\" height=\"250\" alt=\"TABILMO 一棟貸し宿泊予約\" src=\"https://www24.a8.net/svt/bgt?aid=260708013430&wid=008&eno=01&mid=s00000027560001004000&mc=1\"></a><img border=\"0\" width=\"1\" height=\"1\" src=\"https://www19.a8.net/0.gif?a8mat=4B7VL9+740KAY+5WNK+5Z6WX\" alt=\"\">",
+  "categories": [
+    "宿泊",
+    "旅行",
+    "一棟貸し"
+  ],
+  "isRecommended": false,
+  "image": "/images/travel-access-illustration.svg"
 }

@@ -3,7 +3,11 @@
   "name": "楽天トラベル",
   "brand": "Rakuten",
   "description": "日本最大級の宿泊予約サイト。楽天ポイントが貯まる・使えるため、釣り遠征の宿泊予約に最適です。",
-  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892569542\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892569542\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892569542\" border=\"0\"></a></noscript>",
-  "categories": ["宿泊", "旅行"],
+  "html": "<a href=\"https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9\" rel=\"nofollow\">楽天トラベルで宿を探す</a>",
+  "image": "/images/travel-access-illustration.svg",
+  "categories": [
+    "宿泊",
+    "旅行"
+  ],
   "isRecommended": true
 }

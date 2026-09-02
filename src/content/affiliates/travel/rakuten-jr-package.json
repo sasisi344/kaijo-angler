@@ -1,0 +1,14 @@
+{
+  "id": "travel/rakuten-jr-package",
+  "name": "楽天トラベル「新幹線+宿」パック",
+  "brand": "Rakuten",
+  "description": "新幹線と宿泊をセットで予約できるパック商品。個別に手配するより安くなるケースが多く、前泊が前提の遠征釣行と相性が良い商材です。",
+  "html": "<a href=\"https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fpackage%2Fjr%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9\" rel=\"nofollow\">新幹線+宿パックを楽天トラベルで探す</a>",
+  "image": "/images/travel-access-illustration.svg",
+  "categories": [
+    "交通",
+    "宿泊",
+    "旅行"
+  ],
+  "isRecommended": true
+}

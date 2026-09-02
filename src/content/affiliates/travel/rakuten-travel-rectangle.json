@@ -1,0 +1,15 @@
+{
+  "id": "travel/rakuten-travel-rectangle",
+  "name": "楽天トラベル（レクタングルバナー）",
+  "brand": "楽天トラベル",
+  "description": "楽天トラベルのレクタングル型バナー。本文中ではなく記事末やカード枠での使用を想定。",
+  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892690728\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892690728\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892690728\" border=\"0\"></a></noscript>",
+  "categories": [
+    "宿泊",
+    "旅行"
+  ],
+  "targetFish": [],
+  "methods": [],
+  "isRecommended": false,
+  "image": "/images/travel-access-illustration.svg"
+}

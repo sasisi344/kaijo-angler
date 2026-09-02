@@ -1,0 +1,1374 @@
+{
+  "_note": "海上釣り堀 施設記事のアフィリエイト着地先とエリア定義。じゃらん（jalan / jalanRentacar）は ValueCommerce の MyLink（_vcMyLink）で vc_url によるディープリンクが可能。楽天トラベル（rakutenTravel）は VC MyLink の vc_url が機能しないことが2026-09-02に判明したため、楽天アフィリエイト経由（_rakutenAffiliate）でディープリンクしている（travel-asp-profile.json の rakuten-travel / rakuten-affiliate-travel を参照）。prefectureFallback の jalan / rakutenTravel は31都道府県分を生成済み。areas[].urls は市区町村レベルのエリアページURLが判明した場合に埋める（未設定なら prefectureFallback に落ちる）。",
+  "_urlKeys": {
+    "jalan": "じゃらんnet 宿泊エリア検索",
+    "rakutenTravel": "楽天トラベル エリア検索",
+    "jalanRentacar": "じゃらんレンタカー 出発地検索",
+    "jalanActivity": "じゃらん遊び体験 エリア検索"
+  },
+  "metroPrefectures": {
+    "_note": "GoThere.astro の宿泊訴求の出し分け（2-3）に使う。三大都市圏（首都圏・関西圏・中京圏）の都道府県＝『日帰り圏＝近隣』、それ以外＝『遠方＝前泊が主役』という二値分類。都道府県単位の粗い判定であることに留意（例: 三重県南部は実際には遠方寄りだが県単位では近隣扱いになる）",
+    "list": [
+      "tokyo",
+      "kanagawa",
+      "chiba",
+      "saitama",
+      "osaka",
+      "hyogo",
+      "kyoto",
+      "nara",
+      "shiga",
+      "wakayama",
+      "aichi",
+      "mie",
+      "gifu",
+      "shizuoka"
+    ]
+  },
+  "prefectureFallback": {
+    "hokkaido": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fhokkaido%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fhokkaido%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "aomori": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Faomori%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Faomori%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "miyagi": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fmiyagi%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fmiyagi%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "yamagata": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fyamagata%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fyamagata%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "chiba": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fchiba%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fchiba%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "kanagawa": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fkanagawa%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fkanagawa%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "niigata": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fniigata%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fniigata%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "toyama": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Ftoyama%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Ftoyama%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "ishikawa": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fishikawa%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fishikawa%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "fukui": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Ffukui%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Ffukui%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "shizuoka": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fshizuoka%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fshizuoka%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "aichi": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Faichi%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Faichi%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "mie": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fmie%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fmie%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "kyoto": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fkyoto%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fkyoto%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "osaka": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Foosaka%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fosaka%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "hyogo": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fhyogo%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fhyogo%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "wakayama": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fwakayama%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fwakayama%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "hiroshima": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fhiroshima%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fhiroshima%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "yamaguchi": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fyamaguchi%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fyamaguchi%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "kagawa": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fkagawa%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fkagawa%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "tokushima": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Ftokushima%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Ftokushima%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "ehime": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fehime%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fehime%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "kochi": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fkochi%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fkochi%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "fukuoka": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Ffukuoka%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Ffukuoka%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "saga": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fsaga%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fsaga%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "nagasaki": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fnagasaki%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fnagasaki%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "kumamoto": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fkumamoto%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fkumamoto%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "oita": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fooita%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Foita%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "miyazaki": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fmiyazaki%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fmiyazaki%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "kagoshima": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fkagoshima%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fkagoshima%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    },
+    "okinawa": {
+      "jalan": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690810&vc_url=https%3A%2F%2Fwww.jalan.net%2Fikisaki%2Fmap%2Fokinawa%2F",
+      "rakutenTravel": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fokinawa%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+      "jalanRentacar": "",
+      "jalanActivity": ""
+    }
+  },
+  "areas": {
+    "hokkaido-tomakomai": {
+      "label": "北海道 苫小牧",
+      "prefecture": "hokkaido",
+      "municipalities": [
+        "苫小牧市"
+      ],
+      "facilities": [
+        "yuharai-pond",
+        "tomakomai-port-sea-fishing-facility"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "aomori-asamushi": {
+      "label": "青森 浅虫・青森市",
+      "prefecture": "aomori",
+      "municipalities": [
+        "青森市"
+      ],
+      "facilities": [
+        "asamushi-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "miyagi-sendai": {
+      "label": "宮城 仙台",
+      "prefecture": "miyagi",
+      "municipalities": [
+        "仙台市"
+      ],
+      "facilities": [
+        "sendai-port-central-park-sea-square"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "yamagata-tsuruoka": {
+      "label": "山形 鶴岡・由良",
+      "prefecture": "yamagata",
+      "municipalities": [
+        "鶴岡市"
+      ],
+      "facilities": [
+        "yura-marine-fishing-pond"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "chiba-kamogawa": {
+      "label": "千葉 鴨川・南房総",
+      "prefecture": "chiba",
+      "municipalities": [
+        "鴨川市"
+      ],
+      "facilities": [
+        "futomi-flower-isotsuri-center"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "chiba-ichihara": {
+      "label": "千葉 市原・五井",
+      "prefecture": "chiba",
+      "municipalities": [
+        "市原市"
+      ],
+      "facilities": [
+        "original-maker-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kanagawa-miura": {
+      "label": "神奈川 三浦・城ヶ島",
+      "prefecture": "kanagawa",
+      "municipalities": [
+        "三浦市"
+      ],
+      "facilities": [
+        "jogashima-js-fishing",
+        "miura-kaiou"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "niigata-joetsu": {
+      "label": "新潟 上越・直江津",
+      "prefecture": "niigata",
+      "municipalities": [
+        "上越市"
+      ],
+      "facilities": [
+        "naoetsu-port-3rd-east-breakwater"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "niigata-seiro": {
+      "label": "新潟 聖籠・新潟東港",
+      "prefecture": "niigata",
+      "municipalities": [
+        "北蒲原郡聖籠町"
+      ],
+      "facilities": [
+        "niigata-east-port-2nd-east-breakwater"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "toyama-kurobe": {
+      "label": "富山 黒部",
+      "prefecture": "toyama",
+      "municipalities": [
+        "黒部市"
+      ],
+      "facilities": [
+        "ishida-fisherina"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "ishikawa-noto": {
+      "label": "石川 能登・七尾",
+      "prefecture": "ishikawa",
+      "municipalities": [
+        "鳳珠郡能登町",
+        "七尾市（能登島）"
+      ],
+      "facilities": [
+        "fishing-bridge-akasaki",
+        "notojima-sea-fishing-center"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "fukui-mihama-wakasa": {
+      "label": "福井 美浜・若狭（日向/久々子）",
+      "prefecture": "fukui",
+      "municipalities": [
+        "三方郡美浜町",
+        "三方上中郡若狭町"
+      ],
+      "facilities": [
+        "fishing-land-hyuga",
+        "fishing-rainbow",
+        "hiruga-sea-fishing-pond",
+        "marine-garden-leisure",
+        "seapark-nyu",
+        "sea-fishing-park-mikata"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "fukui-obama": {
+      "label": "福井 小浜",
+      "prefecture": "fukui",
+      "municipalities": [
+        "小浜市"
+      ],
+      "facilities": [
+        "blue-park-ano",
+        "obama-city-fishing-coop-raft"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "fukui-ohi-takahama": {
+      "label": "福井 おおい・高浜",
+      "prefecture": "fukui",
+      "municipalities": [
+        "大飯郡おおい町",
+        "大飯郡高浜町"
+      ],
+      "facilities": [
+        "akaguri-sea-fishing-park",
+        "wakasa-takahama-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "fukui-tsuruga": {
+      "label": "福井 敦賀",
+      "prefecture": "fukui",
+      "municipalities": [
+        "敦賀市"
+      ],
+      "facilities": [
+        "tsuruga-city-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "shizuoka-atami": {
+      "label": "静岡 熱海・網代",
+      "prefecture": "shizuoka",
+      "municipalities": [
+        "熱海市"
+      ],
+      "facilities": [
+        "atami-port-sea-fishing-facility",
+        "ikadatsuri-tokai",
+        "kaijo-tsuribori-taikoubou"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "shizuoka-nishiizu": {
+      "label": "静岡 西伊豆・沼津（土肥/西浦）",
+      "prefecture": "shizuoka",
+      "municipalities": [
+        "伊豆市",
+        "沼津市"
+      ],
+      "facilities": [
+        "fishing-park-toi",
+        "kaijo-tsuribori-maruya"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "shizuoka-hamanako": {
+      "label": "静岡 浜名湖・湖西",
+      "prefecture": "shizuoka",
+      "municipalities": [
+        "湖西市"
+      ],
+      "facilities": [
+        "araibenten-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "aichi-chita": {
+      "label": "愛知 知多半島",
+      "prefecture": "aichi",
+      "municipalities": [
+        "知多市",
+        "知多郡美浜町",
+        "知多郡南知多町"
+      ],
+      "facilities": [
+        "bakucho-mihama-fishing-park",
+        "shinmaiko-marine-park-fishing",
+        "shinojima-tsuri-tengoku"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "mie-minamiise": {
+      "label": "三重 南伊勢（迫間浦/礫浦ほか）",
+      "prefecture": "mie",
+      "municipalities": [
+        "度会郡南伊勢町"
+      ],
+      "facilities": [
+        "anatani-aitai-fishing",
+        "fishing-park-sasukeya",
+        "hasamaura-fishing-center",
+        "kaijo-tsuribori-benya",
+        "kaijo-tsuribori-fukujumaru",
+        "kaijo-tsuribori-wako",
+        "koueimaru",
+        "naize-fishing-center",
+        "tsuribori-denpachiya",
+        "tsuribori-maruyo"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "mie-toba": {
+      "label": "三重 鳥羽（浦村/千賀/相差）",
+      "prefecture": "mie",
+      "municipalities": [
+        "鳥羽市"
+      ],
+      "facilities": [
+        "fishing-park-triton",
+        "kaijo-tsuribori-monkey",
+        "ousatsu-sea-fishing-center"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "mie-shima": {
+      "label": "三重 志摩・賢島",
+      "prefecture": "mie",
+      "municipalities": [
+        "志摩市"
+      ],
+      "facilities": [
+        "kashikojima-fishing-park-kaiyuen",
+        "ugata-hamatsuri-center"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "mie-owase-kihoku": {
+      "label": "三重 尾鷲・紀北",
+      "prefecture": "mie",
+      "municipalities": [
+        "尾鷲市",
+        "北牟婁郡紀北町"
+      ],
+      "facilities": [
+        "marusui-kaisan",
+        "tsuribori-shotokumaru"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "mie-matsusaka": {
+      "label": "三重 松阪",
+      "prefecture": "mie",
+      "municipalities": [
+        "松阪市"
+      ],
+      "facilities": [
+        "matsunase-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kyoto-maizuru": {
+      "label": "京都 舞鶴",
+      "prefecture": "kyoto",
+      "municipalities": [
+        "舞鶴市"
+      ],
+      "facilities": [
+        "maizuru-shinkai-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kyoto-miyazu": {
+      "label": "京都 宮津・天橋立",
+      "prefecture": "kyoto",
+      "municipalities": [
+        "宮津市"
+      ],
+      "facilities": [
+        "miyazu-city-marine-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "osaka-city": {
+      "label": "大阪 大阪市（南港）",
+      "prefecture": "osaka",
+      "municipalities": [
+        "大阪市住之江区"
+      ],
+      "facilities": [
+        "nanko-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "osaka-misaki-sennan": {
+      "label": "大阪 岬町・泉南（深日/多奈川/りんくう）",
+      "prefecture": "osaka",
+      "municipalities": [
+        "泉南郡岬町",
+        "泉南市",
+        "泉南郡田尻町"
+      ],
+      "facilities": [
+        "kaijo-tsuribori-misaki",
+        "kaijo-tsuribori-opa",
+        "koshima-sea-fishing-pond",
+        "osaka-sea-fishing-southern",
+        "totto-park-koshima",
+        "umizuri-port-tajiri"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "hyogo-kobe": {
+      "label": "兵庫 神戸（垂水/須磨）",
+      "prefecture": "hyogo",
+      "municipalities": [
+        "神戸市垂水区",
+        "神戸市須磨区"
+      ],
+      "facilities": [
+        "kobe-hiraiso-sea-fishing-park",
+        "suma-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "hyogo-amagasaki": {
+      "label": "兵庫 尼崎",
+      "prefecture": "hyogo",
+      "municipalities": [
+        "尼崎市"
+      ],
+      "facilities": [
+        "amagasaki-city-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "hyogo-akashi": {
+      "label": "兵庫 明石",
+      "prefecture": "hyogo",
+      "municipalities": [
+        "明石市"
+      ],
+      "facilities": [
+        "kaijo-tsuribori-at-sea"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "hyogo-himeji": {
+      "label": "兵庫 姫路（的形/飾磨/家島）",
+      "prefecture": "hyogo",
+      "municipalities": [
+        "姫路市",
+        "姫路市家島町"
+      ],
+      "facilities": [
+        "himeji-city-fishing-center",
+        "sea-fishing-pond-kaikei",
+        "suihou-fishing-pond"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "hyogo-awaji-minami": {
+      "label": "兵庫 南あわじ（淡路島南部）",
+      "prefecture": "hyogo",
+      "municipalities": [
+        "南あわじ市"
+      ],
+      "facilities": [
+        "awaji-janohire-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "wakayama-city": {
+      "label": "和歌山 和歌山市（マリーナシティ/田野）",
+      "prefecture": "wakayama",
+      "municipalities": [
+        "和歌山市"
+      ],
+      "facilities": [
+        "saikakizaki-seapark",
+        "wakayama-marinacity-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "wakayama-arida": {
+      "label": "和歌山 有田・湯浅・広川",
+      "prefecture": "wakayama",
+      "municipalities": [
+        "有田郡湯浅町",
+        "有田郡広川町"
+      ],
+      "facilities": [
+        "kaijo-tsuribori-yuasa",
+        "tsuribori-kishu"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "wakayama-yura": {
+      "label": "和歌山 日高・由良",
+      "prefecture": "wakayama",
+      "municipalities": [
+        "日高郡由良町"
+      ],
+      "facilities": [
+        "yura-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "wakayama-shirahama": {
+      "label": "和歌山 白浜",
+      "prefecture": "wakayama",
+      "municipalities": [
+        "西牟婁郡白浜町"
+      ],
+      "facilities": [
+        "kakata-fishing-pond"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "hiroshima-otake": {
+      "label": "広島 大竹・阿多田島",
+      "prefecture": "hiroshima",
+      "municipalities": [
+        "大竹市"
+      ],
+      "facilities": [
+        "kaijo-tsuribori-kaiyu",
+        "kaijo-tsuribori-tairyomaru"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "hiroshima-onomichi": {
+      "label": "広島 尾道・瀬戸田（生口島）",
+      "prefecture": "hiroshima",
+      "municipalities": [
+        "尾道市"
+      ],
+      "facilities": [
+        "shimanami-kaido-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "yamaguchi-shimonoseki": {
+      "label": "山口 下関",
+      "prefecture": "yamaguchi",
+      "municipalities": [
+        "下関市"
+      ],
+      "facilities": [
+        "shimonoseki-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "yamaguchi-hikari": {
+      "label": "山口 光・周南",
+      "prefecture": "yamaguchi",
+      "municipalities": [
+        "光市"
+      ],
+      "facilities": [
+        "fishing-park-hikari"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "yamaguchi-hagi": {
+      "label": "山口 萩・須佐",
+      "prefecture": "yamaguchi",
+      "municipalities": [
+        "萩市"
+      ],
+      "facilities": [
+        "susawan-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kagawa-naoshima": {
+      "label": "香川 直島",
+      "prefecture": "kagawa",
+      "municipalities": [
+        "香川郡直島町"
+      ],
+      "facilities": [
+        "naoshima-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kagawa-shodoshima": {
+      "label": "香川 小豆島",
+      "prefecture": "kagawa",
+      "municipalities": [
+        "小豆郡小豆島町"
+      ],
+      "facilities": [
+        "shodoshima-furusatomura-fishing-pier"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kagawa-higashikagawa": {
+      "label": "香川 東かがわ・引田",
+      "prefecture": "kagawa",
+      "municipalities": [
+        "東かがわ市"
+      ],
+      "facilities": [
+        "saltlake-hiketa-adoike"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "tokushima-city": {
+      "label": "徳島 徳島市・沖洲",
+      "prefecture": "tokushima",
+      "municipalities": [
+        "徳島市"
+      ],
+      "facilities": [
+        "family-tsuribori-tsutteminde"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "tokushima-kaiyo": {
+      "label": "徳島 海陽・宍喰",
+      "prefecture": "tokushima",
+      "municipalities": [
+        "海部郡海陽町"
+      ],
+      "facilities": [
+        "hamabe-tosen-kaijo-tsuribori"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "ehime-imabari-omishima": {
+      "label": "愛媛 今治・大三島",
+      "prefecture": "ehime",
+      "municipalities": [
+        "今治市"
+      ],
+      "facilities": [
+        "fishing-park-omishima"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kochi-susaki": {
+      "label": "高知 須崎・浦ノ内湾",
+      "prefecture": "kochi",
+      "municipalities": [
+        "須崎市"
+      ],
+      "facilities": [
+        "kaijo-tsuribori-yukimaru",
+        "raft-fishing-takahashi",
+        "tsuri-ikada-fukaura"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "ehime-yawatahama": {
+      "label": "愛媛 八幡浜",
+      "prefecture": "ehime",
+      "municipalities": [
+        "八幡浜市"
+      ],
+      "facilities": [
+        "searoad-yawatahama"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "fukuoka-city": {
+      "label": "福岡 福岡市（西区・小田）",
+      "prefecture": "fukuoka",
+      "municipalities": [
+        "福岡市西区"
+      ],
+      "facilities": [
+        "fukuoka-city-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "fukuoka-kitakyushu": {
+      "label": "福岡 北九州（若松/小倉）",
+      "prefecture": "fukuoka",
+      "municipalities": [
+        "北九州市若松区",
+        "北九州市小倉北区"
+      ],
+      "facilities": [
+        "hiake-kaikyo-fishing-park",
+        "waita-sea-fishing-pier"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "fukuoka-munakata": {
+      "label": "福岡 宗像・大島",
+      "prefecture": "fukuoka",
+      "municipalities": [
+        "宗像市"
+      ],
+      "facilities": [
+        "umingu-oshima"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "saga-genkai": {
+      "label": "佐賀 玄海・唐津",
+      "prefecture": "saga",
+      "municipalities": [
+        "東松浦郡玄海町"
+      ],
+      "facilities": [
+        "kariyawan-fishing-center"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "nagasaki-sasebo": {
+      "label": "長崎 佐世保（鹿町町）",
+      "prefecture": "nagasaki",
+      "municipalities": [
+        "佐世保市"
+      ],
+      "facilities": [
+        "jumbo-fishing-mura",
+        "mukai-pearl-marine"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "nagasaki-city": {
+      "label": "長崎 長崎市・高島",
+      "prefecture": "nagasaki",
+      "municipalities": [
+        "長崎市"
+      ],
+      "facilities": [
+        "takashima-tobishima-isotsuri-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "nagasaki-matsuura": {
+      "label": "長崎 松浦",
+      "prefecture": "nagasaki",
+      "municipalities": [
+        "松浦市"
+      ],
+      "facilities": [
+        "tsuribori-hamakatsu"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "nagasaki-goto": {
+      "label": "長崎 新上五島（五島列島）",
+      "prefecture": "nagasaki",
+      "municipalities": [
+        "南松浦郡新上五島町"
+      ],
+      "facilities": [
+        "shinkamigoto-sea-fishing-pond"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kumamoto-amakusa": {
+      "label": "熊本 天草・上天草",
+      "prefecture": "kumamoto",
+      "municipalities": [
+        "上天草市",
+        "天草市"
+      ],
+      "facilities": [
+        "amakusa-leisure-land",
+        "amakusa-rakutsuri",
+        "kaijo-tsuribori-tsuriichi"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kumamoto-minamata-ashikita": {
+      "label": "熊本 水俣・芦北",
+      "prefecture": "kumamoto",
+      "municipalities": [
+        "水俣市",
+        "葦北郡芦北町"
+      ],
+      "facilities": [
+        "sea-fishing-land",
+        "yunoko-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "oita-saiki-kamae": {
+      "label": "大分 佐伯・蒲江",
+      "prefecture": "oita",
+      "municipalities": [
+        "佐伯市"
+      ],
+      "facilities": [
+        "kamae-sea-fishing-tsunchaoh"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "miyazaki-kushima": {
+      "label": "宮崎 串間・日南",
+      "prefecture": "miyazaki",
+      "municipalities": [
+        "串間市"
+      ],
+      "facilities": [
+        "shibushi-bay-daikoku-dolphin-land"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kagoshima-city": {
+      "label": "鹿児島 鹿児島市・桜島",
+      "prefecture": "kagoshima",
+      "municipalities": [
+        "鹿児島市"
+      ],
+      "facilities": [
+        "kamoike-sea-fishing-park",
+        "sakurajima-sea-fishing-park"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "kagoshima-amami": {
+      "label": "鹿児島 奄美大島（龍郷）",
+      "prefecture": "kagoshima",
+      "municipalities": [
+        "大島郡龍郷町"
+      ],
+      "facilities": [
+        "amami-sealand"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "okinawa-itoman": {
+      "label": "沖縄 糸満・南部",
+      "prefecture": "okinawa",
+      "municipalities": [
+        "糸満市"
+      ],
+      "facilities": [
+        "itoman-ikada-tsurigu-no-zousan"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    },
+    "okinawa-motobu": {
+      "label": "沖縄 本部・北部",
+      "prefecture": "okinawa",
+      "municipalities": [
+        "国頭郡本部町"
+      ],
+      "facilities": [
+        "motobu-fishing-ikada-umiseikatsu"
+      ],
+      "urls": {
+        "jalan": "",
+        "rakutenTravel": "",
+        "jalanRentacar": "",
+        "jalanActivity": ""
+      }
+    }
+  },
+  "_rakutenAffiliate": {
+    "note": "2026-09-02: 楽天トラベルの宿泊リンクは本方式（楽天アフィリエイト経由）が正式な主経路。VC の MyLink（sid=3758616, pid=892690738/892690727/892690728）は vc_url を無視する古い entry.php（3123756_entry.php）に固定ルーティングされており、実際には一切ディープリンクできないことが判明（2026-09-02、福岡ページで実クリックにより発覚。curlでの JS リダイレクト追跡でも再現・確認済み）。じゃらん（sid=3748070）は custom/mod01 entry.php 経由で vc_url が正しく機能するため、じゃらんnet・じゃらんレンタカーは引き続き VC MyLink を使う",
+    "base": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/",
+    "ut": "eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+    "linkType": "text",
+    "destinationPattern": "https://travel.rakuten.co.jp/<都道府県ローマ字>/",
+    "status": "primary（2026-09-02からVC MyLinkに代えてこちらを使用）"
+  },
+  "_rakutenPackages": {
+    "note": "距離帯別の欠落商材。VC MyLink 経由で生成（HTTP 200 確認済みの遷移先）",
+    "jrPackage": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fpackage%2Fjr%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+    "anaPackage": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fpackage%2Fana%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+    "jalPackage": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fpackage%2Fjal%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+    "highwayBus": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fbus%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9",
+    "rentacar": "https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fcars%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9"
+  },
+  "_vcMyLink": {
+    "note": "ValueCommerce の MyLink は、じゃらん（sid=3748070）では vc_url でリンク先を指定できる（標準タグ・自由テキストでは不可）。pid を固定したまま vc_url を差し替えて量産できる。既存の AffiliateCard.astro が楽天市場検索で使っているのと同じ方式。楽天トラベル（sid=3758616, pid=892690738等）は2026-09-02時点で「HTTP 200確認済み」としていたが誤りで、実際には vc_url を無視する固定エントリーポイントに繋がり機能しない（福岡ページの実クリックで発覚・詳細は travel-asp-profile.json の rakuten-travel を参照）。そのため楽天トラベルは _rakutenAffiliate（楽天アフィリエイト経由）を使用する",
+    "urlPattern": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=<sid>&pid=<pid>&vc_url=<encodeURIComponent(遷移先)>",
+    "merchants": {
+      "rakutenTravel": {
+        "sid": "3758616",
+        "pid": "892690738",
+        "destinationPattern": "https://travel.rakuten.co.jp/<都道府県ローマ字>/",
+        "verified": "使用不可（2026-09-02）。vc_url を無視する固定エントリーポイント（3123756_entry.php）に繋がり、常に https://www.rakuten.ne.jp/ へ落ちて最終的に403になる。代わりに _rakutenAffiliate を使用"
+      },
+      "jalan": {
+        "sid": "3748070",
+        "pid": "892690810",
+        "destinationPattern": "https://www.jalan.net/ikisaki/map/<都道府県ローマ字>/",
+        "slugExceptions": {
+          "osaka": "oosaka",
+          "oita": "ooita"
+        },
+        "verified": "都道府県31件 HTTP 200（2026-09-02）。大阪=oosaka・大分=ooita のみ長音表記"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "travel/jalan-rentacar-hokkaido",
+  "name": "じゃらんレンタカー（北海道キャンペーン）",
+  "brand": "じゃらん",
+  "description": "北海道の海上釣り堀・海釣り施設への遠征に。新千歳空港発など道内のレンタカーをまとめて比較・予約。",
+  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892690710\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892690710\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892690710\" border=\"0\"></a></noscript>",
+  "categories": [
+    "交通",
+    "レンタカー",
+    "北海道"
+  ],
+  "targetFish": [],
+  "methods": [],
+  "isRecommended": false,
+  "image": "/images/travel-access-illustration.svg"
+}

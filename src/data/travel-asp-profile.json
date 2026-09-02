@@ -1,0 +1,1037 @@
+{
+  "_note": "旅行アフィリエイトASPの特性パラメータ。どのASPをどの面に置くか、レンタカーをエリアごとにどれで出すかを一元管理する。実際の着地URLは src/data/travel-area-links.json 側に持つ。",
+  "_fields": {
+    "status": "active=使用中 / active-unused=登録済みだが未使用 / pending-registration=タグ未取得 / broken=タグが無効 / retired=使用しない",
+    "tagKind": "現在JSONに保存されているタグの種別: text=自由テキスト / jsbanner=JSバナー / banner=画像バナー / none=タグなし",
+    "hasTextTag": "自由テキスト（MyLink）タグを保有しているか",
+    "deepLink": "yes=リンク先URL指定が通る実例あり / no=不可を確認済み / area-only=特定地域の専用広告のみ / unverified=未確認",
+    "placement": "inline=本文中 / footer=記事末（読了後）"
+  },
+  "_updated": "2026-09-02",
+  "placementPolicy": {
+    "inline": {
+      "label": "本文中（アクセス・前泊セクション）",
+      "primary": "rakuten-travel",
+      "rationale": "VC の MyLink で楽天トラベルのエリアページへディープリンクでき、着地の摩擦を実際に減らせる。ASPをVCに統一できるため収益管理も一本化される。「行き先が決まった直後」に読む本文中の面に置く"
+    },
+    "footer": {
+      "label": "記事末（読了後）",
+      "primary": "jalan-net",
+      "rationale": "じゃらんはポイント配布・クーポン施策が強く「あとでゆっくり探す」動機と噛み合う。着地がTOPでもクーポン面が受け皿になるため、読了後の面に置く"
+    },
+    "rentacar": {
+      "label": "レンタカー枠（駐車場ありの施設のみ）",
+      "primary": "jalan-mylink",
+      "rationale": "じゃらんレンタカーは MyLink で拠点（空港・新幹線駅）別の検索結果へ直接着地できる。拠点は読者の到着経路そのものなので、遠征記事の文脈と一致する。自車で来るのが前提の都市近郊エリアはレンタカー枠を出さない"
+    }
+  },
+  "asps": {
+    "rakuten-affiliate-travel": {
+      "label": "楽天トラベル（楽天アフィリエイト経由）",
+      "affiliateId": "—（URL生成方式。src/data/travel-area-links.json の _rakutenAffiliate を参照）",
+      "network": "rakuten-affiliate",
+      "genre": "宿泊",
+      "status": "active",
+      "role": "primary-inline",
+      "tagKind": "url",
+      "hasTextTag": true,
+      "deepLink": "yes",
+      "deepLinkNote": "任意の楽天トラベルURLへディープリンクできる経路（2026-09-02 福岡ページで実クリック確認・正常着地）。hb.afl.rakuten.co.jp/hgc/<アフィリID>/?pc=<encodeURIComponent(遷移先)>&link_type=text&ut=<ut> で生成。都道府県ページ31件を再生成し、リダイレクトチェーンの最終着地がすべて travel.rakuten.co.jp の意図した都道府県ページになることを確認済み",
+      "placement": [
+        "inline"
+      ],
+      "reward": "楽天ポイント（貯まる／使える）。楽天経済圏ユーザーに強い",
+      "todo": "travel-area-links.json の prefectureFallback.rakutenTravel / _rakutenPackages を本方式で再生成済み（2026-09-02）",
+      "usedIn": [
+        "GoThere",
+        "ensei-guide",
+        "setouchi-access-guide"
+      ]
+    },
+    "rakuten-travel": {
+      "label": "楽天トラベル（ValueCommerce MyLink・使用不可）",
+      "affiliateId": "travel/rakuten-travel",
+      "network": "valuecommerce",
+      "genre": "宿泊",
+      "status": "broken",
+      "role": "none",
+      "tagKind": "mylink",
+      "hasTextTag": true,
+      "deepLink": "no",
+      "deepLinkNote": "2026-09-02 に「確認済み」としていた内容は誤りだったと判明。福岡ページを実クリックしたところ楽天トラベルのリンクが無効（意図した県ページに着地しない）だったため、curlでJSリダイレクトチェーンを手動追跡して原因を特定：pid=892690738（および freeText 892690727 / rectangle 892690728 も同様）は vc_url を無視する固定エントリーポイント（vcentry2.valuecommerce.ne.jp/cgi-bin/3123756/3123756_entry.php）にルーティングされており、常に https://www.rakuten.ne.jp/ という汎用ページ（最終的に403）に落ちる。以前の「HTTP 200確認」はVCの中間リダイレクトページ（常に200を返す静的JSページ）だけを見ており、その先のJSリダイレクトを追跡していなかったための誤判定。じゃらん（sid=3748070）は custom/mod01 entry.php を使っており vc_url が正しく機能するため、この問題はrakuten-travel固有",
+      "placement": [],
+      "reward": "—",
+      "todo": "使用不可。宿泊リンクは rakuten-affiliate-travel（楽天アフィリエイト経由）に置き換え済み。VC側でこのpidのvc_url対応が修正されない限り再利用しない",
+      "usedIn": [],
+      "pid": {
+        "mylink": "892690738",
+        "freeText": "892690727",
+        "rectangle": "892690728"
+      }
+    },
+    "jalan-net": {
+      "label": "じゃらんnet",
+      "affiliateId": "travel/jalan-net",
+      "network": "valuecommerce",
+      "genre": "宿泊",
+      "status": "active",
+      "role": "primary-footer",
+      "tagKind": "mylink",
+      "hasTextTag": true,
+      "deepLink": "yes",
+      "deepLinkNote": "2026-09-02 更新。標準タグ・自由テキストでは vc_url を持てないが、MyLink（sid=3748070 / pid=892690810）ならリンク先URL指定が可能。遷移先は https://www.jalan.net/ikisaki/map/<都道府県>/ で31件 HTTP 200 確認済み（大阪=oosaka・大分=ooita のみ長音表記）",
+      "placement": [
+        "footer"
+      ],
+      "reward": "ポイント配布・クーポン施策が強く、読了後の「あとで探す」動機と相性が良い。TOP着地でもクーポン面が受け皿になる",
+      "todo": "都道府県31件は travel-area-links.json に生成済み。市区町村レベルのエリアページURLが判明したら areas[].urls.jalan を埋める",
+      "usedIn": [
+        "GoThere",
+        "ensei-guide",
+        "setouchi-access-guide"
+      ],
+      "pid": {
+        "mylink": "892690810",
+        "sid": "3748070",
+        "legacyText": "892569544"
+      }
+    },
+    "jalan-rentacar": {
+      "label": "じゃらんレンタカー",
+      "affiliateId": "travel/jalan-rentacar",
+      "network": "valuecommerce",
+      "genre": "レンタカー",
+      "status": "active",
+      "role": "rentacar-fallback",
+      "tagKind": "mylink",
+      "hasTextTag": true,
+      "deepLink": "yes",
+      "deepLinkNote": "2026-09-02 確定。MyLink（sid=3748070 / pid=892690812）でリンク先URL指定が可能。ただし じゃらんレンタカーの拠点は都道府県ではなく主要空港・主要駅（主に新幹線停車駅）単位で、https://www.jalan.net/rentacar/search/<拠点コード>/plan/?vos=afjlrpvczzzzx00000001 の形になる。拠点コードは空港71件（AIR_Axxx）／新幹線駅105件（EST_Sxxxxxx）を jalan.net/rentacar/airport/ と /station/ から取得",
+      "placement": [
+        "inline",
+        "footer"
+      ],
+      "reward": "ポイント・クーポン。エリア指定は不可",
+      "todo": "rentacarByArea の hub.url をそのまま使う。拠点の妥当性（読者の到着経路と合っているか）は要レビュー",
+      "usedIn": [
+        "GoThere",
+        "ensei-guide",
+        "setouchi-access-guide"
+      ],
+      "pid": {
+        "mylink": "892690812",
+        "sid": "3748070",
+        "legacyFreeText": "892690707"
+      }
+    },
+    "jalan-rentacar-campaign": {
+      "label": "じゃらんレンタカー 地域キャンペーン広告",
+      "affiliateId": "travel/jalan-rentacar-{hokkaido|kyushu|okinawa}",
+      "network": "valuecommerce",
+      "genre": "レンタカー",
+      "status": "active",
+      "role": "rentacar-alternative",
+      "tagKind": "jsbanner",
+      "hasTextTag": false,
+      "deepLink": "area-only",
+      "deepLinkNote": "北海道・九州・沖縄の3地域の専用広告タグを取得し、affiliates/travel/ に登録済み（2026-09-02）。画像バナー型のため本文中よりカード／セクション末での使用が向く",
+      "placement": [
+        "inline"
+      ],
+      "reward": "地域限定キャンペーン",
+      "todo": "MyLink で拠点別ディープリンクができるようになったため、通常は jalan-mylink を使う。地域キャンペーンの訴求を優先したい場合の代替として3タグを保持",
+      "usedIn": [],
+      "pid": {
+        "hokkaido": "892690710",
+        "kyushu": "892690712",
+        "okinawa": "892690715"
+      }
+    },
+    "rakuten-rentacar": {
+      "label": "楽天トラベル レンタカー",
+      "affiliateId": "travel/rakuten-rentacar",
+      "network": "valuecommerce",
+      "genre": "レンタカー",
+      "status": "standby",
+      "role": "rentacar-generic",
+      "tagKind": "text",
+      "hasTextTag": true,
+      "deepLink": "no",
+      "deepLinkNote": "自由テキストタグが存在する（pid=892690720 / 2026-09-02 取得）。vc_url は含まれないため着地は楽天トラベル レンタカーのサービストップ。当初「単独プログラムが存在しない」と判断したが誤りで、じゃらんレンタカーと同条件の選択肢として使える",
+      "placement": [
+        "inline"
+      ],
+      "reward": "楽天ポイント（貯まる／使える）",
+      "todo": "じゃらんレンタカーが拠点別ディープリンクに対応したため、当面は使わない",
+      "usedIn": [],
+      "pid": "892690720"
+    },
+    "jalan-activity": {
+      "label": "じゃらん 遊び・体験予約",
+      "affiliateId": "travel/jalan-activity",
+      "network": "valuecommerce",
+      "genre": "観光・アクティビティ",
+      "status": "active-unused",
+      "role": "tourism",
+      "tagKind": "jsbanner",
+      "hasTextTag": false,
+      "deepLink": "unverified",
+      "deepLinkNote": "未検証",
+      "placement": [
+        "footer"
+      ],
+      "reward": "クーポン配布。ネット予約率が高い",
+      "todo": "レポートが単価インパクト最大とする〈宿泊＋周辺観光〉の観光側。登録済みだが全記事で未使用。自由テキストタグを取得して周辺観光セクションに投入する",
+      "usedIn": []
+    },
+    "tabilmo": {
+      "label": "TABILMO（一棟貸し・ヴィラ）",
+      "affiliateId": "travel/tabilmo",
+      "network": "a8",
+      "genre": "宿泊（一棟貸し）",
+      "status": "active",
+      "role": "secondary-lodging",
+      "tagKind": "banner",
+      "hasTextTag": false,
+      "deepLink": "unverified",
+      "deepLinkNote": "A8。エリア別URLへのアフィリパラメータ付与可否は未検証（既存TODO P2）",
+      "placement": [
+        "inline"
+      ],
+      "reward": "3名以上・グループ／一棟貸し訴求。単価が高い",
+      "todo": "JSONが文字化けしている（name/description/categories が全滅）。まず文字コード修正。効果測定はP1のクリック実績待ち",
+      "usedIn": [
+        "ensei-guide",
+        "tabilmo-villa-stay-guide"
+      ]
+    },
+    "yahoo-travel": {
+      "label": "Yahoo!トラベル",
+      "affiliateId": "travel/yahoo-travel",
+      "network": "valuecommerce",
+      "genre": "宿泊",
+      "status": "active-unused",
+      "role": "tertiary-lodging",
+      "tagKind": "jsbanner",
+      "hasTextTag": false,
+      "deepLink": "unverified",
+      "deepLinkNote": "未検証",
+      "placement": [
+        "footer"
+      ],
+      "reward": "PayPayポイント",
+      "todo": "宿泊は楽天(本文)＋じゃらん(記事末)の2枚で足りるため優先度は低い。3枚目を出すと選択肢過多でCTRが落ちるリスクがあり、当面は保留",
+      "usedIn": []
+    },
+    "etc-union": {
+      "label": "ETC協同組合 ETCカード",
+      "affiliateId": "travel/etc-union",
+      "network": "a8",
+      "genre": "高速・移動",
+      "status": "active-unused",
+      "role": "niche",
+      "tagKind": "banner",
+      "hasTextTag": false,
+      "deepLink": "unverified",
+      "deepLinkNote": "未検証",
+      "placement": [
+        "footer"
+      ],
+      "reward": "法人・個人事業主向けETCカード",
+      "todo": "読者層（釣行者一般）とターゲット（自営業のカード審査）がズレており、記事文脈に馴染まない。近距離＝車移動エリアの記事末に限定して試すか、外すかを判断",
+      "usedIn": []
+    },
+    "rakuten-insurance": {
+      "label": "楽天 国内旅行保険",
+      "affiliateId": "travel/rakuten-insurance",
+      "network": "valuecommerce",
+      "genre": "保険",
+      "status": "active-unused",
+      "role": "reference",
+      "tagKind": "text",
+      "hasTextTag": true,
+      "deepLink": "yes",
+      "deepLinkNote": "サイト内で唯一 vc_url が実際に発行されている実例。楽天系プログラムでリンク先URL指定が通る証拠として参照価値がある",
+      "placement": [
+        "footer"
+      ],
+      "reward": "1泊2日100円〜",
+      "todo": "商材としての優先度は低いが、タグの取得手順を再現する参照実装として残す",
+      "usedIn": []
+    },
+    "his": {
+      "label": "HIS 国内旅行・ツアー",
+      "affiliateId": "travel/his",
+      "network": "valuecommerce",
+      "genre": "ツアー",
+      "status": "retired",
+      "role": "none",
+      "tagKind": "jsbanner",
+      "hasTextTag": false,
+      "deepLink": "unverified",
+      "deepLinkNote": "—",
+      "placement": [],
+      "reward": "—",
+      "todo": "除外（2026-09-02判断）。パッケージツアー主体で「釣り堀へ行く」動線と商材の粒度が合わず、全記事で未使用のまま。JSONは残すが status:retired として新規配置しない",
+      "usedIn": []
+    },
+    "rakuten-travel-rectangle": {
+      "label": "楽天トラベル（レクタングルバナー）",
+      "affiliateId": "travel/rakuten-travel-rectangle",
+      "network": "valuecommerce",
+      "genre": "宿泊",
+      "status": "active-unused",
+      "role": "banner",
+      "tagKind": "jsbanner",
+      "hasTextTag": false,
+      "pid": "892690728",
+      "deepLink": "no",
+      "deepLinkNote": "楽天トラベルのレクタングル型バナー。着地はTOP固定",
+      "placement": [
+        "footer"
+      ],
+      "reward": "楽天ポイント",
+      "todo": "本文中は自由テキスト（rakuten-travel）を使う。バナーは記事末の面で試す場合のみ",
+      "usedIn": []
+    }
+  },
+  "rentacarOptions": {
+    "jalan-mylink": "じゃらんレンタカー MyLink で出発拠点（空港・新幹線駅）の検索結果へディープリンク。hub に拠点名とコードを持つ",
+    "jalan-campaign": "じゃらんレンタカー 地域キャンペーン広告（北海道・沖縄・九州のみ。MyLink より訴求を優先したい場合の代替）",
+    "none": "レンタカー枠を出さない（自車で来るのが前提の都市近郊、または公共交通・送迎が現実的）"
+  },
+  "rentacarByArea": {
+    "hokkaido-tomakomai": {
+      "label": "北海道 苫小牧",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新千歳空港",
+          "code": "AIR_A005",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A005%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "aomori-asamushi": {
+      "label": "青森 浅虫・青森市",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "青森空港",
+          "code": "AIR_A032",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A032%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "miyagi-sendai": {
+      "label": "宮城 仙台",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "仙台駅",
+          "code": "EST_S990411",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990411%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "yamagata-tsuruoka": {
+      "label": "山形 鶴岡・由良",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "庄内空港",
+          "code": "AIR_A035",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A035%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "chiba-kamogawa": {
+      "label": "千葉 鴨川・南房総",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "東京駅",
+          "code": "EST_S990495",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990495%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "chiba-ichihara": {
+      "label": "千葉 市原・五井",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "東京駅",
+          "code": "EST_S990495",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990495%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kanagawa-miura": {
+      "label": "神奈川 三浦・城ヶ島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新横浜駅",
+          "code": "EST_S990396",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990396%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "niigata-joetsu": {
+      "label": "新潟 上越・直江津",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "上越妙高駅",
+          "code": "EST_S010122",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S010122%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "niigata-seiro": {
+      "label": "新潟 聖籠・新潟東港",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新潟空港",
+          "code": "AIR_A010",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A010%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "toyama-kurobe": {
+      "label": "富山 黒部",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "黒部宇奈月温泉駅",
+          "code": "EST_S046774",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S046774%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "ishikawa-noto": {
+      "label": "石川 能登・七尾",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "能登空港",
+          "code": "AIR_A038",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A038%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "fukui-mihama-wakasa": {
+      "label": "福井 美浜・若狭（日向/久々子）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "敦賀駅",
+          "code": "EST_S990480",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990480%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "fukui-obama": {
+      "label": "福井 小浜",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "敦賀駅",
+          "code": "EST_S990480",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990480%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "fukui-ohi-takahama": {
+      "label": "福井 おおい・高浜",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "敦賀駅",
+          "code": "EST_S990480",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990480%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "fukui-tsuruga": {
+      "label": "福井 敦賀",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "敦賀駅",
+          "code": "EST_S990480",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990480%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "shizuoka-atami": {
+      "label": "静岡 熱海・網代",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "熱海駅",
+          "code": "EST_S990027",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990027%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "shizuoka-nishiizu": {
+      "label": "静岡 西伊豆・沼津（土肥/西浦）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "三島駅",
+          "code": "EST_S990689",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990689%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "shizuoka-hamanako": {
+      "label": "静岡 浜名湖・湖西",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "浜松駅",
+          "code": "EST_S990600",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990600%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "aichi-chita": {
+      "label": "愛知 知多半島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "名古屋駅",
+          "code": "EST_S990538",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990538%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "mie-minamiise": {
+      "label": "三重 南伊勢（迫間浦/礫浦ほか）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "名古屋駅",
+          "code": "EST_S990538",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990538%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "mie-toba": {
+      "label": "三重 鳥羽（浦村/千賀/相差）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "名古屋駅",
+          "code": "EST_S990538",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990538%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "mie-shima": {
+      "label": "三重 志摩・賢島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "名古屋駅",
+          "code": "EST_S990538",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990538%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "mie-owase-kihoku": {
+      "label": "三重 尾鷲・紀北",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "名古屋駅",
+          "code": "EST_S990538",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990538%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "mie-matsusaka": {
+      "label": "三重 松阪",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "名古屋駅",
+          "code": "EST_S990538",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990538%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kyoto-maizuru": {
+      "label": "京都 舞鶴",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "京都駅",
+          "code": "EST_S990241",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990241%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kyoto-miyazu": {
+      "label": "京都 宮津・天橋立",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "京都駅",
+          "code": "EST_S990241",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990241%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "osaka-city": {
+      "label": "大阪 大阪市（南港）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新大阪駅",
+          "code": "EST_S990365",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990365%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "osaka-misaki-sennan": {
+      "label": "大阪 岬町・泉南（深日/多奈川/りんくう）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "関西国際空港",
+          "code": "AIR_A003",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A003%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "hyogo-kobe": {
+      "label": "兵庫 神戸（垂水/須磨）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新神戸駅",
+          "code": "EST_S990372",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990372%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "hyogo-amagasaki": {
+      "label": "兵庫 尼崎",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新大阪駅",
+          "code": "EST_S990365",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990365%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "hyogo-akashi": {
+      "label": "兵庫 明石",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "西明石駅",
+          "code": "EST_S990549",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990549%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "hyogo-himeji": {
+      "label": "兵庫 姫路（的形/飾磨/家島）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "姫路駅",
+          "code": "EST_S990632",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990632%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "hyogo-awaji-minami": {
+      "label": "兵庫 南あわじ（淡路島南部）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新神戸駅",
+          "code": "EST_S990372",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990372%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "wakayama-city": {
+      "label": "和歌山 和歌山市（マリーナシティ/田野）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "関西国際空港",
+          "code": "AIR_A003",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A003%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "wakayama-arida": {
+      "label": "和歌山 有田・湯浅・広川",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "関西国際空港",
+          "code": "AIR_A003",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A003%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "wakayama-yura": {
+      "label": "和歌山 日高・由良",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "関西国際空港",
+          "code": "AIR_A003",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A003%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "wakayama-shirahama": {
+      "label": "和歌山 白浜",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "南紀白浜空港",
+          "code": "AIR_A043",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A043%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "hiroshima-otake": {
+      "label": "広島 大竹・阿多田島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "広島空港",
+          "code": "AIR_A012",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A012%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "hiroshima-onomichi": {
+      "label": "広島 尾道・瀬戸田（生口島）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新尾道駅",
+          "code": "EST_S026410",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S026410%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "yamaguchi-shimonoseki": {
+      "label": "山口 下関",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新下関駅",
+          "code": "EST_S990375",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990375%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "yamaguchi-hikari": {
+      "label": "山口 光・周南",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "徳山駅",
+          "code": "EST_S990502",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990502%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "yamaguchi-hagi": {
+      "label": "山口 萩・須佐",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "新山口駅",
+          "code": "EST_S990150",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990150%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        },
+        {
+          "name": "石見空港",
+          "code": "AIR_A047",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A047%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kagawa-naoshima": {
+      "label": "香川 直島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "岡山駅",
+          "code": "EST_S990146",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S990146%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kagawa-shodoshima": {
+      "label": "香川 小豆島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "高松空港",
+          "code": "AIR_A013",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A013%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kagawa-higashikagawa": {
+      "label": "香川 東かがわ・引田",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "徳島空港",
+          "code": "AIR_A085",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A085%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "tokushima-city": {
+      "label": "徳島 徳島市・沖洲",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "徳島空港",
+          "code": "AIR_A085",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A085%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "tokushima-kaiyo": {
+      "label": "徳島 海陽・宍喰",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "徳島空港",
+          "code": "AIR_A085",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A085%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "ehime-imabari-omishima": {
+      "label": "愛媛 今治・大三島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "松山空港",
+          "code": "AIR_A014",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A014%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kochi-susaki": {
+      "label": "高知 須崎・浦ノ内湾",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "高知空港",
+          "code": "AIR_A015",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A015%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "ehime-yawatahama": {
+      "label": "愛媛 八幡浜",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "松山空港",
+          "code": "AIR_A014",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A014%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "fukuoka-city": {
+      "label": "福岡 福岡市（西区・小田）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "福岡空港",
+          "code": "AIR_A016",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A016%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "fukuoka-kitakyushu": {
+      "label": "福岡 北九州（若松/小倉）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "北九州空港",
+          "code": "AIR_A017",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A017%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "fukuoka-munakata": {
+      "label": "福岡 宗像・大島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "福岡空港",
+          "code": "AIR_A016",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A016%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "saga-genkai": {
+      "label": "佐賀 玄海・唐津",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "福岡空港",
+          "code": "AIR_A016",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A016%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "nagasaki-sasebo": {
+      "label": "長崎 佐世保（鹿町町）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "長崎空港",
+          "code": "AIR_A018",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A018%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "nagasaki-city": {
+      "label": "長崎 長崎市・高島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "長崎駅",
+          "code": "EST_S018026",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S018026%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "nagasaki-matsuura": {
+      "label": "長崎 松浦",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "長崎空港",
+          "code": "AIR_A018",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A018%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "nagasaki-goto": {
+      "label": "長崎 新上五島（五島列島）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "福江空港",
+          "code": "AIR_A090",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A090%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kumamoto-amakusa": {
+      "label": "熊本 天草・上天草",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "天草空港",
+          "code": "AIR_A075",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A075%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kumamoto-minamata-ashikita": {
+      "label": "熊本 水俣・芦北",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "出水駅",
+          "code": "EST_S044558",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FEST_S044558%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "oita-saiki-kamae": {
+      "label": "大分 佐伯・蒲江",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "大分空港",
+          "code": "AIR_A020",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A020%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "miyazaki-kushima": {
+      "label": "宮崎 串間・日南",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "宮崎空港",
+          "code": "AIR_A021",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A021%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kagoshima-city": {
+      "label": "鹿児島 鹿児島市・桜島",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "鹿児島空港",
+          "code": "AIR_A022",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A022%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "kagoshima-amami": {
+      "label": "鹿児島 奄美大島（龍郷）",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "奄美空港",
+          "code": "AIR_A053",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A053%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "okinawa-itoman": {
+      "label": "沖縄 糸満・南部",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "那覇空港",
+          "code": "AIR_A023",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A023%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    },
+    "okinawa-motobu": {
+      "label": "沖縄 本部・北部",
+      "option": "jalan-mylink",
+      "hubs": [
+        {
+          "name": "那覇空港",
+          "code": "AIR_A023",
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3748070&pid=892690812&vc_url=https%3A%2F%2Fwww.jalan.net%2Frentacar%2Fsearch%2FAIR_A023%2Fplan%2F%3Fvos%3Dafjlrpvczzzzx00000001"
+        }
+      ]
+    }
+  },
+  "_finding": "2026-09-02 確定：ValueCommerce の MyLink なら じゃらんnet・じゃらんレンタカー・楽天トラベルの3つともリンク先URL指定が可能（いずれも実機発行で確認）。標準タグ・自由テキストでは不可という当初の判定は MyLink には当てはまらない。これで宿泊（本文中＝楽天トラベル／記事末＝じゃらんnet）は都道府県ページへ、レンタカーは出発拠点（空港・新幹線駅）の検索結果へ、それぞれディープリンクできる。文脈テキストで補う方式は不要になった"
+}

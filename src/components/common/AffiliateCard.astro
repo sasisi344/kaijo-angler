@@ -6,9 +6,25 @@ interface Props {
   product?: CollectionEntry<"affiliates">["data"];
   id?: string;
   isVertical?: boolean;
+  /** クリック計測用: 宿泊／レンタカー／観光／物販の区分。未指定なら id から推定する */
+  linkType?: string;
+  /** クリック計測用: 設置面（例: facility-article, access-guide）。呼び出し側で明示する */
+  placement?: string;
 }
 
-const { product: initialProduct, id, isVertical = false } = Astro.props;
+const { product: initialProduct, id, isVertical = false, linkType, placement = "" } = Astro.props;
+const trackId = id || initialProduct?.id || "";
+
+function inferLinkType(productId: string): string {
+  if (productId.startsWith("travel/")) {
+    if (productId.includes("rentacar")) return "rentacar";
+    if (productId.includes("activity")) return "tourism";
+    return "lodging";
+  }
+  return "goods";
+}
+
+const trackLinkType = linkType || inferLinkType(trackId);
 
 let product = initialProduct;
 
@@ -79,7 +95,7 @@ if (product) {
   </div>
 ) : (
   <div class:list={["not-prose group relative flex gap-6 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-xl overflow-hidden my-8", isVertical ? "flex-col" : "flex-col sm:flex-row"]}>
-    <div class:list={["shrink-0 w-full h-48 rounded-xl overflow-hidden bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center p-2", isVertical ? "" : "sm:w-48"]}>
+    <div class:list={["shrink-0 w-full rounded-xl overflow-hidden bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center p-2", isVertical ? "aspect-square max-w-sm mx-auto" : "h-48 sm:w-48"]}>
       {finalImage ? (
         <img 
           src={finalImage} 
@@ -146,6 +162,10 @@ if (product) {
             href={finalLink}
             target="_blank"
             rel="noopener noreferrer nofollow"
+            data-affiliatecard-link
+            data-affiliatecard-id={trackId}
+            data-affiliatecard-link-type={trackLinkType}
+            data-affiliatecard-placement={placement}
             class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors text-sm shadow-md hover:shadow-lg active:translate-y-0.5 no-underline"
           >
             公式サイトで詳細を見る
@@ -157,26 +177,41 @@ if (product) {
           </a>
         ) : (
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <a 
-              href={finalLink || amazonSearch} 
-              target="_blank" 
+            <a
+              href={finalLink || amazonSearch}
+              target="_blank"
               rel="noopener noreferrer"
+              data-affiliatecard-link
+              data-affiliatecard-id={trackId}
+              data-affiliatecard-link-type={trackLinkType}
+              data-affiliatecard-placement={placement}
+              data-affiliatecard-shop="amazon"
               class="inline-flex items-center justify-center px-4 py-2 bg-neutral-800 dark:bg-black hover:bg-neutral-900 text-white font-bold rounded text-xs transition-colors no-underline"
             >
               Amazon
             </a>
-            <a 
-              href={product.rakuten_link || rakutenSearch} 
-              target="_blank" 
+            <a
+              href={product.rakuten_link || rakutenSearch}
+              target="_blank"
               rel="noopener noreferrer"
+              data-affiliatecard-link
+              data-affiliatecard-id={trackId}
+              data-affiliatecard-link-type={trackLinkType}
+              data-affiliatecard-placement={placement}
+              data-affiliatecard-shop="rakuten"
               class="inline-flex items-center justify-center px-4 py-2 bg-[#bf0000] hover:bg-[#a00000] text-white font-bold rounded text-xs transition-colors no-underline"
             >
               楽天
             </a>
-            <a 
-              href={product.yahoo_link || yahooSearch} 
-              target="_blank" 
+            <a
+              href={product.yahoo_link || yahooSearch}
+              target="_blank"
               rel="noopener noreferrer"
+              data-affiliatecard-link
+              data-affiliatecard-id={trackId}
+              data-affiliatecard-link-type={trackLinkType}
+              data-affiliatecard-placement={placement}
+              data-affiliatecard-shop="yahoo"
               class="inline-flex items-center justify-center px-4 py-2 bg-[#ff0033] hover:bg-[#e6002e] text-white font-bold rounded text-xs transition-colors no-underline"
             >
               Yahoo!
@@ -187,3 +222,21 @@ if (product) {
     </div>
   </div>
 )}
+
+<script is:inline>
+  if (!window.__affiliatecardTrackingInit) {
+    window.__affiliatecardTrackingInit = true;
+    document.addEventListener('click', function (e) {
+      const el = e.target.closest('[data-affiliatecard-link]');
+      if (!el) return;
+      if (typeof gtag === 'function') {
+        gtag('event', 'affiliatecard_click', {
+          affiliate_id: el.dataset.affiliatecardId || '',
+          link_type: el.dataset.affiliatecardLinkType || '',
+          placement: el.dataset.affiliatecardPlacement || '',
+          shop: el.dataset.affiliatecardShop || '',
+        });
+      }
+    });
+  }
+</script>

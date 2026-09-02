@@ -1,0 +1,13 @@
+{
+  "id": "travel/rakuten-highway-bus",
+  "name": "楽天トラベル 高速バス予約",
+  "brand": "Rakuten",
+  "description": "全国の高速バスをまとめて比較・予約。新幹線・飛行機より費用を抑えたい近距離〜中距離の移動、車を持たない読者の次善策として便利です。",
+  "html": "<a href=\"https://hb.afl.rakuten.co.jp/hgc/15850eb7.530af453.15850eb8.94e2ce58/?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2Fbus%2F&link_type=text&ut=eyJwYWdlIjoidXJsIiwidHlwZSI6InRleHQiLCJjb2wiOjF9\" rel=\"nofollow\">高速バスを楽天トラベルで探す</a>",
+  "image": "/images/travel-access-illustration.svg",
+  "categories": [
+    "交通",
+    "旅行"
+  ],
+  "isRecommended": true
+}

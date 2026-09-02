@@ -1,0 +1,16 @@
+{
+  "id": "travel/jalan-rentacar-kyushu",
+  "name": "じゃらんレンタカー（九州キャンペーン）",
+  "brand": "じゃらん",
+  "description": "九州の海上釣り堀・海釣り施設への遠征に。福岡・熊本・鹿児島など九州各地のレンタカーを比較・予約。",
+  "html": "<script language=\"javascript\" src=\"//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=3758616&pid=892690712\"></script><noscript><a href=\"//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3758616&pid=892690712\" rel=\"nofollow\"><img src=\"//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3758616&pid=892690712\" border=\"0\"></a></noscript>",
+  "categories": [
+    "交通",
+    "レンタカー",
+    "九州"
+  ],
+  "targetFish": [],
+  "methods": [],
+  "isRecommended": false,
+  "image": "/images/travel-access-illustration.svg"
+}

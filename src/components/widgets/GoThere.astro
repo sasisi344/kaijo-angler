@@ -1,5 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
+import travelAreaLinks from '~/data/travel-area-links.json';
+import travelAspProfile from '~/data/travel-asp-profile.json';
 
 interface Props {
   facilityId: string;
@@ -13,6 +15,7 @@ if (!facility) return;
 const lat     = facility.data.google_maps?.latitude;
 const lng     = facility.data.google_maps?.longitude;
 const parking = facility.data.facility_details?.amenities?.parking ?? '';
+const prefecture = facility.data.prefecture ?? '';
 
 const hasLatLng  = lat != null && lng != null;
 const hasParking = parking !== 'なし' && parking.trim() !== '';
@@ -21,20 +24,31 @@ const mapsUrl = hasLatLng
   ? `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`
   : null;
 
-function extractVcLink(html: string): string {
-  const m = html.match(/href="(\/\/[^"]+)"/);
-  return m ? 'https:' + m[1] : '';
-}
+// facilityId は "center-japan/aichi/xxx" のような content collection の完全パス。
+// travel-area-links.json の areas[].facilities はスラッグ（末尾セグメント）のみを持つ。
+const facilitySlug = facilityId.split('/').pop() ?? facilityId;
 
-const [jalanEntry, rakutenEntry, rentacarEntry] = await Promise.all([
-  getEntry('affiliates', 'travel/jalan-net'),
-  getEntry('affiliates', 'travel/rakuten-travel'),
-  getEntry('affiliates', 'travel/jalan-rentacar'),
-]);
+const areaEntry = Object.entries(travelAreaLinks.areas as Record<string, any>).find(
+  ([, area]) => area.facilities.includes(facilitySlug)
+);
+const areaKey  = areaEntry?.[0] ?? '';
+const areaUrls = areaEntry?.[1]?.urls;
 
-const jalanLink    = jalanEntry?.data.html    ? extractVcLink(jalanEntry.data.html)    : '';
-const rakutenLink  = rakutenEntry?.data.html  ? extractVcLink(rakutenEntry.data.html)  : '';
-const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data.html) : '';
+const prefectureUrls = (travelAreaLinks.prefectureFallback as Record<string, any>)[prefecture];
+
+// 三大都市圏（近隣・日帰り圏）の都道府県では宿泊訴求を出さない。それ以外（遠方）は前泊を主役として先頭に出す
+const isNearMetro = (travelAreaLinks.metroPrefectures?.list ?? []).includes(prefecture);
+const isFar = prefecture !== '' && !isNearMetro;
+
+const jalanLink   = isNearMetro ? '' : areaUrls?.jalan         || prefectureUrls?.jalan         || '';
+const rakutenLink = isNearMetro ? '' : areaUrls?.rakutenTravel || prefectureUrls?.rakutenTravel || '';
+const hasLodging  = Boolean(jalanLink || rakutenLink);
+
+const rentacarArea = areaKey
+  ? (travelAspProfile.rentacarByArea as Record<string, any>)[areaKey]
+  : undefined;
+const rentacarHubs: { name: string; code: string; url: string }[] =
+  rentacarArea?.option === 'jalan-mylink' ? (rentacarArea.hubs ?? []) : [];
 ---
 
 <div class="not-prose my-8 rounded-2xl border border-sky-200 dark:border-slate-700 bg-sky-50 dark:bg-slate-800/60 overflow-hidden">
@@ -56,8 +70,11 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
         rel="noopener noreferrer"
         data-gothere-link
         data-gothere-facility={facilityId}
+        data-gothere-area={areaKey}
         data-gothere-type="maps"
-        class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-white dark:bg-slate-900 border border-sky-300 dark:border-slate-600 text-sky-700 dark:text-sky-300 font-bold text-sm hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors no-underline shadow-sm"
+        data-gothere-link-type="access"
+        data-gothere-placement="facility-article"
+        class:list={["flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-white dark:bg-slate-900 border border-sky-300 dark:border-slate-600 text-sky-700 dark:text-sky-300 font-bold text-sm hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors no-underline shadow-sm", isFar ? "order-2" : "order-1"]}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="3 11 22 2 13 21 11 13 3 11"/>
@@ -71,8 +88,11 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
       </a>
     )}
 
-    <div>
-      <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">宿泊を予約する</p>
+    {hasLodging && (
+    <div class:list={[isFar ? "order-1" : "order-2"]}>
+      <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+        {isFar ? '宿泊を予約する（前泊がおすすめ）' : '宿泊を予約する'}
+      </p>
       <div class="grid grid-cols-2 gap-2">
         {jalanLink && (
           <a
@@ -81,7 +101,10 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
             rel="noopener noreferrer nofollow"
             data-gothere-link
             data-gothere-facility={facilityId}
+            data-gothere-area={areaKey}
             data-gothere-type="jalan"
+            data-gothere-link-type="lodging"
+            data-gothere-placement="facility-article"
             class="flex items-center justify-center py-2.5 px-3 rounded-lg bg-[#e60012] hover:bg-[#c4000f] text-white font-bold text-sm transition-colors no-underline"
           >
             じゃらんnet
@@ -94,7 +117,10 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
             rel="noopener noreferrer nofollow"
             data-gothere-link
             data-gothere-facility={facilityId}
+            data-gothere-area={areaKey}
             data-gothere-type="rakuten"
+            data-gothere-link-type="lodging"
+            data-gothere-placement="facility-article"
             class="flex items-center justify-center py-2.5 px-3 rounded-lg bg-[#bf0000] hover:bg-[#a00000] text-white font-bold text-sm transition-colors no-underline"
           >
             楽天トラベル
@@ -102,27 +128,35 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
         )}
       </div>
     </div>
+    )}
 
-    {hasParking && rentacarLink && (
-      <div>
+    {hasParking && rentacarHubs.length > 0 && (
+      <div class="order-3">
         <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">レンタカーを探す</p>
-        <a
-          href={rentacarLink}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          data-gothere-link
-          data-gothere-facility={facilityId}
-          data-gothere-type="rentacar"
-          class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-slate-700 hover:bg-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500 text-white font-bold text-sm transition-colors no-underline w-full"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 17H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2Z"/>
-            <path d="m3 9 2-4h14l2 4"/>
-            <circle cx="7.5" cy="17" r="1.5"/>
-            <circle cx="16.5" cy="17" r="1.5"/>
-          </svg>
-          じゃらんレンタカーで探す
-        </a>
+        <div class="flex flex-col gap-2">
+          {rentacarHubs.map((hub) => (
+            <a
+              href={hub.url}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              data-gothere-link
+              data-gothere-facility={facilityId}
+              data-gothere-area={areaKey}
+              data-gothere-type="rentacar"
+              data-gothere-link-type="rentacar"
+              data-gothere-placement="facility-article"
+              class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-slate-700 hover:bg-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500 text-white font-bold text-sm transition-colors no-underline w-full"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 17H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2Z"/>
+                <path d="m3 9 2-4h14l2 4"/>
+                <circle cx="7.5" cy="17" r="1.5"/>
+                <circle cx="16.5" cy="17" r="1.5"/>
+              </svg>
+              じゃらんレンタカーで探す（{hub.name}）
+            </a>
+          ))}
+        </div>
       </div>
     )}
 
@@ -138,7 +172,10 @@ const rentacarLink = rentacarEntry?.data.html ? extractVcLink(rentacarEntry.data
       if (typeof gtag === 'function') {
         gtag('event', 'gothere_click', {
           facility_id: el.dataset.gothereFacility || '',
-          link_type: el.dataset.gothereType || '',
+          asp_type: el.dataset.gothereType || '',
+          link_type: el.dataset.gothereLinkType || '',
+          area: el.dataset.gothereArea || '',
+          placement: el.dataset.gotherePlacement || '',
         });
       }
     });
