@@ -87,6 +87,7 @@ let facilityBreadcrumbs: ReturnType<typeof getFacilityBreadcrumbs> | undefined;
 let facilityJsonLdImageUrl: string | undefined;
 let subItems: { label: string; href: string }[] = [];
 let facilityCanonical = "";
+let image: ImageMetadata | string | undefined;
 
 if (type === "facility") {
   const rendered = await render(post);
@@ -98,7 +99,7 @@ if (type === "facility") {
   );
   const url = getCanonical(`/fishing-facility/${facilitySlug}`);
   facilityCanonical = String(url);
-  const image = (await findImage(post.data.image || post.data.featureimage)) as
+  image = (await findImage(post.data.image || post.data.featureimage)) as
     | ImageMetadata
     | string
     | undefined;
@@ -246,7 +247,15 @@ if (type === "facility") {
           breadcrumbs={facilityBreadcrumbs ?? []}
         />
         <BreadcrumbNav items={facilityBreadcrumbs ?? []} />
-        <Hero tagline={post.data.category} title={post.data.title}>
+        <Hero
+          tagline={post.data.category}
+          title={post.data.title}
+          image={
+            post.data.image || post.data.featureimage
+              ? { src: post.data.image || post.data.featureimage, alt: post.data.title }
+              : undefined
+          }
+        >
           <Fragment slot="subtitle">{post.data.description}</Fragment>
         </Hero>
 

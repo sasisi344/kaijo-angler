@@ -26,33 +26,29 @@
 
 `travel-task.md` 2-3で「記事ごとに文脈が異なるため一括スクリプト化が難しい」として保留されていた項目。現在は全113本とも記事末尾（アクセス情報／FAQ直後）の1箇所のみ設置。
 
-- [ ] 中盤（施設紹介・料金セクションの後など）に2箇所目を置く価値があるか、GA4の`gothere_click`実績（設置面別）が出そろってから判断する
+- [ ] **[[weekly-task]]の9月第3週PDCA（2026-09-14〜09-20）へ判断を移動**。GA4の`gothere_click`実績（設置面別）が出そろってから、中盤（施設紹介・料金セクションの後など）に2箇所目を置く価値があるか判断する
 - [ ] 判断材料が揃うまでは着手しない。位置決めは記事ごとの手動判断になる見込みが高く、スクリプト一括処理は不向き
 
 ## 2. Geolocation API による出発地の自動取得（任意）
 
 `go-there-phase1.md` Phase 2持ち越し項目。ブラウザのGeolocationで読者の現在地を取得し、出発地別の「おすすめの行き方」を自動表示する案。
 
-- [ ] 費用対効果が不明。まずはアクセスガイド記事（手動選択式）のクリック実績を見て、自動化する価値があるか判断する
+- [ ] **[[weekly-task]]の9月第3週PDCA（2026-09-14〜09-20）へ判断を移動**。まずはアクセスガイド記事（手動選択式）のクリック実績を見て、自動化する価値があるか判断する
 - [ ] 実装する場合の論点：位置情報取得の同意UI、取得失敗時のフォールバック（現状の手動選択式のまま）、プライバシーポリシーへの追記要否
 
-## 3. フェリー必須フラグ（施設frontmatter拡張）
+## 3. フェリー必須フラグ（施設frontmatter拡張）— 完了・見送りで確定（2026-09-03）
 
-`go-there-phase1.md` Phase 2持ち越し項目。離島施設（例：小豆島・五島列島・奄美大島・篠島等）はフェリー必須だが、現状は本文の手書き記述のみで構造化されていない。
+離島施設（フェリー言及13件: `nanko-fishing-park`／`sakurajima-sea-fishing-park`／`takashima-tobishima-isotsuri-park`／`shinkamigoto-sea-fishing-pond`／`shibushi-bay-daikoku-dolphin-land`／`shodoshima-furusatomura-fishing-pier`／`naoshima-fishing-park`／`kaijo-tsuribori-tairyomaru`／`kaijo-tsuribori-kaiyu`／`umingu-oshima`／`fishing-park-toi`／`tsuruga-city-sea-fishing-park`／`shinojima-tsuri-tengoku`）を洗い出し済み。frontmatterへの`access_notes.ferry_required`フラグ追加は将来の検索・フィルタリング機能向けのみで現状のGoThere表示には不要と判断し、**見送りで確定**（再提案があるまで着手しない）。
 
-- [ ] 対象施設の洗い出し（本文で「渡船」「フェリー」「高速船」に言及している施設を`grep`で抽出）
-- [ ] frontmatnterに`access_notes.ferry_required: true`等のフラグを追加する価値があるか検討。用途は主に将来的な検索・フィルタリング機能向けで、現状のGoThere表示には必須ではない
-- [ ] 優先度低。3-1（施設→アクセスガイド内部リンク）で離島施設は個別に文脈確認済みのため、当面は現状維持でよい
+## 4. GoThere/AffiliateCard クリック実績の定点観測 — 初回計測完了（2026-09-03）
 
-## 4. GoThere/AffiliateCard クリック実績の定点観測
+GA4（プロパティ「海の上のアングラー」497707830）で初回計測を確認。過去28日間（8/6〜9/2）で`gothere_click` 7件（ユーザー2人）・`affiliatecard_click` 3件（ユーザー1人）を検出。イベント自体は計測できているが、facility_id/link_type/placement別の内訳を見るには件数がまだ少なすぎる。
 
-- [ ] GA4で`gothere_click`（facility_id / link_type）・`affiliatecard_click`（affiliate_id / link_type / placement / shop）を確認できる状態になっているか、初回計測を確認する
-- [ ] `weekly-task.md`の9月第3週PDCA（[[travel-task]] Phase 4-2）と合わせて、面別・エリア別のクリック傾向を見る
-- [ ] `next-task.md`にある「TABILMO P1クリック実績計測」「観光導線ブロックのgo/no-go判断」とも連動するため、判断はまとめて行う
+- [ ] `weekly-task.md`の9月第3週PDCA（[[travel-task]] Phase 4-2）まで待ち、母数が増えてから面別・エリア別のクリック傾向を見る
 
 ---
 
 ## 進め方の原則
 
-1. 上記1〜3はいずれも「今すぐ価値があるか不明」な改善案であり、travel-taskのように今日中に一括実装する性質のものではない。**4（クリック実績の定点観測）を先に行い、データが出てから1〜3の着手要否を判断する**
+1. 上記1・2はいずれも「今すぐ価値があるか不明」な改善案であり、travel-taskのように今日中に一括実装する性質のものではない。クリック実績（4）が出そろってから着手要否を判断する
 2. 新規コンポーネント開発はしない。既存の`GoThere.astro`／`AffiliateCard.astro`の表示条件・設置面の調整に留める

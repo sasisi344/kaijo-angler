@@ -201,8 +201,7 @@
       "reward": "3名以上・グループ／一棟貸し訴求。単価が高い",
       "todo": "JSONが文字化けしている（name/description/categories が全滅）。まず文字コード修正。効果測定はP1のクリック実績待ち",
       "usedIn": [
-        "ensei-guide",
-        "tabilmo-villa-stay-guide"
+        "ensei-guide"
       ]
     },
     "yahoo-travel": {
