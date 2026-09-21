@@ -117,9 +117,24 @@
 
 `hiruga-sea-fishing-pond`（ひるが海上釣堀）・`fishing-land-hyuga`（フィッシングランド日向）・`fishing-rainbow`（フィッシングレインボー）の3記事が、frontmatterの緯度経度・電話番号（0770-32-0056）が完全に一致しており、同一の運営者（日向湖の複数生け簀）を別記事として書き分けている状態。3施設とも順位15〜17位で足踏みしており、<strong>キーワードカニバリゼーション（共食い）の可能性が高い</strong>。今回は3記事を相互リンクする差別化FAQ（ひるが＝静穏環境、日向＝メガ生け簀、レインボー＝初心者サポート＋魚種豊富）を追加して当面の緩和を図ったが、根本対応（統合 or 明確な差別化見出しの追加）は別途検討が必要。
 
-### 🔜 残り：CTR0%×page1相当（10件、優先度低）
+### ✅ CTR0%×page1相当（10件）タイトル/メタ改善 完了（2026-09-21）
 
-タイトル/メタ改善候補だが表示回数10〜75件と少なくサンプル不足の可能性あり: suihou-fishing-pond・kaijo-tsuribori-yukimaru・tsuribori-hamakatsu・jogashima-js-fishing・niigata-east-port-2nd-east-breakwater・kaijo-tsuribori-fukujumaru・kobe-hiraiso-sea-fishing-park・fishing-park-triton・koueimaru・bakucho-mihama-fishing-park
+表示回数10〜75件と少なくサンプル不足の可能性はあるが、10件全てのタイトル/メタディスクリプションを改善済み。パターン：①タイトルに具体的な価格が無ければ追加、②frontmatterと本文の料金表に食い違いがあれば正しい方に統一、③施設の性質（釣り堀か堤防・渡船かなど）に応じて訴求語を作り分け。
+
+| 施設 | 対応内容 |
+|---|---|
+| suihou-fishing-pond | 価格誤記を修正（「女性8,000円〜」は実際は小学生料金だった） |
+| kaijo-tsuribori-yukimaru | タイトルに価格追加（1匹保証5,000円〜） |
+| tsuribori-hamakatsu | タイトルに価格追加（女性7,700円〜） |
+| jogashima-js-fishing | 「1時間〜」を明示し短時間利用の検索意図に整合 |
+| niigata-east-port-2nd-east-breakwater | 釣り堀ではなく防波堤の管理釣り場のため、入場料・NPO開放という固有の訴求に差し替え |
+| kaijo-tsuribori-fukujumaru | タイトルは既に価格入り。meta descに料金内訳を追加 |
+| kobe-hiraiso-sea-fishing-park | 堤防型の「海づり公園」であり釣り堀ではないため釣り堀語彙を使わず、大人1,000円を明記 |
+| fishing-park-triton | タイトルに価格追加（2匹補償4,000円〜） |
+| koueimaru | 渡船・筏釣り（天然魚）でありイケス放流ではないため、meta descをチヌ・アオリイカなど天然魚の訴求に修正 |
+| bakucho-mihama-fishing-park | タイトルに価格追加（女性・子供5,000円〜）。frontmatter`average_price`が男性料金レンジのみを示していたため、より安い女性・子供料金を採用 |
+
+効果測定は次回以降のGSC取得（表示回数が少ないため判断に数週間かかる可能性あり）
 
 ### 🔜 残バックログ（同パターンを未適用）
 

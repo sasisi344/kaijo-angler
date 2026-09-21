@@ -41,14 +41,55 @@ W37データ（`access-data/weekly-report/2026/W37/`）を使って各項目を�
 
 ## 保留中：将来のGSC/GA4データが必要なタスク一覧（2026-09-14更新）
 
-- [ ] **301リダイレクトの効果測定（再測定）**: 次回GSCエクスポートを「過去28日」など明示的な期間で取得し、`FishingHeatmap.astro`修正後に旧`/blog/`URLへの表示・クリックの割合が減っているかを確認する
+- [x] **301リダイレクトの効果測定（再測定）**: ✅ 2026-09-20実施・実質解消を確認（下記「2026-09-20 実行結果」参照）。クリック割合43%→2.1%、表示回数割合40%→1.6%
 - [ ] **W29で悪化と判定された施設記事の再判定（残3件）**: `umizuri-port-tajiri`・`matsunase-fishing-park`・`tsuri-ikada-fukaura`。`kariyawan-fishing-center`は悪化継続を確認済み（下記参照）。残りは新旧URL分裂の解消後にクリーンな再測定データで判定する（`matsunase-fishing-park`は個別に編集保留中＝[[next-task]]参照）
 - [ ] **観光×海上釣り堀マネタイズ施策のgo/no-go判断**: 301リダイレクト効果測定が出そろってから判断する（[[project-monetization-tourism]]）
 - [ ] **旅行アフィリエイト再構築（travel-task）Phase 4-2効果測定・GoThere追加改善**: 9月第3週＝2026-09-14〜09-20に実行。統合したPDCA計画・準備手順は下記「2026-09-20 実行予定：分析・PDCA計画」を参照（[[next-task]]・[[gothere-task]]の該当項目と内容が重複しないよう、判断ロジックはこちらに一本化）
 
 ---
 
-## 2026-09-20 実行予定：分析・PDCA計画
+## 2026-09-20 実行結果：分析・PDCA
+
+### 実行したこと
+
+1. **GA4カスタムディメンション未登録を発見・登録**：`gothere_click`/`affiliatecard_click`のイベントパラメータ`placement`・`facility_id`は送信されていたが、GA4管理画面（カスタム定義）に一度も登録されていなかった。登録した（2026-09-20）。**注意**：GA4の仕様上、登録前のイベントには遡って適用されないため、今週分（9/14〜09/20）を含め過去データは設置面別・施設別に分解できない。来週以降のPDCAから有効
+2. **301リダイレクト効果測定（保留タスク#1）を実施** → 大幅改善を確認。詳細は下記
+3. **GoThere/AffiliateCardクリック実績を過去28日（8/23〜9/19）で再測定**（初回計測=8/6〜9/2との比較）
+
+### 301リダイレクト効果測定：結果
+
+GSC（`https://kaijo-fishing.com/`、過去28日=8/21〜9/17、`ページ: /blog/`フィルタ）で確認。
+
+| 指標 | 前回（9/13時点） | 今回（9/20時点） |
+|---|---|---|
+| `/blog/`旧URLのクリック割合 | 43%（全クリックの） | **2.1%**（15/729） |
+| `/blog/`旧URLの表示回数割合 | 40%（全表示回数の） | **1.6%**（270/16,600） |
+| 該当URL数 | 373 URL | 62 URL（トップでも3クリック/50表示） |
+
+**判定：✅ 実質解消**。`FishingHeatmap.astro`の旧URL修正（前回セッション）が効いている。残る62 URLは「intelligence記事（`/blog/`配下が正）」と「ごく微量の旧施設URL残存」の混在で、深追いする規模ではない。→ 保留リストから削除可能
+
+### GoThere/AffiliateCardクリック実績：結果
+
+GA4「海の上のアングラー」で過去28日（8/23〜9/19）を確認。
+
+| イベント | 初回計測（8/6〜9/2） | 今回（8/23〜9/19） |
+|---|---|---|
+| `gothere_click` | 7件（ユーザー2人） | **8件** |
+| `affiliatecard_click` | 3件（ユーザー1人） | **15件**（5倍） |
+
+**判定**：
+- `gothere_click`はほぼ横ばいで、設置面別・エリア別に語れる母数にまだ達していない → **「1. GoThere 2箇所目設置」「2. Geolocation API」は判定不能のまま持ち越し**（[[gothere-task]]の想定どおり。カスタムディメンション登録が今回完了したので、次回はplacement別の内訳が取れる）
+- `affiliatecard_click`は5倍に伸びているが絶対数はまだ15件と少なく、施設別内訳（今回は取得不可）なしでは打ち手を語れない。次回に注目
+
+### 未実施（持ち越し）
+
+- **VC（ASP）管理画面での宿泊/レンタカー成約数確認**：今回未実施。次回セッションで手動確認が必要（管理画面ログインが必要なため）
+- **`column/travel/`クラスタのリライト・新規エリア展開の着手判断**：GoThereクリック実績の母数不足により判断材料が揃わず持ち越し
+- **観光×海上釣り堀マネタイズ go/no-go**：301効果測定は解決したが、GoThereクリック実績の母数不足が残っているため、判定はもう1〜2週待つのが妥当
+
+---
+
+## 2026-09-20 実行予定：分析・PDCA計画（実行済み・上記参照）
 
 対象は[[travel-task]] Phase 4-2（`column/travel/`クラスタの効果測定）と[[gothere-task]] 1・2（GoThere追加改善）。両方とも「9月第3週＝2026-09-14〜09-20のGA4実績が出そろってから判断」という同一の前提のため、判断日（09-20以降）にまとめて片付ける。個別タスクの背景・実装内容は[[gothere-task]]・[[travel-task]]（アーカイブ）にあるので、ここでは**当日やる作業の手順と判断基準のみ**を書く。
 
@@ -77,6 +118,11 @@ W37データ（`access-data/weekly-report/2026/W37/`）を使って各項目を�
 
 `node scripts/analyze-facility-ranking.mjs`（W37データ）で「表示回数10以上・順位15位超 or CTR0%」に該当した施設。既存の`facility-priority.md`（クエリ起点）とは別角度＝ページ単位の診断のため、重複しない新規候補が多い。
 
-- [ ] **CTR0%×page1相当（順位10位以内）＝タイトル/メタ改善の最優先候補**: `suihou-fishing-pond`(pos8.8)・`kaijo-tsuribori-yukimaru`(pos8.3)・`tsuribori-hamakatsu`(pos8.4)・`jogashima-js-fishing`(pos7.3)・`niigata-east-port-2nd-east-breakwater`(pos6.3)。順位は悪くないのにクリックゼロ＝タイトル・メタディスクリプションが検索意図と噛み合っていない可能性が高い
-- [ ] **表示回数が多い順位悪化組（内容の掘り下げ優先）**: `wakayama-marinacity-fishing-park`(impr751/pos16.1)・`kariyawan-fishing-center`(impr450/pos17.9・W29悪化組と一致)・`fukuoka-city-sea-fishing-park`(impr490/pos19.7)・`hiruga-sea-fishing-pond`(impr379/pos16.3)・`fishing-park-sasukeya`(impr318/pos16.2)
+- [x] **CTR0%×page1相当（順位10位以内）＝タイトル/メタ改善**: ✅ 2026-09-21実施。5施設ともタイトル/メタディスクリプションを書き換え済み
+  - `suihou-fishing-pond`: タイトルの価格表記の誤り（「女性8,000円〜」→実際は小学生料金だった）を修正、meta descに正確な3区分料金を明記
+  - `kaijo-tsuribori-yukimaru`・`tsuribori-hamakatsu`: タイトルに価格が入っていなかったため追加（CTR改善の定番パターン、[[weak-query-improvement-list]]と同方針）
+  - `jogashima-js-fishing`: 「1時間〜」を明示し短時間利用の検索意図に寄せた
+  - `niigata-east-port-2nd-east-breakwater`: 他4件と異なり「釣り堀」ではなく防波堤の管理釣り場のため、タイトルを入場料・NPO開放という固有の訴求に差し替え（釣り堀と同じ型を当てはめていなかったのがCTR0%の一因とみられる）
+  - 効果測定は次回GSC取得時（来週以降）。表示回数が少ない（10〜75件）ため判断には数週間かかる可能性あり
+- [x] **表示回数が多い順位悪化組（内容の掘り下げ優先）**: ✅ 対応済み（[[weak-query-improvement-list]]「追加実施（2026-09-13）」参照）。5施設とも目的マッチ/比較文脈FAQを追加済み: `wakayama-marinacity-fishing-park`・`kariyawan-fishing-center`・`fukuoka-city-sea-fishing-park`・`hiruga-sea-fishing-pond`・`fishing-park-sasukeya`
 - [ ] スクリプトの誤検出（`east-japan`/`west-japan`など地域インデックスページ）を除外するフィルタを`analyze-facility-ranking.mjs`に追加すると次回の判読が楽になる（任意・優先度低）
