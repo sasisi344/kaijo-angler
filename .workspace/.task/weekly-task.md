@@ -6,12 +6,13 @@ W25〜W28の週次PDCA詳細（Do/Check/Act）は各`weekly-PPDCA-task-*.md`（�
 
 ---
 
-## 保留中：現在アクティブなタスク一覧（2026-09-21更新）
+## 保留中：現在アクティブなタスク一覧（2026-09-22更新）
 
-- [ ] **W29で悪化と判定された施設記事の再判定（残3件）**: `umizuri-port-tajiri`・`matsunase-fishing-park`・`tsuri-ikada-fukaura`。`kariyawan-fishing-center`は悪化継続を確認済み（アーカイブ参照）。301リダイレクトの新旧URL分裂は2026-09-20時点で実質解消したため、次回GSC取得でクリーンな再測定データが得られる見込み（`matsunase-fishing-park`は個別に編集保留中＝[[next-task]]参照）
+- [ ] **W29で悪化と判定された施設記事の再判定（残3件）**: `umizuri-port-tajiri`・`matsunase-fishing-park`・`tsuri-ikada-fukaura`。`kariyawan-fishing-center`は悪化継続を確認済み（アーカイブ参照）。301リダイレクトの新旧URL分裂は2026-09-20時点で実質解消したため、次回GSC取得でクリーンな再測定データが得られる見込み（`matsunase-fishing-park`はコミット`7a3d9d0`で内容差別化済み、個別保留は解消）
 - [ ] **観光×海上釣り堀マネタイズ施策のgo/no-go判断**: 301リダイレクト効果測定は解決済みだが、GoThereクリック実績の母数不足（過去28日で8件）が残っているため、判定はもう1〜2週待つのが妥当（[[project-monetization-tourism]]）
 - [ ] **GoThere 2箇所目設置（本文中盤）・Geolocation APIによる出発地自動取得**: `gothere_click`母数不足（過去28日で8件）のため判定不能・持ち越し。GA4カスタムディメンション`placement`/`facility_id`を2026-09-20に登録済みのため、次回PDCAからは設置面別・施設別の内訳が取得可能（[[gothere-task]] 1・2参照）
-- [ ] **`column/travel/`クラスタのリライト・新規エリア展開（紀伊半島・関東・東海）着手判断**: GoThereクリック実績の母数不足により判断材料が揃わず持ち越し（[[next-task]]参照）
+- [ ] **`column/travel/`クラスタの新規エリア展開（紀伊半島・関東・東海）着手判断**: GoThereクリック実績の母数不足により判断材料が揃わず持ち越し（[[next-task]]参照）
+- [ ] **`column/travel/`他記事（`kanagawa-miura-trip`・`hamanako-unagi-trip`等）の被リンクゼロ横展開確認**: 2026-09-03対応は9記事のみが対象で未着手（[[next-task]]参照）
 - [ ] **VC（ASP）管理画面での宿泊/レンタカー成約数確認**: 管理画面ログインが必要なため未実施。次回セッションで手動確認が必要
 - [ ] **`analyze-facility-ranking.mjs`のスクリプト誤検出フィルタ追加**: `east-japan`/`west-japan`など地域インデックスページが施設として誤検出される問題。次回の判読を楽にするための改善（任意・優先度低）
 
@@ -20,6 +21,7 @@ W25〜W28の週次PDCA詳細（Do/Check/Act）は各`weekly-PPDCA-task-*.md`（�
 ## 直近の実行結果サマリー
 
 - **2026-09-20**: GA4カスタムディメンション未登録を発見・登録／301リダイレクト効果測定で実質解消を確認（クリック割合43%→2.1%、表示回数割合40%→1.6%）／GoThere・AffiliateCardクリック実績を過去28日で再測定（`gothere_click` 7→8件、`affiliatecard_click` 3→15件）
-- **2026-09-21**: フェーズ5分析で検出したCTR0%×page1相当10施設・表示回数が多い順位悪化組5施設のタイトル/メタ・FAQ改善が完了（詳細は[[weak-query-improvement-list]]・アーカイブ参照）。ビルド確認OK、コミット`98c3542`でpush済み
+- **2026-09-21**: フェーズ5分析で検出したCTR0%×page1相当10施設・表示回数が多い順位悪化組5施設のタイトル/メタ・FAQ改善が完了。ビルド確認OK、コミット`98c3542`でpush済み
+- **2026-09-23**: 「アクセスが悪いクエリの修正」タスク完了。W37の`ページ.csv`を施設slug単位で再集計し推計損失クリック数でランキング→機会損失の大きい施設5件（海上釣り堀海遊・釣ってみんで釣り堀・とっとパーク小島・篠島釣り天国・直江津港第3東防波堤 管理釣り場）に対し、注意事項・FAQ新設、公式サイトとの事実不整合修正（貸竿の有無・料金・定休日・電話番号・開放期間・順番待ちシステムの仕様変更等）、篠島釣り天国は代替案（日間賀島・佐久島への導線）を追加。作業ログは[`archive/task/weak-query-improvement-list.md`](../archive/task/weak-query-improvement-list.md)に移行済み
 
 詳細な分析経緯・GSC/GA4の数値根拠は[`archive/task/weekly-task-2026-09-13_09-21.md`](../archive/task/weekly-task-2026-09-13_09-21.md)を参照。
