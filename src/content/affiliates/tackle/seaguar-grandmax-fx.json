@@ -5,7 +5,7 @@
   "description": "「市販仕掛けより先に切れるのはハリス」と言われるほど強靭。極限の状況でも真鯛・青物を逃さない、海上釣り堀の最強ハリス。",
   "search_query": "シーガー グランドマックスFX",
   "categories": ["ハリス", "ライン"],
-  "targetFish": ["真鯛", "シマアジ", "ブリ", "カンパチ"],
+  "targetFish": ["マダイ", "シマアジ", "ブリ", "カンパチ"],
   "methods": ["ウキ釣り", "ミャク釣り"],
   "isRecommended": true,
   "link": "https://amzn.to/4rQPgUG",

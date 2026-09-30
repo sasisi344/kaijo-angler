@@ -4,7 +4,7 @@
   "brand": "clunTEN",
   "description": "最も汎用性の高い標準的なセット。これ一つで真鯛から中型青物まで幅広くカバーできます。",
   "categories": ["仕掛け", "セット"],
-  "targetFish": ["真鯛", "ハマチ", "シマアジ"],
+  "targetFish": ["マダイ", "ハマチ", "シマアジ"],
   "methods": ["ウキ釣り"],
   "isRecommended": true,
   "link": "https://amzn.to/4rLONmq",

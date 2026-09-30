@@ -5,7 +5,7 @@
   "description": "魚が感知する波長をカットした画期的な「ピンクフロロ」。視認性の低減により、スレた真鯛やシマアジの警戒心を解く、海上釣り堀の切り札。",
   "search_query": "DUEL 魚に見えないピンクフロロ",
   "categories": ["ハリス", "ライン"],
-  "targetFish": ["真鯛", "シマアジ", "イサキ"],
+  "targetFish": ["マダイ", "シマアジ", "イサキ"],
   "methods": ["ウキ釣り", "ミャク釣り"],
   "isRecommended": true,
   "link": "https://amzn.to/47duU0l",

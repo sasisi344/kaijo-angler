@@ -4,7 +4,7 @@
   "brand": "ささめ針（SASAME）",
   "description": "真鯛を確実に仕留めるための、ウキからハリスまで全て揃ったオールインワンセット。初心者でも迷わず使えます。",
   "categories": ["仕掛け", "セット"],
-  "targetFish": ["真鯛"],
+  "targetFish": ["マダイ"],
   "methods": ["ウキ釣り"],
   "isRecommended": true,
   "link": "https://amzn.to/4bWSH7s",

@@ -5,7 +5,7 @@
   "description": "海上釣り堀で最速の寄せを実現する「活さなぎミンチ激荒」。ミンチ状のサナギが強烈な集魚効果を発揮し、高活性状態を長時間キープ。",
   "search_query": "マルキュー 活さなぎミンチ激荒",
   "categories": ["エサ", "集魚"],
-  "targetFish": ["真鯛", "シマアジ", "イサキ"],
+  "targetFish": ["マダイ", "シマアジ", "イサキ"],
   "methods": ["ダンゴ"],
   "isRecommended": true,
   "link": "https://amzn.to/4bXQgRY",
