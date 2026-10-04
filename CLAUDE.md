@@ -28,11 +28,13 @@
 
 ## コンテンツ作成ガイドライン
 
+- **魚種に関わる記事（魚種攻略・施設・ランキング・タックル・マガジン）は、本文を書く前に `kaijo-fish-knowledge` スキルを通し、`.data-set/fish-knowledge/{slug}.md` を最優先ナレッジとして読む**。ナレッジに無い事実・一人称の体験談・出所のない数値は書かない
 - `src/content/blog/tactics/fish-strategy/` の各サブ記事（intermediate/advanced/theory/gourmet/strategy）は 130 非空行以上を維持する
 - 魚種 index.mdx は 150〜200 総行を目安にする
 - frontmatter は `title`, `description`, `publishDate`, `category`, `tags`, `image`, `lastmod` を使用する
 - `slug:` フィールドは不要（Astro Content Layer が自動生成）
 - `created:` フィールドはスキーマにないため使用しない
+- **`src/content/config.ts`（スキーマ）は、ユーザーの確認なしに変更しない**。1記事で複数店舗を扱う場合も、スキーマは増やさず `google_maps` / `facility_details` を1組に統合する（詳細は `kaijo-content-schema` スキル）
 
 ## import パス
 
