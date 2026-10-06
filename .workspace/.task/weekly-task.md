@@ -3,7 +3,7 @@
 日曜日にアクセスデータの収集を実行し、データをもとに先週と比較してレポートを作成。改善点を作成して実行する。
 
 - **優先実行タスク**: 本ファイル（Tier別）
-- **効果測定・判定待ちタスク**: [[measurement-task]]（個別に対応しやすいよう分離）
+- **効果測定・判定待ちタスク**: [[schedule-task]]（個別に対応しやすいよう分離）
 - **GSC手動作業・詳細設計**: [[subtask]]
 - 完了済み・過去の実行ログ: [`archive/task/weekly-task-2026-09-22_09-30.md`](../archive/task/weekly-task-2026-09-22_09-30.md)、[`archive/task/weekly-task-2026-09-13_09-21.md`](../archive/task/weekly-task-2026-09-13_09-21.md)、W25〜W28は各`weekly-PPDCA-task-*.md`
 
@@ -16,7 +16,7 @@
 - [ ] **診断型コンテンツ「で、私はどこへ？」＋「今週末はここ！」の新設（[[diagnosis-app-task]]）**
   - 課題: 全国網羅ゆえに記事全体で結論が出ず、メッセージが弱い。「この1ページで、私に合う・行きたくなる海上釣り堀がわかる」ハブページを作る（位置情報で近い順→条件マッチ→直近の様子で行きたくなる、＋結論ファーストの「今週末のおすすめ」枠）
   - 最初にやること: フェーズ0＝施設frontmatterのデータ充足度の棚卸し（料金・対象魚・設備・初心者向け度・閉店フラグ）と入力項目・スコア設計。`rod_length_limit`収集と同時に不足項目を集める
-  - 効果は[[measurement-task]] M8
+  - 効果は[[schedule-task]] M8
 
 - [ ] **タックルカードの魚種別再編成とid設計 — まずResearch（[[subtask]]項目6）**
   - 海上釣り堀で使われるタックルを魚種別に調査（メディア紹介＋Amazon・楽天・Yahoo!のユーザーレビュー）→ 魚種×カテゴリの推奨タックル表を作る
@@ -24,15 +24,16 @@
   - **第1弾完了（2026-09-30）**: [[tackle-research-phase1]]（既存カードの誤対応を発見: kue/ishidai/suzuki/bluefish。レビュー取得と第2弾が未了）
   - **方針決定（2026-09-30）**: 底物竿=シマノ ハードロッカー S83MH、`fish`パラメータは魚種ごとに別カード。管理は[[affiliate-tags/物販/README|affiliate-tags/物販]]（ルール・魚種別台帳）
   - 着手順: シマアジ・クエ・イシダイ・マダイ → 青物・クロダイ → ヒラメ・アオリイカ・根魚
-  - 完了後に[[subtask]]項目3手順4（施設のメイン魚種に対応するセットの優先配置）へ。効果は[[measurement-task]] M1
+  - 完了後に[[subtask]]項目3手順4（施設のメイン魚種に対応するセットの優先配置）へ。効果は[[schedule-task]] M1
 
 - [ ] **施設別の竿長さ制限データ収集と`rod_length_limit`追加（[[subtask]]項目7）**: 施設記事に竿の長さ制限の記載がないことが判明。タックル出し分けの前提
+  - **進捗（2026-10-06）**: facility-data-update の block-01（10施設）を調査。結果は[[facility-data-update/block-01_rank-001-010]]の「調査結果」。長さが確認できたのは あっとしー(3.5m) のみ。**料金の古さ2件・公式URL/電話の誤り1件を発見**。**2026-10-06 追記**: `config.ts`に任意項目を追加（`rod_length_limit`／`rod_count_limit`＝上限本数の数値、不明・制限なしは未記入）し、公式確認済みの3施設（南港・あっとしぃー・脇田）に反映。「あっとしぃー」表記も修正。料金など個別記事の修正は block-01 末尾の「個別記事対応タスク」に記録。**2026-10-06 完了**: 営業中106施設（block-01〜11）と閉店・休業7施設の調査を一巡し、`facilityType`を106施設すべてに記入（海上釣り堀型51・海釣り公園型33・その他22。分類は記事・名称・公式情報からの判断で、公式確認ではない）。`rod_count_limit`は24施設・`rod_length_limit`は4施設（あっとしぃー3.5m／カタタ4m／大漁丸4m／J's Fishing 3.5m）・`needs_ferry`9・`reservation_type`24・`verified_at`40。**残り**: [[facility-data-update/needs-confirmation|要確認施設リスト]]（約100施設）と各ブロック末尾の「個別記事対応タスク」で記事を直す。料金が古い記事は優先的に更新（診断の予算フィルタの前提）
 
 ## Tier2（手動作業・GSC）
 
 - [ ] **GSCインデックス登録リクエスト**（[[subtask]]項目1: Tier1 49件は手動チェック済み。Tier2 23件・`ishida-fisherina`再実行が未着手）
 - [ ] **更新済み記事のGSC再インデックス登録**（[[subtask]]項目4: A→B→Cの順。1日の上限に注意）
-- [ ] **施設名クエリのCTR検証**（[[subtask]]項目5: A層11件から。検証結果は[[measurement-task]] M5）
+- [ ] **施設名クエリのCTR検証**（[[subtask]]項目5: A層11件から。検証結果は[[schedule-task]] M5）
 
 ## Tier3（任意・低優先）
 
@@ -62,7 +63,7 @@
   - 仮説: カスタムディメンションは登録済み（9/20・9/30）だが、探索レポート側の列に未追加。または `gothere_click` が実際に発火していない
   - やること: 探索「週報PPDCA用」にカスタムディメンション3列を追加。DebugView で `gothere_click`・`affiliatecard_click` のパラメータ付与を確認
   - 完了条件: w42 エクスポートで `affiliate_id` 別・`placement` 別の行が出る
-  - 検証（Check）: [[measurement-task]] M1・M6。`access-data/CLAUDE.md` の「GA4 ファイル」行にディメンション構成を追記
+  - 検証（Check）: [[schedule-task]] M1・M6。`access-data/CLAUDE.md` の「GA4 ファイル」行にディメンション構成を追記
   - 昇格条件: 次回 w42 取り込み前に実施できない場合は next-task へ
 
 - [ ] **`tsuyu-rainy-day-strategy` のタイトルから季節語【梅雨】を外す（w41・SEO-CTR・工数S）**
@@ -71,7 +72,7 @@
   - 対象: `src/content/blog/column/trivia/tsuyu-rainy-day-strategy/index.mdx`（title・description・lastmod。URL は不変）
   - やること: 【梅雨】を外し「雨の日の海上釣り堀は狙い目？…」の通年表現へ。冒頭・見出しの季節語は梅雨期の訴求として残してよい
   - 完了条件: title/description 更新・lastmod 更新・ビルド OK
-  - 検証（Check）: w41〜w44 合算で CTR 4%台に戻るか（クエリ「釣り堀 雨の日」「釣り堀 雨」の表示・順位も）。[[measurement-task]] M9 に含める
+  - 検証（Check）: w41〜w44 合算で CTR 4%台に戻るか（クエリ「釣り堀 雨の日」「釣り堀 雨」の表示・順位も）。[[schedule-task]] M9 に含める
   - 昇格条件: w42 でも表示≥50・CTR<3% なら next-task（N5）
 
 - [ ] **仙台港中央公園：「仙台港 釣り」系クエリの2ページ目脱出（w41・SEO-順位・工数M）**
@@ -80,7 +81,7 @@
   - 対象: `src/content/blog/fishing-facility/east-japan/miyagi/sendai-port-central-park-sea-square/`
   - やること: 現状の見出しと上位3サイトを見比べ、「仙台港で釣れる魚（時期別）」「ポイント・禁止エリア」「アクセス・駐車場」の見出し／FAQ を追加し、「仙台港 釣り」を H2 に含める。施設の公式情報で事実確認
   - 完了条件: 見出し3つ以上と FAQ 追加・lastmod 更新・ビルド OK
-  - 検証（Check）: w41〜w44 合算で「仙台港 釣り」系の順位が10位以内か、表示→クリックが増えたか。[[measurement-task]] M9
+  - 検証（Check）: w41〜w44 合算で「仙台港 釣り」系の順位が10位以内か、表示→クリックが増えたか。[[schedule-task]] M9
   - 昇格条件: 4週合算で順位10〜13のまま表示≥100 なら、競合調査を next-task へ
 
 - [ ] **装備・遠征系5記事の物販導線を棚卸し（w41・物販・工数M）**
@@ -88,7 +89,7 @@
   - 仮説: 秋の遠征・釣行シーズンで需要が増えたが、記事内の物販カードが1枚で受け皿が薄い。一時的な増加なら効果は限定的
   - やること: 各記事のカード位置・枚数・`fish` 対応を `affiliate-tags/物販/` の台帳に記録し、追加候補（配送：発泡スチロール・保冷／ハリス・針：魚種別）を挙げる。**カードの追加実装は Tier1「タックルカードの魚種別再編成」の id 確定後**（旧 id を増やさない）
   - 完了条件: 5記事の現状と追加候補が台帳に記録されている
-  - 検証（Check）: [[measurement-task]] M1（`affiliate_id` 別クリック）で、5記事のカードクリックが4週で増えたか
+  - 検証（Check）: [[schedule-task]] M1（`affiliate_id` 別クリック）で、5記事のカードクリックが4週で増えたか
   - 昇格条件: タックル再編成の id 確定後に next-task へ。需要が w42 で平常に戻れば Tier3 に降格
 
 - [→] **「海上 釣り堀 ランキング 関東」関連記事の修正**: 優先処理の指示により [[next-task]] へ移動（2026-10-04）
@@ -110,6 +111,6 @@
 
 ---
 
-## 効果測定タスク（→ [[measurement-task]] へ移動）
+## 効果測定タスク（→ [[schedule-task]] へ移動）
 
 M1 `affiliate_id`別クリック／M2 ranking調整の効果／M3 W29悪化3施設の再判定／M4 旧URL統合の進捗／M5 施設名CTR0%の検証／M6 観光マネタイズgo/no-go（GoThere 2箇所目・travel展開判断を含む）／M7 VC成約数確認

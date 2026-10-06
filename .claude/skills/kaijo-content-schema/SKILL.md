@@ -37,6 +37,7 @@ description: >-
 | `google_maps.latitude` / `longitude`、`facility_details.amenities.parking`、`prefecture` | `src/components/widgets/GoThere.astro` |
 | `google_maps.business_hours`、`facility_details.average_price` / `target_fish` / `amenities.rental_tackle` / `toilet` | 同上 `[...slug].astro` の一覧カードとフィルタ |
 | `google_maps.latitude` / `longitude` / `rating`、`target_fish`、`rental_tackle`、`toilet` | `src/pages/api/facilities.json.ts` |
+| `facilityType`、`facility_details.rod_length_limit` / `rod_count_limit` / `stocked_fish` ほか診断用の任意項目（2026-10-06追加） | 未使用（診断ハブ `/find/` とタックル出し分けで読む予定）。不明は未記入 |
 
 ## 4. 1記事で複数店舗を扱うとき
 

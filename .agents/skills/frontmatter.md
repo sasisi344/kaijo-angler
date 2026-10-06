@@ -44,6 +44,13 @@ facility_details:
     - "真鯛"
     - "ブリ"
   reservation: "要確認（公式サイト参照）" 
+  # 診断・分析用の任意項目。公式で確認できた値のみ記入し、不明・制限なしは書かない（推測で埋めない）
+  rod_length_limit: 3.5 # 竿の長さ上限(m)
+  rod_count_limit: 1 # 1人あたりの竿の本数上限
+  verified_at: "2026-10-06" # 上記を公式で確認した日
+  # 他: stocked_fish / wild_fish / price_min / price_max / price_type / includes_gear / beginner_friendly /
+  #     family_friendly / hands_free / needs_ferry / ferry_info / access_minutes / reservation_type / reservation_url / sns
+  #     facilityType（sea-pond | sea-park | other）はトップレベルに書く。詳細は .workspace/facility-data-update/README.md
   
   amenities:
     rental_tackle: true

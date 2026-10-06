@@ -4,130 +4,15 @@ W37 `クエリ.csv`/`ページ.csv`の分析（[[weekly-task]]参照）で見つ
 
 ---
 
-## [ ] 1. 最重要: 新旧URL統合のためGSCインデックス登録リクエスト
+## [x] 1. 新旧URL統合のためGSCインデックス登録リクエスト（2026-10-06 完了・全文は [archive/task/gsc-old-new-url-consolidation.md](../archive/task/gsc-old-new-url-consolidation.md) に移行）
 
-**背景**: `/blog/{slug}/`（旧URL）→`/fishing-facility/{slug}/`（新URL）への301リダイレクトは2026-07-14実装済みでコード側は正常（true 301・サイトマップはクリーン・内部リンクも旧URL残存なし、を確認済み）。しかし2ヶ月以上経過した現在もW37データで新旧URLペアが存在する103施設のうち、表示回数・クリックともに**64%が旧URL側に残ったまま**（旧: 表示回数17,574/クリック844、新: 表示回数9,928/クリック470）。Googleのインデックス統合が自然には進んでいないため、手動でのインデックス登録リクエストで統合を促進する。
-
-**やること**: GSCログイン時に、以下の新URLに対して「URL検査」→「インデックス登録をリクエスト」を実行。あわせて余力があれば対応する旧URLを「削除（一時的に非表示）」ツールで外すと統合が早まる可能性がある。
-
-## W40追記（2026-09-29）: 旧URL側クリックが逆に増えている6施設を最優先に
-
-W40データ（過去3ヶ月比較）で旧`/blog/`URL側のクリックが前期間より増えていた施設。下記新URLをTier1内でもさらに先頭で登録し、余力があれば対応する旧URLをGSC「削除」ツールで一時非表示にする。
-
-| 新URL（登録対象） | 旧URL（削除ツール候補） | 旧URLクリック（前期間→W40） |
-|---|---|---|
-| https://kaijo-fishing.com/fishing-facility/waita-sea-fishing-pier/ | https://kaijo-fishing.com/blog/waita-sea-fishing-pier/ | 6→29 |
-| https://kaijo-fishing.com/fishing-facility/kashikojima-fishing-park-kaiyuen/ | https://kaijo-fishing.com/blog/kashikojima-fishing-park-kaiyuen/ | 5→27 |
-| https://kaijo-fishing.com/fishing-facility/mukai-pearl-marine/ | https://kaijo-fishing.com/blog/mukai-pearl-marine/ | 6→21 |
-| https://kaijo-fishing.com/fishing-facility/wakasa-takahama-sea-fishing-park/ | https://kaijo-fishing.com/blog/wakasa-takahama-sea-fishing-park/ | 2→13 |
-| https://kaijo-fishing.com/fishing-facility/asamushi-sea-fishing-park/ | https://kaijo-fishing.com/blog/asamushi-sea-fishing-park/ | 1→12 |
-| https://kaijo-fishing.com/fishing-facility/shimanami-kaido-fishing-park/ | https://kaijo-fishing.com/blog/shimanami-kaido-fishing-park/ | 1→12 |
-
-（`sea-fishing-park-mikata`は旧URL140→0クリックで新URLへ移行済みのため対象外。`ishida-fisherina`はクォータ上限の疑いで翌日以降の再実行待ち＝下記Tier2に残置）
-
-## エラーが出たURL（調査済み・2026-09-27）
-
-- `https://kaijo-fishing.com/fishing-facility/sanriku-sea-fishing-park/`（インデックス登録リクエストに失敗する＝404）
-  → **原因判明・サイトの不具合ではない**。三陸海釣り公園の施設記事は`2026-06-22`のコミット`030e4a2`（"phase3"）で意図的に削除済み（`iwaki-sea-fishing-center`等と同時）。`src/config/blog-legacy-redirects.ts`側も`/blog/sanriku-sea-fishing-park/`→`/fishing-facility/`（一覧トップ）に正しく設定されており対応は不要。本Tier2リストは「旧URL表示回数」だけを機械的に基準に新URLを組み立てて生成したため、新URL側が実在するかを確認していなかったのが原因。**Tier2リストから除外し対応不要**（下記リストからも削除済み）
-- `https://kaijo-fishing.com/fishing-facility/ishida-fisherina/`（インデックス未登録：URLのインデックス登録に問題があり失敗する）
-  → 本番環境で確認した限りサイト側は完全に健全（HTTP 200・`<meta name="robots" content="index,follow">`・`<link rel="canonical">`が自URLを正しく自己参照・`robots.txt`全許可・`sitemap-0.xml`に含まれることを確認済み）。技術的な原因が見当たらないため、**GSCの「インデックス登録をリクエスト」1日あたりの上限に達していた可能性が高い**（Tier1で49件を連続実行した直後にTier2でエラーになったタイミングと整合）。→ **翌日以降にクォータがリセットされてから再度リクエストを試すこと**
-
-
-
-### Tier1（旧URL表示回数 100以上・49件、優先登録）
-
-```
-https://kaijo-fishing.com/fishing-facility/nanko-fishing-park/
-https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-at-sea/
-https://kaijo-fishing.com/fishing-facility/itoman-ikada-tsurigu-no-zousan/
-https://kaijo-fishing.com/fishing-facility/mukai-pearl-marine/
-https://kaijo-fishing.com/fishing-facility/family-tsuribori-tsutteminde/
-https://kaijo-fishing.com/fishing-facility/waita-sea-fishing-pier/
-https://kaijo-fishing.com/fishing-facility/shibushi-bay-daikoku-dolphin-land/
-https://kaijo-fishing.com/fishing-facility/maizuru-shinkai-park/
-https://kaijo-fishing.com/fishing-facility/shinmaiko-marine-park-fishing/
-https://kaijo-fishing.com/fishing-facility/sendai-port-central-park-sea-square/
-https://kaijo-fishing.com/fishing-facility/umizuri-port-tajiri/
-https://kaijo-fishing.com/fishing-facility/kamoike-sea-fishing-park/
-https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-kaiyu/
-https://kaijo-fishing.com/fishing-facility/shinojima-tsuri-tengoku/
-https://kaijo-fishing.com/fishing-facility/yuharai-pond/
-https://kaijo-fishing.com/fishing-facility/asamushi-sea-fishing-park/
-https://kaijo-fishing.com/fishing-facility/totto-park-koshima/
-https://kaijo-fishing.com/fishing-facility/kashikojima-fishing-park-kaiyuen/
-https://kaijo-fishing.com/fishing-facility/ugata-hamatsuri-center/
-https://kaijo-fishing.com/fishing-facility/tsuri-ikada-fukaura/
-https://kaijo-fishing.com/fishing-facility/seapark-nyu/
-https://kaijo-fishing.com/fishing-facility/kariyawan-fishing-center/
-https://kaijo-fishing.com/fishing-facility/fishing-bridge-akasaki/
-https://kaijo-fishing.com/fishing-facility/matsunase-fishing-park/
-https://kaijo-fishing.com/fishing-facility/yura-marine-fishing-pond/
-https://kaijo-fishing.com/fishing-facility/sea-fishing-land/
-https://kaijo-fishing.com/fishing-facility/takashima-tobishima-isotsuri-park/
-https://kaijo-fishing.com/fishing-facility/fishing-park-sasukeya/
-https://kaijo-fishing.com/fishing-facility/naoshima-fishing-park/
-https://kaijo-fishing.com/fishing-facility/saltlake-hiketa-adoike/
-https://kaijo-fishing.com/fishing-facility/hiruga-sea-fishing-pond/
-https://kaijo-fishing.com/fishing-facility/tsuribori-kishu/
-https://kaijo-fishing.com/fishing-facility/yura-sea-fishing-park/
-https://kaijo-fishing.com/fishing-facility/tomakomai-port-sea-fishing-facility/
-https://kaijo-fishing.com/fishing-facility/ikadatsuri-tokai/
-https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-opa/
-https://kaijo-fishing.com/fishing-facility/miyazu-city-marine-fishing-park/
-https://kaijo-fishing.com/fishing-facility/tsuribori-maruyo/
-https://kaijo-fishing.com/fishing-facility/obama-city-fishing-coop-raft/
-https://kaijo-fishing.com/fishing-facility/hasamaura-fishing-center/
-https://kaijo-fishing.com/fishing-facility/wakasa-takahama-sea-fishing-park/
-https://kaijo-fishing.com/fishing-facility/naoetsu-port-3rd-east-breakwater/
-https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-tairyomaru/
-https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-maruya/
-https://kaijo-fishing.com/fishing-facility/atami-port-sea-fishing-facility/
-https://kaijo-fishing.com/fishing-facility/shodoshima-furusatomura-fishing-pier/
-https://kaijo-fishing.com/fishing-facility/tsuruga-city-sea-fishing-park/
-https://kaijo-fishing.com/fishing-facility/raft-fishing-takahashi/
-https://kaijo-fishing.com/fishing-facility/shimanami-kaido-fishing-park/
-https://kaijo-fishing.com/fishing-facility/fishing-park-hikari/
-```
-> [!forAI]
-> 手動チェック完了。すべてインデックス登録済。
-
-### Tier2（旧URL表示回数 30〜99・23件、余力があれば。当初24件中`sanriku-sea-fishing-park`は削除済み施設のため除外）
-
-```
-https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-yuasa/
-https://kaijo-fishing.com/fishing-facility/saikakizaki-seapark/
-https://kaijo-fishing.com/fishing-facility/ousatsu-sea-fishing-center/
-https://kaijo-fishing.com/fishing-facility/anatani-aitai-fishing/
-https://kaijo-fishing.com/fishing-facility/fukuoka-city-sea-fishing-park/
-https://kaijo-fishing.com/fishing-facility/shinkamigoto-sea-fishing-pond/
-https://kaijo-fishing.com/fishing-facility/marusui-kaisan/
-https://kaijo-fishing.com/fishing-facility/jumbo-fishing-mura/
-https://kaijo-fishing.com/fishing-facility/sakurajima-sea-fishing-park/
-https://kaijo-fishing.com/fishing-facility/fishing-park-omishima/
-https://kaijo-fishing.com/fishing-facility/susawan-fishing-park/
-https://kaijo-fishing.com/fishing-facility/iwaki-sea-fishing-center/
-https://kaijo-fishing.com/fishing-facility/ishida-fisherina/
-https://kaijo-fishing.com/fishing-facility/amakusa-rakutsuri/
-https://kaijo-fishing.com/fishing-facility/original-maker-sea-fishing-park/
-https://kaijo-fishing.com/fishing-facility/futomi-flower-isotsuri-center/
-https://kaijo-fishing.com/fishing-facility/himeji-city-fishing-center/
-https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-taikoubou/
-https://kaijo-fishing.com/fishing-facility/suihou-fishing-pond/
-https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-misaki/
-https://kaijo-fishing.com/fishing-facility/fishing-land-hyuga/
-https://kaijo-fishing.com/fishing-facility/amakusa-leisure-land/
-https://kaijo-fishing.com/fishing-facility/suma-sea-fishing-park/
-```
-
-残り30件（旧URL表示回数30未満）は優先度低のため今回は対象外。全103件のフルリストは`.data-set`ではなく本分析のセッションログ参照、または再度`ページ.csv`から再集計可能。
-
-**判断根拠データ**: `.workspace/.task/access-data/weekly-report/2026/W37/ページ.csv`
+結論: 旧URLをGSC「削除」ツールで一時非表示にし、新URLはTier1・Tier2とも全件インデックス登録済みを確認。残課題の`ishida-fisherina`（施設名クエリで1ページ目に出ない）は項目8で対応。旧→新URLのクリック移行はW41以降の週報で確認する。
 
 ---
 
 ## [x] 2. 「釣り堀」一般語クエリの競合調査（2026-09-27 完了・全文は [archive/task/weekly-task-2026-09-22_09-30.md](../archive/task/weekly-task-2026-09-22_09-30.md) に移行）
 
-結論: 「釣り堀 大阪」上位6件中3件が海上釣り堀サイトで淡水系の完全占有ではなく、大規模投資はせず`column/ranking/`のdescription・冒頭への軽い言い回し追加で対応済み（効果は [[measurement-task]] M2）。
+結論: 「釣り堀 大阪」上位6件中3件が海上釣り堀サイトで淡水系の完全占有ではなく、大規模投資はせず`column/ranking/`のdescription・冒頭への軽い言い回し追加で対応済み（効果は [[schedule-task]] M2）。
 
 ---
 
@@ -232,7 +117,7 @@ https://kaijo-fishing.com/fishing-facility/suma-sea-fishing-park/
 | 【三重県】光栄丸｜10回で1回無料！5,000円で楽しめる南伊勢の筏釣りパラダイス | https://kaijo-fishing.com/fishing-facility/koueimaru/ |
 | 【長崎県】釣り堀はまかつ｜女性7,700円〜・驚異の13魚種でブリ・マダイ舞う九州屈指の海上釣り堀 | https://kaijo-fishing.com/fishing-facility/tsuribori-hamakatsu/ |
 
-※ `ishida-fisherina`（項目1のTier2）も翌日以降の再実行待ち。
+※ `ishida-fisherina`（項目1のTier2）は2026-10-06に登録済みを確認。
 
 ---
 
@@ -372,3 +257,23 @@ https://kaijo-fishing.com/fishing-facility/suma-sea-fishing-park/
 4. TackleCardの竿を施設の`rod_length_limit`で絞り込む仕組み（後段。まずは記事ごとに手動で配置でも可）
 
 **関連**: 項目6（タックルカード再編成）
+
+---
+
+## [ ] 8. 石田フィッシャリーナ記事の強化（施設名クエリで1ページ目に出ない／2026-10-06登録）
+
+**背景**: `ishida-fisherina`は2026-10-06にindex登録を確認済み（項目1）。しかし「石田フィッシャリーナ」の施設名クエリで検索結果1ページ目に表示されていない（手動確認）。記事のtitle・descriptionには施設名が入っており、クエリ一致の問題ではなく、競合に対するコンテンツ力・情報の充実度の不足が疑われる。
+
+**現状の記事**（`src/content/blog/fishing-facility/center-japan/toyama/ishida-fisherina/index.mdx`、152行）
+- 入場無料の海釣り桟橋（海上釣り堀ではない）。`publishDate: 2026-03-20`／`lastmod: 2026-03-22`で、以降更新なし
+- H2は6つ（選ばれる3つの理由／基本情報テーブル／メイン魚種攻略／周辺用品／アクセス・黒部旅プラン／まとめ）。`google_maps`・`facility_details`は記入済み
+
+**やること**
+1. 「石田フィッシャリーナ」「石田フィッシャリーナ 釣り」でGoogle検索し、1ページ目の競合（公式サイト・黒部市観光・釣果情報サイト・個人ブログ・マップ枠）を洗い出す。載っている情報と当記事に足りない情報を比較する
+2. 不足分を補強する（候補: 季節別の釣れる魚と釣果の目安、釣り場の区画・足場、レンタルタックル・エサの詳細、混雑時期、冬季・荒天時の営業、周辺施設・駐車場、よくある質問(FAQ)）。**出所のない数値・体験談は書かず**、公式サイト（https://fisyarina.webes.jp/）等の一次情報で裏取りする
+3. 魚種に触れる加筆は`kaijo-fish-knowledge`スキルを通し、`.data-set/fish-knowledge/`を優先する。`lastmod`も更新する
+4. 反映後にGSCで再インデックス登録をリクエストし、W42以降の週報で施設名クエリの順位を確認する
+
+**判断**: 競合が公式・自治体・マップ枠のみで当サイトが入り込める余地が小さいと分かった場合は、大幅加筆はせず項目5の判定メモ（競合が強い）に倒す。
+
+**関連**: 項目1（index登録）／項目5（施設名クエリの検証）

@@ -19,12 +19,12 @@ PDCA に「問題の把握」を加えた 5 段階（統計の PPDAC に相当�
 | フェーズ | 意味 | このスキルでやること | 成果物 |
 |---|---|---|---|
 | **P**roblem | 問題の把握・明確化・予知 | 最新 wNN の配置確認・INDEX 登録・比較モード決定 → データ分析 → 問題の抽出と明確化（手順1〜2） | 問題リスト（数値つき） |
-| **P**lan | 仮説の設定・実践の計画 | 問題ごとに仮説を立て、優先度判定・起票（手順3〜4） | `next-task` / `weekly-task` / [[measurement-task]] |
+| **P**lan | 仮説の設定・実践の計画 | 問題ごとに仮説を立て、優先度判定・起票（手順3〜4） | `next-task` / `weekly-task` / [[schedule-task]] |
 | **D**o | 実行・データ収集 | `next-task` を実行（別セッションで可）。効果測定用データの収集 | 変更・コミット |
-| **C**heck | 評価・データに基づく分析 | 次週以降のデータで仮説を検証（[[measurement-task]] の判定） | 検証結果 |
+| **C**heck | 評価・データに基づく分析 | 次週以降のデータで仮説を検証（[[schedule-task]] の判定） | 検証結果 |
 | **A**ction | 改善・結論 | 採否判断・横展開・次週タスク化。完了は archive へ | 結論・新タスク |
 
-本スキルの守備範囲は **Problem〜Plan（起票まで）**。Do は起票後に着手。Check/Action は次週の本スキル実行時に[[measurement-task]]を見て行い、その結果を次サイクルの Problem に引き継ぐ。**ユーザーが明示するまで記事の編集・コミット・画像生成は行わない。**
+本スキルの守備範囲は **Problem〜Plan（起票まで）**。Do は起票後に着手。Check/Action は次週の本スキル実行時に[[schedule-task]]を見て行い、その結果を次サイクルの Problem に引き継ぐ。**ユーザーが明示するまで記事の編集・コミット・画像生成は行わない。**
 
 ## 手順
 
@@ -49,8 +49,8 @@ PDCA に「問題の把握」を加えた 5 段階（統計の PPDAC に相当�
 - **ページ別（GSC ページ CSV）**: slug 単位で新旧URL（`/blog/<slug>/` ↔ `/fishing-facility/<slug>/` 等）を合算。`/blog/intelligence/` は現行URLなので合算しない
   - 表示回数が閾値（ページ50以上）を超え、①CTR が極端に低い ②順位 8〜20 で伸び代がある ③前週比で急落／急騰 を抽出
 - **クエリ別**: 表示回数20以上のみ。単週は急騰ワード（新規需要・記事化候補）と施設名クエリの異常だけ見る。判定は**直近4週合算**
-- **技術**: GA4 の LP に 404 系タイトル・旧URLが出ていないか／GSC のページに旧URL側が増えていないか（[[measurement-task]] M4）
-- **収益**: `affiliatecard_click` と `gothere_click`（イベント名ごとの行。**セッションはイベント名で足さない**）。`affiliate_id`・`placement`・`facility_id` は登録日以降のみ有効。[[measurement-task]] M1・M6 の判定材料を更新
+- **技術**: GA4 の LP に 404 系タイトル・旧URLが出ていないか／GSC のページに旧URL側が増えていないか（[[schedule-task]] M4）
+- **収益**: `affiliatecard_click` と `gothere_click`（イベント名ごとの行。**セッションはイベント名で足さない**）。`affiliate_id`・`placement`・`facility_id` は登録日以降のみ有効。[[schedule-task]] M1・M6 の判定材料を更新
 - **地域**: w41 以降の GA4 は市区町村あり → GoThere の出発地・アクセスガイドの需要地の確認材料に使う
 - スクリプト: `scripts/analyze-facility-ranking.mjs`（既定パスが古いので**引数で CSV パスを渡す**）、`analyze-query-mix.mjs`、`analyze-region-density.mjs`。集計は Python/Node で行ってよい（CSV は UTF-8、ページ名・クエリは日本語）
 
@@ -82,7 +82,7 @@ PDCA に「問題の把握」を加えた 5 段階（統計の PPDAC に相当�
 
 #### → どちらでもない
 
-- データが将来揃わないと判定できない → [[measurement-task]] に追記（測定対象・必要データ・判定基準・取得タイミング）
+- データが将来揃わないと判定できない → [[schedule-task]] に追記（測定対象・必要データ・判定基準・取得タイミング）
 - GSC 管理画面の手動作業（URL検査・インデックス登録・再インデックス） → [[subtask]] に URL リスト化
 - 完了済みの実行ログ → `.workspace/archive/task/` へ
 
@@ -94,7 +94,7 @@ PDCA に「問題の把握」を加えた 5 段階（統計の PPDAC に相当�
 
 ### 4. Plan②：起票（書き込み）
 
-1. `next-task.md`・`weekly-task.md`・[[measurement-task]] を**先に読み、既存項目と重複しないか確認**。重複は既存項目に今週の根拠を追記する
+1. `next-task.md`・`weekly-task.md`・[[schedule-task]] を**先に読み、既存項目と重複しないか確認**。重複は既存項目に今週の根拠を追記する
 2. 書式（既存ファイルの体裁に合わせる）
 
    ```markdown
@@ -104,7 +104,7 @@ PDCA に「問題の把握」を加えた 5 段階（統計の PPDAC に相当�
      - 対象: <slug / URL>
      - やること: <具体作業>
      - 完了条件: <Do の完了を判断できる条件>
-     - 検証（Check）: <何を・いつ・どの値で見るか。データ待ちなら [[measurement-task]] M? へ登録>
+     - 検証（Check）: <何を・いつ・どの値で見るか。データ待ちなら [[schedule-task]] M? へ登録>
      - 昇格条件: <weekly のみ>
    ```
 
@@ -117,7 +117,7 @@ PDCA に「問題の把握」を加えた 5 段階（統計の PPDAC に相当�
 
 次の4点を短くまとめる:
 - 使ったデータと比較モード（例: 「w41 GSC 7日、前週が3か月なので WoW 不可、w40÷13 と比較」）
-- 主な問題（3〜5点、数値つき）と、前サイクルの Check/Action の結果（[[measurement-task]] で判定できたもの）
+- 主な問題（3〜5点、数値つき）と、前サイクルの Check/Action の結果（[[schedule-task]] で判定できたもの）
 - 起票した next-task / weekly-task の件数と、**next-task に入れた理由**（N1〜N5）
 - データ不足・要確認事項（GSC 実期間、欠番週 等）
 
