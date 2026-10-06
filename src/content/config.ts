@@ -87,7 +87,7 @@ const fishingFacilityCollection = defineCollection({
     category: z.string().optional(),
     prefecture: z.string().optional(),
     region: z.string().optional(),
-    facilityType: z.string().optional(),
+    facilityType: z.enum(['sea-pond', 'sea-park', 'other']).optional(),
     tags: z.array(z.string()).optional(),
     description: z.string().optional(),
     excerpt: z.string().optional(),
@@ -111,6 +111,29 @@ const fishingFacilityCollection = defineCollection({
       average_price: z.string().optional(),
       target_fish: z.array(z.string()).optional(),
       reservation: z.string().optional(),
+      // 診断・分析用の構造化項目。不明は未記入（推測で埋めない）
+      stocked_fish: z.array(z.string()).optional(),
+      wild_fish: z.array(z.string()).optional(),
+      price_min: z.number().optional(),
+      price_max: z.number().optional(),
+      price_type: z.enum(['entry-only', 'pond-1day', 'course']).optional(),
+      includes_gear: z.boolean().optional(),
+      beginner_friendly: z.boolean().optional(),
+      family_friendly: z.boolean().optional(),
+      hands_free: z.boolean().optional(),
+      needs_ferry: z.boolean().optional(),
+      ferry_info: z.string().optional(),
+      access_minutes: z.number().optional(),
+      reservation_type: z.enum(['required', 'recommended', 'not_required', 'first_come']).optional(),
+      reservation_url: z.string().optional(),
+      sns: z.object({
+        x: z.string().optional(),
+        instagram: z.string().optional(),
+        facebook: z.string().optional(),
+      }).optional(),
+      rod_length_limit: z.number().optional(), // 竿の長さ上限(m)。制限なし/不明は未記入
+      rod_count_limit: z.number().optional(), // 1人あたりの竿の本数上限。制限なし/不明は未記入
+      verified_at: z.string().optional(), // YYYY-MM-DD。公式で確認した日
       amenities: z.object({
         rental_tackle: z.boolean().or(z.string()).optional(),
         bait_sale: z.boolean().or(z.string()).optional(),
