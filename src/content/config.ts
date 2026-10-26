@@ -134,6 +134,21 @@ const fishingFacilityCollection = defineCollection({
       rod_length_limit: z.number().optional(), // 竿の長さ上限(m)。制限なし/不明は未記入
       rod_count_limit: z.number().optional(), // 1人あたりの竿の本数上限。制限なし/不明は未記入
       verified_at: z.string().optional(), // YYYY-MM-DD。公式で確認した日
+      // はじめての人向けの事実。安心度は src/utils/first-timer.ts で計算する（ここには書かない）
+      // キーを書かない=未確認、none/空配列=確認した上でない
+      first_timer: z.object({
+        rental_items: z.array(z.enum(['rod', 'reel', 'rig', 'bait', 'tamo', 'bucket', 'cooler'])).optional(),
+        rental_price: z.number().optional(), // 円。入場料に含むなら0
+        rental_note: z.string().optional(),
+        lending: z.array(z.enum(['life_jacket', 'cooler', 'tamo', 'gloves', 'rain_gear'])).optional(),
+        staff_support: z.array(z.enum(['instruction', 'bait', 'landing', 'unhook'])).optional(),
+        catch_assurance: z.enum(['guarantee', 'souvenir', 'none']).optional(),
+        catch_note: z.string().optional(),
+        processing: z.enum(['free', 'paid', 'none']).optional(),
+        beginner_plan: z.string().optional(),
+        source_url: z.string().optional(), // 公式ページURL、または「電話確認」
+        verified_at: z.string().optional(), // YYYY-MM-DD
+      }).optional(),
       amenities: z.object({
         rental_tackle: z.boolean().or(z.string()).optional(),
         bait_sale: z.boolean().or(z.string()).optional(),

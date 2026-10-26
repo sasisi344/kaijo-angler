@@ -1,13 +1,13 @@
 {
   "id": "tackle/chonmage-soft-cooler",
-  "name": "Chonmage Fishing CF 保冷断熱 フィッシングソフトクーラー専用インバッグ 1200×380 3枚入",
-  "brand": "Chonmage Fishing",
-  "description": "ソフトクーラーバッグの内側にセットする保冷・断熱・汚れ防止用のインナーバッグ。3枚入りで、海上釣り堀の釣果を魚種ごとに分けて衛生的に持ち帰れる。",
-  "search_query": "Chonmage Fishing インバッグ 1200×380",
-  "categories": ["クーラー・保冷", "エサ管理"],
+  "name": "SANLIKE（サンライク） フィッシングクーラー 大型釣りクーラーバッグ 100/120cm 折り畳み式",
+  "brand": "SANLIKE",
+  "description": "青物・マグロにも対応する大型のソフトクーラー。折り畳めるので行きはコンパクトに運べ、釣れたらそのまま大物を入れて持ち帰れる。TPU素材で水漏れしにくい。",
+  "search_query": "SANLIKE フィッシングクーラー 大型 折り畳み",
+  "categories": ["クーラー・保冷"],
   "targetFish": ["マダイ", "青物"],
   "methods": [],
   "isRecommended": false,
-  "link": "https://www.amazon.co.jp/dp/B0CCDLQ6C5?tag=sasisi344-22",
-  "image": "https://m.media-amazon.com/images/I/51l57lCOftL._AC_SL1500_.jpg"
+  "link": "https://www.amazon.co.jp/dp/B0F7JVGX8Z?tag=sasisi344-22",
+  "image": "https://m.media-amazon.com/images/I/61PcRtfaYDL._AC_SL1500_.jpg"
 }

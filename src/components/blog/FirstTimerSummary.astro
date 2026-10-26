@@ -1,0 +1,62 @@
+---
+/**
+ * 施設記事の冒頭に自動で出す「はじめての方へ」の1行案内。
+ * 「はじめてでも安心」「準備すれば安心」の施設だけに出す（経験者向け・確認中は本文の節で説明する）。
+ * 本文に <FirstTimerGuide /> があればその節へ、なければ共通ガイドへリンクする。
+ */
+import type { CollectionEntry } from 'astro:content';
+import { getPermalink } from '~/utils/permalinks';
+import { evaluateFirstTimer, LEVEL_LABEL, RENTAL_LABEL, SUPPORT_LABEL } from '~/utils/first-timer';
+
+interface Props {
+  facilityId: string;
+  details: CollectionEntry<'fishing-facility'>['data']['facility_details'];
+  hasSection: boolean;
+}
+
+const { facilityId, details, hasSection } = Astro.props;
+const result = evaluateFirstTimer(details);
+if (!result || (result.level !== 'safe' && result.level !== 'prepare')) return;
+
+const ft = details!.first_timer!;
+const parts: string[] = [];
+if (ft.rental_items && ft.rental_items.length > 0) {
+  parts.push(`レンタル：${ft.rental_items.map((i) => RENTAL_LABEL[i] ?? i).join('・')}`);
+} else if (ft.rental_items) {
+  parts.push('道具の持参が必要');
+}
+const support = ft.staff_support?.find((s) => s === 'instruction' || s === 'landing');
+if (support) parts.push(`スタッフが${SUPPORT_LABEL[support]}`);
+
+const href = hasSection ? '#first-timer' : getPermalink('tactics/beginner/first-fishing-pond');
+const linkText = hasSection ? 'はじめての方へ' : 'はじめてガイド';
+---
+
+<div class="not-prose mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 px-4 py-3 text-sm">
+  <span class="font-bold text-slate-800 dark:text-slate-100">{LEVEL_LABEL[result.level]}</span>
+  {parts.length > 0 && <span class="text-slate-600 dark:text-slate-300">{parts.join('／')}</span>}
+  <a
+    href={href}
+    data-firsttimer-link
+    data-firsttimer-facility={facilityId}
+    data-firsttimer-placement="facility-lead"
+    class="ml-auto font-bold text-primary hover:underline"
+  >
+    {linkText} →
+  </a>
+</div>
+<script is:inline>
+  if (!window.__firsttimerTrackingInit) {
+    window.__firsttimerTrackingInit = true;
+    document.addEventListener('click', function (e) {
+      const el = e.target.closest('[data-firsttimer-link]');
+      if (!el) return;
+      if (typeof gtag === 'function') {
+        gtag('event', 'firsttimer_click', {
+          facility_id: el.dataset.firsttimerFacility || '',
+          placement: el.dataset.firsttimerPlacement || '',
+        });
+      }
+    });
+  }
+</script>

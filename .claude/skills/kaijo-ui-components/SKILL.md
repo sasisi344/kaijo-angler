@@ -9,7 +9,8 @@ description: >-
 
 # kaijo-angler UI・アフィリエイト組み込みルール
 
-記事（MDX）に何らかの UI や外部リンクを足したくなったら、まず本ファイルを確認する。存在しないコンポーネント（例: `LinkCard`）や `@/` エイリアスを使わないこと。
+記事（MDX）に何らかの UI や外部リンクを足したくなったら、まず本ファイルを確認する。
+**本ファイルは「挿し方」。誰に・どこで・何と書いて勧めるか（売り方）は `kaijo-affiliate-sales` スキルで先に決める。**存在しないコンポーネント（例: `LinkCard`）や `@/` エイリアスを使わないこと。
 
 ## 1. コンポーネントの置き場所
 
@@ -36,9 +37,9 @@ import GoThere from "~/components/widgets/GoThere.astro";
 
 | コンポーネント | 用途 | 使う場所 |
 |---|---|---|
-| **GoThere** (`~/components/widgets/GoThere.astro`) | 施設ページ専用。Google マップ経路・じゃらん/楽天トラベル・じゃらんレンタカー（駐車場ありのみ）をまとめて出力 | `fishing-facility/**/index.mdx` の「アクセス」セクション末尾。`<GoThere facilityId="..." />` |
-| **AffiliateCard** (`~/components/common/AffiliateCard.astro`) | 単体の物販・サービスアフィリを1枚のカードで出す。`id` が `travel/` プレフィックスだと自動的に「サービス用モード」（画像なし・「公式サイトで詳細を見る」ボタンのみ）になる | column/travel 系記事など、GoThere が使えない場所で宿泊・レンタカー等のCTAを置きたいとき。`<AffiliateCard id="travel/jalan-net" isVertical={true} />` |
-| **TackleCard** (`~/components/common/TackleCard.astro`) | 釣具・道具のアフィリエイトカード（Amazon/楽天/Yahoo!検索リンク付き） | tactics/gear 系記事の道具紹介 |
+| **GoThere** (`~/components/widgets/GoThere.astro`) | 施設ページ専用。Google マップ経路・じゃらん/楽天トラベル・じゃらんレンタカー（駐車場ありのみ）をまとめて出力。任意 props: `placement`（既定 `facility-article`）・`heading`・`lead`（つなぎの一文）・`lodging`（auto/show/hide）・`lodgingAsp`（both/rakuten/jalan）・`rentacar`（auto/hide） | `fishing-facility/**/index.mdx` の「アクセス」セクション末尾。`<GoThere facilityId="..." />` |
+| **AffiliateCard** (`~/components/common/AffiliateCard.astro`) | 単体の物販・サービスアフィリを1枚のカードで出す。`id` が `travel/` プレフィックスだと自動的に「サービス用モード」（「公式サイトで詳細を見る」ボタンのみ）になる。任意 props: `placement`・`reason`（JSONの汎用説明文を記事ごとの理由で置き換え）・`ctaLabel`（travel のボタン文言） | column/travel 系記事など、GoThere が使えない場所で宿泊・レンタカー等のCTAを置きたいとき。`<AffiliateCard id="travel/jalan-net" isVertical={true} placement="..." reason="..." />` |
+| **TackleCard** (`~/components/common/TackleCard.astro`) | 釣具・道具のアフィリエイトカード（Amazon/楽天/Yahoo!検索リンク付き）。任意 props: `placement`・`reason`（AffiliateCard へ渡す） | tactics/gear 系記事の道具紹介、施設記事のルール・攻略の節 |
 
 ### 3.1 `id` は必ず実在確認する
 
@@ -78,6 +79,7 @@ Select-String -Path "src/content/blog/**/*.mdx" -Pattern '(TackleCard|AffiliateC
 ### `src/components/blog/`（記事レイアウト関連）
 - `FacilityJsonLd.astro`
 - `FacilityStatusAlert.astro`
+- `FirstTimerSummary.astro` — 施設記事の冒頭の「はじめての方へ」1行案内。`[...slug].astro` が自動で出す（記事に書かない）
 - `Grid.astro` / `GridItem.astro`
 - `Headline.astro`
 - `List.astro` / `ListItem.astro`
@@ -124,6 +126,7 @@ Select-String -Path "src/content/blog/**/*.mdx" -Pattern '(TackleCard|AffiliateC
 - `FAQs.astro`
 - `FacilityMap.astro`
 - `Features.astro` / `Features2.astro` / `Features3.astro`
+- `FirstTimerGuide.astro` — 施設記事の「はじめての方へ」節の表。`<FirstTimerGuide facilityId="..." />` を料金の節の直後に置き、H2 と案内文は MDX に書く。値は frontmatter の `facility_details.first_timer`
 - `FishingHeatmap.astro`
 - `Footer.astro`
 - `GoThere.astro`

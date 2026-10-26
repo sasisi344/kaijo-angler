@@ -51,6 +51,17 @@ facility_details:
   # 他: stocked_fish / wild_fish / price_min / price_max / price_type / includes_gear / beginner_friendly /
   #     family_friendly / hands_free / needs_ferry / ferry_info / access_minutes / reservation_type / reservation_url / sns
   #     facilityType（sea-pond | sea-park | other）はトップレベルに書く。詳細は .workspace/facility-data-update/README.md
+  # はじめての人向けの事実（任意）。安心度は src/utils/first-timer.ts が計算するので書かない。
+  # キーを書かない=未確認、none/[]=確認した上でない。詳細は .workspace/.task/first-timer-design.md
+  first_timer:
+    rental_items: [rod, reel, rig] # rod/reel/rig/bait/tamo/bucket/cooler
+    rental_price: 1000 # 円。料金込みは0
+    lending: [life_jacket, tamo] # life_jacket/cooler/tamo/gloves/rain_gear
+    staff_support: [instruction, landing] # instruction/bait/landing/unhook
+    catch_assurance: souvenir # guarantee/souvenir/none
+    processing: paid # free/paid/none
+    source_url: "公式ページURL または 電話確認"
+    verified_at: "2026-11-08"
   
   amenities:
     rental_tackle: true

@@ -50,6 +50,9 @@ function initFacilityParentGrid(): void {
   const filterToilet = document.getElementById(
     "filter-toilet",
   ) as HTMLSelectElement | null;
+  const filterFirstTimer = document.getElementById(
+    "filter-firsttimer",
+  ) as HTMLSelectElement | null;
   const filterReset = document.getElementById("filter-reset");
   if (!filterFish || !filterRental || !filterToilet || !filterReset) return;
 
@@ -57,16 +60,19 @@ function initFacilityParentGrid(): void {
     const fishVal = filterFish.value;
     const rentalVal = filterRental.value;
     const toiletVal = filterToilet.value;
+    const firstTimerVal = filterFirstTimer?.value ?? "";
 
     gridItems.forEach((item) => {
       const itemFish = item.getAttribute("data-fish") || "";
       const itemRental = item.getAttribute("data-rental");
       const itemToilet = item.getAttribute("data-toilet");
+      const itemFirstTimer = item.getAttribute("data-firsttimer");
 
       let match = true;
       if (fishVal && !itemFish.split(",").includes(fishVal)) match = false;
       if (rentalVal && itemRental !== rentalVal) match = false;
       if (toiletVal && itemToilet !== toiletVal) match = false;
+      if (firstTimerVal && itemFirstTimer !== firstTimerVal) match = false;
 
       if (match) {
         item.classList.remove("hidden", "opacity-0", "filtered-out");
@@ -80,7 +86,7 @@ function initFacilityParentGrid(): void {
     });
 
     if (container) {
-      if (fishVal || rentalVal || toiletVal) {
+      if (fishVal || rentalVal || toiletVal || firstTimerVal) {
         container.style.display = "none";
       } else {
         container.style.display = "block";
@@ -110,11 +116,13 @@ function initFacilityParentGrid(): void {
   filterFish.addEventListener("change", updateFilter);
   filterRental.addEventListener("change", updateFilter);
   filterToilet.addEventListener("change", updateFilter);
+  filterFirstTimer?.addEventListener("change", updateFilter);
 
   filterReset.addEventListener("click", () => {
     filterFish.value = "";
     filterRental.value = "";
     filterToilet.value = "";
+    if (filterFirstTimer) filterFirstTimer.value = "";
     updateFilter();
   });
 }

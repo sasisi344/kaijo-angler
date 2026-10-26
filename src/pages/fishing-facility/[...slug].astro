@@ -24,6 +24,8 @@ import type { CollectionEntry } from "astro:content";
 import { getFishingFacilityEntries } from "~/utils/fishing-facility-collection";
 import { getPrimaryDate } from "~/utils/date-helpers";
 import { normalizeAmenityValue } from "~/utils/facility-helpers";
+import { evaluateFirstTimer, isFirstTimerPick, LEVEL_LABEL } from "~/utils/first-timer";
+import FirstTimerSummary from "~/components/blog/FirstTimerSummary.astro";
 
 type FFPost = CollectionEntry<"fishing-facility">;
 type FacilityPageListItem = Pick<
@@ -288,7 +290,7 @@ if (type === "facility") {
                   </h3>
                   <form
                     id="facility-filter-form"
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                   >
                     <div class="flex flex-col">
                       <label
@@ -340,6 +342,22 @@ if (type === "facility") {
                       </select>
                     </div>
 
+                    <div class="flex flex-col">
+                      <label
+                        for="filter-firsttimer"
+                        class="text-xs text-slate-500 dark:text-slate-400 mb-1"
+                      >
+                        はじめての方
+                      </label>
+                      <select
+                        id="filter-firsttimer"
+                        class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm rounded-md px-3 py-2 w-full focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                      >
+                        <option value="">こだわらない</option>
+                        <option value="true">はじめてでも安心</option>
+                      </select>
+                    </div>
+
                     <div class="flex flex-col justify-end">
                       <button
                         type="button"
@@ -366,6 +384,8 @@ if (type === "facility") {
                   );
                   const fishList =
                     item.facility_details?.target_fish?.join(",") || "";
+                  const firstTimer = evaluateFirstTimer(item.facility_details);
+                  const firstTimerPick = isFirstTimerPick(firstTimer);
                   const isHidden = index >= 6;
 
                   return (
@@ -375,6 +395,7 @@ if (type === "facility") {
                       data-facility-item
                       data-rental={rental ? "true" : "false"}
                       data-toilet={toilet ? "true" : "false"}
+                      data-firsttimer={firstTimerPick ? "true" : "false"}
                       data-fish={fishList}
                     >
                       <div class="relative h-48 mb-4 overflow-hidden rounded-lg shadow-lg bg-gray-200 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
@@ -397,6 +418,11 @@ if (type === "facility") {
                         {item.title}
                       </h3>
                       <div class="flex flex-wrap gap-1 mb-2">
+                        {firstTimerPick && firstTimer && (
+                          <span class="bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 text-[10px] px-2 py-0.5 rounded-[4px] border border-emerald-200 dark:border-emerald-800">
+                            {LEVEL_LABEL[firstTimer.level]}
+                          </span>
+                        )}
                         {rental && (
                           <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-[10px] px-2 py-0.5 rounded-[4px] border border-blue-200 dark:border-blue-800">
                             レンタル有
@@ -451,6 +477,12 @@ if (type === "facility") {
 
           <div class="prose prose-lg prose-md dark:prose-invert max-w-none pt-8 border-t border-gray-200 dark:border-slate-800">
             <FacilityStatusAlert status={post.data.status} />
+
+            <FirstTimerSummary
+              facilityId={post.id.replace(/\/index$/, "")}
+              details={post.data.facility_details}
+              hasSection={(post.body ?? "").includes("<FirstTimerGuide")}
+            />
 
             <Content />
           </div>

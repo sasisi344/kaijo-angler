@@ -1,0 +1,180 @@
+---
+/**
+ * 施設記事の「はじめての方へ」節の表。frontmatter の facility_details.first_timer を読む。
+ * 見出し（H2）と運営者の案内文は MDX 側に書き、このコンポーネントは事実の表だけを出す。
+ * 設計: .workspace/.task/first-timer-design.md
+ */
+import { getEntry } from 'astro:content';
+import { getPermalink } from '~/utils/permalinks';
+import {
+  evaluateFirstTimer,
+  LEVEL_LABEL,
+  RENTAL_LABEL,
+  LENDING_LABEL,
+  SUPPORT_LABEL,
+  CATCH_LABEL,
+  PROCESSING_LABEL,
+  type CheckResult,
+} from '~/utils/first-timer';
+
+interface Props {
+  facilityId: string;
+}
+
+const { facilityId } = Astro.props;
+
+const facility = await getEntry('fishing-facility', facilityId);
+if (!facility) return;
+
+const details = facility.data.facility_details;
+const ft = details?.first_timer;
+const result = evaluateFirstTimer(details);
+if (!ft || !result) return;
+
+const join = (items: readonly string[] | undefined, labels: Record<string, string>) =>
+  items && items.length > 0 ? items.map((i) => labels[i] ?? i).join('・') : undefined;
+
+const rentalText = (() => {
+  if (!ft.rental_items) return undefined;
+  if (ft.rental_items.length === 0) return 'レンタルなし（道具の持参が必要）';
+  const items = join(ft.rental_items, RENTAL_LABEL);
+  const price =
+    ft.rental_price === undefined ? '' : ft.rental_price === 0 ? '（料金に込み）' : `（${ft.rental_price.toLocaleString()}円）`;
+  return `${items}${price}`;
+})();
+
+const stocked = details?.stocked_fish ?? [];
+const catchText = [
+  ft.catch_assurance ? CATCH_LABEL[ft.catch_assurance] : undefined,
+  ft.catch_note,
+  stocked.length > 0 ? `放流魚：${stocked.join('・')}` : undefined,
+]
+  .filter(Boolean)
+  .join('／');
+
+const rows: { key: string; question: string; answer?: string; note?: string; result: CheckResult }[] = [
+  {
+    key: 'gear',
+    question: '道具がなくても釣りできる？',
+    answer: rentalText,
+    note:
+      [
+        ft.beginner_plan,
+        ft.rental_note,
+        details?.amenities?.bait_sale && !ft.rental_items?.includes('bait') ? 'エサは受付で購入できます' : undefined,
+      ]
+        .filter(Boolean)
+        .join('／') || undefined,
+    result: result.checks[0].result,
+  },
+  {
+    key: 'prepare',
+    question: '貸してもらえる物は？',
+    answer: ft.lending ? (ft.lending.length > 0 ? join(ft.lending, LENDING_LABEL) : '貸し出しなし') : undefined,
+    result: result.checks[1].result,
+  },
+  {
+    key: 'catch',
+    question: '本当に釣れる？',
+    answer: catchText || undefined,
+    result: result.checks[2].result,
+  },
+  {
+    key: 'support',
+    question: '使い方が分からなくても大丈夫？',
+    answer: ft.staff_support
+      ? ft.staff_support.length > 0
+        ? `スタッフが${ft.staff_support.map((s) => SUPPORT_LABEL[s]).join('、')}`
+        : 'スタッフのサポートなし'
+      : undefined,
+    result: result.checks[3].result,
+  },
+  {
+    key: 'processing',
+    question: '釣れた魚はどうする？',
+    answer: ft.processing ? PROCESSING_LABEL[ft.processing] : undefined,
+    result: result.checks[4].result,
+  },
+];
+
+const mark = (r: CheckResult) => (r === true ? '◎' : r === false ? '△' : '？');
+const guideHref = getPermalink('tactics/beginner/first-fishing-pond');
+const badgeClass = {
+  safe: 'bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/40 dark:text-emerald-300 dark:border-emerald-800',
+  prepare: 'bg-sky-100 text-sky-800 border-sky-300 dark:bg-sky-900/40 dark:text-sky-300 dark:border-sky-800',
+  experienced: 'bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/40 dark:text-amber-300 dark:border-amber-800',
+  unknown: 'bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-600',
+}[result.level];
+---
+
+<div id="first-timer" class="not-prose my-8 scroll-mt-24 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5 shadow-sm">
+  <div class="flex flex-wrap items-center gap-2 mb-4">
+    <span class:list={['text-xs font-bold px-2.5 py-1 rounded-full border', badgeClass]}>
+      {LEVEL_LABEL[result.level]}
+    </span>
+    {ft.verified_at && (
+      <span class="text-xs text-slate-500 dark:text-slate-400">
+        {ft.verified_at} に{ft.source_url?.startsWith('http') ? '公式情報' : ft.source_url ?? '公式情報'}で確認
+      </span>
+    )}
+  </div>
+
+  <dl class="divide-y divide-slate-100 dark:divide-slate-800">
+    {rows.map((row) => (
+      <div class="grid grid-cols-[1.5rem_1fr] gap-x-2 py-3 sm:grid-cols-[1.5rem_12rem_1fr]">
+        <span aria-hidden="true" class="text-base leading-6">{mark(row.result)}</span>
+        <dt class="text-sm font-bold text-slate-700 dark:text-slate-200 leading-6">{row.question}</dt>
+        <dd class="col-start-2 sm:col-start-3 text-sm text-slate-700 dark:text-slate-300 leading-6">
+          {row.answer ?? <span class="text-slate-500 dark:text-slate-400">公式情報では確認できませんでした（予約時に確認）</span>}
+          {row.note && <span class="block text-xs text-slate-500 dark:text-slate-400">{row.note}</span>}
+        </dd>
+      </div>
+    ))}
+  </dl>
+
+  <div class="mt-4 grid gap-4 sm:grid-cols-2">
+    <div class="rounded-xl bg-slate-50 dark:bg-slate-800/60 p-4">
+      <p class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">自分で用意するもの</p>
+      <ul class="text-sm text-slate-700 dark:text-slate-300 list-disc pl-5 space-y-1">
+        {result.bring.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+    {result.askOnReservation.length > 0 && (
+      <div class="rounded-xl bg-amber-50 dark:bg-amber-900/20 p-4">
+        <p class="text-sm font-bold text-slate-800 dark:text-slate-100 mb-2">予約時に聞いておくこと</p>
+        <ul class="text-sm text-slate-700 dark:text-slate-300 list-disc pl-5 space-y-1">
+          {result.askOnReservation.map((a) => <li>{a}</li>)}
+        </ul>
+      </div>
+    )}
+  </div>
+
+  <a
+    href={guideHref}
+    data-firsttimer-link
+    data-firsttimer-facility={facilityId}
+    data-firsttimer-placement="facility-firsttimer"
+    class="mt-4 flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors no-underline"
+  >
+    道具の使い方・当日の流れは「海上釣り堀はじめてガイド」へ
+  </a>
+  <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+    ◎=確認済みで安心／△=確認済みだが準備が必要／？=未確認
+  </p>
+</div>
+
+<script is:inline>
+  if (!window.__firsttimerTrackingInit) {
+    window.__firsttimerTrackingInit = true;
+    document.addEventListener('click', function (e) {
+      const el = e.target.closest('[data-firsttimer-link]');
+      if (!el) return;
+      if (typeof gtag === 'function') {
+        gtag('event', 'firsttimer_click', {
+          facility_id: el.dataset.firsttimerFacility || '',
+          placement: el.dataset.firsttimerPlacement || '',
+        });
+      }
+    });
+  }
+</script>

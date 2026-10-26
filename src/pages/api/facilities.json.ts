@@ -1,5 +1,6 @@
 import type { ImageMetadata } from "astro";
 import { getFishingFacilityEntries } from "~/utils/fishing-facility-collection";
+import { evaluateFirstTimer, isFirstTimerPick } from "~/utils/first-timer";
 
 export const prerender = true;
 
@@ -43,6 +44,12 @@ export async function GET() {
         target_fish: facility_details?.target_fish || [],
         rental: facility_details?.amenities?.rental_tackle,
         toilet: facility_details?.amenities?.toilet,
+        firstTimer: (() => {
+          const result = evaluateFirstTimer(facility_details);
+          return result
+            ? { level: result.level, pick: isFirstTimerPick(result) }
+            : null;
+        })(),
       };
     })
     // Filter out facilities without coordinates
