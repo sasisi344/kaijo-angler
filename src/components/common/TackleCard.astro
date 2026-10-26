@@ -5,14 +5,18 @@ import AffiliateCard from "./AffiliateCard.astro";
 interface Props {
   id: string;
   isVertical?: boolean;
+  /** クリック計測用の設置面（例: facility-gear）。AffiliateCard へそのまま渡す */
+  placement?: string;
+  /** 記事ごとの勧める理由。指定すると JSON の汎用説明文を置き換える */
+  reason?: string;
 }
 
-const { id, isVertical = false } = Astro.props;
+const { id, isVertical = false, placement, reason } = Astro.props;
 const entry = await getEntry("affiliates", id);
 ---
 
 {entry ? (
-  <AffiliateCard product={entry.data} isVertical={isVertical} />
+  <AffiliateCard product={entry.data} id={id} isVertical={isVertical} placement={placement} reason={reason} />
 ) : (
   <div class="my-8 p-4 border border-red-500/30 bg-red-500/10 rounded-xl text-red-500 text-sm font-semibold">
     ⚠️ アフィリエイトID "{id}" が見つかりません。 src/content/affiliates/ を確認してください。

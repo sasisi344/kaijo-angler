@@ -10,9 +10,13 @@ interface Props {
   linkType?: string;
   /** クリック計測用: 設置面（例: facility-article, access-guide）。呼び出し側で明示する */
   placement?: string;
+  /** 記事ごとの勧める理由（施設の事実 → この商品が要る理由）。指定すると JSON の汎用説明文を置き換える */
+  reason?: string;
+  /** travel 表示のボタン文言。未指定なら「公式サイトで詳細を見る」 */
+  ctaLabel?: string;
 }
 
-const { product: initialProduct, id, isVertical = false, linkType, placement = "" } = Astro.props;
+const { product: initialProduct, id, isVertical = false, linkType, placement = "", reason, ctaLabel } = Astro.props;
 const trackId = id || initialProduct?.id || "";
 
 function inferLinkType(productId: string): string {
@@ -42,6 +46,7 @@ let amazonSearch = "";
 let rakutenSearch = "";
 let yahooSearch = "";
 let isService = false;
+let impressionPixel = "";
 
 if (product) {
   finalLink = product.link || "";
@@ -53,6 +58,10 @@ if (product) {
     if (linkMatch) finalLink = linkMatch[1];
 
     // Extract all images and find the one that isn't a tracking pixel (1x1)
+    // A8.net のインプレッション計測ピクセル（1x1）は表示に残す
+    const pixelMatch = product.html.match(/src="(https:\/\/www\d*\.a8\.net\/0\.gif[^"]*)"/);
+    if (pixelMatch) impressionPixel = pixelMatch[1];
+
     const srcMatches = [...product.html.matchAll(/src="([^"]+)"/g)];
     const productImages = srcMatches
       .map(m => m[1])
@@ -114,6 +123,7 @@ if (product) {
           </svg>
         </div>
       )}
+      {impressionPixel && <img src={impressionPixel} width="1" height="1" alt="" class="absolute opacity-0 pointer-events-none" />}
     </div>
 
     <div class="flex-1 flex flex-col space-y-3">
@@ -137,7 +147,11 @@ if (product) {
         {product.name}
       </h3>
 
-      {product.description && (
+      {reason ? (
+        <p class="text-sm text-slate-700 dark:text-slate-300">
+          {reason}
+        </p>
+      ) : product.description && (
         <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2">
           {product.description}
         </p>
@@ -168,7 +182,7 @@ if (product) {
             data-affiliatecard-placement={placement}
             class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors text-sm shadow-md hover:shadow-lg active:translate-y-0.5 no-underline"
           >
-            公式サイトで詳細を見る
+            {ctaLabel || "公式サイトで詳細を見る"}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>

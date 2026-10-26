@@ -25,3 +25,23 @@
 ---
 
 新しい週報PPDCAで起票されたタスクは、この下に追記する。
+
+---
+
+## [ ] 2. GA4 探索エクスポートの列追加と `gothere_click` の発火確認（w42・計測・工数S／N3＋N4）（2026-10-11）
+
+**問題**: w41・w42 の2週連続で、エクスポートに `affiliate_id`・`placement`・`facility_id` の列がない（17列で同一構成）。`gothere_click` は GoThere 116記事設置にもかかわらず 9/26〜10/10 の16日間でゼロ行。`affiliatecard_click` は7イベント（w41: 9）で、どの商品がクリックされたか不明。M1（`affiliate_id` 別クリック）と M6（GoThere go/no-go）が2週止まっている（[[schedule-task]]）。w41 では weekly Tier2 に置いたが期限（w42 取り込み前）を過ぎたため昇格。
+
+**仮説**: (a) カスタムディメンションは登録済み（`placement`/`facility_id` 9/20、`affiliate_id` 9/30）だが探索レポートの列に未追加。(b) `gothere_click` は実際に発火していない、または発火してもパラメータ不備でイベントとして集計されていない（`src/components/widgets/GoThere.astro:173` の `gtag('event', 'gothere_click', …)` 周辺）。
+
+**手順**
+1. GA4 探索「週報PPDCA用-1week-自由形式」にカスタムディメンション `affiliate_id`・`placement`・`facility_id` の列を追加し、イベント名の絞り込みで `gothere_click` が除外されていないか確認する
+2. GA4 DebugView（またはリアルタイム）で、施設記事の GoThere ボタンと AffiliateCard/TackleCard をクリックし、`gothere_click`・`affiliatecard_click` が上記3パラメータ付きで届くか確認する
+3. `gothere_click` が届かない場合は `GoThere.astro` の計測コードを修正する（修正前に原因をユーザーへ報告。コードは最小限）。届く場合は「週16日でクリック0＝設置面の見つけにくさ」と判断して [[schedule-task]] M6 に記録する
+4. `access-data/CLAUDE.md` の GA4 行にディメンション構成（追加した3列）を追記する
+
+**完了条件**: w43 のエクスポート（10/12〜10/18 分）に `affiliate_id` 列と `placement` 列があり、`affiliatecard_click` が商品別に出る。`gothere_click` は「発火する／しない」が DebugView で確定している。
+
+**検証（Check）**: w43 取り込み時に M1・M6 を初回判定する（[[schedule-task]]）。
+
+**備考**: 追加後は GA4 の列順が変わるため、`scripts/` で GA4 CSV を読むものがあれば列位置の前提を確認する。

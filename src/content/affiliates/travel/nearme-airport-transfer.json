@@ -1,0 +1,12 @@
+{
+  "id": "travel/nearme-airport-transfer",
+  "name": "NearMe（ニアミー）空港送迎",
+  "brand": "NearMe",
+  "description": "自宅から空港まで事前予約で送迎。早割で最大50%オフ、料金は予約時に確定。大人数・大荷物の釣りの遠征にも車両を選べます。",
+  "html": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEA50+7289HM+4Q64+609HT\" rel=\"nofollow\"><img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www23.a8.net/svt/bgt?aid=261006804427&wid=008&eno=01&mid=s00000022054001009000&mc=1\"></a><img border=\"0\" width=\"1\" height=\"1\" src=\"https://www11.a8.net/0.gif?a8mat=4BEA50+7289HM+4Q64+609HT\" alt=\"\">",
+  "categories": [
+    "空港送迎",
+    "旅行"
+  ],
+  "isRecommended": false
+}

@@ -5,7 +5,7 @@
 - **優先実行タスク**: 本ファイル（Tier別）
 - **効果測定・判定待ちタスク**: [[schedule-task]]（個別に対応しやすいよう分離）
 - **GSC手動作業・詳細設計**: [[subtask]]
-- 完了済み・過去の実行ログ: [`archive/task/weekly-task-2026-09-22_09-30.md`](../archive/task/weekly-task-2026-09-22_09-30.md)、[`archive/task/weekly-task-2026-09-13_09-21.md`](../archive/task/weekly-task-2026-09-13_09-21.md)、W25〜W28は各`weekly-PPDCA-task-*.md`
+- 完了済み・過去の実行ログ: [`archive/task/weekly-task-2026-10-01_10-06.md`](../archive/task/weekly-task-2026-10-01_10-06.md)、[`archive/task/weekly-task-2026-09-22_09-30.md`](../archive/task/weekly-task-2026-09-22_09-30.md)、[`archive/task/weekly-task-2026-09-13_09-21.md`](../archive/task/weekly-task-2026-09-13_09-21.md)、W25〜W28は各`weekly-PPDCA-task-*.md`
 
 方針（2026-09-30）: ブログはアクセスがそれなりにあるため、**しばらく物販（アフィリエイト）強化を重視**する。サイト平均CTR4.6%は安定しており、タイトルの大幅改善は緊急性なし。
 
@@ -15,35 +15,78 @@
 
 - [ ] **診断型コンテンツ「で、私はどこへ？」＋「今週末はここ！」の新設（[[diagnosis-app-task]]）**
   - 課題: 全国網羅ゆえに記事全体で結論が出ず、メッセージが弱い。「この1ページで、私に合う・行きたくなる海上釣り堀がわかる」ハブページを作る（位置情報で近い順→条件マッチ→直近の様子で行きたくなる、＋結論ファーストの「今週末のおすすめ」枠）
-  - 最初にやること: フェーズ0＝施設frontmatterのデータ充足度の棚卸し（料金・対象魚・設備・初心者向け度・閉店フラグ）と入力項目・スコア設計。`rod_length_limit`収集と同時に不足項目を集める
+  - 済: データ充足度の棚卸し（2026-10-02）。`facilityType`・`rod_count_limit`・`needs_ferry`・`reservation_type`など診断用の項目を106施設に追加済み（下記`rod_length_limit`項目の成果）
+  - 次にやること: フェーズ0の残り＝入力項目の確定・スコア設計・既存資産の流用確認・位置情報の扱い → フェーズ1（MVP）
   - 効果は[[schedule-task]] M8
 
-- [ ] **タックルカードの魚種別再編成とid設計 — まずResearch（[[subtask]]項目6）**
-  - 海上釣り堀で使われるタックルを魚種別に調査（メディア紹介＋Amazon・楽天・Yahoo!のユーザーレビュー）→ 魚種×カテゴリの推奨タックル表を作る
-  - 続けてid命名規則・リンク統一（`tag=`付与漏れ解消）・`targetFish`整理・旧→新id一括置換
-  - **第1弾完了（2026-09-30）**: [[tackle-research-phase1]]（既存カードの誤対応を発見: kue/ishidai/suzuki/bluefish。レビュー取得と第2弾が未了）
-  - **方針決定（2026-09-30）**: 底物竿=シマノ ハードロッカー S83MH、`fish`パラメータは魚種ごとに別カード。管理は[[affiliate-tags/物販/README|affiliate-tags/物販]]（ルール・魚種別台帳）
+- [ ] **タックルカードの魚種別再編成とid設計（[[subtask]]項目6）**
+  - 済: 第1弾Research（2026-09-30・[[tackle-research-phase1]]）と方針決定（底物竿=ハードロッカー S83MH、`fish`は魚種ごとに別カード。管理は[[affiliate-tags/物販/README|affiliate-tags/物販]]）
+  - 残り: Amazon・楽天・Yahoo!のレビュー取得と第2弾 → id命名規則・リンク統一（`tag=`付与漏れ解消）・`targetFish`整理・旧→新id一括置換
   - 着手順: シマアジ・クエ・イシダイ・マダイ → 青物・クロダイ → ヒラメ・アオリイカ・根魚
   - 完了後に[[subtask]]項目3手順4（施設のメイン魚種に対応するセットの優先配置）へ。効果は[[schedule-task]] M1
 
-- [ ] **施設別の竿長さ制限データ収集と`rod_length_limit`追加（[[subtask]]項目7）**: 施設記事に竿の長さ制限の記載がないことが判明。タックル出し分けの前提
-  - **進捗（2026-10-06）**: facility-data-update の block-01（10施設）を調査。結果は[[facility-data-update/block-01_rank-001-010]]の「調査結果」。長さが確認できたのは あっとしー(3.5m) のみ。**料金の古さ2件・公式URL/電話の誤り1件を発見**。**2026-10-06 追記**: `config.ts`に任意項目を追加（`rod_length_limit`／`rod_count_limit`＝上限本数の数値、不明・制限なしは未記入）し、公式確認済みの3施設（南港・あっとしぃー・脇田）に反映。「あっとしぃー」表記も修正。料金など個別記事の修正は block-01 末尾の「個別記事対応タスク」に記録。**2026-10-06 完了**: 営業中106施設（block-01〜11）と閉店・休業7施設の調査を一巡し、`facilityType`を106施設すべてに記入（海上釣り堀型51・海釣り公園型33・その他22。分類は記事・名称・公式情報からの判断で、公式確認ではない）。`rod_count_limit`は24施設・`rod_length_limit`は4施設（あっとしぃー3.5m／カタタ4m／大漁丸4m／J's Fishing 3.5m）・`needs_ferry`9・`reservation_type`24・`verified_at`40。**残り**: [[facility-data-update/needs-confirmation|要確認施設リスト]]（約100施設）と各ブロック末尾の「個別記事対応タスク」で記事を直す。料金が古い記事は優先的に更新（診断の予算フィルタの前提）
+- [ ] **施設データ更新の個別記事対応（旧「`rod_length_limit`追加」・[[subtask]]項目7）**
+  - 済: 営業中106施設＋閉店・休業7施設の調査を一巡（2026-10-06）。`config.ts`に`rod_length_limit`／`rod_count_limit`等を追加し、`facilityType`を全106施設に記入。経緯は[アーカイブ](../archive/task/weekly-task-2026-10-01_10-06.md)
+  - 残り: [[facility-data-update/needs-confirmation|要確認施設リスト]]（約100施設）と各ブロック末尾の「個別記事対応タスク」で記事を直す。**料金が古い記事を優先**（診断の予算フィルタの前提）。`rod_length_limit`確認済みは4施設のみで、TackleCardの竿の出し分け（subtask項目7手順4）は項目6の後
 
 ## Tier2（手動作業・GSC）
 
-- [ ] **GSCインデックス登録リクエスト**（[[subtask]]項目1: Tier1 49件は手動チェック済み。Tier2 23件・`ishida-fisherina`再実行が未着手）
-- [ ] **更新済み記事のGSC再インデックス登録**（[[subtask]]項目4: A→B→Cの順。1日の上限に注意）
+- [ ] **更新済み記事のGSC再インデックス登録**（[[subtask]]項目4: A→B→Cの順。1日の上限に注意。`ishida-fisherina`の加筆後は[[next-task]]項目1手順4で別途登録）
 - [ ] **施設名クエリのCTR検証**（[[subtask]]項目5: A層11件から。検証結果は[[schedule-task]] M5）
 
 ## Tier3（任意・低優先）
 
 - [ ] **`analyze-facility-ranking.mjs`のスクリプト誤検出フィルタ追加**: `east-japan`/`west-japan`など地域インデックスページが施設として誤検出される問題（次回の判読を楽にする改善）
+  - 2026-10-06 再確認: 未対応。`scripts/analyze-facility-ranking.mjs`の`facilityIndexFiles`が`FACILITY_DIR`配下の`index.mdx`を全て施設扱いするため（`slugIndex`に`east-japan`等が入る）。施設記事（frontmatterに`facility_details`あり）だけに絞れば解消
+
+---
+
+## w42 PPDCA 起票（2026-10-11・[[access-data/INDEX|w42]]）
+
+最終更新: 2026-10-11。レポート: [`w42-report.md`](access-data/weekly-report/2026/w42/w42-report.md)。データ: GA4 10/4〜10/10（7日）、GSC 7日（実期間は推定。**初の WoW**）。単週の7日データのため、効果判定は w41〜w44 の4週合算で行う。
+
+### 今週の問題（Problem）
+
+- **サイト全体**: GA4 日平均セッション 82.9→104.4（+26%、Bing +59%）。GSC クリック227→201（-11.5%）・表示+3.9%・CTR 4.73→4.03%。クリック減は `itoman-ikada-tsurigu-no-zousan`（19→12）と `sea-fishing-park-mikata`（10→4）が中心で、表示増は低CTRページに偏った
+- **計測の穴が2週連続**: エクスポートに `affiliate_id` 列なし・`gothere_click` ゼロ → [[next-task]] 項目2 へ昇格
+- **`fish-shipping-guide` が急伸**: 表示171→373・クリック7→16（サイト内1位）・順位8.7。TackleCard は1枚でカードクリック0。`cooler-box-guide` 51→75、`harris-importance` 92→104。**2週連続で増加**
+- **仙台港**: 「仙台港釣り」順位13.0→10.3、「仙台港 釣り」12.7→11.8 と上昇中だが 0クリック。ページ表示173・順位10.2・CTR1.7%
+- **`tsuyu-rainy-day-strategy`**: 表示113→25（一過性）
+- **`umizuri-port-tajiri`**: 3クリック／69表示（順位11.9）→0／44（順位16.3）（M3対象）
+
+### Tier2（今月中に着手したい）
+
+- [ ] **`fish-shipping-guide` ほか装備・遠征系記事の物販受け皿を強化（w42・物販・工数M）**【w41「装備・遠征系5記事の物販導線を棚卸し」を引き上げ・統合】
+  - 問題: `fish-shipping-guide` 表示373（w40 週平均の約5倍）・クリック16・GA4 LP 18セッション（6位）、記事内カード `logos-hyotenka-pack` 1枚でクリック0。2週連続で伸びており一過性ではない
+  - 仮説: 秋の遠征シーズンで「釣った魚の配送」需要が定着し、記事は読まれているが物販の受け皿（発泡スチロール・保冷・梱包）が1枚で薄い。受け皿を厚くすれば `affiliatecard_click` が取れる
+  - 対象: `src/content/blog/column/travel/fish-shipping-guide/index.mdx`（128行・カード位置は「梱包のコツ」節の1箇所）、`cooler-box-guide`、`harris-importance`、`hook-size-science`
+  - やること: 5記事のカード位置・枚数・`fish` 対応を `affiliate-tags/物販/` の台帳に記録し、追加候補（配送：発泡スチロール・保冷剤・クール便資材／ハリス・針：魚種別）を挙げる。**カードの追加実装は Tier1「タックルカードの魚種別再編成」の id 確定後**（旧 id を増やさない）。GSC でこのページの流入クエリを手動確認（[[subtask]] 項目9）
+  - 完了条件: 5記事の現状と追加候補が台帳に記録され、`fish-shipping-guide` のクエリ内訳が分かっている
+  - 検証（Check）: [[next-task]] 項目2 完了後の `affiliate_id` 別クリックで、5記事のカードクリックが4週で増えたか（[[schedule-task]] M1）
+  - 昇格条件: タックル再編成の id 確定後、またはカード追加が 3 枚以内の軽微な実装で済むなら next-task へ。w43 で `fish-shipping-guide` 表示が200未満に戻れば Tier3 へ降格
+
+### Tier3（任意・低優先）
+
+- [ ] **`itoman-ikada-tsurigu-no-zousan`・`sea-fishing-park-mikata` のクリック減の経過観察（w42・SEO-CTR・工数S）**
+  - 問題: 前者 19→12クリック（表示137→117・順位5.6→6.7）、後者 10→4（表示74→55・順位5.8→5.5）。N2 の数値条件（表示≥50・クリック-30%）は形式上満たすが、差は7・6クリックで1週限り
+  - 仮説: 週ごとの揺らぎ。続く場合は順位低下（前者）か、競合/マップ枠にクリックを奪われている（後者）
+  - やること: w43 の GSC で同2ページを確認するだけ。対応は不要
+  - 昇格条件: 2週連続で前週比 -30% 以上（表示≥50）なら next-task（N2）。順位が8位以下に落ちたら競合調査
+
+- [ ] **`tsuyu-rainy-day-strategy` のタイトルから季節語【梅雨】を外す（旧w41 Tier2から降格）**
+  - 問題: w41 表示113・CTR2.7%→w42 表示25・0クリック。秋の需要仮説は弱い
+  - やること: 保留。w43〜w44 で表示が再び50を超え CTR<3% なら実施（title・description・lastmod）
+  - 昇格条件: 表示≥50 かつ CTR<3% が出たら next-task（N5）。それまでは M9 の4週合算で見る
+
+- [→] **GA4 の Singapore 直接流入**: w42 は28→11（1.5%）に低下し昇格条件（5%超）未達。除外タスク化は不要。レポートに「Singapore direct は除外して読む」と記録済み（w41 の Tier3 項目は閉じる）
 
 ---
 
 ## w41 PPDCA 起票（2026-10-04・[[access-data/INDEX|w41]]）
 
 最終更新: 2026-10-04。データ: GA4 9/26〜10/3、GSC 7日（実期間は要確認）。**比較モード**: GSC は前回（w40）が3か月のため前週比は出さず、w40÷13 の週平均と比較。GA4 は w40 と日平均で比較。単週の7日データのため、効果判定は4週合算（w41〜w44）で行う。
+
+**2026-10-06 再評価**: w41起票分はすべて未着手（完了なし）。着手しやすさ順＝①`tsuyu-rainy-day-strategy`のタイトル（工数S・記事は未更新で【梅雨】のまま）→②GA4エクスポート列追加（w42取り込み前が期限）→③仙台港中央公園（記事は`lastmod: 2026-03-22`で未更新）→④物販棚卸し（タックル再編成のid確定待ち）。
 
 ### 今週の問題（Problem）
 
@@ -58,22 +101,9 @@
 
 ### Tier2（今月中に着手したい）
 
-- [ ] **GA4 探索エクスポートに `affiliate_id`・`placement`・`facility_id` と `gothere_click` を追加（w41・計測・工数S）**【next-task候補: N3 測定ブロッカー】
-  - 問題: w41 エクスポートに `affiliate_id` 列なし・`gothere_click` 行ゼロ。`affiliatecard_click` は9イベント／8日（`safety-gear-guide`・`ugata-hamatsuri-center` が各3）で、どの商品がクリックされたか不明
-  - 仮説: カスタムディメンションは登録済み（9/20・9/30）だが、探索レポート側の列に未追加。または `gothere_click` が実際に発火していない
-  - やること: 探索「週報PPDCA用」にカスタムディメンション3列を追加。DebugView で `gothere_click`・`affiliatecard_click` のパラメータ付与を確認
-  - 完了条件: w42 エクスポートで `affiliate_id` 別・`placement` 別の行が出る
-  - 検証（Check）: [[schedule-task]] M1・M6。`access-data/CLAUDE.md` の「GA4 ファイル」行にディメンション構成を追記
-  - 昇格条件: 次回 w42 取り込み前に実施できない場合は next-task へ
+- [→] **GA4 探索エクスポートに `affiliate_id`・`placement`・`facility_id` と `gothere_click` を追加**: w42 でも列なしのため [[next-task]] 項目2 へ昇格（2026-10-11・N3＋N4）
 
-- [ ] **`tsuyu-rainy-day-strategy` のタイトルから季節語【梅雨】を外す（w41・SEO-CTR・工数S）**
-  - 問題: w41 GSC 7日 表示113・順位6.2・CTR2.7%（3クリック）。3か月は 32クリック／663表示＝4.8%
-  - 仮説: 秋の雨天需要（「釣り堀 雨の日」）に季節外れの【梅雨】表記が選ばれにくい。通年表現にすれば CTR が 4%台に戻る
-  - 対象: `src/content/blog/column/trivia/tsuyu-rainy-day-strategy/index.mdx`（title・description・lastmod。URL は不変）
-  - やること: 【梅雨】を外し「雨の日の海上釣り堀は狙い目？…」の通年表現へ。冒頭・見出しの季節語は梅雨期の訴求として残してよい
-  - 完了条件: title/description 更新・lastmod 更新・ビルド OK
-  - 検証（Check）: w41〜w44 合算で CTR 4%台に戻るか（クエリ「釣り堀 雨の日」「釣り堀 雨」の表示・順位も）。[[schedule-task]] M9 に含める
-  - 昇格条件: w42 でも表示≥50・CTR<3% なら next-task（N5）
+- [→] **`tsuyu-rainy-day-strategy` のタイトルから季節語【梅雨】を外す**: w42 で表示113→25・クリック3→0 と失速し、昇格条件（表示≥50）未達のため Tier3 へ降格（2026-10-11。下の w42 セクション参照）
 
 - [ ] **仙台港中央公園：「仙台港 釣り」系クエリの2ページ目脱出（w41・SEO-順位・工数M）**
   - 問題: 表示179（週平均104の1.7倍）・順位10.8・CTR2.8%。「仙台港釣り」43／「仙台港 釣り」41／「仙台港中央公園 釣り」11表示、全て0クリック・順位12.7〜13.8
@@ -84,30 +114,20 @@
   - 検証（Check）: w41〜w44 合算で「仙台港 釣り」系の順位が10位以内か、表示→クリックが増えたか。[[schedule-task]] M9
   - 昇格条件: 4週合算で順位10〜13のまま表示≥100 なら、競合調査を next-task へ
 
-- [ ] **装備・遠征系5記事の物販導線を棚卸し（w41・物販・工数M）**
-  - 問題: 表示が週平均の2〜3倍に伸びた5記事（上の問題欄）。TackleCard は `fish-shipping-guide`／`harris-importance`／`hook-size-science`／`tsuyu-rainy-day-strategy` が各1枚、`cooler-box-guide` が4枚。`fish-shipping-guide` は GA4 LP 16セッション（4位）でカードクリック0
-  - 仮説: 秋の遠征・釣行シーズンで需要が増えたが、記事内の物販カードが1枚で受け皿が薄い。一時的な増加なら効果は限定的
-  - やること: 各記事のカード位置・枚数・`fish` 対応を `affiliate-tags/物販/` の台帳に記録し、追加候補（配送：発泡スチロール・保冷／ハリス・針：魚種別）を挙げる。**カードの追加実装は Tier1「タックルカードの魚種別再編成」の id 確定後**（旧 id を増やさない）
-  - 完了条件: 5記事の現状と追加候補が台帳に記録されている
-  - 検証（Check）: [[schedule-task]] M1（`affiliate_id` 別クリック）で、5記事のカードクリックが4週で増えたか
-  - 昇格条件: タックル再編成の id 確定後に next-task へ。需要が w42 で平常に戻れば Tier3 に降格
+- [→] **装備・遠征系5記事の物販導線を棚卸し（w41）**: 2週連続の増加を受け、w42 Tier2「`fish-shipping-guide` ほか装備・遠征系記事の物販受け皿を強化」に統合（2026-10-11）
 
-- [→] **「海上 釣り堀 ランキング 関東」関連記事の修正**: 優先処理の指示により [[next-task]] へ移動（2026-10-04）
+- [→] **「海上 釣り堀 ランキング 関東」関連記事の修正**: [[next-task]]を経て、GSC結果待ちのため [[schedule-task]] S1 へ集約（2026-10-06）
 
 ### Tier3（任意・低優先）
 
-- [ ] **GA4 の Singapore 直接流入（ボット疑い）の除外確認（w41・計測・工数S）**
-  - 問題: Singapore 28セッション（全体の4.2%）、全て direct で施設ページに1セッションずつ。エンゲージメントなし
-  - 仮説: クローラ由来。この分だけセッション・エンゲージメント率が下振れしている
-  - やること: GA4 探索で Singapore を除外した値を並べて影響を確認し、継続するならフィルタを検討。`access-data/CLAUDE.md` にも「Singapore direct は除外して読む」と追記
-  - 完了条件: 除外有無の差分（セッション・エンゲージメント率）を記録済み
-  - 昇格条件: 比率が5%超または増加傾向なら next-task
+- [→] **GA4 の Singapore 直接流入（ボット疑い）の除外確認**: w42 で 11セッション（1.5%）に低下、昇格条件未達のため閉じる（2026-10-11）
 
 - [ ] **旧WordPress日付URL（`/2025/07/…`）の404 再評価（w41・SEO技術・工数S）**
   - 問題: w41 の GA4 に 404 LP が6件（全て direct・各1セッション）。w40 は1件。2026-07-29 に「クリック0・表示39回・GA4セッション0」で削除済み
   - 仮説: ブックマーク等の直接流入で、SEO への影響は小さい
   - やること: 現状維持。週次で404 LP 数だけ確認し、増える場合は該当ハブ（`/fishing-facility/`・`/column/ranking/` 等）へのリダイレクトを再検討
   - 昇格条件: 404 セッションが週10超、または GSC に旧日付URLの表示が出たら next-task（N1）
+  - w42（2026-10-11）: 404 LP は4件（実在しない slug 2件は bot 由来の direct、旧日付URL 2件）。現状維持
 
 ---
 
