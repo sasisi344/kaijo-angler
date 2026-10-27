@@ -8,7 +8,7 @@ import Stats from "~/components/widgets/Stats.astro";
 import CallToAction from "~/components/widgets/CallToAction.astro";
 
 const metadata = {
-  title: "海上アングラー — 日本一の海上釣り堀総合情報サイト",
+  title: "海上アングラー — 全国の海上釣り堀ガイドと攻略法",
   ignoreTitleTemplate: true,
 };
 ---
@@ -38,8 +38,8 @@ const metadata = {
 
     <Fragment slot="subtitle">
       「海上アングラー」は、全国<strong>100施設以上</strong
-      >の海上釣り堀を掲載した日本最大級の特化型情報サイト。
-      <strong>50エリア以上</strong>から近くの釣り場を探し、<strong
+      >の海上釣り堀を掲載した、海上釣り堀専門の情報サイトです。
+      <strong>35都道府県</strong>から近くの釣り場を探し、<strong
         >90本以上</strong
       >の攻略記事でしっかり準備して、最高の一日を過ごしましょう。
     </Fragment>
@@ -50,9 +50,9 @@ const metadata = {
   <Stats
     stats={[
       { title: "掲載施設数", amount: "100+" },
-      { title: "検索エリア", amount: "50+" },
-      { title: "必釣タクティクス", amount: "90+" },
-      { title: "情報量国内", amount: "1位" },
+      { title: "掲載都道府県", amount: "35" },
+      { title: "攻略記事", amount: "90+" },
+      { title: "魚種別ガイド", amount: "14" },
     ]}
   />
 
@@ -62,7 +62,7 @@ const metadata = {
     id="features"
     tagline="特徴"
     title="海上アングラーが提供する3つの価値"
-    subtitle="釣りの楽しさは「釣る・食べる・遊ぶ」の三拍子。私たちがあなたの釣行を全力でサポートします。"
+    subtitle="釣りの楽しさは「釣る・食べる・遊ぶ」の三拍子。施設選びから当日の釣り方まで、釣行の準備に役立つ情報をまとめています。"
     items={[
       {
         title: "エリア別釣り場検索",
