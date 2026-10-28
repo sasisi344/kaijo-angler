@@ -4,6 +4,19 @@ W37 `クエリ.csv`/`ページ.csv`の分析（[[weekly-task]]参照）で見つ
 
 ---
 
+## 運営者の手作業が必要なタスク（一覧・2026-10-28 整理）
+
+Claude では進められない（管理画面へのログイン・GSC/GA4 の操作が必要な）作業。終わったら [x] にして、結果を各項目の本文か [[schedule-task]] に書く。
+
+- [ ] **GA4 探索レポートの列追加と `gothere_click` の発火確認** — 本文は [[next-task]] 項目2。M1・M6 の判定がこれ待ちで止まっている
+- [ ] **GSC 再インデックス登録** — 下の項目4（A→B→C→D の順。D は 2026-10-28 のファクトチェック・閉業反映で title を変えた記事）
+- [ ] **施設名クエリの CTR 検証（実際に検索して見え方を確認）** — 下の項目5（A層11件から）
+- [ ] **GSC で `fish-shipping-guide` の流入クエリ確認** — 下の項目9
+- [ ] **GSC で「海上 釣り堀 ランキング 関東」の表示先URLを確認** — [[schedule-task]] S1 の進捗1
+- [ ] **ASP（VC）管理画面で宿泊・レンタカーの成約数を確認** — [[schedule-task]] M7（M6 の判断材料）
+
+---
+
 ## [x] 1. 新旧URL統合のためGSCインデックス登録リクエスト（2026-10-06 完了・全文は [archive/task/gsc-old-new-url-consolidation.md](../archive/task/gsc-old-new-url-consolidation.md) に移行）
 
 結論: 旧URLをGSC「削除」ツールで一時非表示にし、新URLはTier1・Tier2とも全件インデックス登録済みを確認。残課題の`ishida-fisherina`（施設名クエリで1ページ目に出ない）は項目8で対応。旧→新URLのクリック移行はW41以降の週報で確認する。
@@ -116,6 +129,22 @@ W37 `クエリ.csv`/`ページ.csv`の分析（[[weekly-task]]参照）で見つ
 | 【三重県】海上釣り堀福寿丸｜女性12,000円〜・活きアジで青物連発の南伊勢本格派 | https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-fukujumaru/ |
 | 【三重県】光栄丸｜10回で1回無料！5,000円で楽しめる南伊勢の筏釣りパラダイス | https://kaijo-fishing.com/fishing-facility/koueimaru/ |
 | 【長崎県】釣り堀はまかつ｜女性7,700円〜・驚異の13魚種でブリ・マダイ舞う九州屈指の海上釣り堀 | https://kaijo-fishing.com/fishing-facility/tsuribori-hamakatsu/ |
+
+#### D. 2026-10-28更新（管理者監査のファクトチェック・閉業反映。title を変えた記事を含む）
+
+| 記事タイトル | URL |
+|---|---|
+| 【宮城県】NX仙台港パーク（海の広場）｜仙台駅から25分！入場無料で楽しめるファミリー釣り公園 | https://kaijo-fishing.com/fishing-facility/sendai-port-central-park-sea-square/ |
+| 【閉業】かまえ海上釣り堀 釣っちゃ王｜女性9,500円〜・竿1本シェアOKでマダイ保証 | https://kaijo-fishing.com/fishing-facility/kamae-sea-fishing-tsunchaoh/ |
+| 【三重県】あなたに逢い鯛。釣り堀｜女性11,000円〜・少人数限定のプライベート海上釣り堀 | https://kaijo-fishing.com/fishing-facility/anatani-aitai-fishing/ |
+| 【広島県】海上釣り堀 海遊｜阿多田島の離島で多彩な高級魚が釣り放題！瀬戸内の爆釣パラダイス | https://kaijo-fishing.com/fishing-facility/kaijo-tsuribori-kaiyu/ |
+| 【福井県】シーパーク丹生｜手ぶらでGO！釣った真鯛をその場でBBQ！究極の「食育」体験 | https://kaijo-fishing.com/fishing-facility/seapark-nyu/ |
+| 【熊本県】天草観光海上釣り堀 楽つり｜1時間完結・手ぶらOK・観光ついでに気軽体験 | https://kaijo-fishing.com/fishing-facility/amakusa-rakutsuri/ |
+| 【和歌山県】和歌山マリーナシティ海釣り公園｜1,000円から・黒潮市場すぐの人気観光釣りスポット | https://kaijo-fishing.com/fishing-facility/wakayama-marinacity-fishing-park/ |
+| 【長崎県】迎パールマリン｜大人6,600円・移動式イカダで巡る九十九島の爆釣ポイント | https://kaijo-fishing.com/fishing-facility/mukai-pearl-marine/ |
+| 【大阪府】とっとパーク小島｜大人1,500円・青物＆マダイ狙える関西屈指の絶景海釣り公園 | https://kaijo-fishing.com/fishing-facility/totto-park-koshima/ |
+| 【2026年最新】九州の海上釣り堀おすすめランキング｜福岡・佐賀・長崎・熊本・大分・宮崎 全10施設を比較 | https://kaijo-fishing.com/column/ranking/kyushu-okinawa/ |
+| 【2026年最新】中国・四国の海上釣り堀おすすめランキング｜広島・山口・香川・徳島・高知 全7施設を比較 | https://kaijo-fishing.com/column/ranking/chugoku-shikoku/ |
 
 ※ `ishida-fisherina`（項目1のTier2）は2026-10-06に登録済みを確認。
 
