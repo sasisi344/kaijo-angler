@@ -144,3 +144,4 @@ GSC検証の結果、「仮説B向け専用コンテンツが存在しない」�
 - **ベースライン**: w41〜w44 の4週合算の、上記15本と title を変えた8本の表示・CTR・平均順位（施設名クエリ）。`kaijo-tsuribori-kaiyu`・`totto-park-koshima`・`family-tsuribori-tsutteminde`・`sendai-port-central-park-sea-square` は M9 と対象が重なるので、M9 の判定（w44）を先に済ませてから比べる
 - **取得タイミング**: w48（w45〜w48 の4週合算）
 - **判定基準**: 順位が落ちていなければ（平均順位の悪化が1位以内）、フェーズ5（残りの施設記事）を同じ型で進める。CTR が上がった記事があれば、口コミの評価点を書いたことが検索結果での見え方に効いたかを確認する。順位が2位以上落ちた記事は、追加した節が長すぎて結論が遠くなっていないかを見直す
+- **フェーズ4（2026-10-28）**: 釣法・コラム10本（`column/travel/fish-shipping-guide`・`tactics/gear/harris-importance`・`column/ranking/kansai`・`column/travel/cooler-box-guide`・`column/trivia/hook-size-science`・`column/trivia/cloudy-day-advantage`・`column/ranking/chugoku-shikoku`・`column/trivia/tana-basics`・`tactics/fish-strategy/madai/theory`・`tactics/fish-strategy/buri/theory`）に「私なら」の1文を追加、`tactics/fish-strategy` の11本の失敗談を「よくある失敗」の形に書き直し。同じ w48 で、順位が落ちていないかだけを見る
