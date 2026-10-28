@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="relative flex items-center w-full md:w-48 lg:w-64 group">
+<div class="relative flex items-center w-full md:w-48 lg:w-64 group" data-global-search>
   <div
     class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-muted"
   >
@@ -10,7 +10,9 @@ import { Icon } from "astro-icon/components";
   </div>
   <input
     type="search"
-    id="global-search-input"
+    data-search-input
+    enterkeyhint="search"
+    aria-label="サイト内検索"
     class="block w-full p-1.5 pl-9 text-xs lg:text-sm text-default bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg focus:ring-primary focus:border-primary transition-all outline-none"
     placeholder="検索..."
     autocomplete="off"
@@ -18,10 +20,10 @@ import { Icon } from "astro-icon/components";
 
   <!-- Search Results Dropdown -->
   <div
-    id="search-results"
+    data-search-results
     class="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-lg shadow-xl hidden z-[100] max-h-80 overflow-y-auto"
   >
-    <div id="search-results-list" class="flex flex-col p-2">
+    <div data-search-results-list class="flex flex-col p-2">
       <!-- Results injected here -->
     </div>
   </div>
@@ -35,75 +37,94 @@ import { Icon } from "astro-icon/components";
     type: string;
   }
 
+  // ヘッダーには PC 用とモバイルメニュー用の2つの検索窓があるため、id ではなく data 属性で全インスタンスを初期化する
   let searchIndex: SearchItem[] = [];
+  let indexPromise: Promise<void> | undefined;
 
-  const searchInput = document.getElementById(
-    "global-search-input",
-  ) as HTMLInputElement;
-  const resultsDiv = document.getElementById("search-results");
-  const resultsList = document.getElementById("search-results-list");
-
-  async function initSearch() {
-    try {
-      const response = await fetch("/api/search.json");
-      searchIndex = await response.json();
-    } catch (e) {
-      console.error("Search index load failed", e);
+  function loadIndex(): Promise<void> {
+    if (!indexPromise) {
+      indexPromise = fetch("/api/search.json")
+        .then((res) => res.json())
+        .then((data: SearchItem[]) => {
+          searchIndex = data;
+        })
+        .catch((e) => {
+          indexPromise = undefined;
+          console.error("Search index load failed", e);
+        });
     }
+    return indexPromise;
   }
 
-  function renderResults(results: SearchItem[]) {
-    if (!resultsList) return;
-    if (!results.length) {
-      resultsList.innerHTML =
-        '<div class="p-3 text-sm text-muted text-center">結果が見つかりませんでした</div>';
-    } else {
-      resultsList.innerHTML = results
-        .map(
-          (item) => `
-        <a href="${item.href}" class="p-3 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-md transition-colors border-b last:border-0 border-gray-100 dark:border-slate-800 block">
+  function escapeHtml(s: string): string {
+    return s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+  }
+
+  function search(query: string): SearchItem[] {
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!terms.length) return [];
+    return searchIndex
+      .filter((item) => {
+        const text = `${item.title} ${item.excerpt}`.toLowerCase();
+        return terms.every((t) => text.includes(t));
+      })
+      .slice(0, 8);
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-global-search]").forEach((root) => {
+    const input = root.querySelector<HTMLInputElement>("[data-search-input]");
+    const resultsDiv = root.querySelector<HTMLElement>("[data-search-results]");
+    const resultsList = root.querySelector<HTMLElement>("[data-search-results-list]");
+    if (!input || !resultsDiv || !resultsList) return;
+
+    let results: SearchItem[] = [];
+
+    function render() {
+      if (!input!.value.trim()) {
+        resultsDiv!.classList.add("hidden");
+        return;
+      }
+      results = search(input!.value);
+      resultsList!.innerHTML = results.length
+        ? results
+            .map(
+              (item) => `
+        <a href="${escapeHtml(item.href)}" class="p-3 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-md transition-colors border-b last:border-0 border-gray-100 dark:border-slate-800 block">
           <div class="flex items-center gap-2 mb-1">
-            <span class="text-[10px] px-1.5 py-0.5 bg-primary/10 text-primary rounded font-bold">${item.type}</span>
-            <span class="text-sm font-bold text-default line-clamp-1">${item.title}</span>
+            <span class="text-[10px] px-1.5 py-0.5 bg-primary/10 text-primary rounded font-bold">${escapeHtml(item.type)}</span>
+            <span class="text-sm font-bold text-default line-clamp-1">${escapeHtml(item.title)}</span>
           </div>
-          <div class="text-[11px] text-muted line-clamp-1">${item.excerpt}</div>
+          <div class="text-[11px] text-muted line-clamp-1">${escapeHtml(item.excerpt)}</div>
         </a>
       `,
-        )
-        .join("");
-    }
-    resultsDiv?.classList.remove("hidden");
-  }
-
-  searchInput?.addEventListener("focus", () => {
-    if (searchIndex.length === 0) initSearch();
-  });
-
-  searchInput?.addEventListener("input", (e) => {
-    const val = (e.target as HTMLInputElement).value.toLowerCase();
-    if (val.length < 1) {
-      resultsDiv?.classList.add("hidden");
-      return;
+            )
+            .join("")
+        : '<div class="p-3 text-sm text-muted text-center">結果が見つかりませんでした</div>';
+      resultsDiv!.classList.remove("hidden");
     }
 
-    const filtered = searchIndex
-      .filter(
-        (item) =>
-          item.title.toLowerCase().includes(val) ||
-          item.excerpt.toLowerCase().includes(val),
-      )
-      .slice(0, 8);
+    input.addEventListener("focus", () => {
+      loadIndex();
+    });
 
-    renderResults(filtered);
-  });
+    input.addEventListener("input", () => {
+      loadIndex().then(render);
+    });
 
-  // Close on click outside
-  document.addEventListener("click", (e) => {
-    if (
-      !searchInput?.contains(e.target as Node) &&
-      !resultsDiv?.contains(e.target as Node)
-    ) {
-      resultsDiv?.classList.add("hidden");
-    }
+    // Enter（変換確定の Enter は除く）で先頭の結果へ移動する
+    input.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" || e.isComposing || e.keyCode === 229) return;
+      e.preventDefault();
+      loadIndex().then(() => {
+        render();
+        if (results.length) window.location.href = results[0].href;
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!root.contains(e.target as Node)) {
+        resultsDiv.classList.add("hidden");
+      }
+    });
   });
 </script>

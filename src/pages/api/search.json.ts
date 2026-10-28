@@ -26,7 +26,7 @@ export async function GET() {
     ...facilities.filter(p => !p.data.draft && !p.id.endsWith('index')).map(p => ({
       title: p.data.title,
       excerpt: p.data.prefecture || '',
-      href: getPermalink(`fishing-facility/${p.id}`),
+      href: getPermalink(`fishing-facility/${(p.data.slug || p.id).replace(/\/index$/, '')}`),
       type: '釣り場'
     })),
     ...columns.filter(p => !p.data.draft && !p.id.endsWith('index')).map(p => ({
