@@ -14,6 +14,12 @@ Claude では進められない（管理画面へのログイン・GSC/GA4 の�
 - [ ] **GSC で `fish-shipping-guide` の流入クエリ確認** — 下の項目9
 - [ ] **GSC で「海上 釣り堀 ランキング 関東」の表示先URLを確認** — [[schedule-task]] S1 の進捗1
 - [ ] **ASP（VC）管理画面で宿泊・レンタカーの成約数を確認** — [[schedule-task]] M7（M6 の判断材料）
+- [ ] **GSC で削除済みの月報・週報19本の扱いを決める** — 2026-10-28 に `/blog/intelligence/2026-03-summary/` 〜 `2026-07-summary/`（summary 5本・w01〜w05 14本）を削除し、転送は設定していない（404 で自然に外れるのを待つ）。急いで外したい場合は GSC の「削除」ツールで一時非表示にする。特集4本（gw-2026-special-report／kansai-vs-kanto-spring／spring-2026-madai-report／summer-bluefish-forecast）は維持する
+- [ ] **スマホでヘッダー検索窓の動作を確認** — 2026-10-28 に修正（13c9b40）。PC 幅で入力→Enter で先頭結果へ移動するのは確認済み。スマホのメニュー内の検索窓は実機で未確認
+
+### 運営者の判断待ち（2026-10-28）
+
+- [ ] **`config.ts` のスキーマ変更の可否** — 項目6（`fish` の追加：`AffiliateCard.astro` の gtag と GA4 カスタムディメンションも対）と項目7（`facility_details.rod_length_limit` の追加）はスキーマ変更が前提。スキーマはユーザー確認なしに変えない規約のため、可否が決まるまで止めている。スキーマを触らずにできる「施設ごとの竿の長さ制限の調査」（項目7 手順1）だけは先に進められる
 
 ---
 
