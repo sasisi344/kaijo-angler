@@ -5,7 +5,7 @@
 
 ## 関東の陸上・屋内釣り堀3施設の記事化（2026-10-04・競合比較で判明した抜け）
 
-素材: `.workspace/_inbox/new-shisetu.md`。競合（large7naturalist）が掲載しており、うちに無かった3施設。下書きは `draft: true` で作成済み（`east-japan/chiba/kujukuri-umitsuri-center`・`east-japan/kanagawa/yokohama-tsuribori-okoku`・`east-japan/chiba/hare-park-tateyama`）。
+素材: `.workspace/archive/task/new-shisetu-kanto-3facilities.md`。競合（large7naturalist）が掲載しており、うちに無かった3施設。下書きは `draft: true` で作成済み（`east-japan/chiba/kujukuri-umitsuri-center`・`east-japan/kanagawa/yokohama-tsuribori-okoku`・`east-japan/chiba/hare-park-tateyama`）。
 
 - [ ] 各記事の `{/* TODO */}` と frontmatter の TODO を解消（20枚超の追加料金の解釈／三日月店の料金／水槽の種類・魚種／トイレ等）
 - [ ] `google_maps.map_url` を入れて `node scripts/update-facility-data.mjs` で補完 → `<GoThere>` コメントアウト解除

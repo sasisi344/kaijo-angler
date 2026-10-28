@@ -1,5 +1,7 @@
 # Googleマップのリンク 入力リスト（2026-10-28 作成）
 
+> 完了・アーカイブ（2026-10-28）: ユーザーが32本の Googleマップの URL を入力し、各記事の `google_maps.map_url` に反映済み（コミット 4e5bdc5）。入力中に見つかった「かまえ海上釣り堀 釣っちゃ王」の閉業も反映済み。`_inbox/` から移動
+
 西日本の施設記事32本で、frontmatter の `google_maps.map_url` が同じ値（`https://maps.app.goo.gl/awfDWg5F19m2XMLh9`）になっている。
 各行の「URL入力」をその施設の Googleマップの共有URLに書き換える。入力後、管理者が記事の `map_url` に反映する（空欄の行は飛ばす）。
 
