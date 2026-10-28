@@ -44,7 +44,7 @@
 |---|---|---|---|
 | 1 | A1（一括置換） | 1万 | 完了 2026-10-28（見出し94本＋浅虫海釣り公園の description 1箇所。`sed -i` は改行コードを CRLF に変えるため、perl で元のバイトを保って置換した） |
 | 2 | A2＋A3 を title/description の32本 → 表示上位の記事順（付録）に | 120万 | 完了 2026-10-28（見出しラベル241箇所: 事実のラベル72は「ナイター営業｜〜」の形で残し、煽り165は削除、ラベルだけの4は括弧を外す。煽り語は191本・528行で0件に。タイトル変更8本はリンク文言も全記事で合わせ、タグ「コスパ最強」は「格安」に統合。実績は約25万トークン） |
-| 3 | A4 を施設記事の表示上位15本（付録の fishing-facility を上から） | 45万 | 未着手 |
+| 3 | A4 を施設記事の表示上位15本（付録の fishing-facility を上から） | 45万 | 完了 2026-10-28（15本。Googleマップの評価点・件数・口コミの傾向を確認して節を追加し、frontmatter の rating も確認した値にそろえた。閉業の `himeji-city-fishing-center`・`sea-fishing-park-mikata` と、Googleマップの登録が同じ施設か確かめられなかった `tsuruga-city-sea-fishing-park` は外し、次点の `seapark-nyu`・`kaijo-tsuribori-at-sea`・`wakayama-marinacity-fishing-park` を入れた。効果測定は [[schedule-task]] M10） |
 | 4 | A5 を釣法・コラムの表示上位10本 | 10万 | 未着手 |
 | 5 | A4・A5 の残りを集中枠で（施設は `facility-priority.md` の優先度も見る） | 545万 | 未着手 |
 

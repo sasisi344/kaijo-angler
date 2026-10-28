@@ -137,3 +137,10 @@ GSC検証の結果、「仮説B向け専用コンテンツが存在しない」�
 - **w42メモ（2026-10-11）**: `kaijo-tsuribori-kaiyu` 0クリック／151表示・順位10.3（w41: 1／136）、`totto-park-koshima` 3／171・順位9.1・CTR1.8%（w41: 2／181・1.1%）、`family-tsuribori-tsutteminde` 1／57（4／64）、`shinojima-tsuri-tengoku` 0／16（0／5）、`naoetsu-port-3rd-east-breakwater` 0／2、`sendai-port-central-park-sea-square` 3／173・順位10.2・CTR1.7%（5／179・CTR2.8%）、`tsuyu-rainy-day-strategy` 0／25（3／113）。いずれも改善確認できず。判定は w44
 - **取得タイミング**: w44（w41〜w44 の4週合算）。再インデックス前の期間が混ざるため、[[subtask]]項目4（再インデックス）の実施日を確認してから判定
 - **判定基準**: 4週合算の CTR がベースラインより改善していれば施策を他施設へ横展開。改善しなければタイトルではなく本文・検索意図側（ローカルパック等）の仮説に切り替え（M5と合流）
+
+### M10. 筆者ペルソナ変更のリライト（2026-10-28 フェーズ2・3）の効果（新規・[[persona-rewrite-plan]]）
+
+- **測定対象**: フェーズ2（煽り語・見出しラベルの削除。title を変えた8本を含む191本）と、フェーズ3（施設記事15本に「釣り人の目で見た〜と口コミの評価」節を追加。`sendai-port-central-park-sea-square`・`totto-park-koshima`・`kaijo-tsuribori-kaiyu`・`nanko-fishing-park`・`itoman-ikada-tsurigu-no-zousan`・`kamoike-sea-fishing-park`・`shibushi-bay-daikoku-dolphin-land`・`anatani-aitai-fishing`・`mukai-pearl-marine`・`maizuru-shinkai-park`・`fukuoka-city-sea-fishing-park`・`family-tsuribori-tsutteminde`・`seapark-nyu`・`kaijo-tsuribori-at-sea`・`wakayama-marinacity-fishing-park`）
+- **ベースライン**: w41〜w44 の4週合算の、上記15本と title を変えた8本の表示・CTR・平均順位（施設名クエリ）。`kaijo-tsuribori-kaiyu`・`totto-park-koshima`・`family-tsuribori-tsutteminde`・`sendai-port-central-park-sea-square` は M9 と対象が重なるので、M9 の判定（w44）を先に済ませてから比べる
+- **取得タイミング**: w48（w45〜w48 の4週合算）
+- **判定基準**: 順位が落ちていなければ（平均順位の悪化が1位以内）、フェーズ5（残りの施設記事）を同じ型で進める。CTR が上がった記事があれば、口コミの評価点を書いたことが検索結果での見え方に効いたかを確認する。順位が2位以上落ちた記事は、追加した節が長すぎて結論が遠くなっていないかを見直す
