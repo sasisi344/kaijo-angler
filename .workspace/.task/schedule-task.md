@@ -62,6 +62,21 @@ GSC検証の結果、「仮説B向け専用コンテンツが存在しない」�
 - [ ] 地方×ハブ都市モデルの新規面展開（紀伊半島・関東・東海への横展開）は、[[weekly-task]]の9月第3週PDCA（travel-task Phase4-2効果測定）の結果を見てから着手判断
 - [x] `column/travel/`クラスタの他記事にも被リンクゼロ問題がないか横展開で確認（2026-10-04実施）: 被リンクゼロの記事は**なし**。ただし被リンク1本のみが6記事（`january-minamiise-onsen-trip`／`may-toshijima-toba-trip`＝ise-shima-access-guideのみ、`march-yuasa-yura-soy-sauce-trip`＝access-kinkiのみ、`november-izu-autumn-leaves-trip`＝access-tokaiのみ、`september-silver-week-quiet-spots-guide`＝may-holiday-tsuribori-reservationのみ、`wakayama-kii-trip`＝ensei-guideのみ）。必要なら関連記事・施設記事からの追加リンクを検討
 
+### S4. 冬の記事2本を 2026-11-05 に投稿する（2026-11-02 ユーザー決定、hq:H-34）
+
+2026-11-02 に作成・コミット済み（`1eb2826`、未プッシュ）。公開日（`publishDate`・`lastmod`）はどちらも `2026-11-05` に設定済み。このサイトは未来の公開日でも記事を隠さないので、**プッシュした時点で公開される**。11/05 より前にプッシュしない。
+
+| 記事 | 種別 |
+|---|---|
+| `column/trivia/winter-kaijo-tsuribori-guide`（冬の海上釣り堀はなぜ狙い目？） | 新規 |
+| `column/trivia/december-cold-weather-gear-guide`（海上釣り堀の冬の防寒具） | 再構築（同じコミットに、リンク文言を直した5記事・`AffiliateCard` の nofollow 修正・物販 `tackle/workman-aegis-winter-suit` を含む） |
+
+- [x] 1. 公開日を 11/05 にした変更（2記事の frontmatter とこの S4）をコミットする（2026-11-04 コミット、未プッシュ）
+- [ ] 2. 11/05 に `pnpm run build` が通ることを確認して `main` をプッシュ（デプロイ）
+- [ ] 3. 本番で2記事が表示され、防寒具の記事の商品カードに赤い「IDが見つかりません」が出ていないことを確認
+- [ ] 4. GSC で2記事の URL の登録をリクエスト（[[subtask]]）
+- [ ] 5. 完了したら hq の `backlog.md` の H-34 を完了にする
+
 ---
 
 ## パートB：効果測定（データ待ち・判定待ち）
