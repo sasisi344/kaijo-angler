@@ -5,7 +5,7 @@
 //   pnpm build
 //   node scripts/list-first-timer-pickup.mjs [GSCページCSV] [facilities.json]
 // 例:
-//   node scripts/list-first-timer-pickup.mjs .workspace/.task/access-data/weekly-report/2026/w42/ページ.csv
+//   node scripts/list-first-timer-pickup.mjs .workspace/access-data/api/monthly/2026/m10/gsc-page.csv
 import fs from 'fs';
 
 const gscPath = process.argv[2];

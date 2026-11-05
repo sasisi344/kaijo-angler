@@ -44,6 +44,12 @@ MDX ファイルからコンポーネントを import する場合は `~/` エ�
 import TackleCard from "~/components/common/TackleCard.astro";
 ```
 
+## 主なパス
+
+- アクセスデータ: 正本は `.workspace/access-data/api/`。w42 までの週次は `.workspace/.task/access-data/`（ルールは同フォルダの `CLAUDE.md`）
+- 画像生成: `scripts/image-tools/generate-image.js`（手順は `.agents/skills/image-create.md`。実行は明示の指示があるときだけ）
+- 旧URLのリダイレクト: `src/config/blog-legacy-redirects.ts`
+
 ## タスク管理（GitHub Project 統合、2026-09-25〜）
 
 ブログ横断の中期〜長期タスクは GitHub Project で一元管理: https://github.com/users/sasisi344/projects/1 （「ブログ運営タスク」）。カンバン列は `Backlog → Todo → In Progress → Done`。短期〜中期の目標タスクは Start date / End date を設定し、ロードマップビューで期間の進捗を管理する。新規タスクは `gh issue create --repo sasisi344/kaijo-angler` でIssue化 → `gh project item-add 1 --owner sasisi344 --url <issue-url>` でボードに追加。詳細は `344ob/344ob/07_workspace/.agents/blog-registry.md` 参照。日々の細かい実行タスクは `.workspace/.task/` が引き続き正本。

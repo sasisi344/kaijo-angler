@@ -1,8 +1,9 @@
 import os
 import re
+from pathlib import Path
 
-base_path = r'c:\Users\sasis\344ob\344ob\08_blog-master\02_kaijo-angler\src\content\blog\fishing-facility'
-output_path = r'c:\Users\sasis\344ob\344ob\08_blog-master\02_kaijo-angler\scripts\facilities.txt'
+base_path = str(Path(__file__).resolve().parent.parent / 'src' / 'content' / 'blog' / 'fishing-facility')
+output_path = str(Path(__file__).resolve().parent / 'facilities.txt')
 facility_names = []
 
 for root, dirs, files in os.walk(base_path):

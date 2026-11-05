@@ -3,8 +3,8 @@ import random
 from pathlib import Path
 
 # Files
-MASTER_FILE = Path('c:/Users/sasis/344ob/344ob/08_blog-master/02_kaijo-angler/scripts/facilities_master.json')
-BUZZ_FILE = Path('c:/Users/sasis/344ob/344ob/08_blog-master/02_kaijo-angler/scripts/current_buzz.json')
+MASTER_FILE = Path(__file__).resolve().parent / 'facilities_master.json'
+BUZZ_FILE = Path(__file__).resolve().parent / 'current_buzz.json'
 
 def calculate_mock_buzz(facility_name):
     """

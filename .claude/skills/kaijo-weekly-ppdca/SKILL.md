@@ -1,7 +1,7 @@
 ---
 name: kaijo-weekly-ppdca
 description: >-
-  kaijo-angler の週次アクセスデータ（GA4・GSC。`.workspace/.task/access-data/weekly-report/`）を分析し、
+  kaijo-angler のアクセスデータ（GA4・GSC。正本は `.workspace/access-data/api/`、w42 までの週次は `.workspace/.task/access-data/weekly-report/`）を分析し、
   改善タスクを優先度付きで `.workspace/.task/next-task.md`（すぐ解決）と `weekly-task.md`（後回し・余裕があれば）に
   起票する週報PPDCA用。「週報PPDCA」「今週のアクセスデータを分析」「wNN のデータが入ったのでタスク化して」
   「next-task / weekly-task を更新」「SEO改善タスクを洗い出して」と言われたら使う。
@@ -10,7 +10,7 @@ description: >-
 
 # kaijo-angler 週報PPDCA（アクセスデータ → next-task / weekly-task）
 
-データの置き場・期間ルールの正本は `.workspace/.task/access-data/CLAUDE.md` と `INDEX.md`。**ここを先に読み、期間の違うデータを直接比較しない**。
+データの置き場・期間ルールの正本は `.workspace/.task/access-data/CLAUDE.md` と `INDEX.md`。**ここを先に読み、期間の違うデータを直接比較しない**。2026-11 から GA4・GSC の正本は API（`.workspace/access-data/api/`、手順は `monthly/README.md`）。w42 までの週次の画面データと混ぜて計算しない。
 
 ## PPDCA の各フェーズ
 
@@ -52,7 +52,7 @@ PDCA に「問題の把握」を加えた 5 段階（統計の PPDAC に相当�
 - **技術**: GA4 の LP に 404 系タイトル・旧URLが出ていないか／GSC のページに旧URL側が増えていないか（[[schedule-task]] M4）
 - **収益**: `affiliatecard_click` と `gothere_click`（イベント名ごとの行。**セッションはイベント名で足さない**）。`affiliate_id`・`placement`・`facility_id` は登録日以降のみ有効。[[schedule-task]] M1・M6 の判定材料を更新
 - **地域**: w41 以降の GA4 は市区町村あり → GoThere の出発地・アクセスガイドの需要地の確認材料に使う
-- スクリプト: `scripts/analyze-facility-ranking.mjs`（既定パスが古いので**引数で CSV パスを渡す**）、`analyze-query-mix.mjs`、`analyze-region-density.mjs`。集計は Python/Node で行ってよい（CSV は UTF-8、ページ名・クエリは日本語）
+- スクリプト: `scripts/analyze-facility-ranking.mjs`（既定は m10 の `gsc-page.csv`。別の月は**引数で CSV パスを渡す**）、`analyze-query-mix.mjs`、`analyze-region-density.mjs`。集計は Python/Node で行ってよい（CSV は UTF-8、ページ名・クエリは日本語）
 
 ### 3. Plan①：仮説と優先度判定
 

@@ -1,6 +1,6 @@
 # access-data INDEX
 
-週次データの所在・期間・比較可否の一覧。ルールは [`CLAUDE.md`](CLAUDE.md)。**取得したら1行追加する。**
+週次データの所在・期間・比較可否の一覧。ルールは [`CLAUDE.md`](CLAUDE.md)。**w42 まで。** 2026-11 以降の正本は `.workspace/access-data/api/`（`monthly/README.md`）。
 
 最終更新: 2026-10-11（w42 登録）
 

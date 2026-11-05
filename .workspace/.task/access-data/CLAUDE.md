@@ -1,5 +1,7 @@
 # access-data — アクセスデータ格納ルール
 
+> **2026-11 から、GA4・GSC の正本は API のデータ**。置き場は `.workspace/access-data/api/`（`monthly/<年>/m<月>/` が月次、`<取得日>-<名前>/` が随時の取得）。取り方は `monthly/README.md` と `hq/tools/analytics-fetch/README.md`。このフォルダは w42 までの画面の書き出しで、消さずに残す。API のデータと混ぜて計算しない。以下の週番号・命名・期間のルールは、このフォルダの週次データを読むときに使う。
+
 GA4・GSC の週次エクスポートを置く場所。**分析の前に必ず [`INDEX.md`](INDEX.md) を読む**（週ごとの期間・ファイル名・比較可否が一覧化されている）。ファイルを開いて期間を推測しない。
 
 PPDCA（分析→`next-task`/`weekly-task` 起票）の手順は skill `kaijo-weekly-ppdca`（`.claude/skills/kaijo-weekly-ppdca/SKILL.md`）。
@@ -73,3 +75,4 @@ access-data/
 ## 更新履歴
 
 - 2026-10-04: 新規作成。w41 から全ブログで GSC を7日集計に統一
+- 2026-11-05: GA4・GSC の正本が `.workspace/access-data/api/` に移ったことを追記

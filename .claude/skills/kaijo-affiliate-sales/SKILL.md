@@ -29,12 +29,12 @@ description: >-
 | 見るもの | 場所 |
 |---|---|
 | 施設の事実 | frontmatter（`prefecture`・`business_hours`・`parking`・`reservation`・`needs_ferry`）、記事末の `> [!forAI]`（運営者の一次メモ。最優先） |
-| 読者の出発地 | 最新週の GA4（`.workspace/.task/access-data/weekly-report/<年>/wNN/*-ga4-*.csv`）で対象ページの `session_start` を市区町村別に集計 |
-| 検索意図 | 同じ週の GSC `クエリ.csv`（施設名＋「料金」「駐車場」「アクセス」「ホテル」など） |
+| 読者の出発地 | 月次の `ga4-lp.csv` には市区町村がないので、`hq/tools/analytics-fetch` で取る（下の例）。w42 までは週次の GA4（`.workspace/.task/access-data/weekly-report/<年>/wNN/`）にも市区町村がある |
+| 検索意図 | 最新月の `.workspace/access-data/api/monthly/<年>/m<月>/gsc-page-query.csv`（施設名＋「料金」「駐車場」「アクセス」「ホテル」など） |
 
 ```bash
-# 例: 対象ページのセッションを都市別に集計
-grep "<slug>" wNN-ga4-kaijo.csv | grep ",session_start," | awk -F, '{c[$5]+=$6} END{for(k in c) print c[k], k}' | sort -rn
+# 例: 対象ページのセッションを都市別に取る（hq/tools/analytics-fetch で実行）
+node fetch.mjs ga4 --site KA --start <開始日> --end <終了日> --dims landingPage,city --metrics sessions --slug <slug>-city
 ```
 
 注意: GA4 の都市はモバイル回線だと東京（Shinjuku City 等）に寄ることがある。週20セッション未満なら傾向として扱い、断定しない。

@@ -163,13 +163,13 @@ tags:
 | AdSense | 当月・前月 | 合計。ページ別に出せれば出す |
 | Amazon・楽天・VC | 当月 | クリック・発生件数 |
 
-保存先: `access-data/monthly-report/2026/10/`（新設。INDEX に「月次」の表を追加）
+保存先: `.workspace/access-data/api/monthly/2026/m10/`（API が正本。AdSense・ASP は `hq/data/2026/m10/`）
 
 分析（Claude）:
 1. LP を記事タイプ別に分類し、構成比と前月比を出す（冬に落ちるタイプを特定）
 2. 施設記事の月間 LP 上位20を確定（展開対象）
 3. はじめての人向けクエリが、どの施設記事に表示されているか（＝節を入れたときに効く記事）を出し、上位20の並びに反映
-4. 結果を `monthly-report/2026/10/report.md` にまとめ、この計画の対象記事を更新
+4. 結果を `.workspace/.task/monthly-analysis-2026-10.md` にまとめ、この計画の対象記事を更新
 
 ---
 

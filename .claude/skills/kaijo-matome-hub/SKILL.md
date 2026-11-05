@@ -24,7 +24,7 @@ description: >-
 
 ## 1. 作業の流れ
 
-1. **データ期間の確認**: `.workspace/.task/access-data/INDEX.md` を先に読む。GSC の期間（3か月 / 7日）が違うファイル同士の絶対値は比べない
+1. **データ期間の確認**: `.workspace/.task/access-data/CLAUDE.md` を先に読み、最新月の `.workspace/access-data/api/monthly/<年>/m<月>/` を使う（w42 までの週次は `INDEX.md`）。GSC の期間（3か月 / 7日）が違うファイル同士の絶対値は比べない
 2. **施設の洗い出し**: 地域フォルダ配下の `index.mdx`（ハブ自身を除く）を数え、対象・対象外を決める（§2）
 3. **アクセス集計**: §3 のスクリプトで施設ごとのクリック・表示・セッションを出す
 4. **TOP3 選定**: §3 の基準で決める。3施設しかなければ3施設だけでよい
@@ -44,8 +44,8 @@ description: >-
 
 ```powershell
 python .claude/skills/kaijo-matome-hub/scripts/rank_facilities.py src/content/blog/fishing-facility/<region>-japan `
-  --gsc .workspace/.task/access-data/weekly-report/2026/<wNN>/ページ.csv `
-  --ga4 .workspace/.task/access-data/weekly-report/2026/<wNN>/<ga4ファイル>.csv
+  --gsc .workspace/access-data/api/monthly/2026/<mMM>/gsc-page.csv `
+  --ga4 .workspace/access-data/api/monthly/2026/<mMM>/ga4-lp.csv
 ```
 
 - 旧 `/blog/<slug>/` と新 `/fishing-facility/<slug>/` は **slug で合算**（スクリプトが処理）

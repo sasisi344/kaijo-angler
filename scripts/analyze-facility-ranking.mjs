@@ -3,15 +3,15 @@
  * GSCの検索パフォーマンス（表示回数・掲載順位・CTR）の相関を見るための診断スクリプト。
  *
  * 使い方: node scripts/analyze-facility-ranking.mjs [GSCエクスポートCSVのパス]
- * デフォルトは直近の週次レポート（.workspace/.task/access-data/weekly-report/2026/kaijo-gsc-w24.csv）。
+ * デフォルトは API の月次（.workspace/access-data/api/monthly/2026/m10/gsc-page.csv）。
  * GSC Looker Studio エクスポート（ランディング ページ + クエリ文字列 タブ）形式と、
- * 単純な Query,Page,Clicks,Impressions,CTR,Position 形式の両方に対応。
+ * 単純な Query,Page,Clicks,Impressions,CTR,Position 形式、API の gsc-page.csv 形式に対応。
  */
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const csvPath = process.argv[2] || '.workspace/.task/access-data/weekly-report/2026/kaijo-gsc-w24.csv';
+const csvPath = process.argv[2] || '.workspace/access-data/api/monthly/2026/m10/gsc-page.csv';
 const FACILITY_DIR = 'src/content/blog/fishing-facility';
 
 function getAllFiles(dir, acc = []) {
@@ -79,7 +79,7 @@ function parseRows(csvPath) {
         position: Number(cols[4]),
       });
     }
-  } else if (lines[0].startsWith('上位のページ')) {
+  } else if (lines[0].replace(/^\uFEFF/, '').startsWith('上位のページ') || lines[0].replace(/^\uFEFF/, '').startsWith('page,clicks')) {
     // GSC "上位のページ" export: Page,Clicks,Impressions,CTR,Position
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i];

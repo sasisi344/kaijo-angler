@@ -73,5 +73,5 @@ facility_details:
 ---
 
 ### 運用ルール
-- 記事の新規作成時は `google_maps.map_url` を入力し、`node scripts/update-facility-data.mjs` を実行して、他のGoogle Maps情報を自動で埋める。
+- 記事の新規作成時は `google_maps.map_url` を入力し、地域に合う `scripts/maintenance/facility-updates/update-facility-{east,center,west}.mjs` を実行して、他のGoogle Maps情報を自動で埋める（`.env` の `MAPS_API_KEY` が必要。実行前に内容を読む）。
 - `average_price` などの施設情報は、本文のテーブルから自動抽出が可能（スクリプト実行時）。

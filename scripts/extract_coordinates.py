@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 
 # Base directory for the fishing facility content
-BASE_DIR = Path('c:/Users/sasis/344ob/344ob/08_blog-master/02_kaijo-angler/src/content/blog/fishing-facility')
-OUTPUT_FILE = Path('c:/Users/sasis/344ob/344ob/08_blog-master/02_kaijo-angler/scripts/facilities_master.json')
+BASE_DIR = Path(__file__).resolve().parent.parent / 'src' / 'content' / 'blog' / 'fishing-facility'
+OUTPUT_FILE = Path(__file__).resolve().parent / 'facilities_master.json'
 
 def extract_frontmatter(content):
     """

@@ -142,5 +142,5 @@ description: "{都道府県}の海上釣り堀N施設を料金・アクセス・
 
 ## 7. 旧WordPressまとめ記事とのリダイレクト対応
 
-記事作成と同時に `src/config/facility-redirects.ts` に旧WP URLのエントリを追加する。
-対応表は `.workspace/.task/ranking-matome-todo.md` の「STEP 2」を参照。
+旧URLのリダイレクトは `src/config/blog-legacy-redirects.ts` にエントリを追加する（`astro.config.ts` の `redirects` が読む）。
+旧WordPressの記事とURLの一覧は `.data-set/wordpress-log/WordPress.2026-03-20.xml` を参照。

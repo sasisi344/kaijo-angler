@@ -1,7 +1,5 @@
 # スケジュールタスク（データ待ち・判定待ち・手動作業待ち）
 
-> **hq からの修正依頼（2026-10-31、hq:H-30〜H-32）**: 月次の GA4・GSC を API に置き換える。hq が 11/02 に GA4（A1〜A3）の m08〜m10 と GSC（G1・G2）の m08・m09 を API で `.workspace/access-data/api/monthly/{YYYY}/m{MM}/` に取り、GSC の m10 は確定を待って 11/04 に取る（hq:H-30〜H-32）。以後の月次の比較は API のデータ同士で行い、画面の CSV と混ぜない（画面の CSV は消さずに残す）。G3（インデックス登録）は API がないので画面から。① m10 の月次分析は 11/04 以降に、API のデータ同士で前月比を出す ② 取得の手順（`weekly-task.md`・`.workspace/.task/access-data/`）を「GA4・GSC は API が正本」に書き換える。処理したらこのブロックを消す
-
 今すぐ実行できないタスクを一元管理する。2026-10-06 に旧 `measurement-task.md`（効果測定）と、`next-task.md` から移した「進行待ちタスク」を統合した。すぐ実行できるタスクは[[next-task]]、週次PPDCAの起票は[[weekly-task]]、手動作業は[[subtask]]を参照。完了したら[x]にして`archive/task/`へ移す。
 
 - **パートA（S1〜S3）**: GSCの結果・データ・手動作業を待っている「実施タスク」

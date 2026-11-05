@@ -63,4 +63,4 @@ description: >-
 
 ## 6. 関連メモ
 
-- `.agents/skills/frontmatter.md` 内の `node scripts/update-facility-data.mjs` は現存しない。実体は `scripts/maintenance/facility-updates/update-facility-{east,center,west}.mjs`（`.env` の `MAPS_API_KEY` が必要。実行前に内容を読む）
+- Google Maps 情報の自動入力は `scripts/maintenance/facility-updates/update-facility-{east,center,west}.mjs`（`.env` の `MAPS_API_KEY` が必要。実行前に内容を読む）

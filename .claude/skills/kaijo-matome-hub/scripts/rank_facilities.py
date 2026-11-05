@@ -4,8 +4,10 @@
 使い方（プロジェクトルートで実行）:
   python .claude/skills/kaijo-matome-hub/scripts/rank_facilities.py \
       src/content/blog/fishing-facility/center-japan \
-      --gsc .workspace/.task/access-data/weekly-report/2026/w40/ページ.csv \
-      --ga4 .workspace/.task/access-data/weekly-report/2026/w40/w40-ga4-kaijo.csv
+      --gsc .workspace/access-data/api/monthly/2026/m10/gsc-page.csv \
+      --ga4 .workspace/access-data/api/monthly/2026/m10/ga4-lp.csv
+
+  w42 までの週次の画面データ（ページ.csv・GA4 探索の CSV）も読める。
 
 --gsc / --ga4 は複数回指定でき、ファイルごとに列を分けて表示する（期間の違うファイルを足し合わせない）。
 GSC は「過去3か月 vs その前3か月」形式（列が当期・比較期の2本）も 7日単一列形式も自動判定し、当期のみ使う。
@@ -44,6 +46,14 @@ def read_ga4(path, slugs):
     agg = collections.Counter()
     with open(path, encoding="utf-8-sig") as f:
         rows = [r for r in csv.reader(f) if r and not r[0].startswith("#")]
+    if rows and rows[0][0] == "landingPage":  # API の ga4-lp.csv（session_start 行の区別はない）
+        hdr = rows[0]
+        ilp, ise = hdr.index("landingPage"), hdr.index("sessions")
+        for r in rows[1:]:
+            s = r[ilp].rstrip("/").split("/")[-1]
+            if s in slugs:
+                agg[s] += int(r[ise])
+        return agg
     hdr = next(r for r in rows if r[0] == "ページ タイトル")
     ilp, iev, ise = hdr.index("ランディング ページ"), hdr.index("イベント名"), hdr.index("セッション")
     for r in rows:

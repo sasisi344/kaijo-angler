@@ -1,7 +1,8 @@
 import os
 import re
+from pathlib import Path
 
-base_path = r"c:\Users\sasis\344ob\344ob\08_blog-master\02_kaijo-angler\src\content\blog\tactics\fish-strategy"
+base_path = str(Path(__file__).resolve().parent.parent / 'src' / 'content' / 'blog' / 'tactics' / 'fish-strategy')
 
 fish_mapping = {
     "madai": {"intermediate": "madai-intermediate-strategy", "advanced": "madai-advanced-strategy", "theory": "madai-scientific-evidence", "gourmet": "madai-aging-gourmet"},
