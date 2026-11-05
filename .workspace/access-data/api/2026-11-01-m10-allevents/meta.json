@@ -1,0 +1,15 @@
+{
+  "fetchedAt": "2026-11-01T03:23:21.155Z",
+  "site": "KA",
+  "command": "ga4",
+  "args": {
+    "site": "KA",
+    "start": "2026-10-01",
+    "end": "2026-10-31",
+    "dims": "eventName",
+    "metrics": "eventCount,totalUsers",
+    "slug": "m10-allevents"
+  },
+  "start": "2026-10-01",
+  "end": "2026-10-31"
+}

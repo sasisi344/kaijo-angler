@@ -1,0 +1,23 @@
+﻿eventName,pagePath,customEvent:affiliate_id,customEvent:facility_id,customEvent:placement,eventCount,totalUsers
+affiliatecard_click,/tactics/gear/safety-gear-guide/,tackle/airlegato-lifejacket,(not set),,3,1
+affiliatecard_click,/fishing-facility/itoman-ikada-tsurigu-no-zousan/,tackle/airlegato-lifejacket,(not set),,2,2
+affiliatecard_click,/fishing-facility/raft-fishing-takahashi/,tackle/standard-sebiki-set,(not set),,2,1
+affiliatecard_click,/column/ranking/kyushu-okinawa/,tackle/standard-sebiki-set,(not set),,1,1
+affiliatecard_click,/fishing-facility/atami-port-sea-fishing-facility/,tackle/standard-sebiki-set,(not set),,1,1
+affiliatecard_click,/fishing-facility/kaijo-tsuribori-misaki/,tackle/chonmage-soft-cooler,(not set),facility-gear,1,1
+affiliatecard_click,/fishing-facility/kaijo-tsuribori-tairyomaru/,tackle/airlegato-lifejacket,(not set),,1,1
+affiliatecard_click,/fishing-facility/kaijo-tsuribori-yukimaru/,tackle/airlegato-lifejacket,(not set),,1,1
+affiliatecard_click,/fishing-facility/kariyawan-fishing-center/,tackle/airlegato-lifejacket,(not set),,1,1
+affiliatecard_click,/fishing-facility/naize-fishing-center/,tackle/aji-strategy-set,(not set),,1,1
+affiliatecard_click,/fishing-facility/nanko-fishing-park/,tackle/umibozu-fishgrip,(not set),,1,1
+affiliatecard_click,/fishing-facility/original-maker-sea-fishing-park/,tackle/suzuki-strategy-set,(not set),,1,1
+affiliatecard_click,/fishing-facility/raft-fishing-takahashi/,tackle/chinu-strategy-set,(not set),,1,1
+affiliatecard_click,/fishing-facility/sea-fishing-land/,tackle/suzuki-strategy-set,(not set),,1,1
+affiliatecard_click,/fishing-facility/susawan-fishing-park/,tackle/madai-strategy-set,(not set),,1,1
+affiliatecard_click,/fishing-facility/tsuruga-city-sea-fishing-park/,tackle/airlegato-lifejacket,(not set),,1,1
+affiliatecard_click,/tactics/gear/harris-importance/,tackle/seaguar-grandmax-fx,(not set),,1,1
+affiliatecard_click,/tactics/gear/myakuzuri-gear/,tackle/chinu-strategy-set,(not set),,1,1
+affiliatecard_click,/tactics/gear/rod-selection/,tackle/madai-strategy-set,(not set),,1,1
+affiliatecard_click,/tactics/gear/uki-setup/,tackle/daiwa-kaijo-uki,(not set),,1,1
+gothere_click,/fishing-facility/himeji-city-fishing-center/,(not set),west-japan/hyogo/himeji-city-fishing-center,facility-article,1,1
+gothere_click,/fishing-facility/tsuribori-shotokumaru/,(not set),west-japan/mie/tsuribori-shotokumaru,facility-article,1,1

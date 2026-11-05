@@ -1,0 +1,19 @@
+﻿eventName,pagePath,customEvent:affiliate_id,customEvent:facility_id,customEvent:placement,eventCount,totalUsers
+affiliatecard_click,/fishing-facility/wakasa-takahama-sea-fishing-park/,(not set),(not set),(not set),6,2
+gothere_click,/column/travel/access/access-kyushu/,(not set),(not set),(not set),5,1
+affiliatecard_click,/column/travel/access/access-kyushu/,(not set),(not set),(not set),3,1
+affiliatecard_click,/fishing-facility/akaguri-sea-fishing-park/,(not set),(not set),,3,1
+affiliatecard_click,/fishing-facility/hiruga-sea-fishing-pond/,(not set),(not set),(not set),3,1
+affiliatecard_click,/fishing-facility/totto-park-koshima/,(not set),(not set),(not set),3,2
+affiliatecard_click,/fishing-facility/ugata-hamatsuri-center/,(not set),(not set),,3,1
+affiliatecard_click,/fishing-facility/itoman-ikada-tsurigu-no-zousan/,(not set),(not set),(not set),2,1
+affiliatecard_click,/tactics/gear/beginner-tackle-set/,(not set),(not set),,2,2
+affiliatecard_click,/fishing-facility/kaijo-tsuribori-at-sea/,(not set),(not set),(not set),1,1
+affiliatecard_click,/fishing-facility/kariyawan-fishing-center/,(not set),(not set),(not set),1,1
+affiliatecard_click,/fishing-facility/maizuru-shinkai-park/,(not set),(not set),,1,1
+affiliatecard_click,/fishing-facility/sea-fishing-park-mikata/,(not set),(not set),,1,1
+affiliatecard_click,/fishing-facility/totto-park-koshima/,(not set),(not set),,1,1
+affiliatecard_click,/fishing-facility/tsuri-ikada-fukaura/,(not set),(not set),,1,1
+affiliatecard_click,/fishing-facility/tsuruga-city-sea-fishing-park/,(not set),(not set),,1,1
+affiliatecard_click,/fishing-facility/wakasa-takahama-sea-fishing-park/,(not set),(not set),,1,1
+gothere_click,/fishing-facility/tsuri-ikada-fukaura/,(not set),(not set),(not set),1,1

@@ -1,0 +1,204 @@
+{
+  "site": "KA",
+  "month": "2026-10",
+  "start": "2026-10-01",
+  "end": "2026-10-31",
+  "tables": {
+    "ga4-lp": {
+      "source": "ga4",
+      "id": "A1",
+      "dims": [
+        "landingPage",
+        "sessionSource",
+        "country"
+      ],
+      "metrics": [
+        "sessions",
+        "activeUsers",
+        "engagedSessions",
+        "engagementRate",
+        "userEngagementDuration",
+        "keyEvents"
+      ],
+      "events": null,
+      "exclude": null,
+      "rows": 783,
+      "fetchedAt": "2026-11-02T01:59:53.220Z"
+    },
+    "ga4-events": {
+      "source": "ga4",
+      "id": "A2",
+      "dims": [
+        "eventName",
+        "pagePath",
+        "sessionSource"
+      ],
+      "metrics": [
+        "eventCount",
+        "totalUsers"
+      ],
+      "events": null,
+      "exclude": "page_view|session_start|first_visit|user_engagement|scroll|form_start|form_submit|video_start|video_progress|video_complete",
+      "rows": 180,
+      "fetchedAt": "2026-11-02T01:59:55.968Z"
+    },
+    "ga4-device": {
+      "source": "ga4",
+      "id": "A3",
+      "dims": [
+        "deviceCategory",
+        "sessionDefaultChannelGroup"
+      ],
+      "metrics": [
+        "sessions",
+        "engagedSessions",
+        "engagementRate",
+        "userEngagementDuration",
+        "keyEvents"
+      ],
+      "events": null,
+      "exclude": null,
+      "rows": 13,
+      "fetchedAt": "2026-11-02T01:59:56.617Z"
+    },
+    "ga4-affiliate": {
+      "source": "ga4",
+      "id": "A2+",
+      "dims": [
+        "eventName",
+        "pagePath",
+        "customEvent:affiliate_id",
+        "customEvent:facility_id",
+        "customEvent:placement"
+      ],
+      "metrics": [
+        "eventCount",
+        "totalUsers"
+      ],
+      "events": "affiliatecard_click|gothere_click",
+      "exclude": null,
+      "rows": 22,
+      "fetchedAt": "2026-11-02T01:59:58.060Z"
+    },
+    "ga4-ads": {
+      "source": "ga4",
+      "id": "hq:A4",
+      "dims": [
+        "landingPage"
+      ],
+      "metrics": [
+        "screenPageViews",
+        "totalAdRevenue",
+        "publisherAdImpressions",
+        "publisherAdClicks"
+      ],
+      "events": null,
+      "exclude": null,
+      "rows": 290,
+      "fetchedAt": "2026-11-02T01:59:57.416Z"
+    },
+    "bing-traffic": {
+      "source": "bing",
+      "bing": "https://kaijo-fishing.com/",
+      "rows": 30,
+      "fetchedAt": "2026-11-02T03:05:28.848Z"
+    },
+    "bing-query": {
+      "source": "bing",
+      "bing": "https://kaijo-fishing.com/",
+      "rows": 315,
+      "fetchedAt": "2026-11-02T03:05:28.848Z"
+    },
+    "bing-page": {
+      "source": "bing",
+      "bing": "https://kaijo-fishing.com/",
+      "rows": 236,
+      "fetchedAt": "2026-11-02T03:05:28.848Z"
+    },
+    "gsc-page": {
+      "source": "gsc",
+      "id": null,
+      "dims": [
+        "page"
+      ],
+      "metrics": null,
+      "events": null,
+      "exclude": null,
+      "rows": 380,
+      "fetchedAt": "2026-11-05T02:58:07.936Z"
+    },
+    "gsc-query": {
+      "source": "gsc",
+      "id": null,
+      "dims": [
+        "query"
+      ],
+      "metrics": null,
+      "events": null,
+      "exclude": null,
+      "rows": 1178,
+      "fetchedAt": "2026-11-05T02:58:08.148Z"
+    },
+    "gsc-device": {
+      "source": "gsc",
+      "id": null,
+      "dims": [
+        "device"
+      ],
+      "metrics": null,
+      "events": null,
+      "exclude": null,
+      "rows": 3,
+      "fetchedAt": "2026-11-05T02:58:08.693Z"
+    },
+    "gsc-date": {
+      "source": "gsc",
+      "id": null,
+      "dims": [
+        "date"
+      ],
+      "metrics": null,
+      "events": null,
+      "exclude": null,
+      "rows": 31,
+      "fetchedAt": "2026-11-05T02:58:09.308Z"
+    },
+    "gsc-country": {
+      "source": "gsc",
+      "id": null,
+      "dims": [
+        "country"
+      ],
+      "metrics": null,
+      "events": null,
+      "exclude": null,
+      "rows": 51,
+      "fetchedAt": "2026-11-05T02:58:09.882Z"
+    },
+    "gsc-appearance": {
+      "source": "gsc",
+      "id": null,
+      "dims": [
+        "searchAppearance"
+      ],
+      "metrics": null,
+      "events": null,
+      "exclude": null,
+      "rows": 0,
+      "fetchedAt": "2026-11-05T02:58:10.721Z"
+    },
+    "gsc-page-query": {
+      "source": "gsc",
+      "id": null,
+      "dims": [
+        "page",
+        "query"
+      ],
+      "metrics": null,
+      "events": null,
+      "exclude": null,
+      "rows": 1360,
+      "fetchedAt": "2026-11-05T02:58:11.221Z"
+    }
+  }
+}

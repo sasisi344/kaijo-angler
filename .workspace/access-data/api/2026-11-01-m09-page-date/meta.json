@@ -1,0 +1,15 @@
+{
+  "fetchedAt": "2026-11-01T03:18:14.689Z",
+  "site": "KA",
+  "command": "gsc",
+  "args": {
+    "site": "KA",
+    "start": "2026-09-01",
+    "end": "2026-09-30",
+    "dims": "page,date",
+    "limit": "25000",
+    "slug": "m09-page-date"
+  },
+  "start": "2026-09-01",
+  "end": "2026-09-30"
+}
