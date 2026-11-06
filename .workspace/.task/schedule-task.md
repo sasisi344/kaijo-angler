@@ -5,7 +5,7 @@
 - **パートA（S1〜S3）**: GSCの結果・データ・手動作業を待っている「実施タスク」
 - **パートB（M1〜M9）**: GSC/GA4の将来データが揃わないと判定できない「効果測定」。各項目に「測定対象・判定に必要なデータ・判定基準・取得タイミング」を持たせる
 
-最終更新: 2026-10-11（w42 メモ追記）
+最終更新: 2026-11-05（M11 追加）
 
 ---
 
@@ -169,3 +169,12 @@ GSC検証の結果、「仮説B向け専用コンテンツが存在しない」�
 - **判定基準**: 順位が落ちていなければ（平均順位の悪化が1位以内）、フェーズ5（残りの施設記事）を同じ型で進める。CTR が上がった記事があれば、口コミの評価点を書いたことが検索結果での見え方に効いたかを確認する。順位が2位以上落ちた記事は、追加した節が長すぎて結論が遠くなっていないかを見直す
 - **フェーズ4（2026-10-28）**: 釣法・コラム10本（`column/travel/fish-shipping-guide`・`tactics/gear/harris-importance`・`column/ranking/kansai`・`column/travel/cooler-box-guide`・`column/trivia/hook-size-science`・`column/trivia/cloudy-day-advantage`・`column/ranking/chugoku-shikoku`・`column/trivia/tana-basics`・`tactics/fish-strategy/madai/theory`・`tactics/fish-strategy/buri/theory`）に「私なら」の1文を追加、`tactics/fish-strategy` の11本の失敗談を「よくある失敗」の形に書き直し。同じ w48 で、順位が落ちていないかだけを見る
 - **ベースライン（2026-11-01 記録）**: 10/02〜10/29 の15本合計 258クリック／5,960表示・CTR4.3%・順位9.1（GSC 暫定。H-32 の確定値で差し替え可）。[monthly-analysis-2026-10.md](monthly-analysis-2026-10.md)
+
+### M11. 冬の収益最大化の効果（新規・[[winter-monetization-plan]]）
+
+- **測定対象**: GA4 PV/セッション、`affiliatecard_click`（`placement`・`affiliate_id` 別）、AdSense の月額、冬クエリのクリック・表示、P1・W1〜W5 と更新した旅行記事・タックル記事のクリック・表示
+- **判定に必要なデータ**: 月次 API（`monthly/2026/m11` 以降）、AdSense（`hq/data/`）、昨冬の GSC（`2026-11-05-lastwinter-{date,page,query}/`）
+- **判定基準**: 12月・1月に計画 §3 の目標と比べる。日平均セッションが90を割り、かつ冬記事の合計クリックが昨冬の月平均56に届かないなら、冬の記事を増やさず検索以外の入口を考える。カードは、`affiliate_id` ごとに月3クリック未満なら差し替える
+- **取得タイミング**: 12/05 ごろ（m11）、2027-01 上旬（m12）、2027-02 上旬（m01）。判定は 2027-02 に確定
+- **ベースライン（2026-11-05 記録）**: 10月 AdSense 730円・PV/セッション 1.13・`affiliatecard_click` 24件・`placement` 空 23/24。昨冬のクリック/日は 2025-11 18.8 → 2026-01 13.4（−29%）
+- **注意**: 昨冬は WordPress 時代でサイトの規模が違う。絶対値では比べず、季節の形だけに使う

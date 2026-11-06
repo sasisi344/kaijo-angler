@@ -1,0 +1,14 @@
+{
+  "fetchedAt": "2026-11-05T04:26:30.081Z",
+  "site": "KA",
+  "command": "gsc",
+  "args": {
+    "site": "KA",
+    "start": "2025-12-01",
+    "end": "2026-02-28",
+    "dims": "query",
+    "slug": "2026-11-05-lastwinter-query"
+  },
+  "start": "2025-12-01",
+  "end": "2026-02-28"
+}

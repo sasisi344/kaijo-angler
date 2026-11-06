@@ -140,7 +140,7 @@ tags:
 
 - [ ] 残り10本に「はじめての方へ」節を追加（計20本）
 - [ ] 節の Q2「自分で用意するもの」に物販カードを1枚（借りられない理由の一文の後。`placement="facility-firsttimer"`）。冬は防寒・クーラー・手袋が中心
-- [ ] 防寒の共通カードを作る（`tackle/common-*`、Amazon で ASIN を確認して台帳に記録してから）。あわせて `column/trivia/december-cold-weather-gear-guide`（78行・カード0）を拡充
+- [ ] （11/14 に前倒し。[[winter-monetization-plan]] E3）防寒の共通カードを作る（`tackle/common-*`、Amazon で ASIN を確認して台帳に記録してから）。あわせて `column/trivia/december-cold-weather-gear-guide`（78行・カード0）を拡充
 - [ ] Amazon アソシエイトのトラッキングIDを記事タイプ別に追加（手動）し、TackleCard で差し替え（`amzn.to` 21件は `/dp/ASIN?tag=` 形式へ）。物販の成約を記事タイプ別に見るため
 - 完了条件: 20本に節、うち Q2 にカードが入っている
 
