@@ -40,11 +40,12 @@ const MODEL = 'gemini-3.1-flash-image';
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
 // 引数からプロンプトと出力パスを取得
-const prompt = process.argv[2];
-const outputPath = process.argv[3];
+const args = process.argv.slice(2);
+const isDiagram = args.includes('--diagram');
+const [prompt, outputPath] = args.filter((arg) => arg !== '--diagram');
 
 if (!prompt || !outputPath) {
-    console.error('使用方法: node generate-image.js "<プロンプト>" "<出力パス>"');
+    console.error('使用方法: node generate-image.js "<プロンプト>" "<出力パス>" [--diagram]');
     process.exit(1);
 }
 
@@ -57,9 +58,17 @@ Visual rules (always apply):
 - Clean, simple composition suitable for a blog article cover (16:9 or 4:3 ratio feel)
 - High visual quality, publication-ready`;
 
+const DIAGRAM_INSTRUCTION = `You are generating explanatory diagrams for a Japanese sea fishing pond (海上釣り堀) blog.
+
+Visual rules (always apply):
+- Clean, simple diagram on a light background, 16:9 composition
+- Use Japanese text only where the prompt lists it, copied exactly character by character
+- Do not add any other letters, numbers, watermarks, or logos
+- Large, legible text with plenty of space around it`;
+
 async function generateImage(prompt) {
     const requestData = {
-        systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+        systemInstruction: { parts: [{ text: isDiagram ? DIAGRAM_INSTRUCTION : SYSTEM_INSTRUCTION }] },
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
             temperature: 1.0,
