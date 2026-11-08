@@ -1,0 +1,15 @@
+{
+  "fetchedAt": "2026-11-08T03:14:20.960Z",
+  "site": "KA",
+  "command": "ga4",
+  "args": {
+    "site": "KA",
+    "dims": "eventName",
+    "metrics": "eventCount",
+    "start": "2026-10-01",
+    "end": "2026-11-07",
+    "slug": "ka-events"
+  },
+  "start": "2026-10-01",
+  "end": "2026-11-07"
+}
