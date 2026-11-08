@@ -6,8 +6,7 @@ const BLOG_LEGACY_CONFIG = 'src/config/blog-legacy-redirects.ts';
 const CONTENT_DIR = 'src/content/blog';
 const FACILITY_CONTENT_DIR = 'src/content/blog/fishing-facility';
 // column / tactics はコンテンツのディレクトリ構造がそのままURLになる。
-// intelligence は移行対象外で現在も /blog/intelligence/{slug}/ が本番URLのため、
-// ここに含めてはいけない（含めると稼働中の記事23件を404へ飛ばしてしまう）。
+// intelligence は 2026-11-08 に廃止した（末尾の包括ルールでトップへ301）。
 const MIRRORED_SECTIONS = ['column', 'tactics'];
 const HTACCESS_FILE = 'public/.htaccess';
 
@@ -155,6 +154,11 @@ try {
   htaccessContent += `\n  # fallback: /blog/{現行パス} → /{現行パス}（新規記事も自動でカバー）\n`;
   // ※ intelligence は現役URLなので対象外
   htaccessContent += `  RedirectMatch 301 ^/blog/(column|tactics|fishing-facility)/(.*)$ /$1/$2\n`;
+  // 2026-11-08: 「ブログ」（intelligence・postCollection）を廃止。個別の4件は blog-legacy-redirects.ts、残りはトップへ
+  htaccessContent += `  RedirectMatch 301 ^/blog/intelligence/.*$ /\n`;
+  htaccessContent += `  RedirectMatch 301 ^/blog/?$ /\n`;
+  htaccessContent += `  RedirectMatch 301 ^/(category|tag)/.*$ /\n`;
+  htaccessContent += `  RedirectMatch 301 ^/rss\\.xml$ /facilities-rss.xml\n`;
 
   htaccessContent += `</IfModule>\n`;
 

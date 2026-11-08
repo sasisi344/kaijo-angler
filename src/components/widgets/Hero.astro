@@ -19,7 +19,9 @@ const {
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <span class="absolute -top-16 -left-20 w-72 h-72 rounded-full bg-k-sky-soft"></span>
+    <span class="absolute top-24 -right-16 w-56 h-56 rounded-full bg-k-sun-soft"></span>
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
@@ -31,7 +33,7 @@ const {
         {
           tagline && (
             <p
-              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              class="inline-block mb-4 px-4 py-1 rounded-full bg-k-sun font-heading text-sm font-bold text-heading tracking-[0.15em] intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
               set:html={tagline}
             />
           )
@@ -39,7 +41,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              class="text-4xl md:text-5xl font-bold leading-snug mb-5 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
               set:html={title}
             />
           )
@@ -48,7 +50,7 @@ const {
           {
             subtitle && (
               <p
-                class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+                class="text-base md:text-lg text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
                 set:html={subtitle}
               />
             )
@@ -81,7 +83,7 @@ const {
                 <Fragment set:html={image} />
               ) : (
                 <Image
-                  class="mx-auto rounded-md w-full"
+                  class="mx-auto rounded-3xl w-full"
                   widths={[400, 768, 1024, 2040]}
                   sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
                   loading="eager"

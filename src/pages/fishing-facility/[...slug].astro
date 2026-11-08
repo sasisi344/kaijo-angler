@@ -280,7 +280,7 @@ if (type === "facility") {
             )}
           {items.length > 0 && (
             <div class="pt-8 mb-16">
-              <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-8 font-heading text-center">
+              <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-wide mb-8 font-heading text-center">
                 施設一覧
               </h2>
               {allFish.length > 0 && (
@@ -398,7 +398,7 @@ if (type === "facility") {
                       data-firsttimer={firstTimerPick ? "true" : "false"}
                       data-fish={fishList}
                     >
-                      <div class="relative h-48 mb-4 overflow-hidden rounded-lg shadow-lg bg-gray-200 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                      <div class="relative h-48 mb-4 overflow-hidden rounded-2xl bg-k-sky-soft">
                         {item.image ? (
                           <Image
                             src={item.image as ImageMetadata | string}
@@ -500,7 +500,7 @@ if (type === "facility") {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               {items.map((item) => (
                 <a href={getPermalink(`fishing-facility/${item.slug}`)} class="block group">
-                  <div class="relative h-48 mb-4 overflow-hidden rounded-lg shadow-lg">
+                  <div class="relative h-48 mb-4 overflow-hidden rounded-2xl">
                     {item.image ? (
                       <Image
                         src={item.image as ImageMetadata | string}

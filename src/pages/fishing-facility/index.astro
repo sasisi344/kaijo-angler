@@ -75,7 +75,7 @@ const metadata = {
       {
         eastJapan.map((post, index) => (
           <article
-            class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? "hidden opacity-0" : ""}`}
+            class={`k-card flex flex-col ${index >= 6 ? "hidden opacity-0" : ""}`}
             data-region="east-japan"
           >
             <a href={getPermalink(`fishing-facility/${post.id}`)} class="block">
@@ -128,7 +128,7 @@ const metadata = {
   <!-- Center Japan List -->
   <section
     id="center-japan"
-    class="px-6 py-12 mx-auto max-w-7xl bg-slate-50 dark:bg-slate-800/20"
+    class="px-6 py-12 mx-auto max-w-7xl bg-k-sky-soft/60 rounded-3xl"
   >
     <Headline subtitle="北陸・東海・甲信越エリアの釣り場"
       >中日本エリア一覧</Headline
@@ -140,7 +140,7 @@ const metadata = {
       {
         centerJapan.map((post, index) => (
           <article
-            class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? "hidden opacity-0" : ""}`}
+            class={`k-card flex flex-col ${index >= 6 ? "hidden opacity-0" : ""}`}
             data-region="center-japan"
           >
             <a href={getPermalink(`fishing-facility/${post.id}`)} class="block">
@@ -202,7 +202,7 @@ const metadata = {
       {
         westJapan.map((post, index) => (
           <article
-            class={`flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 ${index >= 6 ? "hidden opacity-0" : ""}`}
+            class={`k-card flex flex-col ${index >= 6 ? "hidden opacity-0" : ""}`}
             data-region="west-japan"
           >
             <a href={getPermalink(`fishing-facility/${post.id}`)} class="block">

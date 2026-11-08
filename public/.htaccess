@@ -291,6 +291,11 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/yuharai-pond/?$ /fishing-facility/yuharai-pond/
   RedirectMatch 301 ^/blog/yura-marine-fishing-pond/?$ /fishing-facility/yura-marine-fishing-pond/
   RedirectMatch 301 ^/blog/yura-sea-fishing-park/?$ /fishing-facility/yura-sea-fishing-park/
+  RedirectMatch 301 ^/blog/?$ /
+  RedirectMatch 301 ^/blog/intelligence/gw-2026-special-report/?$ /column/travel/may-holiday-tsuribori-reservation/
+  RedirectMatch 301 ^/blog/intelligence/kansai-vs-kanto-spring/?$ /column/ranking/kansai/
+  RedirectMatch 301 ^/blog/intelligence/spring-2026-madai-report/?$ /tactics/fish-strategy/madai/
+  RedirectMatch 301 ^/blog/intelligence/summer-bluefish-forecast/?$ /tactics/fish-strategy/buri/
   RedirectMatch 301 ^/fishing-facility/center-japan/aichi/bakucho-mihama-fishing-park/?$ /fishing-facility/bakucho-mihama-fishing-park/
   RedirectMatch 301 ^/blog/fishing-facility/center-japan/aichi/bakucho-mihama-fishing-park/?$ /fishing-facility/bakucho-mihama-fishing-park/
   RedirectMatch 301 ^/fishing-facility/center-japan/aichi/shinmaiko-marine-park-fishing/?$ /fishing-facility/shinmaiko-marine-park-fishing/
@@ -351,6 +356,12 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/fishing-facility/east-japan/aomori/asamushi-sea-fishing-park/?$ /fishing-facility/asamushi-sea-fishing-park/
   RedirectMatch 301 ^/fishing-facility/east-japan/chiba/futomi-flower-isotsuri-center/?$ /fishing-facility/futomi-flower-isotsuri-center/
   RedirectMatch 301 ^/blog/fishing-facility/east-japan/chiba/futomi-flower-isotsuri-center/?$ /fishing-facility/futomi-flower-isotsuri-center/
+  RedirectMatch 301 ^/blog/hare-park-tateyama/?$ /fishing-facility/hare-park-tateyama/
+  RedirectMatch 301 ^/fishing-facility/east-japan/chiba/hare-park-tateyama/?$ /fishing-facility/hare-park-tateyama/
+  RedirectMatch 301 ^/blog/fishing-facility/east-japan/chiba/hare-park-tateyama/?$ /fishing-facility/hare-park-tateyama/
+  RedirectMatch 301 ^/blog/kujukuri-umitsuri-center/?$ /fishing-facility/kujukuri-umitsuri-center/
+  RedirectMatch 301 ^/fishing-facility/east-japan/chiba/kujukuri-umitsuri-center/?$ /fishing-facility/kujukuri-umitsuri-center/
+  RedirectMatch 301 ^/blog/fishing-facility/east-japan/chiba/kujukuri-umitsuri-center/?$ /fishing-facility/kujukuri-umitsuri-center/
   RedirectMatch 301 ^/fishing-facility/east-japan/chiba/original-maker-sea-fishing-park/?$ /fishing-facility/original-maker-sea-fishing-park/
   RedirectMatch 301 ^/blog/fishing-facility/east-japan/chiba/original-maker-sea-fishing-park/?$ /fishing-facility/original-maker-sea-fishing-park/
   RedirectMatch 301 ^/fishing-facility/east-japan/hokkaido/tomakomai-facility/tomakomai-port-sea-fishing-facility/?$ /fishing-facility/tomakomai-port-sea-fishing-facility/
@@ -361,6 +372,9 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/fishing-facility/east-japan/kanagawa/jogashima-js-fishing/?$ /fishing-facility/jogashima-js-fishing/
   RedirectMatch 301 ^/fishing-facility/east-japan/kanagawa/miura-kaiou/?$ /fishing-facility/miura-kaiou/
   RedirectMatch 301 ^/blog/fishing-facility/east-japan/kanagawa/miura-kaiou/?$ /fishing-facility/miura-kaiou/
+  RedirectMatch 301 ^/blog/yokohama-tsuribori-okoku/?$ /fishing-facility/yokohama-tsuribori-okoku/
+  RedirectMatch 301 ^/fishing-facility/east-japan/kanagawa/yokohama-tsuribori-okoku/?$ /fishing-facility/yokohama-tsuribori-okoku/
+  RedirectMatch 301 ^/blog/fishing-facility/east-japan/kanagawa/yokohama-tsuribori-okoku/?$ /fishing-facility/yokohama-tsuribori-okoku/
   RedirectMatch 301 ^/fishing-facility/east-japan/miyagi/sendai-port-central-park-sea-square/?$ /fishing-facility/sendai-port-central-park-sea-square/
   RedirectMatch 301 ^/blog/fishing-facility/east-japan/miyagi/sendai-port-central-park-sea-square/?$ /fishing-facility/sendai-port-central-park-sea-square/
   RedirectMatch 301 ^/fishing-facility/east-japan/yamagata/yura-marine-fishing-pond/?$ /fishing-facility/yura-marine-fishing-pond/
@@ -547,7 +561,9 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/mie-wakayama/?$ /column/ranking/mie-wakayama/
   RedirectMatch 301 ^/blog/nihonkai-hokuriku/?$ /column/ranking/nihonkai-hokuriku/
   RedirectMatch 301 ^/blog/tohoku-hokkaido/?$ /column/ranking/tohoku-hokkaido/
+  RedirectMatch 301 ^/blog/access-kyushu/?$ /column/travel/access/access-kyushu/
   RedirectMatch 301 ^/blog/ensei-guide/?$ /column/travel/access/ensei-guide/
+  RedirectMatch 301 ^/blog/setouchi-access-guide/?$ /column/travel/access/setouchi-access-guide/
   RedirectMatch 301 ^/blog/april-family-friendly-facilities/?$ /column/travel/april-family-friendly-facilities/
   RedirectMatch 301 ^/blog/august-obon-family-fishing-guide/?$ /column/travel/august-obon-family-fishing-guide/
   RedirectMatch 301 ^/blog/august-summer-release-facilities/?$ /column/travel/august-summer-release-facilities/
@@ -569,7 +585,6 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/september-shimonoseki-fugu-trip/?$ /column/travel/september-shimonoseki-fugu-trip/
   RedirectMatch 301 ^/blog/september-silver-week-quiet-spots-guide/?$ /column/travel/september-silver-week-quiet-spots-guide/
   RedirectMatch 301 ^/blog/shirahama-onsen-trip/?$ /column/travel/shirahama-onsen-trip/
-  RedirectMatch 301 ^/blog/tabilmo-villa-stay-guide/?$ /column/travel/tabilmo-villa-stay-guide/
   RedirectMatch 301 ^/blog/wakayama-kii-trip/?$ /column/travel/wakayama-kii-trip/
   RedirectMatch 301 ^/blog/april-beginner-3step-guide/?$ /column/trivia/april-beginner-3step-guide/
   RedirectMatch 301 ^/blog/april-bluefish-season-guide/?$ /column/trivia/april-bluefish-season-guide/
@@ -646,6 +661,11 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/tsuyu-target-fish-guide/?$ /column/trivia/tsuyu-target-fish-guide/
   RedirectMatch 301 ^/blog/typhoon-closure-guide/?$ /column/trivia/typhoon-closure-guide/
   RedirectMatch 301 ^/blog/why-expensive-fish/?$ /column/trivia/why-expensive-fish/
+  RedirectMatch 301 ^/blog/winter-big-fish-3-tactics/?$ /column/trivia/winter-big-fish-3-tactics/
+  RedirectMatch 301 ^/blog/winter-big-fish-nabe/?$ /column/trivia/winter-big-fish-nabe/
+  RedirectMatch 301 ^/blog/winter-fishing-why-hard/?$ /column/trivia/winter-fishing-why-hard/
+  RedirectMatch 301 ^/blog/winter-kaijo-tsuribori-guide/?$ /column/trivia/winter-kaijo-tsuribori-guide/
+  RedirectMatch 301 ^/blog/winter-kaijo-tsuribori-pacific/?$ /column/trivia/winter-kaijo-tsuribori-pacific/
   RedirectMatch 301 ^/blog/bait-guide/?$ /tactics/beginner/bait-guide/
   RedirectMatch 301 ^/blog/essential-knots/?$ /tactics/beginner/essential-knots/
   RedirectMatch 301 ^/blog/first-fishing-pond/?$ /tactics/beginner/first-fishing-pond/
@@ -689,4 +709,8 @@ ErrorDocument 404 /404.html
 
   # fallback: /blog/{現行パス} → /{現行パス}（新規記事も自動でカバー）
   RedirectMatch 301 ^/blog/(column|tactics|fishing-facility)/(.*)$ /$1/$2
+  RedirectMatch 301 ^/blog/intelligence/.*$ /
+  RedirectMatch 301 ^/blog/?$ /
+  RedirectMatch 301 ^/(category|tag)/.*$ /
+  RedirectMatch 301 ^/rss\.xml$ /facilities-rss.xml
 </IfModule>

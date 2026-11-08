@@ -12,11 +12,22 @@ export default {
         accent: 'var(--aw-color-accent)',
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
+        heading: 'var(--aw-color-text-heading)',
+        cream: 'var(--aw-color-bg-page)',
+        'k-sky': 'var(--k-sky)',
+        'k-sky-soft': 'var(--k-sky-soft)',
+        'k-sun': 'var(--k-sun)',
+        'k-sun-soft': 'var(--k-sun-soft)',
+        'k-coral': 'var(--k-coral)',
+        'k-coral-soft': 'var(--k-coral-soft)',
+        'k-mint': 'var(--k-mint)',
+        'k-mint-soft': 'var(--k-mint-soft)',
       },
       fontFamily: {
         sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
         serif: ['var(--aw-font-serif, ui-serif)', ...defaultTheme.fontFamily.serif],
         heading: ['var(--aw-font-heading, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
+        en: ['var(--aw-font-en)', ...defaultTheme.fontFamily.sans],
       },
 
       animation: {

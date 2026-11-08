@@ -289,4 +289,10 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/yuharai-pond/': '/fishing-facility/yuharai-pond/',
   '/blog/yura-marine-fishing-pond/': '/fishing-facility/yura-marine-fishing-pond/',
   '/blog/yura-sea-fishing-park/': '/fishing-facility/yura-sea-fishing-park/',
+  // 2026-11-08: 「ブログ」（intelligence）を廃止。関連記事へ301
+  '/blog/': '/',
+  '/blog/intelligence/gw-2026-special-report/': '/column/travel/may-holiday-tsuribori-reservation/',
+  '/blog/intelligence/kansai-vs-kanto-spring/': '/column/ranking/kansai/',
+  '/blog/intelligence/spring-2026-madai-report/': '/tactics/fish-strategy/madai/',
+  '/blog/intelligence/summer-bluefish-forecast/': '/tactics/fish-strategy/buri/',
 };

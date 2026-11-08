@@ -1,12 +1,15 @@
 ---
 name: kaijo-intelligence-report
 description: >-
-  kaijo-angler の「intelligence」カテゴリ（週刊マガジン・月刊マガジン）記事を、最新ニュース・釣行レポ・釣具レビューの
+  【廃止 2026-11-08】intelligence（週刊・月刊マガジン）は記事ごと削除し、/blog/ は関連記事へ301した。新しく書かない。
+  以下は旧仕様の記録。kaijo-angler の「intelligence」カテゴリ（週刊マガジン・月刊マガジン）記事を、最新ニュース・釣行レポ・釣具レビューの
   リサーチから記事執筆まで一気通貫で作るときに使う。リサーチ→`.data-set/magazine-data/`へのデータ格納→
   `src/content/blog/intelligence/`へのMDX執筆、という3フェーズを固定の収集方針・データ構造で回し、
   週次/月次で「一体感のある」データドリブン記事にする。「週刊マガジン作って」「月刊マガジン作って」「intelligence記事」
   「海上釣り堀の最新ニュースをリサーチして記事に」と言われたら参照する。
 ---
+
+> **廃止（2026-11-08、運営者の決定）**: サイトデザインの刷新でカテゴリ「ブログ」（intelligence）を廃止した。記事4本は削除し、旧URLは `src/config/blog-legacy-redirects.ts` と `scripts/maintenance/generate-htaccess.mjs` で301している。このスキルで記事を作らない。
 
 # kaijo-angler Intelligence（週刊・月刊マガジン）作成ルール
 

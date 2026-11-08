@@ -46,7 +46,7 @@ const metadata = {
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
       <!-- Beginner Card -->
       <article
-        class="flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300"
+        class="k-card flex flex-col"
       >
         <a href={getPermalink("tactics/beginner")} class="block h-full flex flex-col">
           <div
@@ -64,7 +64,7 @@ const metadata = {
             </div>
           </div>
           <div class="p-6 flex-grow">
-            <h3 class="text-xl font-bold mb-3 tracking-tight">
+            <h3 class="text-xl font-bold mb-3 tracking-wide">
               海上釣り堀の基本をマスター
             </h3>
             <p class="text-muted text-sm leading-relaxed">
@@ -76,7 +76,7 @@ const metadata = {
 
       <!-- Fish Strategy Card -->
       <article
-        class="flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border-2 border-primary"
+        class="k-card flex flex-col border-2 border-primary"
       >
         <a href={getPermalink("tactics/fish-strategy")} class="block h-full flex flex-col">
           <div
@@ -94,7 +94,7 @@ const metadata = {
             </div>
           </div>
           <div class="p-6 flex-grow">
-            <h3 class="text-xl font-bold mb-3 tracking-tight">
+            <h3 class="text-xl font-bold mb-3 tracking-wide">
               ターゲットを仕留める必勝法
             </h3>
             <p class="text-muted text-sm leading-relaxed">
@@ -106,7 +106,7 @@ const metadata = {
 
       <!-- Gear Card -->
       <article
-        class="flex flex-col bg-white dark:bg-slate-900 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300"
+        class="k-card flex flex-col"
       >
         <a href={getPermalink("tactics/gear")} class="block h-full flex flex-col">
           <div
@@ -124,7 +124,7 @@ const metadata = {
             </div>
           </div>
           <div class="p-6 flex-grow">
-            <h3 class="text-xl font-bold mb-3 tracking-tight">
+            <h3 class="text-xl font-bold mb-3 tracking-wide">
               魚種に合ったタックルを揃える
             </h3>
             <p class="text-muted text-sm leading-relaxed">
@@ -172,7 +172,7 @@ const metadata = {
 
   <!-- CTA -->
   <section class="max-w-7xl mx-auto px-6 py-16">
-    <div class="bg-primary/10 dark:bg-primary/20 p-12 rounded-2xl text-center">
+    <div class="bg-k-mint-soft p-8 md:p-12 rounded-3xl text-center">
       <h2 class="text-3xl font-bold mb-6">攻略法を学んだら、次は実践！</h2>
       <p class="text-lg text-muted mb-8 max-w-2xl mx-auto">
         学んだノウハウを試すのに最適な釣り場を見つけましょう。全国<strong

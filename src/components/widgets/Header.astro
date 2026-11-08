@@ -46,12 +46,17 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+
+// スマホメニューのカテゴリ見出し（色と英字ラベル）
+const mobileColors = ['bg-k-sky', 'bg-k-sun', 'bg-k-coral', 'bg-k-mint'];
+const mobileSoft = ['bg-k-sky-soft', 'bg-k-sun-soft', 'bg-k-coral-soft', 'bg-k-mint-soft'];
+const mobileEn: Record<string, string> = { 釣り場を探す: 'Facility', 攻略法: 'Tactics', 釣り旅ガイド: 'Travel' };
 ---
 
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-[1100] flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
@@ -83,8 +88,57 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       class="items-center w-full mm:w-auto hidden mm:flex mm:mx-5 text-default overflow-y-auto overflow-x-hidden mm:overflow-y-visible mm:overflow-x-auto mm:justify-self-center"
       aria-label="Main navigation"
     >
+      <!-- スマホ用メニュー（ハンバーガーを開いたとき） -->
+      <div class="mm:hidden w-full px-4 pt-4 pb-10">
+        <GlobalSearch />
+        <a
+          href={getHomePermalink()}
+          class="mt-4 flex items-center justify-between rounded-2xl bg-white px-4 py-3 font-heading font-bold"
+        >
+          ホーム
+          <Icon name="tabler:chevron-right" class="w-4 h-4 text-muted" />
+        </a>
+        {
+          links
+            .filter((l) => l.links?.length)
+            .map(({ text, links: children = [] }, i) => (
+              <section class="mt-6">
+                <h2 class="flex items-baseline gap-2 mb-2 px-1">
+                  <span class:list={['w-2.5 h-2.5 rounded-full self-center', mobileColors[i % mobileColors.length]]} aria-hidden="true" />
+                  <span class="font-heading font-bold text-base">{text}</span>
+                  <span class="en-label !text-[0.55rem]">{mobileEn[text ?? ''] ?? ''}</span>
+                </h2>
+                <ul class="grid grid-cols-2 gap-2">
+                  {children.map(({ text: t2, href: h2 }, j) => (
+                    <li class:list={{ 'col-span-2': j === 0 }}>
+                      <a
+                        href={h2}
+                        class:list={[
+                          'flex items-center justify-between rounded-xl px-3 py-2.5 text-sm leading-snug',
+                          j === 0 ? `${mobileSoft[i % mobileSoft.length]} font-bold` : 'bg-white',
+                          { 'aw-link-active': h2 === currentPath },
+                        ]}
+                      >
+                        {t2}
+                        <Icon name="tabler:chevron-right" class="w-3.5 h-3.5 shrink-0 text-muted" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))
+        }
+        {
+          showRssFeed && (
+            <a href={getAsset('/facilities-rss.xml')} class="mt-8 inline-flex items-center gap-1 text-xs text-muted">
+              <Icon name="tabler:rss" class="w-4 h-4" />
+              釣り場更新RSS
+            </a>
+          )
+        }
+      </div>
       <ul
-        class="flex flex-col mm:flex-row mm:self-center w-full mm:w-auto text-xl mm:text-[0.9375rem] tracking-[0.01rem] font-medium mm:justify-center"
+        class="hidden mm:flex mm:flex-row mm:self-center mm:w-auto mm:text-[0.9375rem] tracking-[0.01rem] font-medium mm:justify-center"
       >
         {
           links.map(({ text, href, links }) => (
@@ -128,24 +182,6 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             </li>
           ))
         }
-        <li class="mm:hidden px-4 py-3 border-t border-gray-100 dark:border-slate-800">
-           <div class="flex items-center justify-between mb-4">
-              <span class="text-sm font-medium">表示設定</span>
-              <div class="flex items-center">
-                {showToggleTheme && <ToggleTheme iconClass="w-6 h-6" />}
-                {showRssFeed && (
-                  <a
-                    class="text-muted dark:text-gray-400 p-2.5 inline-flex items-center"
-                    aria-label="RSS Feed"
-                    href={getAsset('/rss.xml')}
-                  >
-                    <Icon name="tabler:rss" class="w-5 h-5" />
-                  </a>
-                )}
-              </div>
-           </div>
-           <GlobalSearch />
-        </li>
       </ul>
     </nav>
     <div
@@ -162,7 +198,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               <a
                 class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
                 aria-label="RSS Feed"
-                href={getAsset('/rss.xml')}
+                href={getAsset('/facilities-rss.xml')}
               >
                 <Icon name="tabler:rss" class="w-5 h-5" />
               </a>

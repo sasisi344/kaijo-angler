@@ -2,8 +2,18 @@
 import { SITE } from 'astrowind:config';
 ---
 
-<span
-  class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
->
-  🚀 {SITE?.name}
+<span class="self-center ml-1 rtl:ml-0 rtl:mr-1 flex items-center gap-2 whitespace-nowrap">
+  <svg viewBox="0 0 40 40" class="w-9 h-9 shrink-0" aria-hidden="true">
+    <circle cx="20" cy="20" r="19" fill="var(--k-sky)"></circle>
+    <path
+      d="M9 22c3.5-5 9-7 14-5.5 2.2.7 4 2 5.2 3.5L32 17v10l-3.8-3c-1.2 1.5-3 2.8-5.2 3.5C18 29 12.5 27 9 22Z"
+      fill="#fff"></path>
+    <circle cx="14.5" cy="21" r="1.4" fill="rgb(46 46 46)"></circle>
+    <path d="M6 31c2.5 0 2.5-1.6 5-1.6s2.5 1.6 5 1.6 2.5-1.6 5-1.6 2.5 1.6 5 1.6 2.5-1.6 5-1.6" fill="none"
+      stroke="#fff" stroke-width="1.6" stroke-linecap="round"></path>
+  </svg>
+  <span class="flex flex-col leading-none">
+    <span class="font-heading text-xl font-bold text-heading tracking-[0.12em]">{SITE?.name}</span>
+    <span class="en-label mt-1 !text-[0.55rem]">Kaijo Angler</span>
+  </span>
 </span>

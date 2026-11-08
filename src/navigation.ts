@@ -1,4 +1,5 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getAsset } from './utils/permalinks';
+import { travelRegions, travelNationwideId } from './data/travel-regions';
 
 export const headerData = {
   links: [
@@ -26,11 +27,11 @@ export const headerData = {
     },
     {
       text: '釣り旅ガイド',
-      href: getPermalink('/column/travel'),
-    },
-    {
-      text: 'ブログ',
-      href: getBlogPermalink(),
+      links: [
+        { text: '釣り旅ガイドトップ', href: getPermalink('/column/travel') },
+        ...travelRegions.map((r) => ({ text: r.name, href: `${getPermalink('/column/travel')}#${r.id}` })),
+        { text: '全国・旅の準備', href: `${getPermalink('/column/travel')}#${travelNationwideId}` },
+      ],
     },
   ],
   actions: [],
@@ -51,7 +52,7 @@ export const footerData = {
       links: [
         { text: '必釣タクティクス', href: getPermalink('/tactics') },
         { text: '釣り旅ガイド', href: getPermalink('/column/travel') },
-        { text: 'ブログ記事一覧', href: getBlogPermalink() },
+        { text: '魚種別攻略', href: getPermalink('/tactics/fish-strategy') },
         { text: '初心者ガイド', href: getPermalink('/tactics/beginner') },
       ],
     },
@@ -70,7 +71,7 @@ export const footerData = {
     { text: '釣り場更新RSS', href: getAsset('/facilities-rss.xml') },
   ],
   socialLinks: [
-    { ariaLabel: 'ブログRSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    { ariaLabel: '釣り場更新RSS', icon: 'tabler:rss', href: getAsset('/facilities-rss.xml') },
   ],
   footNote: `
     © 2026 海上アングラー · All rights reserved.

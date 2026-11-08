@@ -1,63 +1,46 @@
 ---
-import '@fontsource-variable/inter';
-
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
+// 2026-11-08 デザイン刷新: クリーム地＋パステルのカテゴリ色、丸ゴシックの見出し、ライトのみ。
+// 見出し: Zen Maru Gothic / 英字ラベル: Josefin Sans / 本文: OS の日本語ゴシック（読み込みを軽くするため）
 ---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Zen+Maru+Gothic:wght@500;700&display=swap"
+/>
 
 <style is:inline>
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-sans: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif;
+    --aw-font-serif: var(--aw-font-sans);
+    --aw-font-heading: 'Zen Maru Gothic', var(--aw-font-sans);
+    --aw-font-en: 'Josefin Sans', 'Zen Maru Gothic', sans-serif;
 
-    --aw-color-primary: rgb(0 86 179);
-    --aw-color-secondary: rgb(0 70 145);
-    --aw-color-accent: rgb(255 152 0);
+    --aw-color-primary: rgb(28 120 150);
+    --aw-color-secondary: rgb(18 94 120);
+    --aw-color-accent: rgb(232 112 92);
 
-    --aw-color-text-heading: rgb(0 0 0);
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
+    --aw-color-text-heading: rgb(46 46 46);
+    --aw-color-text-default: rgb(58 58 58);
+    --aw-color-text-muted: rgb(58 58 58 / 68%);
+    --aw-color-bg-page: rgb(246 242 235);
+    --aw-color-bg-page-dark: rgb(246 242 235);
 
-    --aw-color-bg-page-dark: rgb(3 6 32);
-
-    ::selection {
-      background-color: lavender;
-    }
+    /* カテゴリ色（参考デザインのパステル） */
+    --k-sky: rgb(150 218 240);
+    --k-sky-soft: rgb(214 240 249);
+    --k-sun: rgb(249 222 106);
+    --k-sun-soft: rgb(253 243 196);
+    --k-coral: rgb(247 160 144);
+    --k-coral-soft: rgb(252 222 214);
+    --k-mint: rgb(168 226 204);
+    --k-mint-soft: rgb(222 244 235);
+    --k-line: rgb(58 58 58 / 14%);
   }
 
-  .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
-
-    --aw-color-primary: rgb(0 86 179);
-    --aw-color-secondary: rgb(0 70 145);
-    --aw-color-accent: rgb(255 152 0);
-
-    --aw-color-text-heading: rgb(247, 248, 248);
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: rgb(3 6 32);
-
-    ::selection {
-      background-color: black;
-      color: snow;
-    }
+  ::selection {
+    background-color: rgb(249 222 106);
+    color: rgb(46 46 46);
   }
 </style>

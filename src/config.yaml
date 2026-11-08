@@ -32,7 +32,7 @@ i18n:
 
 apps:
   blog:
-    isEnabled: true
+    isEnabled: false # 2026-11-08 「ブログ」（intelligence）廃止
     postsPerPage: 6
 
     post:
@@ -68,7 +68,7 @@ analytics:
       id: G-QK9T3CH09H # or "G-XXXXXXXXXX"
 
 ui:
-  theme: "system" # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: "light:only" # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
 affiliate:
   amazonTag: "sasisi344-22"
