@@ -107,6 +107,7 @@ node fetch.mjs ga4 --site KA --start <開始日> --end <終了日> --dims landin
 - 魚種別の商品は、海上釣り堀の対象魚（`.workspace/affiliate-tags/物販/fish-parameters.md` のコード）に限る。海釣り公園でしか狙わない魚（例: タチウオ）は `target_fish` と本文で触れるだけにし、専用品のカードは作らない。共通品（グリップ・ライフジャケット等）の reason で触れるのは可
 - 足りない商品は記事に入れず、`.workspace/affiliate-tags/物販/` の台帳に「要登録」として書く
 - 選定基準は `.workspace/affiliate-tags/物販/選定方針.md`（汎用性・竿の長さ・リール番手）
+- 物販カードの前後の書き方（場面→原因→基準→カード→合わない人の一文）は `.agents/skills/card-rules.md` が正本（2026-11-09、AF-1）
 
 ## 禁止事項
 

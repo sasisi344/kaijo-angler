@@ -23,6 +23,7 @@
 | 施設の記事 | `.agents/skills/point-rule.md` |
 | ランキング・まとめ | `.agents/skills/ranking-article-rule.md`、`.claude/skills/kaijo-matome-hub/SKILL.md` |
 | データの探し方 | `.agents/skills/research-rules.md` |
+| カードの書き方の型（物販カードのある記事すべて） | `.agents/skills/card-rules.md` |
 | カード・コンポーネントの挿し方 | `.claude/skills/kaijo-ui-components/SKILL.md` |
 | アフィリエイトの売り方 | `.claude/skills/kaijo-affiliate-sales/SKILL.md` |
 | 画像 | `.workspace/codex/image-style.md`（比率はこちらの 16:9 を正とする）、`.agents/skills/image-create.md` |
