@@ -34,7 +34,7 @@ tackle/{fish}-{type}-{slug}
 
 ## リンク形式（Amazon）
 
-- 標準形: `https://www.amazon.co.jp/dp/{ASIN}?tag=sasisi344-22`
+- 標準形: `https://www.amazon.co.jp/dp/{ASIN}?tag=344kaijyo-22`
 - Amazonの検索結果URLに付く`crid`・`dib`・`qid`・`sr`・`linkId`等の**追跡パラメータは削除**し、ASINと`tag`だけにする
 - `amzn.to`短縮リンクは既存のものは維持してよいが、新規は標準形に統一（ASINが読めるため台帳管理しやすい）
 - `tag=`が無いリンクは成果が計上されないため禁止

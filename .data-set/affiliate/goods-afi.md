@@ -2,7 +2,7 @@
 
 ## Amazon
 
-https://www.amazon.co.jp/s?k=%E6%B5%B7%E4%B8%8A%E9%87%A3%E3%82%8A%E5%A0%80&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2JDWIH1K5N5LV&sprefix=%E6%B5%B7%E4%B8%8A%E9%87%A3%E3%82%8A%E5%A0%80%2Caps%2C189&linkCode=ll2&tag=sasisi344-22&linkId=30419accfa04d1ef364cb27f5f2a5660&ref_=as_li_ss_tl
+https://www.amazon.co.jp/s?k=%E6%B5%B7%E4%B8%8A%E9%87%A3%E3%82%8A%E5%A0%80&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2JDWIH1K5N5LV&sprefix=%E6%B5%B7%E4%B8%8A%E9%87%A3%E3%82%8A%E5%A0%80%2Caps%2C189&linkCode=ll2&tag=344kaijyo-22&linkId=30419accfa04d1ef364cb27f5f2a5660&ref_=as_li_ss_tl
 
 ## Yahoo!ショッピング
 
