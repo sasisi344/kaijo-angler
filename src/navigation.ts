@@ -74,6 +74,7 @@ export const footerData = {
     { ariaLabel: '釣り場更新RSS', icon: 'tabler:rss', href: getAsset('/facilities-rss.xml') },
   ],
   footNote: `
-    © 2026 海上アングラー · All rights reserved.
+    © 2026 海上アングラー · All rights reserved.<br />
+    当サイトはアフィリエイト広告を利用しています。Amazonのアソシエイトとして、海上アングラーは適格販売により収入を得ています。
   `,
 };
