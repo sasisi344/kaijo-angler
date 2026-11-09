@@ -117,6 +117,7 @@
   - 検証（Check）: M11。12/20〜1/10 の表示・クリック
 
 - [ ] **W5. 全面リライト「冬のブリはどこにいる？脂ののった一本を釣って、鍋にするまで」（昨冬・コンテンツ・工数M）12/05**
+  - 進捗（2026-11-09）: Codex が KA-2 で `column/trivia/winter-buri-where-to-nabe` を新規作成、CC が検収して公開可。`buri`・P1 からリンク済み。旧URLから W5 への301を `.htaccess` に追加。未コミット
   - 問題: 旧 `winter-bluefin-searchscience` は昨冬 21/404。「冬の青物」32表示・「冬青物」27表示の受け皿がない
   - 仮説: 魚種ナレッジの冬の節を1本にまとめ、鍋まで書けば、青物のクエリを取り戻しながら動機も作れる
   - やること: K1 の知見を使う。魚種セットのカードを1枚
@@ -153,18 +154,26 @@
   - 検証（Check）: M11
 
 - [ ] **C1. カバーなしの上位4本を再構築（m10・コンテンツ・工数M）11/21**
+  - 進捗（2026-11-09）: Codex が KA-2 で4本を書き、CC が検収して公開可（`.workspace/admin-review/2026-11-09-KA-2.md`）。カバー4枚・説明画像5枚入り。未コミット。残りは公開と、姫路の近隣施設（須磨・平磯・水宝）の冬の営業の確認
   - 問題: `fish-shipping-guide`（68セッション）、`himeji-city-fishing-center`（62）、`harris-importance`（32・53行）、`cooler-box-guide`（23）にカバーがない
   - 仮説: カバーと一緒に本文を見直せば、読まれている記事の見た目と内容が一度に上がる
-  - やること: `fish-shipping-guide`・`cooler-box-guide` は [[new-market-list]] T3・T4 を実行し、大物の持ち帰りと年末の配送を足す。`himeji` は E4 と同時。`harris-importance` は全面リライト。カバーはプロンプトを用意し、生成は指示後
-  - 完了条件: 本文の更新が公開され、4本のカバーのプロンプトが用意されている。指示があれば画像も入っている
+  - やること: `fish-shipping-guide`・`cooler-box-guide` は [[new-market-list]] T3・T4 を実行し、大物の持ち帰りと年末の配送を足す。`himeji` は E4 と同時。`harris-importance` は全面リライト。記事ごとのインフォグラフィックの余地・リライトの判定・カバーの方針は [[cover-gap-task]] §3（2026-11-08）。カバーと説明画像は、プロンプトを書いた段階で生成する（2026-11-06 ユーザー決定）。`himeji` は閉園していてもカバーを入れる（2026-11-08 運営者決定）。着手は 2026-11-09（`next-task.md` 項目7）
+  - 完了条件: 本文の更新が公開され、4本に `image:` があり画像が入っている
   - 検証（Check）: 改善日の前後4週で GSC の CTR と GA4 の PV/セッション
 
 - [ ] **C2. タックル記事9本をカバーと全面リライトで再構築（m10・物販・工数L）11/28**
   - 問題: `uki-setup`・`beginner-tackle-set`・`rod-selection`・`safety-gear-guide`・`cooler-box-selection`・`bluefish-power-tackle`・`myakuzuri-gear`・`reel-and-line`・`small-goods-essentials` はカバーがなく、大半が50行台。`safety-gear-guide` は10月の `affiliatecard_click` 1位
   - 仮説: 買う人に近い記事なので、商品を選ぶ判断材料を増やせばカードが押される
-  - やること: `kaijo-affiliate-sales` で主役の商品を決めて全面リライト。冬の大物に関わる `bluefish-power-tackle`・`cooler-box-selection`・`safety-gear-guide` から始める。カバーの生成は指示後
-  - 完了条件: 9本とも100行以上、`placement` が入っている
+  - やること: `kaijo-affiliate-sales` で主役の商品を決めて全面リライト。冬の大物に関わる `bluefish-power-tackle`・`cooler-box-selection`・`safety-gear-guide` から始める。記事ごとの判定は [[cover-gap-task]] §3。既存の `cover.png` は 640×640 の正方形で規格に合わないので、16:9 で作り直す（`beginner-tackle-set` だけは既存の `cover.jpg` をつなぐ）。カバーと説明画像は、プロンプトを書いた段階で生成する
+  - 完了条件: 9本とも100行以上、`placement` と `image:` が入っている。使わない `cover.png` が残っていない
   - 検証（Check）: M11。`tactics/gear` のカードのクリックとセッション
+
+- [ ] **C3. 旅のアクセス記事6本にカバーを入れ、情報を確かめ直す（m10・コンテンツ・工数S）12/05**
+  - 問題: `access-kanto`・`access-kinki`・`access-kyushu`・`access-tokai`・`ensei-guide`・`setouchi-access-guide` は、カバーも `lastmod` もない。PV は90日で2〜14と少ない
+  - 仮説: PV が少ないので全面リライトはしない。カバーと確認日を入れて、旅行記事からの回遊先として見た目と信頼を整える
+  - やること: [[cover-gap-task]] §3・§4 のとおり。カバーは6本で共通の1枚（`column/travel/access/_covers/access-cover.jpg`）。料金・所要時間に確認日を入れ、地域ハブ4本はルート図を1枚ずつ検討する。`setouchi-access-guide`（8回）・`access-kyushu`（3回）の見出しの「一択」を減らす。`ensei-guide` と `setouchi-access-guide` の重なりは報告に書く（統合はしない）
+  - 完了条件: 6本に `image:` と `lastmod` があり、料金・所要時間に確認日がある
+  - 検証（Check）: M11。6本の PV と、旅行記事からの遷移
 
 - [ ] **T-W. 冬の旅行記事を新しい情報で更新（m10・コンテンツ・工数M）11/14〜1/09**
   - 問題: `november-izu-autumn-leaves-trip`（72行）、`december-kagoshima-ibusuki-trip`（68行）、`january-minamiise-onsen-trip`（65行）、`february-chiba-strawberry-picking-trip`（64行）は更新日がなく、月の共通カバー

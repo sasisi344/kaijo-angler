@@ -159,6 +159,8 @@ try {
   htaccessContent += `  RedirectMatch 301 ^/blog/?$ /\n`;
   htaccessContent += `  RedirectMatch 301 ^/(category|tag)/.*$ /\n`;
   htaccessContent += `  RedirectMatch 301 ^/rss\\.xml$ /facilities-rss.xml\n`;
+  // 2026-11-09: 旧WordPress の冬の青物記事（昨冬も読まれていた）だけは、後継の W5 へ個別に転送する
+  htaccessContent += `  RedirectMatch 301 ^/2025/12/[^/]+/winter-bluefin-searchscience/?$ /column/trivia/winter-buri-where-to-nabe/\n`;
 
   htaccessContent += `</IfModule>\n`;
 

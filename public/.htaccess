@@ -663,6 +663,7 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/why-expensive-fish/?$ /column/trivia/why-expensive-fish/
   RedirectMatch 301 ^/blog/winter-big-fish-3-tactics/?$ /column/trivia/winter-big-fish-3-tactics/
   RedirectMatch 301 ^/blog/winter-big-fish-nabe/?$ /column/trivia/winter-big-fish-nabe/
+  RedirectMatch 301 ^/blog/winter-buri-where-to-nabe/?$ /column/trivia/winter-buri-where-to-nabe/
   RedirectMatch 301 ^/blog/winter-fishing-why-hard/?$ /column/trivia/winter-fishing-why-hard/
   RedirectMatch 301 ^/blog/winter-kaijo-tsuribori-guide/?$ /column/trivia/winter-kaijo-tsuribori-guide/
   RedirectMatch 301 ^/blog/winter-kaijo-tsuribori-pacific/?$ /column/trivia/winter-kaijo-tsuribori-pacific/
@@ -713,4 +714,5 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/?$ /
   RedirectMatch 301 ^/(category|tag)/.*$ /
   RedirectMatch 301 ^/rss\.xml$ /facilities-rss.xml
+  RedirectMatch 301 ^/2025/12/[^/]+/winter-bluefin-searchscience/?$ /column/trivia/winter-buri-where-to-nabe/
 </IfModule>
