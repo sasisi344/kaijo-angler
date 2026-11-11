@@ -124,7 +124,8 @@
   - 完了条件: ナレッジの出所タグに沿って書かれ、`fish-strategy/buri` と P1 からリンクがある
   - 検証（Check）: M11。「冬の青物」系クエリの順位と表示
 
-- [ ] **E3. 冬のカード8枚（m10・物販・工数S）11/14**
+- [x] **E3. 冬のカード8枚（m10・物販・工数S）11/14**
+  - 進捗（2026-11-11）: 運営者の所感で8枚を確定（新規 `common-*` 7枚＋`daiwa-trunkmaster-hd2`）。冬ガイドに5枚・P1 に3枚。所感は `.data-set/first-timer-knowledge.md` §11、台帳は `.workspace/affiliate-tags/物販/winter-e3-candidates.md`
   - 問題: 冬用のカードが1枚だけ。[[november-monetization-plan]] 第3週の予定では12月の需要に遅い
   - 仮説: 防寒（手袋・ネックウォーマー・足元・保温ボトル・カイロ）と、鍋まで（大型クーラー・出刃包丁・卓上の鍋かコンロ）は、借りられないので冬の読者が必要とする
   - やること: 運営者の所感を得てカード化（ASIN を台帳に記録）。`winter-kaijo-tsuribori-guide`・P1 の該当の節に、理由の一文のあとで置く

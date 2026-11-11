@@ -15,12 +15,12 @@
 - **例**: `src/content/blog/fishing-facility/west-japan/mie/kaijo-tsuribori-benya/index.mdx`
 
 ### ② 攻略法 (tactics)
-ターゲット魚種別の釣り方や、初心者向けガイド、道具紹介。
+ターゲット魚種別の釣り方や、初心者向けガイド、タックル紹介。
 - **パス**: `src/content/blog/tactics/[sub-category]/[article-slug]/index.mdx`
 - **サブカテゴリー**:
     - `beginner`: 初心者ガイド
     - `fish-strategy`: 魚種別攻略
-    - `gear`: 道具紹介 (リール、ロッド、仕掛け)
+    - `gear`: タックル紹介 (リール、ロッド、仕掛け)
 
 ### ③ コラム (column)
 釣行記（遠征記）や、釣りにまつわる豆知識。
@@ -50,7 +50,7 @@ Astroのスキーマ（`src/content/config.ts`）に準拠した記述を行う�
 
 ### カテゴリー名 (`category` フィールド) の指定
 - 施設紹介記事: `施設紹介`
-- 攻略法記事: `初心者ガイド`, `魚種別攻略`, `道具紹介`
+- 攻略法記事: `初心者ガイド`, `魚種別攻略`, `タックル紹介`（gear。「道具紹介」とは書かない。2026-11-09 運営者決定）
 - コラム記事: `遠征記`, `豆知識`
 
 ### 施設紹介記事 (fishing-facility) 特有の構造
