@@ -155,6 +155,21 @@ Claude では進められない（管理画面へのログイン・GSC/GA4 の�
 
 ※ `ishida-fisherina`（項目1のTier2）は2026-10-06に登録済みを確認。
 
+#### E. 2026-11-08〜11 公開（冬の柱 KA-1・KA-2、C1 の4本。weekly-task P1・W1〜W3・W5・C1・T-W 伊豆）
+
+| 記事タイトル | URL |
+|---|---|
+| 冬の海上釣り堀は「大物を釣って鍋」が楽しい｜ブリしゃぶ・クエ鍋を釣るところから | https://kaijo-fishing.com/column/trivia/winter-big-fish-nabe/ |
+| 冬の釣りはなぜ釣れない？それでも大物に会いに行ける、海上釣り堀という選び方 | https://kaijo-fishing.com/column/trivia/winter-fishing-why-hard/ |
+| 冬に行きたい海上釣り堀7選｜大物と温泉と海の幸を楽しむ、太平洋側中心のスポット | https://kaijo-fishing.com/column/trivia/winter-kaijo-tsuribori-pacific/ |
+| 冬の大物を鍋に連れて帰る3つの作戦｜エサ・タナ・時間帯 | https://kaijo-fishing.com/column/trivia/winter-big-fish-3-tactics/ |
+| 冬のブリはどこにいる？脂ののった一本を釣って、鍋にするまで | https://kaijo-fishing.com/column/trivia/winter-buri-where-to-nabe/ |
+| 11月の西伊豆釣り旅｜土肥の釣り堀と修善寺の紅葉、温泉まで楽しむプラン | https://kaijo-fishing.com/column/travel/november-izu-autumn-leaves-trip/ |
+| 【兵庫県】姫路市立遊漁センター｜2024年休園・2026年廃止と、近隣の釣り場4施設 | https://kaijo-fishing.com/fishing-facility/himeji-city-fishing-center/ |
+| 釣った魚の配送ガイド｜クール便・発泡スチロールセット・受け取り設計のコツ | https://kaijo-fishing.com/column/travel/fish-shipping-guide/ |
+| 遠征釣行用クーラーボックスの選び方｜宅配便サイズ規定と飛行機での運び方 | https://kaijo-fishing.com/column/travel/cooler-box-guide/ |
+| 海上釣り堀のハリスの選び方｜魚種別の号数・長さ・素材を決める順番 | https://kaijo-fishing.com/tactics/gear/harris-importance/ |
+
 ---
 
 ## [ ] 5. 施設名クエリのCTR検証（W40 GSCデータ・CTR2%以下）
