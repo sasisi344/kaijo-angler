@@ -100,7 +100,7 @@
   - 対象: `column/trivia/` か `column/ranking/`（作成時に決める）
   - やること: 台帳（W0）の確認済み施設だけを、三重・和歌山・大阪南部と淡路・関東東海・四国九州のエリアごとに紹介。旧記事は論点だけ使い、本文は新しく書く
   - 完了条件: 掲載施設がすべて台帳で確認済み。確認日を本文に書く。日本海側は「冬に休む理由と代わりの行き先」だけ
-  - 完了（2026-11-14 確認）: KA-1 で `column/trivia/winter-kaijo-tsuribori-pacific`（7選）を公開（`1e31af1`）。掲載施設は台帳の確認済みの行だけ（監査済み）。旧 `winter-tsuribori-japan10` から W2 への301は未設定。再インデックスは [[subtask]] 項目4 E
+  - 完了（2026-11-14 確認）: KA-1 で `column/trivia/winter-kaijo-tsuribori-pacific`（7選）を公開（`1e31af1`）。掲載施設は台帳の確認済みの行だけ（監査済み）。旧 `winter-tsuribori-japan10` から W2 への301を `public/.htaccess` に追加（2026-11-14）。再インデックスは [[subtask]] 項目4 E
   - 検証（Check）: M11。表示100以上で順位10以内なら、エリア別の分割を検討
   - 昇格条件: W0 が終わった時点で next-task へ
 
@@ -110,7 +110,7 @@
   - 対象: `column/trivia/` に新規。`january-low-activity-tai-luring-guide`・`february-cold-resistant-bait-top5` などへリンク
   - やること: 本文は新しく書く。タイトルに「確実」は使わない。カードは文脈に合う1〜2枚（`placement="winter-tactics"`）
   - 完了条件: 130行以上、公開、季節コラムから柱へのリンクあり
-  - 完了（2026-11-14 確認）: KA-1 で `column/trivia/winter-big-fish-3-tactics` を公開（`1e31af1`）。222行。旧 `winter-tsuribori-esaactics` から W3 への301は未設定（W5 は `.htaccess` 717行にあり。同じ形で足せる。W2 も同様）
+  - 完了（2026-11-14 確認）: KA-1 で `column/trivia/winter-big-fish-3-tactics` を公開（`1e31af1`）。222行。旧 `winter-tsuribori-esaactics` から W3 への301を `public/.htaccess` に追加（2026-11-14）
   - 検証（Check）: M11。12〜2月合計で昨冬の 46/493 を基準に比較
 
 - [ ] **W4. 改善「釣り納め・正月の鯛・初釣り」（m10・コンテンツ・工数M）11/25・12/10 の2段階**

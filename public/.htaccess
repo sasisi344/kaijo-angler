@@ -715,4 +715,6 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/(category|tag)/.*$ /
   RedirectMatch 301 ^/rss\.xml$ /facilities-rss.xml
   RedirectMatch 301 ^/2025/12/[^/]+/winter-bluefin-searchscience/?$ /column/trivia/winter-buri-where-to-nabe/
+  RedirectMatch 301 ^/2025/12/[^/]+/winter-tsuribori-japan10/?$ /column/trivia/winter-kaijo-tsuribori-pacific/
+  RedirectMatch 301 ^/2025/12/[^/]+/winter-tsuribori-esaactics/?$ /column/trivia/winter-big-fish-3-tactics/
 </IfModule>
