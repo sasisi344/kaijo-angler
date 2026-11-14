@@ -29,6 +29,8 @@
 ## コンテンツ作成ガイドライン
 
 - **魚種に関わる記事（魚種攻略・施設・ランキング・タックル・マガジン）は、本文を書く前に `kaijo-fish-knowledge` スキルを通し、`.data-set/fish-knowledge/{slug}.md` を最優先ナレッジとして読む**。ナレッジに無い事実・一人称の体験談・出所のない数値は書かない
+- **数値（料金・営業時間・休み・アクセスの所要時間）の正本は、施設紹介の単独記事**（2026-11-15 ユーザー決定）。まとめ・ランキング・旅行記事の数値が施設記事と食い違ったら施設記事に合わせる。施設記事が公式と違うときは、先に施設記事を公式に合わせて直し（`verified_at` を更新）、そのあとでまとめ側を直す。まとめ側だけを直さない
+- タイトル・見出し・description に「【2026年最新版】」のような年の「最新」表記を付けない（2026-11-15 ユーザー決定。年の終盤に古く見えるため）
 - `src/content/blog/tactics/fish-strategy/` の各サブ記事（intermediate/advanced/theory/gourmet/strategy）は 130 非空行以上を維持する
 - 魚種 index.mdx は 150〜200 総行を目安にする
 - frontmatter は `title`, `description`, `publishDate`, `category`, `tags`, `image`, `lastmod` を使用する
