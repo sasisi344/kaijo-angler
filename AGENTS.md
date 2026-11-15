@@ -17,7 +17,7 @@
 
 | 作業 | 読むもの |
 |---|---|
-| 文体・語り手・筆者の経緯（正本） | `.agents/skills/kaijo-writing-rule.md` |
+| 文体・語り手・筆者の経緯（正本） | `.agents/skills/kaijo-writing-rule.md`（§4「読者を動かす書き方」は全記事で読む。2026-11-15 追加） |
 | カテゴリ・フォルダ・frontmatter | `.agents/skills/category-rules.md`、`.agents/skills/frontmatter.md`、`.claude/skills/kaijo-content-schema/SKILL.md` |
 | 魚種に触れる記事 | `.claude/skills/kaijo-fish-knowledge/SKILL.md`、`.data-set/fish-knowledge/{slug}.md` |
 | 施設の記事 | `.agents/skills/point-rule.md` |

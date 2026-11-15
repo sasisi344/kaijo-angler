@@ -63,7 +63,7 @@ node fetch.mjs ga4 --site KA --start <開始日> --end <終了日> --dims landin
 | 物販（魚種起点） | 「タチウオの歯や暴れる青物を素手でつかまずに済みます」 |
 
 - 使ってよい根拠: frontmatter、記事本文、`> [!forAI]`、`.data-set`（魚種は `kaijo-fish-knowledge` 経由）。**所要時間・価格・時刻を推測で書かない**
-- 宣伝文句（「日本最大級」「爆釣」）ではなく、読者の困りごとを書く
+- 宣伝文句（「日本最大級」「爆釣」）ではなく、読者の困りごとを書く。書き方は `.agents/skills/kaijo-writing-rule.md` §4（場面・出費を守る・確認は1か所）と `.agents/skills/card-rules.md` §3-2 に従う
 - 文は `GoThere` の `lead`、`AffiliateCard`／`TackleCard` の `reason` に渡す。JSON の汎用説明文のまま出さない
 
 ### Step 3. 置く場所と placement
