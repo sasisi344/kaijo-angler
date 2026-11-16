@@ -33,6 +33,8 @@
 - タイトル・見出し・description に「【2026年最新版】」のような年の「最新」表記を付けない（2026-11-15 ユーザー決定。年の終盤に古く見えるため）
 - `src/content/blog/tactics/fish-strategy/` の各サブ記事（intermediate/advanced/theory/gourmet/strategy）は 130 非空行以上を維持する
 - 魚種 index.mdx は 150〜200 総行を目安にする
+- **1記事に統合する魚種**（2026-11-17 ユーザー決定。`.workspace/_inbox/rewrite-rebuild-order.md` RB-20〜32）: ブリ・ヒラマサ・クエ・メジナ・イシダイ・スズキ・クロダイ。統合後はサブ記事を持たず、index の行数に上限を設けない。統合が済むまでは上の2行が当てはまる
+- カワハギは魚種別攻略の記事を持たない（2026-11-17 ユーザー決定。メインの対象魚になりにくいため）。施設の frontmatter の対象魚には入れてよい
 - frontmatter は `title`, `description`, `publishDate`, `category`, `tags`, `image`, `lastmod` を使用する
 - `slug:` フィールドは不要（Astro Content Layer が自動生成）
 - `created:` フィールドはスキーマにないため使用しない
