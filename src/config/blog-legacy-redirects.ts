@@ -97,8 +97,8 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/hasamaura-fishing-center/': '/fishing-facility/hasamaura-fishing-center/',
   '/blog/himeji-city-fishing-center/': '/fishing-facility/himeji-city-fishing-center/',
   '/blog/hiramasa-strategy/': '/tactics/fish-strategy/hiramasa/', // 2026-11-16: 旧ビルドの残骸が200で残っていた
-  '/blog/hiramasa/intermediate/': '/tactics/fish-strategy/hiramasa/intermediate/',
-  '/blog/hiramasa/theory/': '/tactics/fish-strategy/hiramasa/theory/',
+  '/blog/hiramasa/intermediate/': '/tactics/fish-strategy/hiramasa/', // 2026-11-17: RB 波1で統合
+  '/blog/hiramasa/theory/': '/tactics/fish-strategy/hiramasa/', // 2026-11-17: RB 波1で統合
   '/blog/hiruga-sea-fishing-pond/': '/fishing-facility/hiruga-sea-fishing-pond/',
   '/blog/history-of-fishing-pond/': '/column/trivia/history-of-fishing-pond/',
   '/blog/hook-size-science/': '/column/trivia/hook-size-science/',
@@ -108,8 +108,8 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/ise-shima-access-guide/': '/column/travel/access/ise-shima-access-guide/',
   '/blog/ise-shima-model-plan/': '/column/travel/ise-shima-model-plan/',
   '/blog/ishidai-strategy/': '/tactics/fish-strategy/ishidai/',
-  '/blog/ishidai/strategy/': '/tactics/fish-strategy/ishidai/strategy/',
-  '/blog/ishidai/theory/': '/tactics/fish-strategy/ishidai/theory/',
+  '/blog/ishidai/strategy/': '/tactics/fish-strategy/ishidai/', // 2026-11-17: RB 波1で統合
+  '/blog/ishidai/theory/': '/tactics/fish-strategy/ishidai/', // 2026-11-17: RB 波1で統合
   '/blog/itoman-ikada-tsurigu-no-zousan/': '/fishing-facility/itoman-ikada-tsurigu-no-zousan/',
   '/blog/iwaki-sea-fishing-center/': '/fishing-facility/',
   '/blog/jogashima-js-fishing/': '/fishing-facility/jogashima-js-fishing/',
@@ -136,8 +136,8 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/kawahagi/theory/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
   '/blog/koueimaru/': '/fishing-facility/koueimaru/',
   '/blog/kue-strategy/': '/tactics/fish-strategy/kue/',
-  '/blog/kue/advanced/': '/tactics/fish-strategy/kue/advanced/',
-  '/blog/kue/theory/': '/tactics/fish-strategy/kue/theory/',
+  '/blog/kue/advanced/': '/tactics/fish-strategy/kue/', // 2026-11-17: RB 波1で統合
+  '/blog/kue/theory/': '/tactics/fish-strategy/kue/', // 2026-11-17: RB 波1で統合
   '/blog/line-material-science/': '/column/trivia/line-material-science/',
   '/blog/madai/intermediate/': '/tactics/fish-strategy/madai/intermediate/',
   '/blog/madai/theory/': '/tactics/fish-strategy/madai/theory/',
@@ -217,17 +217,17 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/fugu/intermediate/': '/tactics/fish-strategy/fugu/intermediate/',
   '/blog/tactics/fish-strategy/fugu/theory/': '/tactics/fish-strategy/fugu/theory/',
   '/blog/tactics/fish-strategy/hiramasa/': '/tactics/fish-strategy/hiramasa/',
-  '/blog/tactics/fish-strategy/hiramasa/advanced/': '/tactics/fish-strategy/hiramasa/advanced/',
-  '/blog/tactics/fish-strategy/hiramasa/strategy/': '/tactics/fish-strategy/hiramasa/strategy/',
+  '/blog/tactics/fish-strategy/hiramasa/advanced/': '/tactics/fish-strategy/hiramasa/', // 2026-11-17: RB 波1で統合
+  '/blog/tactics/fish-strategy/hiramasa/strategy/': '/tactics/fish-strategy/hiramasa/', // 2026-11-17: RB 波1で統合
   '/blog/tactics/fish-strategy/isaki/': '/tactics/fish-strategy/isaki/',
   '/blog/tactics/fish-strategy/isaki/advanced/': '/tactics/fish-strategy/isaki/advanced/',
   '/blog/tactics/fish-strategy/isaki/gourmet/': '/tactics/fish-strategy/isaki/gourmet/',
   '/blog/tactics/fish-strategy/isaki/intermediate/': '/tactics/fish-strategy/isaki/intermediate/',
   '/blog/tactics/fish-strategy/isaki/theory/': '/tactics/fish-strategy/isaki/theory/',
   '/blog/tactics/fish-strategy/ishidai/': '/tactics/fish-strategy/ishidai/',
-  '/blog/tactics/fish-strategy/ishidai/advanced/': '/tactics/fish-strategy/ishidai/advanced/',
-  '/blog/tactics/fish-strategy/ishidai/intermediate/': '/tactics/fish-strategy/ishidai/intermediate/',
-  '/blog/tactics/fish-strategy/ishidai/theory/': '/tactics/fish-strategy/ishidai/theory/',
+  '/blog/tactics/fish-strategy/ishidai/advanced/': '/tactics/fish-strategy/ishidai/', // 2026-11-17: RB 波1で統合
+  '/blog/tactics/fish-strategy/ishidai/intermediate/': '/tactics/fish-strategy/ishidai/', // 2026-11-17: RB 波1で統合
+  '/blog/tactics/fish-strategy/ishidai/theory/': '/tactics/fish-strategy/ishidai/', // 2026-11-17: RB 波1で統合
   '/blog/tactics/fish-strategy/kanpachi/': '/tactics/fish-strategy/kanpachi/',
   '/blog/tactics/fish-strategy/kanpachi/advanced/': '/tactics/fish-strategy/kanpachi/advanced/',
   '/blog/tactics/fish-strategy/kanpachi/intermediate/': '/tactics/fish-strategy/kanpachi/intermediate/',
@@ -238,10 +238,10 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/kawahagi/intermediate/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
   '/blog/tactics/fish-strategy/kawahagi/theory/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
   '/blog/tactics/fish-strategy/kue/': '/tactics/fish-strategy/kue/',
-  '/blog/tactics/fish-strategy/kue/advanced/': '/tactics/fish-strategy/kue/advanced/',
-  '/blog/tactics/fish-strategy/kue/gourmet/': '/tactics/fish-strategy/kue/gourmet/',
-  '/blog/tactics/fish-strategy/kue/intermediate/': '/tactics/fish-strategy/kue/intermediate/',
-  '/blog/tactics/fish-strategy/kue/theory/': '/tactics/fish-strategy/kue/theory/',
+  '/blog/tactics/fish-strategy/kue/advanced/': '/tactics/fish-strategy/kue/', // 2026-11-17: RB 波1で統合
+  '/blog/tactics/fish-strategy/kue/gourmet/': '/tactics/fish-strategy/kue/', // 2026-11-17: RB 波1で統合
+  '/blog/tactics/fish-strategy/kue/intermediate/': '/tactics/fish-strategy/kue/', // 2026-11-17: RB 波1で統合
+  '/blog/tactics/fish-strategy/kue/theory/': '/tactics/fish-strategy/kue/', // 2026-11-17: RB 波1で統合
   '/blog/tactics/fish-strategy/madai/': '/tactics/fish-strategy/madai/',
   '/blog/tactics/fish-strategy/madai/advanced/': '/tactics/fish-strategy/madai/advanced/',
   '/blog/tactics/fish-strategy/madai/gourmet/': '/tactics/fish-strategy/madai/gourmet/',
@@ -310,4 +310,18 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/tactics/fish-strategy/kawahagi/intermediate/': '/tactics/fish-strategy/',
   '/tactics/fish-strategy/kawahagi/theory/': '/tactics/fish-strategy/',
   '/tactics/fish-strategy/kawahagi/gourmet/': '/tactics/fish-strategy/',
+  // 2026-11-17: RB 波1（rewrite-rebuild-order.md RB-31・22・20・42）でサブ記事を index に統合
+  '/tactics/fish-strategy/hiramasa/advanced/': '/tactics/fish-strategy/hiramasa/',
+  '/tactics/fish-strategy/hiramasa/intermediate/': '/tactics/fish-strategy/hiramasa/',
+  '/tactics/fish-strategy/hiramasa/theory/': '/tactics/fish-strategy/hiramasa/',
+  '/tactics/fish-strategy/hiramasa/strategy/': '/tactics/fish-strategy/hiramasa/',
+  '/tactics/fish-strategy/ishidai/advanced/': '/tactics/fish-strategy/ishidai/',
+  '/tactics/fish-strategy/ishidai/intermediate/': '/tactics/fish-strategy/ishidai/',
+  '/tactics/fish-strategy/ishidai/theory/': '/tactics/fish-strategy/ishidai/',
+  '/tactics/fish-strategy/ishidai/strategy/': '/tactics/fish-strategy/ishidai/',
+  '/tactics/fish-strategy/kue/advanced/': '/tactics/fish-strategy/kue/',
+  '/tactics/fish-strategy/kue/intermediate/': '/tactics/fish-strategy/kue/',
+  '/tactics/fish-strategy/kue/theory/': '/tactics/fish-strategy/kue/',
+  '/tactics/fish-strategy/kue/gourmet/': '/tactics/fish-strategy/kue/',
+  '/column/trivia/may-gomoku-tana-strategy/': '/column/trivia/tana-basics/',
 };
