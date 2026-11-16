@@ -16,10 +16,11 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/araibenten-sea-fishing-park/?$ /fishing-facility/araibenten-sea-fishing-park/
   RedirectMatch 301 ^/blog/asamushi-sea-fishing-park/?$ /fishing-facility/asamushi-sea-fishing-park/
   RedirectMatch 301 ^/blog/atami-port-sea-fishing-facility/?$ /fishing-facility/atami-port-sea-fishing-facility/
-  RedirectMatch 301 ^/blog/awaji-family-trip/?$ /column/travel/awaji-family-trip/
+  RedirectMatch 301 ^/blog/awaji-family-trip/?$ /column/ranking/kansai/
   RedirectMatch 301 ^/blog/awaji-janohire-fishing-park/?$ /fishing-facility/awaji-janohire-fishing-park/
   RedirectMatch 301 ^/blog/bait-rotation/?$ /column/trivia/bait-rotation/
   RedirectMatch 301 ^/blog/bakucho-mihama-fishing-park/?$ /fishing-facility/bakucho-mihama-fishing-park/
+  RedirectMatch 301 ^/blog/buri-strategy/?$ /tactics/fish-strategy/buri/
   RedirectMatch 301 ^/blog/buri/intermediate/?$ /tactics/fish-strategy/buri/intermediate/
   RedirectMatch 301 ^/blog/buri/strategy/?$ /tactics/fish-strategy/buri/strategy/
   RedirectMatch 301 ^/blog/chiba-minamiboso-access-guide/?$ /column/travel/access/chiba-minamiboso-access-guide/
@@ -94,9 +95,10 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/fukuoka-city-sea-fishing-park/?$ /fishing-facility/fukuoka-city-sea-fishing-park/
   RedirectMatch 301 ^/blog/futomi-flower-isotsuri-center/?$ /fishing-facility/futomi-flower-isotsuri-center/
   RedirectMatch 301 ^/blog/hamanako-access-guide/?$ /column/travel/access/hamanako-access-guide/
-  RedirectMatch 301 ^/blog/hamanako-unagi-trip/?$ /column/travel/hamanako-unagi-trip/
+  RedirectMatch 301 ^/blog/hamanako-unagi-trip/?$ /column/travel/access/access-tokai/
   RedirectMatch 301 ^/blog/hasamaura-fishing-center/?$ /fishing-facility/hasamaura-fishing-center/
   RedirectMatch 301 ^/blog/himeji-city-fishing-center/?$ /fishing-facility/himeji-city-fishing-center/
+  RedirectMatch 301 ^/blog/hiramasa-strategy/?$ /tactics/fish-strategy/hiramasa/
   RedirectMatch 301 ^/blog/hiramasa/intermediate/?$ /tactics/fish-strategy/hiramasa/intermediate/
   RedirectMatch 301 ^/blog/hiramasa/theory/?$ /tactics/fish-strategy/hiramasa/theory/
   RedirectMatch 301 ^/blog/hiruga-sea-fishing-pond/?$ /fishing-facility/hiruga-sea-fishing-pond/
@@ -131,8 +133,9 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/kanpachi-strategy/?$ /tactics/fish-strategy/kanpachi/
   RedirectMatch 301 ^/blog/kariyawan-fishing-center/?$ /fishing-facility/kariyawan-fishing-center/
   RedirectMatch 301 ^/blog/kashikojima-fishing-park-kaiyuen/?$ /fishing-facility/kashikojima-fishing-park-kaiyuen/
-  RedirectMatch 301 ^/blog/kawahagi/intermediate/?$ /tactics/fish-strategy/kawahagi/intermediate/
-  RedirectMatch 301 ^/blog/kawahagi/theory/?$ /tactics/fish-strategy/kawahagi/theory/
+  RedirectMatch 301 ^/blog/kawahagi-strategy/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/blog/kawahagi/intermediate/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/blog/kawahagi/theory/?$ /tactics/fish-strategy/
   RedirectMatch 301 ^/blog/koueimaru/?$ /fishing-facility/koueimaru/
   RedirectMatch 301 ^/blog/kue-strategy/?$ /tactics/fish-strategy/kue/
   RedirectMatch 301 ^/blog/kue/advanced/?$ /tactics/fish-strategy/kue/advanced/
@@ -205,7 +208,7 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/tactics/fish-strategy/buri/advanced/?$ /tactics/fish-strategy/buri/advanced/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/buri/intermediate/?$ /tactics/fish-strategy/buri/intermediate/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/buri/strategy/?$ /tactics/fish-strategy/buri/strategy/
-  RedirectMatch 301 ^/blog/tactics/fish-strategy/buri/theory/?$ /tactics/fish-strategy/buri/theory/
+  RedirectMatch 301 ^/blog/tactics/fish-strategy/buri/theory/?$ /tactics/fish-strategy/buri/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/chinu/?$ /tactics/fish-strategy/chinu/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/chinu/advanced/?$ /tactics/fish-strategy/chinu/advanced/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/chinu/gourmet/?$ /tactics/fish-strategy/chinu/gourmet/
@@ -232,10 +235,10 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/tactics/fish-strategy/kanpachi/intermediate/?$ /tactics/fish-strategy/kanpachi/intermediate/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/kanpachi/strategy/?$ /tactics/fish-strategy/kanpachi/strategy/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/kanpachi/theory/?$ /tactics/fish-strategy/kanpachi/theory/
-  RedirectMatch 301 ^/blog/tactics/fish-strategy/kawahagi/advanced/?$ /tactics/fish-strategy/kawahagi/advanced/
-  RedirectMatch 301 ^/blog/tactics/fish-strategy/kawahagi/gourmet/?$ /tactics/fish-strategy/kawahagi/gourmet/
-  RedirectMatch 301 ^/blog/tactics/fish-strategy/kawahagi/intermediate/?$ /tactics/fish-strategy/kawahagi/intermediate/
-  RedirectMatch 301 ^/blog/tactics/fish-strategy/kawahagi/theory/?$ /tactics/fish-strategy/kawahagi/theory/
+  RedirectMatch 301 ^/blog/tactics/fish-strategy/kawahagi/advanced/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/blog/tactics/fish-strategy/kawahagi/gourmet/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/blog/tactics/fish-strategy/kawahagi/intermediate/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/blog/tactics/fish-strategy/kawahagi/theory/?$ /tactics/fish-strategy/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/kue/?$ /tactics/fish-strategy/kue/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/kue/advanced/?$ /tactics/fish-strategy/kue/advanced/
   RedirectMatch 301 ^/blog/tactics/fish-strategy/kue/gourmet/?$ /tactics/fish-strategy/kue/gourmet/
@@ -296,6 +299,17 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/intelligence/kansai-vs-kanto-spring/?$ /column/ranking/kansai/
   RedirectMatch 301 ^/blog/intelligence/spring-2026-madai-report/?$ /tactics/fish-strategy/madai/
   RedirectMatch 301 ^/blog/intelligence/summer-bluefish-forecast/?$ /tactics/fish-strategy/buri/
+  RedirectMatch 301 ^/tactics/fish-strategy/buri/theory/?$ /tactics/fish-strategy/buri/
+  RedirectMatch 301 ^/column/travel/awaji-family-trip/?$ /column/ranking/kansai/
+  RedirectMatch 301 ^/column/travel/hamanako-unagi-trip/?$ /column/travel/access/access-tokai/
+  RedirectMatch 301 ^/fishing-facility/amami-sealand/?$ /column/ranking/kyushu-okinawa/
+  RedirectMatch 301 ^/blog/amami-sealand/?$ /column/ranking/kyushu-okinawa/
+  RedirectMatch 301 ^/fishing-facility/west-japan/kagoshima/amami-sealand/?$ /column/ranking/kyushu-okinawa/
+  RedirectMatch 301 ^/tactics/fish-strategy/kawahagi/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/tactics/fish-strategy/kawahagi/advanced/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/tactics/fish-strategy/kawahagi/intermediate/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/tactics/fish-strategy/kawahagi/theory/?$ /tactics/fish-strategy/
+  RedirectMatch 301 ^/tactics/fish-strategy/kawahagi/gourmet/?$ /tactics/fish-strategy/
   RedirectMatch 301 ^/fishing-facility/center-japan/aichi/bakucho-mihama-fishing-park/?$ /fishing-facility/bakucho-mihama-fishing-park/
   RedirectMatch 301 ^/blog/fishing-facility/center-japan/aichi/bakucho-mihama-fishing-park/?$ /fishing-facility/bakucho-mihama-fishing-park/
   RedirectMatch 301 ^/fishing-facility/center-japan/aichi/shinmaiko-marine-park-fishing/?$ /fishing-facility/shinmaiko-marine-park-fishing/
@@ -424,9 +438,6 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/fishing-facility/west-japan/kagawa/saltlake-hiketa-adoike/?$ /fishing-facility/saltlake-hiketa-adoike/
   RedirectMatch 301 ^/fishing-facility/west-japan/kagawa/shodoshima-furusatomura-fishing-pier/?$ /fishing-facility/shodoshima-furusatomura-fishing-pier/
   RedirectMatch 301 ^/blog/fishing-facility/west-japan/kagawa/shodoshima-furusatomura-fishing-pier/?$ /fishing-facility/shodoshima-furusatomura-fishing-pier/
-  RedirectMatch 301 ^/blog/amami-sealand/?$ /fishing-facility/amami-sealand/
-  RedirectMatch 301 ^/fishing-facility/west-japan/kagoshima/amami-sealand/?$ /fishing-facility/amami-sealand/
-  RedirectMatch 301 ^/blog/fishing-facility/west-japan/kagoshima/amami-sealand/?$ /fishing-facility/amami-sealand/
   RedirectMatch 301 ^/fishing-facility/west-japan/kagoshima/kamoike-sea-fishing-park/?$ /fishing-facility/kamoike-sea-fishing-park/
   RedirectMatch 301 ^/blog/fishing-facility/west-japan/kagoshima/kamoike-sea-fishing-park/?$ /fishing-facility/kamoike-sea-fishing-park/
   RedirectMatch 301 ^/fishing-facility/west-japan/kagoshima/sakurajima-sea-fishing-park/?$ /fishing-facility/sakurajima-sea-fishing-park/
@@ -686,7 +697,6 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/fish-strategy/?$ /tactics/fish-strategy/
   RedirectMatch 301 ^/blog/ishidai/?$ /tactics/fish-strategy/ishidai/
   RedirectMatch 301 ^/blog/kanpachi/?$ /tactics/fish-strategy/kanpachi/
-  RedirectMatch 301 ^/blog/kawahagi/?$ /tactics/fish-strategy/kawahagi/
   RedirectMatch 301 ^/blog/kue/?$ /tactics/fish-strategy/kue/
   RedirectMatch 301 ^/blog/madai/?$ /tactics/fish-strategy/madai/
   RedirectMatch 301 ^/blog/mejina/?$ /tactics/fish-strategy/mejina/

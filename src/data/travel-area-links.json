@@ -1284,22 +1284,6 @@
         "jalanActivity": ""
       }
     },
-    "kagoshima-amami": {
-      "label": "鹿児島 奄美大島（龍郷）",
-      "prefecture": "kagoshima",
-      "municipalities": [
-        "大島郡龍郷町"
-      ],
-      "facilities": [
-        "amami-sealand"
-      ],
-      "urls": {
-        "jalan": "",
-        "rakutenTravel": "",
-        "jalanRentacar": "",
-        "jalanActivity": ""
-      }
-    },
     "okinawa-itoman": {
       "label": "沖縄 糸満・南部",
       "prefecture": "okinawa",

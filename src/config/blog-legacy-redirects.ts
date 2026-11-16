@@ -14,10 +14,11 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/araibenten-sea-fishing-park/': '/fishing-facility/araibenten-sea-fishing-park/',
   '/blog/asamushi-sea-fishing-park/': '/fishing-facility/asamushi-sea-fishing-park/',
   '/blog/atami-port-sea-fishing-facility/': '/fishing-facility/atami-port-sea-fishing-facility/',
-  '/blog/awaji-family-trip/': '/column/travel/awaji-family-trip/',
+  '/blog/awaji-family-trip/': '/column/ranking/kansai/', // 2026-11-17: RB-11 で削除
   '/blog/awaji-janohire-fishing-park/': '/fishing-facility/awaji-janohire-fishing-park/',
   '/blog/bait-rotation/': '/column/trivia/bait-rotation/',
   '/blog/bakucho-mihama-fishing-park/': '/fishing-facility/bakucho-mihama-fishing-park/',
+  '/blog/buri-strategy/': '/tactics/fish-strategy/buri/', // 2026-11-16: 旧ビルドの残骸が200で残っていた
   '/blog/buri/intermediate/': '/tactics/fish-strategy/buri/intermediate/',
   '/blog/buri/strategy/': '/tactics/fish-strategy/buri/strategy/',
   '/blog/chiba-minamiboso-access-guide/': '/column/travel/access/chiba-minamiboso-access-guide/',
@@ -92,9 +93,10 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/fukuoka-city-sea-fishing-park/': '/fishing-facility/fukuoka-city-sea-fishing-park/',
   '/blog/futomi-flower-isotsuri-center/': '/fishing-facility/futomi-flower-isotsuri-center/',
   '/blog/hamanako-access-guide/': '/column/travel/access/hamanako-access-guide/',
-  '/blog/hamanako-unagi-trip/': '/column/travel/hamanako-unagi-trip/',
+  '/blog/hamanako-unagi-trip/': '/column/travel/access/access-tokai/', // 2026-11-17: RB-12 で削除
   '/blog/hasamaura-fishing-center/': '/fishing-facility/hasamaura-fishing-center/',
   '/blog/himeji-city-fishing-center/': '/fishing-facility/himeji-city-fishing-center/',
+  '/blog/hiramasa-strategy/': '/tactics/fish-strategy/hiramasa/', // 2026-11-16: 旧ビルドの残骸が200で残っていた
   '/blog/hiramasa/intermediate/': '/tactics/fish-strategy/hiramasa/intermediate/',
   '/blog/hiramasa/theory/': '/tactics/fish-strategy/hiramasa/theory/',
   '/blog/hiruga-sea-fishing-pond/': '/fishing-facility/hiruga-sea-fishing-pond/',
@@ -129,8 +131,9 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/kanpachi-strategy/': '/tactics/fish-strategy/kanpachi/',
   '/blog/kariyawan-fishing-center/': '/fishing-facility/kariyawan-fishing-center/',
   '/blog/kashikojima-fishing-park-kaiyuen/': '/fishing-facility/kashikojima-fishing-park-kaiyuen/',
-  '/blog/kawahagi/intermediate/': '/tactics/fish-strategy/kawahagi/intermediate/',
-  '/blog/kawahagi/theory/': '/tactics/fish-strategy/kawahagi/theory/',
+  '/blog/kawahagi-strategy/': '/tactics/fish-strategy/', // 2026-11-16: 旧ビルドの残骸が200で残っていた。2026-11-17: RB-32 で先を一覧へ
+  '/blog/kawahagi/intermediate/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
+  '/blog/kawahagi/theory/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
   '/blog/koueimaru/': '/fishing-facility/koueimaru/',
   '/blog/kue-strategy/': '/tactics/fish-strategy/kue/',
   '/blog/kue/advanced/': '/tactics/fish-strategy/kue/advanced/',
@@ -203,7 +206,7 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/buri/advanced/': '/tactics/fish-strategy/buri/advanced/',
   '/blog/tactics/fish-strategy/buri/intermediate/': '/tactics/fish-strategy/buri/intermediate/',
   '/blog/tactics/fish-strategy/buri/strategy/': '/tactics/fish-strategy/buri/strategy/',
-  '/blog/tactics/fish-strategy/buri/theory/': '/tactics/fish-strategy/buri/theory/',
+  '/blog/tactics/fish-strategy/buri/theory/': '/tactics/fish-strategy/buri/', // 2026-11-17: RB-10
   '/blog/tactics/fish-strategy/chinu/': '/tactics/fish-strategy/chinu/',
   '/blog/tactics/fish-strategy/chinu/advanced/': '/tactics/fish-strategy/chinu/advanced/',
   '/blog/tactics/fish-strategy/chinu/gourmet/': '/tactics/fish-strategy/chinu/gourmet/',
@@ -230,10 +233,10 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/kanpachi/intermediate/': '/tactics/fish-strategy/kanpachi/intermediate/',
   '/blog/tactics/fish-strategy/kanpachi/strategy/': '/tactics/fish-strategy/kanpachi/strategy/',
   '/blog/tactics/fish-strategy/kanpachi/theory/': '/tactics/fish-strategy/kanpachi/theory/',
-  '/blog/tactics/fish-strategy/kawahagi/advanced/': '/tactics/fish-strategy/kawahagi/advanced/',
-  '/blog/tactics/fish-strategy/kawahagi/gourmet/': '/tactics/fish-strategy/kawahagi/gourmet/',
-  '/blog/tactics/fish-strategy/kawahagi/intermediate/': '/tactics/fish-strategy/kawahagi/intermediate/',
-  '/blog/tactics/fish-strategy/kawahagi/theory/': '/tactics/fish-strategy/kawahagi/theory/',
+  '/blog/tactics/fish-strategy/kawahagi/advanced/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
+  '/blog/tactics/fish-strategy/kawahagi/gourmet/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
+  '/blog/tactics/fish-strategy/kawahagi/intermediate/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
+  '/blog/tactics/fish-strategy/kawahagi/theory/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
   '/blog/tactics/fish-strategy/kue/': '/tactics/fish-strategy/kue/',
   '/blog/tactics/fish-strategy/kue/advanced/': '/tactics/fish-strategy/kue/advanced/',
   '/blog/tactics/fish-strategy/kue/gourmet/': '/tactics/fish-strategy/kue/gourmet/',
@@ -295,4 +298,16 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/intelligence/kansai-vs-kanto-spring/': '/column/ranking/kansai/',
   '/blog/intelligence/spring-2026-madai-report/': '/tactics/fish-strategy/madai/',
   '/blog/intelligence/summer-bluefish-forecast/': '/tactics/fish-strategy/buri/',
+  // 2026-11-17: GSC「クロール済み - インデックス未登録」の再構築（.workspace/_inbox/rewrite-rebuild-order.md §2-1・RB-32）で削除したページ
+  '/tactics/fish-strategy/buri/theory/': '/tactics/fish-strategy/buri/',
+  '/column/travel/awaji-family-trip/': '/column/ranking/kansai/',
+  '/column/travel/hamanako-unagi-trip/': '/column/travel/access/access-tokai/',
+  '/fishing-facility/amami-sealand/': '/column/ranking/kyushu-okinawa/',
+  '/blog/amami-sealand/': '/column/ranking/kyushu-okinawa/',
+  '/fishing-facility/west-japan/kagoshima/amami-sealand/': '/column/ranking/kyushu-okinawa/',
+  '/tactics/fish-strategy/kawahagi/': '/tactics/fish-strategy/',
+  '/tactics/fish-strategy/kawahagi/advanced/': '/tactics/fish-strategy/',
+  '/tactics/fish-strategy/kawahagi/intermediate/': '/tactics/fish-strategy/',
+  '/tactics/fish-strategy/kawahagi/theory/': '/tactics/fish-strategy/',
+  '/tactics/fish-strategy/kawahagi/gourmet/': '/tactics/fish-strategy/',
 };

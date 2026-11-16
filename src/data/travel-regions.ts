@@ -25,7 +25,6 @@ export const travelRegions: TravelRegion[] = [
     name: '東海',
     areas: '静岡・伊豆・浜名湖／三重・伊勢志摩',
     slugs: [
-      'hamanako-unagi-trip',
       'november-izu-autumn-leaves-trip',
       'ise-shima-model-plan',
       'may-toshijima-toba-trip',
@@ -43,7 +42,6 @@ export const travelRegions: TravelRegion[] = [
       'wakayama-kii-trip',
       'shirahama-onsen-trip',
       'march-yuasa-yura-soy-sauce-trip',
-      'awaji-family-trip',
       'fukui-mikata-goko',
       'access/access-kinki',
     ],
