@@ -24,7 +24,7 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/chiba-minamiboso-access-guide/': '/column/travel/access/chiba-minamiboso-access-guide/',
   '/blog/chiba-minamiboso-trip/': '/column/travel/chiba-minamiboso-trip/',
   '/blog/chinu-strategy/': '/tactics/fish-strategy/chinu/',
-  '/blog/chinu/theory/': '/tactics/fish-strategy/chinu/theory/',
+  '/blog/chinu/theory/': '/tactics/fish-strategy/chinu/', // 2026-11-17: RB 波4
   '/blog/cloudy-day-advantage/': '/column/trivia/cloudy-day-advantage/',
   '/blog/column/ranking/chugoku-shikoku/': '/column/ranking/chugoku-shikoku/',
   '/blog/column/ranking/kansai/': '/column/ranking/kansai/',
@@ -143,8 +143,8 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/madai/theory/': '/tactics/fish-strategy/madai/theory/',
   '/blog/maizuru-shinkai-park/': '/fishing-facility/maizuru-shinkai-park/',
   '/blog/matsunase-fishing-park/': '/fishing-facility/matsunase-fishing-park/',
-  '/blog/mejina/advanced/': '/tactics/fish-strategy/mejina/advanced/',
-  '/blog/mejina/theory/': '/tactics/fish-strategy/mejina/theory/',
+  '/blog/mejina/advanced/': '/tactics/fish-strategy/mejina/', // 2026-11-17: RB 波4
+  '/blog/mejina/theory/': '/tactics/fish-strategy/mejina/', // 2026-11-17: RB 波4
   '/blog/miura-kaiou/': '/fishing-facility/miura-kaiou/',
   '/blog/miyazu-city-marine-fishing-park/': '/fishing-facility/miyazu-city-marine-fishing-park/',
   '/blog/mukai-pearl-marine/': '/fishing-facility/mukai-pearl-marine/',
@@ -208,10 +208,10 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/buri/strategy/': '/tactics/fish-strategy/buri/', // 2026-11-17: RB 波2
   '/blog/tactics/fish-strategy/buri/theory/': '/tactics/fish-strategy/buri/', // 2026-11-17: RB-10
   '/blog/tactics/fish-strategy/chinu/': '/tactics/fish-strategy/chinu/',
-  '/blog/tactics/fish-strategy/chinu/advanced/': '/tactics/fish-strategy/chinu/advanced/',
-  '/blog/tactics/fish-strategy/chinu/gourmet/': '/tactics/fish-strategy/chinu/gourmet/',
-  '/blog/tactics/fish-strategy/chinu/intermediate/': '/tactics/fish-strategy/chinu/intermediate/',
-  '/blog/tactics/fish-strategy/chinu/theory/': '/tactics/fish-strategy/chinu/theory/',
+  '/blog/tactics/fish-strategy/chinu/advanced/': '/tactics/fish-strategy/chinu/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/chinu/gourmet/': '/tactics/fish-strategy/chinu/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/chinu/intermediate/': '/tactics/fish-strategy/chinu/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/chinu/theory/': '/tactics/fish-strategy/chinu/', // 2026-11-17: RB 波4
   '/blog/tactics/fish-strategy/fugu/advanced/': '/tactics/fish-strategy/fugu/advanced/',
   '/blog/tactics/fish-strategy/fugu/gourmet/': '/tactics/fish-strategy/fugu/gourmet/',
   '/blog/tactics/fish-strategy/fugu/intermediate/': '/tactics/fish-strategy/fugu/intermediate/',
@@ -247,18 +247,18 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/madai/gourmet/': '/tactics/fish-strategy/madai/gourmet/',
   '/blog/tactics/fish-strategy/madai/theory/': '/tactics/fish-strategy/madai/theory/',
   '/blog/tactics/fish-strategy/mejina/': '/tactics/fish-strategy/mejina/',
-  '/blog/tactics/fish-strategy/mejina/advanced/': '/tactics/fish-strategy/mejina/advanced/',
-  '/blog/tactics/fish-strategy/mejina/gourmet/': '/tactics/fish-strategy/mejina/gourmet/',
-  '/blog/tactics/fish-strategy/mejina/intermediate/': '/tactics/fish-strategy/mejina/intermediate/',
-  '/blog/tactics/fish-strategy/mejina/theory/': '/tactics/fish-strategy/mejina/theory/',
+  '/blog/tactics/fish-strategy/mejina/advanced/': '/tactics/fish-strategy/mejina/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/mejina/gourmet/': '/tactics/fish-strategy/mejina/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/mejina/intermediate/': '/tactics/fish-strategy/mejina/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/mejina/theory/': '/tactics/fish-strategy/mejina/', // 2026-11-17: RB 波4
   '/blog/tactics/fish-strategy/shimaji/': '/tactics/fish-strategy/shimaji/',
   '/blog/tactics/fish-strategy/shimaji/advanced/': '/tactics/fish-strategy/shimaji/advanced/',
   '/blog/tactics/fish-strategy/shimaji/gourmet/': '/tactics/fish-strategy/shimaji/gourmet/',
   '/blog/tactics/fish-strategy/shimaji/theory/': '/tactics/fish-strategy/shimaji/theory/',
-  '/blog/tactics/fish-strategy/suzuki/advanced/': '/tactics/fish-strategy/suzuki/advanced/',
-  '/blog/tactics/fish-strategy/suzuki/gourmet/': '/tactics/fish-strategy/suzuki/gourmet/',
-  '/blog/tactics/fish-strategy/suzuki/intermediate/': '/tactics/fish-strategy/suzuki/intermediate/',
-  '/blog/tactics/fish-strategy/suzuki/theory/': '/tactics/fish-strategy/suzuki/theory/',
+  '/blog/tactics/fish-strategy/suzuki/advanced/': '/tactics/fish-strategy/suzuki/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/suzuki/gourmet/': '/tactics/fish-strategy/suzuki/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/suzuki/intermediate/': '/tactics/fish-strategy/suzuki/', // 2026-11-17: RB 波4
+  '/blog/tactics/fish-strategy/suzuki/theory/': '/tactics/fish-strategy/suzuki/', // 2026-11-17: RB 波4
   '/blog/tactics/fish-strategy/tide-wind-calculation/': '/tactics/fish-strategy/tide-wind-calculation/',
   '/blog/tactics/gear/': '/tactics/',
   '/blog/tactics/gear/beginner-tackle-set/': '/tactics/gear/beginner-tackle-set/',
@@ -307,6 +307,19 @@ export const blogLegacyRedirects: Record<string, string> = {
   // 2026-11-17: RB 波3（真夏の氷はクーラーの選び方へ、春の放流エサは春の水温へ統合）
   '/column/trivia/july-ice-management-guide/': '/tactics/gear/cooler-box-selection/',
   '/column/trivia/march-spring-stocking-feeding-frenzy-bait-guide/': '/column/trivia/march-sankan-shion-temperature-guide/',
+  // 2026-11-17: RB 波4 でメジナ・スズキ・クロダイのサブ記事を統合
+  '/tactics/fish-strategy/mejina/advanced/': '/tactics/fish-strategy/mejina/',
+  '/tactics/fish-strategy/mejina/intermediate/': '/tactics/fish-strategy/mejina/',
+  '/tactics/fish-strategy/mejina/theory/': '/tactics/fish-strategy/mejina/',
+  '/tactics/fish-strategy/mejina/gourmet/': '/tactics/fish-strategy/mejina/',
+  '/tactics/fish-strategy/suzuki/advanced/': '/tactics/fish-strategy/suzuki/',
+  '/tactics/fish-strategy/suzuki/intermediate/': '/tactics/fish-strategy/suzuki/',
+  '/tactics/fish-strategy/suzuki/theory/': '/tactics/fish-strategy/suzuki/',
+  '/tactics/fish-strategy/suzuki/gourmet/': '/tactics/fish-strategy/suzuki/',
+  '/tactics/fish-strategy/chinu/advanced/': '/tactics/fish-strategy/chinu/',
+  '/tactics/fish-strategy/chinu/intermediate/': '/tactics/fish-strategy/chinu/',
+  '/tactics/fish-strategy/chinu/theory/': '/tactics/fish-strategy/chinu/',
+  '/tactics/fish-strategy/chinu/gourmet/': '/tactics/fish-strategy/chinu/',
   '/column/travel/awaji-family-trip/': '/column/ranking/kansai/',
   '/column/travel/hamanako-unagi-trip/': '/column/travel/access/access-tokai/',
   '/fishing-facility/amami-sealand/': '/column/ranking/kyushu-okinawa/',
