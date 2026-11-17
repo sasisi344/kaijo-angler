@@ -19,8 +19,8 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/bait-rotation/': '/column/trivia/bait-rotation/',
   '/blog/bakucho-mihama-fishing-park/': '/fishing-facility/bakucho-mihama-fishing-park/',
   '/blog/buri-strategy/': '/tactics/fish-strategy/buri/', // 2026-11-16: 旧ビルドの残骸が200で残っていた
-  '/blog/buri/intermediate/': '/tactics/fish-strategy/buri/intermediate/',
-  '/blog/buri/strategy/': '/tactics/fish-strategy/buri/strategy/',
+  '/blog/buri/intermediate/': '/tactics/gear/myakuzuri-gear/', // 2026-11-17: RB 波2
+  '/blog/buri/strategy/': '/tactics/fish-strategy/buri/', // 2026-11-17: RB 波2
   '/blog/chiba-minamiboso-access-guide/': '/column/travel/access/chiba-minamiboso-access-guide/',
   '/blog/chiba-minamiboso-trip/': '/column/travel/chiba-minamiboso-trip/',
   '/blog/chinu-strategy/': '/tactics/fish-strategy/chinu/',
@@ -203,9 +203,9 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/aji-asaba-kamasu/intermediate/': '/tactics/fish-strategy/aji-asaba-kamasu/intermediate/',
   '/blog/tactics/fish-strategy/aji-asaba-kamasu/theory/': '/tactics/fish-strategy/aji-asaba-kamasu/theory/',
   '/blog/tactics/fish-strategy/buri/': '/tactics/fish-strategy/buri/',
-  '/blog/tactics/fish-strategy/buri/advanced/': '/tactics/fish-strategy/buri/advanced/',
-  '/blog/tactics/fish-strategy/buri/intermediate/': '/tactics/fish-strategy/buri/intermediate/',
-  '/blog/tactics/fish-strategy/buri/strategy/': '/tactics/fish-strategy/buri/strategy/',
+  '/blog/tactics/fish-strategy/buri/advanced/': '/tactics/fish-strategy/buri/', // 2026-11-17: RB 波2
+  '/blog/tactics/fish-strategy/buri/intermediate/': '/tactics/gear/myakuzuri-gear/', // 2026-11-17: RB 波2
+  '/blog/tactics/fish-strategy/buri/strategy/': '/tactics/fish-strategy/buri/', // 2026-11-17: RB 波2
   '/blog/tactics/fish-strategy/buri/theory/': '/tactics/fish-strategy/buri/', // 2026-11-17: RB-10
   '/blog/tactics/fish-strategy/chinu/': '/tactics/fish-strategy/chinu/',
   '/blog/tactics/fish-strategy/chinu/advanced/': '/tactics/fish-strategy/chinu/advanced/',
@@ -300,6 +300,10 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/intelligence/summer-bluefish-forecast/': '/tactics/fish-strategy/buri/',
   // 2026-11-17: GSC「クロール済み - インデックス未登録」の再構築（.workspace/_inbox/rewrite-rebuild-order.md §2-1・RB-32）で削除したページ
   '/tactics/fish-strategy/buri/theory/': '/tactics/fish-strategy/buri/',
+  // 2026-11-17: RB 波2 でブリのサブ記事を統合（intermediate の死にエサの誘いはミャク釣りの記事へ）
+  '/tactics/fish-strategy/buri/strategy/': '/tactics/fish-strategy/buri/',
+  '/tactics/fish-strategy/buri/advanced/': '/tactics/fish-strategy/buri/',
+  '/tactics/fish-strategy/buri/intermediate/': '/tactics/gear/myakuzuri-gear/',
   '/column/travel/awaji-family-trip/': '/column/ranking/kansai/',
   '/column/travel/hamanako-unagi-trip/': '/column/travel/access/access-tokai/',
   '/fishing-facility/amami-sealand/': '/column/ranking/kyushu-okinawa/',
