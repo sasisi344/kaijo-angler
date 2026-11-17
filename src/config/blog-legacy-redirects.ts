@@ -52,7 +52,7 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/column/trivia/january-bluefish-liver-sasami-bait-guide/': '/column/trivia/january-bluefish-liver-sasami-bait-guide/',
   '/blog/column/trivia/january-kanburi-fat-science/': '/column/trivia/january-kanburi-fat-science/',
   '/blog/column/trivia/january-low-activity-tai-luring-guide/': '/column/trivia/january-low-activity-tai-luring-guide/',
-  '/blog/column/trivia/july-ice-management-guide/': '/column/trivia/july-ice-management-guide/',
+  '/blog/column/trivia/july-ice-management-guide/': '/tactics/gear/cooler-box-selection/', // 2026-11-17: RB 波3
   '/blog/column/trivia/july-morning-speed-strategy-guide/': '/column/trivia/july-morning-speed-strategy-guide/',
   '/blog/column/trivia/july-night-fishing-bluefish-guide/': '/column/trivia/july-night-fishing-bluefish-guide/',
   '/blog/column/trivia/july-sea-temperature-lag-guide/': '/column/trivia/july-sea-temperature-lag-guide/',
@@ -304,6 +304,9 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/tactics/fish-strategy/buri/strategy/': '/tactics/fish-strategy/buri/',
   '/tactics/fish-strategy/buri/advanced/': '/tactics/fish-strategy/buri/',
   '/tactics/fish-strategy/buri/intermediate/': '/tactics/gear/myakuzuri-gear/',
+  // 2026-11-17: RB 波3（真夏の氷はクーラーの選び方へ、春の放流エサは春の水温へ統合）
+  '/column/trivia/july-ice-management-guide/': '/tactics/gear/cooler-box-selection/',
+  '/column/trivia/march-spring-stocking-feeding-frenzy-bait-guide/': '/column/trivia/march-sankan-shion-temperature-guide/',
   '/column/travel/awaji-family-trip/': '/column/ranking/kansai/',
   '/column/travel/hamanako-unagi-trip/': '/column/travel/access/access-tokai/',
   '/fishing-facility/amami-sealand/': '/column/ranking/kyushu-okinawa/',

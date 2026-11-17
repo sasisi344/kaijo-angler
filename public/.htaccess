@@ -54,7 +54,7 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/column/trivia/january-bluefish-liver-sasami-bait-guide/?$ /column/trivia/january-bluefish-liver-sasami-bait-guide/
   RedirectMatch 301 ^/blog/column/trivia/january-kanburi-fat-science/?$ /column/trivia/january-kanburi-fat-science/
   RedirectMatch 301 ^/blog/column/trivia/january-low-activity-tai-luring-guide/?$ /column/trivia/january-low-activity-tai-luring-guide/
-  RedirectMatch 301 ^/blog/column/trivia/july-ice-management-guide/?$ /column/trivia/july-ice-management-guide/
+  RedirectMatch 301 ^/blog/column/trivia/july-ice-management-guide/?$ /tactics/gear/cooler-box-selection/
   RedirectMatch 301 ^/blog/column/trivia/july-morning-speed-strategy-guide/?$ /column/trivia/july-morning-speed-strategy-guide/
   RedirectMatch 301 ^/blog/column/trivia/july-night-fishing-bluefish-guide/?$ /column/trivia/july-night-fishing-bluefish-guide/
   RedirectMatch 301 ^/blog/column/trivia/july-sea-temperature-lag-guide/?$ /column/trivia/july-sea-temperature-lag-guide/
@@ -303,6 +303,8 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/tactics/fish-strategy/buri/strategy/?$ /tactics/fish-strategy/buri/
   RedirectMatch 301 ^/tactics/fish-strategy/buri/advanced/?$ /tactics/fish-strategy/buri/
   RedirectMatch 301 ^/tactics/fish-strategy/buri/intermediate/?$ /tactics/gear/myakuzuri-gear/
+  RedirectMatch 301 ^/column/trivia/july-ice-management-guide/?$ /tactics/gear/cooler-box-selection/
+  RedirectMatch 301 ^/column/trivia/march-spring-stocking-feeding-frenzy-bait-guide/?$ /column/trivia/march-sankan-shion-temperature-guide/
   RedirectMatch 301 ^/column/travel/awaji-family-trip/?$ /column/ranking/kansai/
   RedirectMatch 301 ^/column/travel/hamanako-unagi-trip/?$ /column/travel/access/access-tokai/
   RedirectMatch 301 ^/fishing-facility/amami-sealand/?$ /column/ranking/kyushu-okinawa/
@@ -642,7 +644,6 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/january-kanburi-fat-science/?$ /column/trivia/january-kanburi-fat-science/
   RedirectMatch 301 ^/blog/january-low-activity-tai-luring-guide/?$ /column/trivia/january-low-activity-tai-luring-guide/
   RedirectMatch 301 ^/blog/january-new-year-reservation-guide/?$ /column/trivia/january-new-year-reservation-guide/
-  RedirectMatch 301 ^/blog/july-ice-management-guide/?$ /column/trivia/july-ice-management-guide/
   RedirectMatch 301 ^/blog/july-morning-speed-strategy-guide/?$ /column/trivia/july-morning-speed-strategy-guide/
   RedirectMatch 301 ^/blog/july-night-fishing-bluefish-guide/?$ /column/trivia/july-night-fishing-bluefish-guide/
   RedirectMatch 301 ^/blog/july-sea-temperature-lag-guide/?$ /column/trivia/july-sea-temperature-lag-guide/
@@ -655,7 +656,6 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/blog/march-plankton-fish-vision-science/?$ /column/trivia/march-plankton-fish-vision-science/
   RedirectMatch 301 ^/blog/march-sakuradai-targeting-guide/?$ /column/trivia/march-sakuradai-targeting-guide/
   RedirectMatch 301 ^/blog/march-sankan-shion-temperature-guide/?$ /column/trivia/march-sankan-shion-temperature-guide/
-  RedirectMatch 301 ^/blog/march-spring-stocking-feeding-frenzy-bait-guide/?$ /column/trivia/march-spring-stocking-feeding-frenzy-bait-guide/
   RedirectMatch 301 ^/blog/may-bait-stealer-dango-guide/?$ /column/trivia/may-bait-stealer-dango-guide/
   RedirectMatch 301 ^/blog/may-mental-refresh-guide/?$ /column/trivia/may-mental-refresh-guide/
   RedirectMatch 301 ^/blog/may-spawning-tai-taste-guide/?$ /column/trivia/may-spawning-tai-taste-guide/
