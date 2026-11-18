@@ -155,7 +155,7 @@
 **やること**
 1. WR-0 規約の改訂（2026-11-15 済み）
 2. WR-1 試作4本（`column/ranking/kansai`・`hiruga-sea-fishing-pond`・`itoman-ikada-tsurigu-no-zousan`・`fish-shipping-guide`）の指示書を `.workspace/codex/orders/` に書いて Codex へ（11/16）。検収は 11/17
-3. WR-2 ユーザーが4本を読んで規約を確定する。ランキングのカードの位置も決める（11/19）
+3. ~~WR-2 ユーザーが4本を読んで規約を確定する。ランキングのカードの位置も決める（11/19）~~ 11/19 済み。規約を確定し、カードは TOP3 の直後＋結びの前（[[writing-appeal-plan]] §4-2）
 4. WR-3・WR-4 書き直したばかりの記事の手直し（約20本）とランキング7本（11/21〜22）
 5. WR-5 AF-4・KA-4・KA-5・KA-6 の指示書に §4 を入れる
 6. WR-6 28日後（12/15ごろ）に効果を判定する
