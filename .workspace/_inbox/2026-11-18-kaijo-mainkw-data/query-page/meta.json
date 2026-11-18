@@ -1,0 +1,15 @@
+{
+  "fetchedAt": "2026-11-18T04:37:49.627Z",
+  "site": "KA",
+  "command": "gsc",
+  "args": {
+    "site": "KA",
+    "start": "2026-10-19",
+    "end": "2026-11-15",
+    "dims": "query,page",
+    "query": "海上",
+    "out": ".workspace/_inbox/2026-11-18-kaijo-mainkw-data/query-page"
+  },
+  "start": "2026-10-19",
+  "end": "2026-11-15"
+}
