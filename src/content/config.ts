@@ -70,6 +70,12 @@ const postCollection = defineCollection({
   }),
 });
 
+// YAML の日付（引用符なしは Date になる）を YYYY-MM-DD の文字列にそろえる
+const ymdDate = z
+  .union([z.date(), z.string()])
+  .transform((v) => (typeof v === 'string' ? v : v.toISOString().slice(0, 10)))
+  .pipe(z.string().regex(/^\d{4}-\d{2}-\d{2}$/));
+
 const fishingFacilityCollection = defineCollection({
   loader: glob({ 
     pattern: '**/*.{md,mdx}', 
@@ -134,6 +140,16 @@ const fishingFacilityCollection = defineCollection({
       rod_length_limit: z.number().optional(), // 竿の長さ上限(m)。制限なし/不明は未記入
       rod_count_limit: z.number().optional(), // 1人あたりの竿の本数上限。制限なし/不明は未記入
       verified_at: z.string().optional(), // YYYY-MM-DD。公式で確認した日
+      // 期間のある休業（冬季休業など。2026-11-19追加）。閉業・再開未定の休止は status を使う
+      // 地図はビルド時に期間だけを受け取り、閲覧日（日本時間）と比べて休業中を判定する
+      seasonal_closures: z.array(z.object({
+        from: ymdDate, // 休業の初日
+        to: ymdDate.optional(), // 休業の最終日。書かない=再開日未定
+        reopen: ymdDate.optional(), // 再開予定日（to の翌日と違うときだけ）
+        reason: z.string().optional(), // 例: 冬季休業
+        source_url: z.string().optional(), // 公式の告知URL、または「電話確認」
+        verified_at: z.string().optional(), // YYYY-MM-DD
+      })).optional(),
       // はじめての人向けの事実。安心度は src/utils/first-timer.ts で計算する（ここには書かない）
       // キーを書かない=未確認、none/空配列=確認した上でない
       first_timer: z.object({

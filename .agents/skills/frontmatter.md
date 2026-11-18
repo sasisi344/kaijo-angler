@@ -62,6 +62,15 @@ facility_details:
     processing: paid # free/paid/none
     source_url: "公式ページURL または 電話確認"
     verified_at: "2026-11-08"
+  # 期間のある休業（任意。冬季休業など）。公式の告知で確認できた当季の期間だけを書く。過去の年の告知を読み替えない
+  # 閉業・再開未定の休止はトップレベルの status: closed / suspended を使う
+  seasonal_closures:
+    - from: "2026-12-01" # 休業の初日
+      to: "2027-02-28" # 休業の最終日。書かない=再開日未定
+      reopen: "2027-03-01" # 再開予定日（任意）
+      reason: "冬季休業"
+      source_url: "公式の告知URL または 電話確認"
+      verified_at: "2026-11-19"
   
   amenities:
     rental_tackle: true

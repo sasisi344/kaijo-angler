@@ -205,6 +205,13 @@ const { height = '500px' } = Astro.props;
     try {
       const res = await fetch('/api/facilities.json');
       const facilities = await res.json();
+
+      // 期間のある休業を、閲覧日（日本時間）で判定する。初日・最終日はどちらも休業
+      const todayJst = new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+      const activeClosure = (f) =>
+        (f.closures || []).find((c) => c.from <= todayJst && (!c.to || todayJst <= c.to)) || null;
+      const fmtMd = (ymd) => `${Number(ymd.slice(5, 7))}/${Number(ymd.slice(8, 10))}`;
+      facilities.forEach((f) => { f.closure = activeClosure(f); });
       const markerMap = new Map();
 
       // @ts-ignore
@@ -221,7 +228,7 @@ const { height = '500px' } = Astro.props;
         if (facility.region === 'east-japan') markerIcon = icons.green;
         else if (facility.region === 'center-japan') markerIcon = icons.orange;
 
-        const marker = L.marker([facility.lat, facility.lng], { icon: markerIcon, opacity: facility.status ? 0.5 : 1 });
+        const marker = L.marker([facility.lat, facility.lng], { icon: markerIcon, opacity: facility.status || facility.closure ? 0.5 : 1 });
         
         const popupContent = `
           <div class="flex flex-col group/popup">
@@ -233,6 +240,7 @@ const { height = '500px' } = Astro.props;
                  ${facility.prefecture}
                </div>
                ${facility.status === 'suspended' ? '<div class="absolute top-2 right-2 px-2 py-0.5 bg-slate-700/90 text-white rounded text-[10px] font-bold shadow-sm">休止中（再開未定）</div>' : ''}
+               ${!facility.status && facility.closure ? `<div class="absolute top-2 right-2 px-2 py-0.5 bg-slate-700/90 text-white rounded text-[10px] font-bold shadow-sm">${facility.closure.reason || '休業'}中（${facility.closure.reopen ? fmtMd(facility.closure.reopen) + '再開予定' : facility.closure.to ? '〜' + fmtMd(facility.closure.to) : '再開日未定'}）</div>` : ''}
             </div>
             <div class="p-4 bg-white dark:bg-slate-900 border-t dark:border-slate-800">
               <h3 class="text-sm font-bold mb-1.5 line-clamp-2 leading-snug">${facility.title}</h3>
@@ -275,7 +283,7 @@ const { height = '500px' } = Astro.props;
 
         // Filter facilities
         const eligibleFacilities = facilities.filter(f => {
-          if (f.status) return false; // 休止中の施設は行き先の抽選に入れない
+          if (f.status || f.closure) return false; // 休止中・休業期間中の施設は行き先の抽選に入れない
           if (selectedRegion === 'all') return true;
           return PREF_TO_REGION[f.prefecture] === selectedRegion;
         });

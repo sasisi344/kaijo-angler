@@ -53,6 +53,13 @@ export async function GET() {
         target_fish: facility_details?.target_fish || [],
         rental: facility_details?.amenities?.rental_tackle,
         toilet: facility_details?.amenities?.toilet,
+        closures: (facility_details?.seasonal_closures ?? []).map((c) => ({
+          from: c.from,
+          to: c.to ?? null,
+          reopen: c.reopen ?? null,
+          reason: c.reason ?? null,
+          verified_at: c.verified_at ?? null,
+        })),
         firstTimer: (() => {
           const result = evaluateFirstTimer(facility_details);
           return result
