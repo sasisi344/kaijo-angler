@@ -8,13 +8,21 @@ export async function GET() {
   const allFacilities = await getFishingFacilityEntries();
 
   const facilities = allFacilities
-    .filter((post) => !post.data.draft && !post.id.endsWith("index"))
+    // 閉業は今行く候補でも所在の案内でもないので地図から外す（記事は記録として残る）。
+    // 休止（suspended）は所在を残し、status で地図側が表示と抽選を分ける。
+    .filter(
+      (post) =>
+        !post.data.draft &&
+        !post.id.endsWith("index") &&
+        post.data.status !== "closed",
+    )
     .map((post) => {
       const {
         title,
         prefecture,
         region,
         facilityType,
+        status,
         image,
         featureimage,
         google_maps,
@@ -36,6 +44,7 @@ export async function GET() {
         prefecture,
         region,
         facilityType,
+        status: status ?? null,
         image: imageUrl,
         lat: google_maps?.latitude,
         lng: google_maps?.longitude,

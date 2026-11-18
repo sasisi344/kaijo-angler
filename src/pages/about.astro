@@ -6,6 +6,9 @@ import Stats from "~/components/widgets/Stats.astro";
 import Steps2 from "~/components/widgets/Steps2.astro";
 import Layout from "~/layouts/PageLayout.astro";
 import heroImage from "~/assets/images/about/hero.png";
+import { getListedFacilityStats } from "~/utils/fishing-facility-collection";
+
+const facilityStats = await getListedFacilityStats();
 
 const metadata = {
   title: "海上アングラーについて",
@@ -28,9 +31,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      「海上アングラー」は、全国<strong>100施設以上</strong>・<strong
-        >35都道府県</strong
-      >の海上釣り堀情報と<strong>90本以上</strong
+      「海上アングラー」は、全国<strong>100施設以上</strong>・<strong>{facilityStats.prefectures}都道府県</strong>の海上釣り堀情報と<strong>90本以上</strong
       >の攻略記事をまとめた、海上釣り堀専門の個人サイトです。
       初めての方にも経験者にも、施設選びと当日の釣りに役立つ情報をお届けします。
     </Fragment>
@@ -42,7 +43,7 @@ const metadata = {
     title="数字で見る海上アングラー"
     stats={[
       { title: "掲載施設数", amount: "100+" },
-      { title: "掲載都道府県", amount: "35" },
+      { title: "掲載都道府県", amount: String(facilityStats.prefectures) },
       { title: "攻略記事", amount: "90+" },
       { title: "魚種別ガイド", amount: "14" },
     ]}
@@ -59,7 +60,7 @@ const metadata = {
       {
         title: "全国100施設以上のガイド",
         description:
-          "全国35都道府県の施設を掲載。料金・営業時間・放流魚種・設備情報を、各施設の公式情報をもとに整理しています。",
+          `全国${facilityStats.prefectures}都道府県の施設を掲載。料金・営業時間・放流魚種・設備情報を、各施設の公式情報をもとに整理しています。`,
         icon: "tabler:map-pin",
       },
       {

@@ -1,5 +1,8 @@
 ---
-import { getFishingFacilityEntries } from "~/utils/fishing-facility-collection";
+import {
+  getFishingFacilityEntries,
+  getListedFacilityStats,
+} from "~/utils/fishing-facility-collection";
 import { getPrimaryDate } from "~/utils/date-helpers";
 import Layout from "~/layouts/PageLayout.astro";
 import Hero from "~/components/widgets/Hero.astro";
@@ -11,6 +14,7 @@ import type { ImageMetadata } from "astro";
 import { getPermalink } from "~/utils/permalinks";
 
 const allFacilities = await getFishingFacilityEntries();
+const stats = await getListedFacilityStats();
 
 // Sort by date or title
 const facilities = allFacilities
@@ -39,16 +43,15 @@ const metadata = {
   <Hero
     tagline="釣り場検索"
     title="あなたにぴったりの釣り場を見つけよう"
-    subtitle="全国35都道府県・100施設以上の海上釣り堀を掲載。料金、レンタル、放流魚種などを施設ごとにまとめています。"
+    subtitle={`全国${stats.prefectures}都道府県・${stats.facilities}施設の海上釣り堀と海釣り施設を掲載（閉業した施設を除く）。料金、レンタル、放流魚種などを施設ごとにまとめています。`}
   />
 
   <!-- Stats Widget ****************** -->
   <Stats
     stats={[
-      { title: "掲載施設数", amount: "100+" },
-      { title: "対応エリア", amount: "50+" },
-      { title: "対象都道府県", amount: "31" },
-      { title: "情報量国内", amount: "1位" },
+      { title: "掲載施設数", amount: String(stats.facilities) },
+      { title: "掲載都道府県", amount: String(stats.prefectures) },
+      { title: "広域エリア", amount: "東・中・西" },
     ]}
   />
 
