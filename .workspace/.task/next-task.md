@@ -170,7 +170,7 @@
 
 **背景**: 直近28日（10/19〜11/15）の完全一致「海上釣り堀」は平均18.1位・59表示・0クリック。表示されているのは地域ページとランキングで、`/`・`/fishing-facility/` の行はない。施設の種類が混在し、閉業施設が地図APIに残り、件数表記がページごとに食い違っていた。
 
-**正本**: `.workspace/_inbox/2026-11-18-mainkw-top6-portal-audit.md` §7（ID 01〜10・着手順・完了条件）。分類の確認表は `.workspace/_inbox/2026-11-18-facility-type-review.md`。診断の旧計画 [[diagnosis-app-task]] はこのタスクに取り込む（別に起票しない）。
+**正本**: `.workspace/_inbox/2026-11-18-mainkw-top6-portal-audit.md` §7（ID 01〜10・着手順・完了条件）。分類の確認表は `.workspace/archive/2026-11-18-facility-type-review.md`。診断の旧計画 [[diagnosis-app-task]] はこのタスクに取り込む（別に起票しない）。
 
 **やること**
 1. ~~02a 全118施設の分類確認表~~（2026-11-18 Codex 済み）

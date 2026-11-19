@@ -159,7 +159,7 @@
 
 トップの「海上釣り堀ガイド」直下に出る5施設のリンクをAPI分類と照合すると、4件が`sea-park`、1件が`sea-pond`。更新日・画像重複で選ぶ実装が、主題への適合より先に働いている。
 
-**改善：全施設の分類を筆者が手動確認してから、海上釣り堀を主たる表示対象にする。** 現在の分類値は仮の入力として扱い、海釣り公園・陸上型等との境界も統一する。施設名から自動推測しない。[全118施設の確認表](2026-11-18-facility-type-review.md)を作成済み。
+**改善：全施設の分類を筆者が手動確認してから、海上釣り堀を主たる表示対象にする。** 現在の分類値は仮の入力として扱い、海釣り公園・陸上型等との境界も統一する。施設名から自動推測しない。[全118施設の確認表](../archive/2026-11-18-facility-type-review.md)を作成済み。
 
 対象：`src/pages/index.astro`、`src/pages/fishing-facility/index.astro`、`src/pages/api/facilities.json.ts`、分類の材料となる施設記事。
 
@@ -239,7 +239,7 @@ APIの階層付きslugから作るリンクは要確認だが、代表例の美�
 
 | 筆者のメモ | タスクへの反映 | 今回の状況 |
 |---|---|---|
-| 施設分類をすべて手動確認したい | 02を一覧作成→筆者確認→確定値の反映に分割。未設定も確認対象 | [全118件の確認表](2026-11-18-facility-type-review.md)を作成。正式化は未実施 |
+| 施設分類をすべて手動確認したい | 02を一覧作成→筆者確認→確定値の反映に分割。未設定も確認対象 | [全118件の確認表](../archive/2026-11-18-facility-type-review.md)を作成。正式化は未実施 |
 | 冬季休業期間をAPIへ渡し、所在を残すか考えたい | 01を期間の保持・予定日での判定・表示と推薦の分離へ具体化 | APIの静的生成をコード確認。下記に推奨方式を記載 |
 | 地域ごとの順位・Googleレビュー・診断型の選択 | 10を新設。地域を先に選び、希望条件への適合を理由付きで示す。レビューは主順位にしない案 | 質問と選定方法を整理。確定・実装は未実施 |
 
@@ -260,7 +260,7 @@ APIの階層付きslugから作るリンクは要確認だが、代表例の美�
 
 ### 分類確認の進め方
 
-**02aは今回実施済み。** [全件確認表](2026-11-18-facility-type-review.md)に、ローカルの施設原稿118件を現在の`sea-pond`51件・`sea-park`33件・`other`21件・未設定13件に分けて掲載した。公開API115件だけでなく、API未収録3件も手動確認の対象にした。
+**02aは今回実施済み。** [全件確認表](../archive/2026-11-18-facility-type-review.md)に、ローカルの施設原稿118件を現在の`sea-pond`51件・`sea-park`33件・`other`21件・未設定13件に分けて掲載した。公開API115件だけでなく、API未収録3件も手動確認の対象にした。
 
 各行に施設名・原稿へのリンク・照合ID・県パラメータ・記事の状態・確定分類・メモ・確認欄がある。筆者が正式化するまで現在値を正しい分類として扱わない。
 
@@ -351,7 +351,7 @@ APIの階層付きslugから作るリンクは要確認だが、代表例の美�
 
 - 最新GSC：[取得データ一式](2026-11-18-kaijo-mainkw-data/query/meta.json)、[前28日](2026-11-18-kaijo-mainkw-data/previous-query/meta.json)、[ページ内訳](2026-11-18-kaijo-mainkw-data/query-page/meta.json)
 - 公開HTML・APIの観察記録：[site-audit.json](2026-11-18-kaijo-mainkw-data/site-audit.json)。API115件、分類、ローカルstatusとの対応、トップ等のメタ・見出し・リンクを収録。
-- 筆者確認用：[施設タイプの全件確認表](2026-11-18-facility-type-review.md)。ローカル施設原稿118件を抽出。正式分類の記入前。
+- 筆者確認用：[施設タイプの全件確認表](../archive/2026-11-18-facility-type-review.md)。ローカル施設原稿118件を抽出。正式分類の記入前。
 - 月次補助資料：`.workspace/access-data/api/monthly/2026/m08/`、`m09/`、`m10/`の`gsc-query.csv`・`meta.json`等。
 - 実装：`src/pages/index.astro`、`src/pages/fishing-facility/index.astro`、`src/pages/fishing-facility/[...slug].astro`、`src/pages/tactics/[...slug].astro`、`src/pages/api/facilities.json.ts`、`src/components/widgets/MapApp.astro`、`src/utils/fishing-facility-collection.ts`、`src/utils/first-timer.ts`、`src/config.yaml`。
 - 既存記事：`src/content/blog/fishing-facility/{east,center,west}-japan/index.mdx`、`src/content/blog/tactics/beginner/first-fishing-pond/index.mdx`、施設分類・statusのある施設MDX。
