@@ -1,6 +1,6 @@
 # 施設タイプの確認表（筆者確認用）
 
-作成：2026-11-18／2026-11-19 確認しやすい形に作り直し／KA-PORTAL-02a。記事への反映は未実施。
+作成：2026-11-18／2026-11-19 確認しやすい形に作り直し／KA-PORTAL-02a。<u>2026-11-19 全115件の確認が完了し、記事へ反映・公開済み</u>（下の「全件確認後の処理」）。
 
 ## やること
 
@@ -18,14 +18,15 @@
 |---|---|---|
 | sea-pond | 海上の生簀で、放流した魚を釣る有料の釣り堀 | 海上釣り堀まるや、みうら海王 |
 | sea-park | 桟橋・護岸・防波堤・筏などから海の魚を釣る施設 | 海釣り公園、相差海釣センター（筏） |
-| other | 上のどちらでもない（陸上・屋内の生簀など） | — |
+| raft | 釣り筏・カセ（2026-11-19 筆者決定で追加。筏は raft に統一） | 小浜市漁協・釣り筏、相差海釣センター |
+| other | 上のどちらでもない（複合施設・屋内の生簀など） | フィッシングパーク大三島、晴れパークたてやま |
 
 - 陸上の海水の生簀は、筆者の判断で sea-park に寄せた例があります（由良海洋釣堀）。同じ形の施設は同じ扱いにそろえます
 - 閉業・休止は分類とは別に扱います。メモ欄の「閉業」「休止」は記事の状態を写したものです
 
 ## 進み具合
 
-全115施設。2026-11-19 時点で 68件が確認済み（下表の`[x]`）。
+全115施設。2026-11-19 に全件確認済み。
 
 ## 今の分類が sea-pond（51件）
 
@@ -104,63 +105,65 @@
 | [NX仙台港パーク（海の広場）](../../src/content/blog/fishing-facility/east-japan/miyagi/sendai-port-central-park-sea-square/index.mdx) | miyagi | sea-park |  | [x] |
 | [シーロード八幡浜](../../src/content/blog/fishing-facility/west-japan/ehime/searoad-yawatahama/index.mdx) | ehime | sea-park |  | [x] |
 | [福岡市海づり公園](../../src/content/blog/fishing-facility/west-japan/fukuoka/fukuoka-city-sea-fishing-park/index.mdx) | fukuoka | sea-park |  | [x] |
-| [日明かんしんつり公園](../../src/content/blog/fishing-facility/west-japan/fukuoka/hiake-kaikyo-fishing-park/index.mdx) | fukuoka | sea-park |  | [ ] |
-| [脇田（わいた）海釣り桟橋](../../src/content/blog/fishing-facility/west-japan/fukuoka/waita-sea-fishing-pier/index.mdx) | fukuoka | sea-park |  | [ ] |
-| [尼崎市立魚つり公園](../../src/content/blog/fishing-facility/west-japan/hyogo/amagasaki-city-sea-fishing-park/index.mdx) | hyogo | sea-park |  | [ ] |
-| [神戸市立平磯海づり公園](../../src/content/blog/fishing-facility/west-japan/hyogo/kobe-hiraiso-sea-fishing-park/index.mdx) | hyogo | sea-park |  | [ ] |
-| [須磨海づり公園](../../src/content/blog/fishing-facility/west-japan/hyogo/suma-sea-fishing-park/index.mdx) | hyogo | sea-park |  | [ ] |
-| [直島つり公園](../../src/content/blog/fishing-facility/west-japan/kagawa/naoshima-fishing-park/index.mdx) | kagawa | sea-park |  | [ ] |
-| [鴨池海づり公園](../../src/content/blog/fishing-facility/west-japan/kagoshima/kamoike-sea-fishing-park/index.mdx) | kagoshima | sea-park |  | [ ] |
-| [桜島海づり公園](../../src/content/blog/fishing-facility/west-japan/kagoshima/sakurajima-sea-fishing-park/index.mdx) | kagoshima | sea-park |  | [ ] |
-| [海釣りランド](../../src/content/blog/fishing-facility/west-japan/kumamoto/sea-fishing-land/index.mdx) | kumamoto | sea-park |  | [ ] |
-| [湯の児フィッシングパーク](../../src/content/blog/fishing-facility/west-japan/kumamoto/yunoko-fishing-park/index.mdx) | kumamoto | sea-park |  | [ ] |
-| [舞鶴親海公園](../../src/content/blog/fishing-facility/west-japan/kyoto/maizuru-shinkai-park/index.mdx) | kyoto | sea-park |  | [ ] |
-| [高島飛島磯釣り公園](../../src/content/blog/fishing-facility/west-japan/nagasaki/takashima-tobishima-isotsuri-park/index.mdx) | nagasaki | sea-park |  | [ ] |
-| [南港魚つり園護岸](../../src/content/blog/fishing-facility/west-japan/osaka/nanko-fishing-park/index.mdx) | osaka | sea-park |  | [ ] |
-| [とっとパーク小島](../../src/content/blog/fishing-facility/west-japan/osaka/totto-park-koshima/index.mdx) | osaka | sea-park |  | [ ] |
-| [フィッシングパーク光](../../src/content/blog/fishing-facility/west-japan/yamaguchi/fishing-park-hikari/index.mdx) | yamaguchi | sea-park |  | [ ] |
-| [下関フィッシングパーク](../../src/content/blog/fishing-facility/west-japan/yamaguchi/shimonoseki-fishing-park/index.mdx) | yamaguchi | sea-park |  | [ ] |
+| [日明かんしんつり公園](../../src/content/blog/fishing-facility/west-japan/fukuoka/hiake-kaikyo-fishing-park/index.mdx) | fukuoka | sea-park |  | [x] |「日明・海峡釣り公園」が正式。
+| [脇田（わいた）海釣り桟橋](../../src/content/blog/fishing-facility/west-japan/fukuoka/waita-sea-fishing-pier/index.mdx) | fukuoka | sea-park |  | [x] |「脇田海釣り桟橋」が正式。
+| [尼崎市立魚つり公園](../../src/content/blog/fishing-facility/west-japan/hyogo/amagasaki-city-sea-fishing-park/index.mdx) | hyogo | sea-park |  | [x] |公式HPにはライブカメラがあり現地の天気がわかる。釣果年間カレンダーがあるので、行く時期によって何を狙えばいいかわかりやすい。釣果情報の提供やイベント情報もある。駐車料金が時間ごと（30分刻み）で異なるので注意。開園している時間がおおよそ12時間あるうち、駐車時間最大8時間以上で800円（普通車）。小学校3年生以下はライフジャケット貸し出し無料。釣った魚の魚拓を取ってくれるサービスがあるが魚種によって基準寸法が決まっている、公式のQ&Aを参照。
+| [神戸市立平磯海づり公園](../../src/content/blog/fishing-facility/west-japan/hyogo/kobe-hiraiso-sea-fishing-park/index.mdx) | hyogo | sea-park |  | [x] |公式TOPにイベント情報や釣果情報があるので参考に。釣り大会イベントも多く、初心者向けのレクチャー教室など充実している。活魚販売でマダイを販売しており1尾2,500円、釣れなかった場合のお供に。身障者用（オストメイト対応）のトイレやスロープなどバリアフリー施設として充実。釣り場からは淡路島や明石海峡大橋を望めるロケーションも抜群。手ぶらで利用するレンタルも充実しているので旅行プランのひとつに組み込むのもいい。釣具のレンタルや購入は併設の売店からで、エサも販売している。BBQ場もあり海づり公園の利用者が使えて、釣り利用者以外は使用できない。釣った魚もBBQできるが釣った魚は自分で処理しないといけない。
+| [須磨海づり公園](../../src/content/blog/fishing-facility/west-japan/hyogo/suma-sea-fishing-park/index.mdx) | hyogo | sea-park |  | [x] |山陽電車「須磨浦公園駅」から徒歩ですぐ、海沿いにある水色の特徴的な建物。海に浮かぶ桟橋とイケスのように囲った場所があり、先端では投げ釣りがしたくなるロケーションで、手前のエリアでは足元に仕掛けを落としてのんびり待つスタイルができる。2024年にリニューアルしたばかりの新しい施設。
+| [直島つり公園](../../src/content/blog/fishing-facility/west-japan/kagawa/naoshima-fishing-park/index.mdx) | kagawa | sea-park |  | [x] |年末年始（122/16~1/14）と月曜・火曜が休園日。直島の南端にある簡易的な桟橋で、陸路では来れないから競争率は低く釣り場として穴場といえる。観光向けではなく「魚釣りをするぞ！」と準備を万端にして挑むべき場所だと思う。チヌ・グレの釣果はあるし魚がつきやすい場所なので、ウキフカセが有効。
+| [鴨池海づり公園](../../src/content/blog/fishing-facility/west-japan/kagoshima/kamoike-sea-fishing-park/index.mdx) | kagoshima | sea-park |  | [x] |公式の案内で水深が21~25mとかなり深いポイント。水深があるのでウキ仕掛けは使えない、胴付き仕掛けで下に落とすか、ちょい投げでアジ泳がせ釣りが紹介されている。釣れる魚種がもっとも多いのが秋で、アジ野泳がせでカンパチやマダイに期待できる。
+| [桜島海づり公園](../../src/content/blog/fishing-facility/west-japan/kagoshima/sakurajima-sea-fishing-park/index.mdx) | kagoshima | sea-park |  | [x] |鴨池海づり公園と似たページ構成。こちらは水深7m前後と誰でもやりやすい範囲。釣れる魚も変化はないが、桜島に渡る必要があるから釣り客が多すぎない施設を選びたい選択肢なら有りといえる。
+| [海釣りランド](../../src/content/blog/fishing-facility/west-japan/kumamoto/sea-fishing-land/index.mdx) | kumamoto | sea-park |  | [x] |御立岬公園三県展望所で風景を楽しんでいると、海沿いに細長い桟橋がある……いってみよう！でたどりつくのが海釣りランド。そこを見越してか、入場料と釣具エサ込のセットで2,100円と観光利用がしやすい利点が大きい。その他にも近隣施設にはゴーカートやスライダーなどアウトドアアクティビティが豊富。
+| [湯の児フィッシングパーク](../../src/content/blog/fishing-facility/west-japan/kumamoto/yunoko-fishing-park/index.mdx) | kumamoto | sea-park |  | [x] |熊本の観光スポットとして紹介されている。手ぶら利用しやすい入園セット（入園料・貸竿・サビキカゴ込）が1,500円（16歳以上の大人）である。[https://www.go-minamata.jp/infodtl.html?ds=2026051205472130720005610012]。釣りをしてから湯の児温泉で宿泊もいいし、その逆もありなプラン。
+| [舞鶴親海公園](../../src/content/blog/fishing-facility/west-japan/kyoto/maizuru-shinkai-park/index.mdx) | kyoto | sea-park |  | [x] |舞鶴新海公園は多目的運動広場やレストランを含む大型公園。そこに海釣り護岸がある。入園は無料。レンタルはないので魚釣り目的なら事前に準備をしておく必要がある。
+| [高島飛島磯釣り公園](../../src/content/blog/fishing-facility/west-japan/nagasaki/takashima-tobishima-isotsuri-park/index.mdx) | nagasaki | sea-park |  | [x] |護岸された堤防と桟橋タイプの釣り公園。正式名称は「高島飛鳥磯釣公園」に修正。部分的に老朽化しており海にあるから鉄の柵はさびやすいため寄りかからないほうが無難。生息魚種は「イシダイ・マダイ・チヌ・クロ・イサキ・ヒラメ・ハマチ・ヒラス
+ミズイカ・アジ・キス・カワハギ・アラカブ・ベラ等」と紹介されているし、ポイントの性質から初心者から上級者まで等しく遊べるいい施設だと思う。
+| [南港魚つり園護岸](../../src/content/blog/fishing-facility/west-japan/osaka/nanko-fishing-park/index.mdx) | osaka | sea-park |  | [x] |公式ページにはイベント情報・釣果情報がある。コンクリの桟橋で釣りをすることができるけど、護岸よりも防波堤としての緩衝堤防みたいな立場のため、波が高い時は乗り越えてくるので注意。ライフジャケットは必ず着用しよう。
+| [とっとパーク小島](../../src/content/blog/fishing-facility/west-japan/osaka/totto-park-koshima/index.mdx) | osaka | sea-park |  | [x] |桟橋の突堤に沈み石の漁礁が点在しているタイプ。根魚に期待できるが根掛かりもしやすいので中級者向けの場所。初心者ならサビキ釣りの季節に訪れるのがおすすめ。
+| [フィッシングパーク光](../../src/content/blog/fishing-facility/west-japan/yamaguchi/fishing-park-hikari/index.mdx) | yamaguchi | sea-park |  | [x] |陸から伸びる細長い桟橋が特徴。足場がけっこう高いので高所恐怖な人は要注意。マダイや大型青物の釣果は稀だが期待できる。メインはチヌとグレ。
+| [下関フィッシングパーク](../../src/content/blog/fishing-facility/west-japan/yamaguchi/shimonoseki-fishing-park/index.mdx) | yamaguchi | sea-park |  | [x] |XとInstagramにSNSアカウントがあるので最新情報を取得しやすい。施設の桟橋は金網で下が見えるから高所恐怖の人は注意。子供の釣り教室としてサビキ釣りのイベントが多いので、夏から秋にかけて釣りをしてみたいとか興味のある子供連れにとってはきっかけとなりやすい場所かも。
 
 ## 今の分類が other（21件）
 
 | 施設名 | 県 | 分類 | メモ | 確認 |
 |---|---|---|---|---|
-| [小浜市漁協・釣り筏](../../src/content/blog/fishing-facility/center-japan/fukui/obama-city-fishing-coop-raft/index.mdx) | fukui | other |  | [ ] |
-| [シーパーク丹生](../../src/content/blog/fishing-facility/center-japan/fukui/seapark-nyu/index.mdx) | fukui | other |  | [ ] |
-| [フィッシングパーク大三島](../../src/content/blog/fishing-facility/west-japan/ehime/fishing-park-omishima/index.mdx) | ehime | other |  | [ ] |
-| [うみんぐ大島](../../src/content/blog/fishing-facility/west-japan/fukuoka/umingu-oshima/index.mdx) | fukuoka | other |  | [ ] |
-| [生口島「つり堀公園」](../../src/content/blog/fishing-facility/west-japan/hiroshima/shimanami-kaido-fishing-park/index.mdx) | hiroshima | other |  | [ ] |
-| [筏釣り 高橋渡船](../../src/content/blog/fishing-facility/west-japan/kochi/kochi/raft-fishing-takahashi/index.mdx) | kochi | other |  | [ ] |
-| [つり筏 深浦](../../src/content/blog/fishing-facility/west-japan/kochi/kochi/tsuri-ikada-fukaura/index.mdx) | kochi | other |  | [ ] |
-| [光栄丸](../../src/content/blog/fishing-facility/west-japan/mie/koueimaru/index.mdx) | mie | other |  | [ ] |
-| [マルスイ海産](../../src/content/blog/fishing-facility/west-japan/mie/marusui-kaisan/index.mdx) | mie | other |  | [ ] |
-| [松名瀬フィッシングパーク](../../src/content/blog/fishing-facility/west-japan/mie/matsunase-fishing-park/index.mdx) | mie | other |  | [ ] |
-| [内瀬釣りセンター](../../src/content/blog/fishing-facility/west-japan/mie/naize-fishing-center/index.mdx) | mie | other |  | [ ] |
-| [鵜方浜釣センター](../../src/content/blog/fishing-facility/west-japan/mie/ugata-hamatsuri-center/index.mdx) | mie | other |  | [ ] |
-| [志布志湾大黒イルカランド（天然釣堀）](../../src/content/blog/fishing-facility/west-japan/miyazaki/shibushi-bay-daikoku-dolphin-land/index.mdx) | miyazaki | other |  | [ ] |
-| [迎パールマリン](../../src/content/blog/fishing-facility/west-japan/nagasaki/mukai-pearl-marine/index.mdx) | nagasaki | other |  | [ ] |
-| [糸満釣り筏](../../src/content/blog/fishing-facility/west-japan/okinawa/itoman-ikada-tsurigu-no-zousan/index.mdx) | okinawa | other |  | [ ] |
-| [本部釣りイカダ 海生活](../../src/content/blog/fishing-facility/west-japan/okinawa/motobu-fishing-ikada-umiseikatsu/index.mdx) | okinawa | other |  | [ ] |
-| [仮屋湾遊漁センター](../../src/content/blog/fishing-facility/west-japan/saga/kariyawan-fishing-center/index.mdx) | saga | other |  | [ ] |
-| [釣ってみんで釣り堀](../../src/content/blog/fishing-facility/west-japan/tokushima/family-tsuribori-tsutteminde/index.mdx) | tokushima | other |  | [ ] |
-| [和歌山マリーナシティ海釣り公園](../../src/content/blog/fishing-facility/west-japan/wakayama/wakayama-marinacity-fishing-park/index.mdx) | wakayama | other |  | [ ] |
-| [由良海つり公園](../../src/content/blog/fishing-facility/west-japan/wakayama/yura-sea-fishing-park/index.mdx) | wakayama | other |  | [ ] |
-| [須佐湾フィッシングパーク](../../src/content/blog/fishing-facility/west-japan/yamaguchi/susawan-fishing-park/index.mdx) | yamaguchi | other |  | [ ] |
+| [小浜市漁協・釣り筏](../../src/content/blog/fishing-facility/center-japan/fukui/obama-city-fishing-coop-raft/index.mdx) | fukui | raft |  | [x] |釣り筏は「raft」のパラメータで統一する。
+| [シーパーク丹生](../../src/content/blog/fishing-facility/center-japan/fukui/seapark-nyu/index.mdx) | fukui | sea-pond |  | [x] |海上つりぼり シーパーク丹生と紹介されているので「pond」にする。漁港の堤防に仕切りをつけたタイプで、足場が安定しているのが強み。海上釣り堀が波で揺れて酔った経験のある人にいい。
+| [フィッシングパーク大三島](../../src/content/blog/fishing-facility/west-japan/ehime/fishing-park-omishima/index.mdx) | ehime | other |  | [x] |釣り桟橋・釣り堀と複合の施設。料金設定はそれぞれ違うので注意。
+| [うみんぐ大島](../../src/content/blog/fishing-facility/west-japan/fukuoka/umingu-oshima/index.mdx) | fukuoka | other |  | [x] |波止釣りと釣堀の複合施設。海洋体験は海のレジャーや釣り教室や魚捌き体験などの体験型。料金設定がそれぞれ違うのでHP案内もややこしくなっている。レンタル利用で手ぶらで魚釣りができる。
+| [生口島「つり堀公園」](../../src/content/blog/fishing-facility/west-japan/hiroshima/shimanami-kaido-fishing-park/index.mdx) | hiroshima | sea-pond |  | [x] |「しまなみ海道 つり堀公園」が正式なので修正。釣った魚の持ち帰りは買取式。ボラを釣り上げたら1匹あたり100円もらえるユニークなサービスがある。基本料金2,500円に貸竿とエサがついてくるので手ぶら利用がしやすい。持ち込むこともできるがルアー禁止などの制限はある。氷や保冷容器の販売はないので、魚を持ち帰るならクーラーボックスが不可欠。
+| [筏釣り 高橋渡船](../../src/content/blog/fishing-facility/west-japan/kochi/kochi/raft-fishing-takahashi/index.mdx) | kochi | raft |  | [x] |筏釣りなのでraftに調整。筏の種類が豊富で風や雨をしのげる屋根つき室内もあれば、桟橋のような筏らしいスタイルもある。
+| [つり筏 深浦](../../src/content/blog/fishing-facility/west-japan/kochi/kochi/tsuri-ikada-fukaura/index.mdx) | kochi | raft |  | [x] |筏釣りなのでraftに調整。公式ページはないがGoogleMAPに連絡先などがある。釣果は釣りビジョンのページで確認できる。
+| [光栄丸](../../src/content/blog/fishing-facility/west-japan/mie/koueimaru/index.mdx) | mie | other |  | [x] |釣船なので削除対象。
+| [マルスイ海産](../../src/content/blog/fishing-facility/west-japan/mie/marusui-kaisan/index.mdx) | mie | raft |  | [x] |筏釣りなのでraftに調整。
+| [松名瀬フィッシングパーク](../../src/content/blog/fishing-facility/west-japan/mie/matsunase-fishing-park/index.mdx) | mie | sea-pond |  | [x] |陸上にある海上釣堀。渡船がないので揺れに弱く酔いやすい人にとって救いになる。ヒラメが放流されていて釣れることが特徴。1日券の客のみお土産にヒラメが付く。
+| [内瀬釣りセンター](../../src/content/blog/fishing-facility/west-japan/mie/naize-fishing-center/index.mdx) | mie | other |  | [x] |筏釣りと釣り堀の複合。釣り堀の対象魚は「マダイ、イシダイ、フエフキダイ、ワラサ、
+　 カンパチ、スズキ、シマアジ、グレ、イサギ等」で季節により異なる。貸竿はあるがエサがないので持参する必要がある。
+| [鵜方浜釣センター](../../src/content/blog/fishing-facility/west-japan/mie/ugata-hamatsuri-center/index.mdx) | mie | raft |  | [x] |筏釣りなのでraftに調整。屋根付き筏とカセで日除けしながらの釣りが楽しめる。
+| [志布志湾大黒イルカランド（天然釣堀）](../../src/content/blog/fishing-facility/west-japan/miyazaki/shibushi-bay-daikoku-dolphin-land/index.mdx) | miyazaki | sea-pond |  | [x] |イルカランド併設の施設。リリース不可で、同施設内にある「新鮮市場」で捌いてもらいその場で食べることができる。
+| [迎パールマリン](../../src/content/blog/fishing-facility/west-japan/nagasaki/mukai-pearl-marine/index.mdx) | nagasaki | raft |  | [x] |大型の筏で船に曳かれて移動する。移動式釣りイカダと紹介されているのでraftに分類。
+| [糸満釣り筏](../../src/content/blog/fishing-facility/west-japan/okinawa/itoman-ikada-tsurigu-no-zousan/index.mdx) | okinawa | raft |  | [x] |水深約15mで対象魚として「アーガイ・犬バー・オニヒラアジ・シマアジ・タマンなど」多彩なターゲットが狙える。上級者向け。
+| [本部釣りイカダ 海生活](../../src/content/blog/fishing-facility/west-japan/okinawa/motobu-fishing-ikada-umiseikatsu/index.mdx) | okinawa | raft |  | [x] |渡船する筏だが、海上で一夜を過ごすことができるので、暑い夏の沖縄で貴重な体験をすることができる。沖縄旅行の団体が計画提案すると面白いといってもらえるだろう。
+| [仮屋湾遊漁センター](../../src/content/blog/fishing-facility/west-japan/saga/kariyawan-fishing-center/index.mdx) | saga | sea-pond |  | [x] |釣り堀と筏渡しがあって、釣堀がメインなのでsea-pondを優先した。
+| [釣ってみんで釣り堀](../../src/content/blog/fishing-facility/west-japan/tokushima/family-tsuribori-tsutteminde/index.mdx) | tokushima | other |  | [x] |屋内型の施設、釣堀として紹介されているが「マダイの大物を狙って釣って食べよう！」がコンセプトで施設内で食事することもできることからotherに分類した。釣った魚は買取。
+| [和歌山マリーナシティ海釣り公園](../../src/content/blog/fishing-facility/west-japan/wakayama/wakayama-marinacity-fishing-park/index.mdx) | wakayama | sea-park |  | [x] |護岸堤防の釣り公園。公式TOPには動画で施設の紹介があり、釣果情報も最新がのっている。関空から車で行く和歌山旅行に組み込むのもいい。電車では釣り場までは面倒な場所にある。
+| [和歌山由良町 由良海つり公園](../../src/content/blog/fishing-facility/west-japan/wakayama/yura-sea-fishing-park/index.mdx) | wakayama | other |  | [x] |海釣り公園（由良海釣り公園）と海上釣堀（海の釣堀 釣堀ランド）で別になっている。統合した名称が「由良海釣り公園」。公式の表記がブレているので当サイトではこれで統一する。釣堀は予約必須。
+| [須佐湾フィッシングパーク](../../src/content/blog/fishing-facility/west-japan/yamaguchi/susawan-fishing-park/index.mdx) | yamaguchi | sea-park |  | [x] |公式の紹介では「天然の釣堀」とあって放流された魚がいるとはいっていない。海上釣り堀っぽい施設だが釣果は天然相手になるためsea-parkに分類した。海上釣り堀といえば大型魚が釣り放題！をイメージしている人には向いていない。入場が有料なので、安定した足場でゆったり釣りがしたい目的にはあっている。
 
 ## 分類が未設定（10件）
 
 | 施設名 | 県 | 分類 | メモ | 確認 |
 |---|---|---|---|---|
-| [篠島釣り天国](../../src/content/blog/fishing-facility/center-japan/aichi/shinojima-tsuri-tengoku/index.mdx) | aichi | 未設定 | 閉業 | [ ] |
-| [海釣り公園みかた](../../src/content/blog/fishing-facility/center-japan/fukui/sea-fishing-park-mikata/index.mdx) | fukui | 未設定 | 閉業 | [ ] |
-| [晴れパークたてやま](../../src/content/blog/fishing-facility/east-japan/chiba/hare-park-tateyama/index.mdx) | chiba | 未設定 |  | [ ] |
-| [九十九里海釣りセンター](../../src/content/blog/fishing-facility/east-japan/chiba/kujukuri-umitsuri-center/index.mdx) | chiba | 未設定 |  | [ ] |
-| [勇払マリーナ海上釣り堀](../../src/content/blog/fishing-facility/east-japan/hokkaido/yuharai-pond/index.mdx) | hokkaido | 未設定 | 閉業 | [ ] |
-| [横浜釣り堀王国（横浜本店・ホテル三日月店）](../../src/content/blog/fishing-facility/east-japan/kanagawa/yokohama-tsuribori-okoku/index.mdx) | kanagawa | 未設定 |  | [ ] |
-| [姫路市立遊漁センター](../../src/content/blog/fishing-facility/west-japan/hyogo/himeji-city-fishing-center/index.mdx) | hyogo | 未設定 | 閉業 | [ ] |
-| [家島海上釣り堀 海恵（かいえい）](../../src/content/blog/fishing-facility/west-japan/hyogo/sea-fishing-pond-kaikei/index.mdx) | hyogo | 未設定 | 閉業 | [ ] |
-| [小豆島ふるさと村 釣り桟橋](../../src/content/blog/fishing-facility/west-japan/kagawa/shodoshima-furusatomura-fishing-pier/index.mdx) | kagawa | 未設定 | 閉業 | [ ] |
-| [宮津市海洋つり場](../../src/content/blog/fishing-facility/west-japan/kyoto/miyazu-city-marine-fishing-park/index.mdx) | kyoto | 未設定 | 休止 | [ ] |
+| [篠島釣り天国](../../src/content/blog/fishing-facility/center-japan/aichi/shinojima-tsuri-tengoku/index.mdx) | aichi | 未設定 | 閉業 | [x] |sea-pondに分類。
+| [海釣り公園みかた](../../src/content/blog/fishing-facility/center-japan/fukui/sea-fishing-park-mikata/index.mdx) | fukui | 未設定 | 閉業 | [x] |sea-parkに分類。
+| [晴れパークたてやま](../../src/content/blog/fishing-facility/east-japan/chiba/hare-park-tateyama/index.mdx) | chiba | 未設定 |  | [x] |otherに分類。施設内の水槽で魚を釣って食べるシステムのため、魚釣り目的よりも浜焼き＆BBQのついでが主体。
+| [九十九里海釣りセンター](../../src/content/blog/fishing-facility/east-japan/chiba/kujukuri-umitsuri-center/index.mdx) | chiba | 未設定 |  | [x] |釣堀と紹介されているのでsea-pondに調整。釣った魚は種類問わず20枚までで、20枚以降は100g250円で買取になる。[http://xn--nbk4em1stb5747d2j8b.com/]。電車で千葉まできて、バスで30~50分で来れる関東では貴重な場所。
+| [勇払マリーナ海上釣り堀](../../src/content/blog/fishing-facility/east-japan/hokkaido/yuharai-pond/index.mdx) | hokkaido | 未設定 | 閉業 | [x] |sea-pondに調整。
+| [横浜釣り堀王国（横浜本店・ホテル三日月店）](../../src/content/blog/fishing-facility/east-japan/kanagawa/yokohama-tsuribori-okoku/index.mdx) | kanagawa | 未設定 |  | [x] |otherに調整。室内型の釣堀。
+| [姫路市立遊漁センター](../../src/content/blog/fishing-facility/west-japan/hyogo/himeji-city-fishing-center/index.mdx) | hyogo | 未設定 | 閉業 | [x] |sea-parkに分類。
+| [家島海上釣り堀 海恵（かいえい）](../../src/content/blog/fishing-facility/west-japan/hyogo/sea-fishing-pond-kaikei/index.mdx) | hyogo | 未設定 | 閉業 | [x] |sea-pondに分類。
+| [小豆島ふるさと村 釣り桟橋](../../src/content/blog/fishing-facility/west-japan/kagawa/shodoshima-furusatomura-fishing-pier/index.mdx) | kagawa | 未設定 | 閉業 | [x] |sea-parkに分類。
+| [宮津市海洋つり場](../../src/content/blog/fishing-facility/west-japan/kyoto/miyazu-city-marine-fishing-park/index.mdx) | kyoto | 未設定 | 休止 | [x] |sea-parkに分類。
 
 ## 確認の対象外
 
@@ -217,7 +220,21 @@
 
 ## 全件確認後の処理（CC）
 
-- 2026-11-19 までの施設情報の修正は作業ブランチ `facility-info-fix-1119` にあり、main（公開）は筆者の承認待ち
+- 2026-11-19 筆者の承認で main に取り込み・公開（施設情報の修正 3822461 と、下の反映）
+
+### 2026-11-19 の反映結果
+
+- 分類を28記事に反映。保留・判断待ちは筆者の回答で確定：トリトン→other、相差→raft（筏は raft に統一）
+- スキーマ `facilityType` に `raft` を追加（筆者の決定。表示側で facilityType を使っているのは地図APIだけ）
+- 地図APIの件数（閉業を除く105件）：sea-pond 51／sea-park 37／raft 9／other 8。この表の結果と一致
+- 削除2件と301：マリンガーデン・レジャー→日本海・北陸ランキング、光栄丸（釣船）→三重・和歌山ランキング。日本海・北陸ランキングの3位はひるが海上釣堀に差し替え、福井は「全5施設」に修正（シーパーク丹生はもとから一覧にあった）
+- 名称5件：日明・海峡釣り公園／脇田海釣り桟橋／高島飛鳥磯釣公園／しまなみ海道 つり堀公園／由良海釣り公園（他記事のリンク文字も含め14記事）
+
+### 残り（別タスク）
+
+- 三重・和歌山ランキングは「海上釣り堀19施設」に相差（raft）・トリトン（other）を数えている。分類に合わせた数え直しは、ランキングのリライト時に行う
+- 分類以外のメモ（辨屋の読み、賢島のアクセス、正徳丸の全国おすすめ、直島の冬季休園、新上五島の案内先など）の記事反映
+- description に「【2025最新】」が残る記事：直島つり公園、とっとパーク小島、海上釣堀 湯浅
 
 1. 確認欄・分類・保留理由を照合する。未確認・保留を勝手に埋めない
 2. 確定した分類だけを施設記事の`facilityType`へ反映する。施設名・URL・料金・営業状態の変更は混ぜない（分類以外のメモは別タスク）

@@ -93,7 +93,7 @@ const fishingFacilityCollection = defineCollection({
     category: z.string().optional(),
     prefecture: z.string().optional(),
     region: z.string().optional(),
-    facilityType: z.enum(['sea-pond', 'sea-park', 'other']).optional(),
+    facilityType: z.enum(['sea-pond', 'sea-park', 'raft', 'other']).optional(),
     tags: z.array(z.string()).optional(),
     description: z.string().optional(),
     excerpt: z.string().optional(),

@@ -64,14 +64,6 @@
     "area": ""
   },
   {
-    "title": "【福井県】マリンガーデン・レジャー｜優しさNo.1！「絶対に釣らせる」熱意が凄い釣り堀",
-    "slug": "marine-garden-leisure",
-    "prefecture": "fukui",
-    "latitude": 35.6119146,
-    "longitude": 135.8938519,
-    "area": ""
-  },
-  {
     "title": "【福井県】小浜市漁協・釣り筏｜若狭湾のチヌ聖地！絶景の中で楽しむ本格筏釣り",
     "slug": "obama-city-fishing-coop-raft",
     "prefecture": "fukui",
@@ -320,7 +312,7 @@
     "area": ""
   },
   {
-    "title": "【福岡県】日明かんしんつり公園｜小倉駅近の無料スポット！工場夜景と楽しむ釣り",
+    "title": "【福岡県】日明・海峡釣り公園｜小倉駅近の無料スポット！工場夜景と楽しむ釣り",
     "slug": "hiake-kaikyo-fishing-park",
     "prefecture": "fukuoka",
     "latitude": 33.9103859,
@@ -336,7 +328,7 @@
     "area": ""
   },
   {
-    "title": "【福岡県】脇田（わいた）海釣り桟橋｜手ぶらセット800円！響灘の格安スポット",
+    "title": "【福岡県】脇田海釣り桟橋｜手ぶらセット800円！響灘の格安スポット",
     "slug": "waita-sea-fishing-pier",
     "prefecture": "fukuoka",
     "latitude": 33.93175,
@@ -360,7 +352,7 @@
     "area": ""
   },
   {
-    "title": "【広島県】生口島「つり堀公園」｜しまなみ海道の絶景ポンドで手ぶら釣り！海のヘラブナ池",
+    "title": "【広島県】しまなみ海道 つり堀公園｜生口島の絶景ポンドで手ぶら釣り！海のヘラブナ池",
     "slug": "shimanami-kaido-fishing-park",
     "prefecture": "hiroshima",
     "latitude": 34.288611,
@@ -624,14 +616,6 @@
     "area": ""
   },
   {
-    "title": "【三重県】光栄丸｜10回で1回無料！5,000円で楽しめる南伊勢の筏釣りパラダイス",
-    "slug": "koueimaru",
-    "prefecture": "mie",
-    "latitude": 34.3125,
-    "longitude": 136.671608,
-    "area": ""
-  },
-  {
     "title": "【三重県】マルスイ海産｜1日4,500円！尾鷲の秘境で挑む天然魚との真剣勝負",
     "slug": "marusui-kaisan",
     "prefecture": "mie",
@@ -728,7 +712,7 @@
     "area": ""
   },
   {
-    "title": "【長崎県】高島飛島磯釣り公園｜往復フェリーで離島へ！520円で味わう本格磯釣りの聖地",
+    "title": "【長崎県】高島飛鳥磯釣公園｜往復フェリーで離島へ！520円で味わう本格磯釣りの聖地",
     "slug": "takashima-tobishima-isotsuri-park",
     "prefecture": "nagasaki",
     "latitude": 32.6658,
@@ -888,7 +872,7 @@
     "area": ""
   },
   {
-    "title": "【和歌山県】由良海つり公園｜海上釣り堀＆筏釣りの二刀流！由良湾の穏やかな海で大物を狙う",
+    "title": "【和歌山県】由良海釣り公園｜海上釣り堀＆筏釣りの二刀流！由良湾の穏やかな海で大物を狙う",
     "slug": "yura-sea-fishing-park",
     "prefecture": "wakayama",
     "latitude": 33.957992,

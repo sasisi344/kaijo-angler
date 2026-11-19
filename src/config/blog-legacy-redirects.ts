@@ -134,7 +134,7 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/kawahagi-strategy/': '/tactics/fish-strategy/', // 2026-11-16: 旧ビルドの残骸が200で残っていた。2026-11-17: RB-32 で先を一覧へ
   '/blog/kawahagi/intermediate/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
   '/blog/kawahagi/theory/': '/tactics/fish-strategy/', // 2026-11-17: RB-32
-  '/blog/koueimaru/': '/fishing-facility/koueimaru/',
+  '/blog/koueimaru/': '/column/ranking/mie-wakayama/', // 2026-11-19: 釣船のため記事を削除
   '/blog/kue-strategy/': '/tactics/fish-strategy/kue/',
   '/blog/kue/advanced/': '/tactics/fish-strategy/kue/', // 2026-11-17: RB 波1で統合
   '/blog/kue/theory/': '/tactics/fish-strategy/kue/', // 2026-11-17: RB 波1で統合
@@ -344,4 +344,7 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/tactics/fish-strategy/kue/theory/': '/tactics/fish-strategy/kue/',
   '/tactics/fish-strategy/kue/gourmet/': '/tactics/fish-strategy/kue/',
   '/column/trivia/may-gomoku-tana-strategy/': '/column/trivia/tana-basics/',
+  // 2026-11-19: KA-PORTAL-02 の確認で削除（マリンガーデン＝施設が存在しない、光栄丸＝釣船）
+  '/fishing-facility/marine-garden-leisure/': '/column/ranking/nihonkai-hokuriku/',
+  '/fishing-facility/koueimaru/': '/column/ranking/mie-wakayama/',
 };
