@@ -56,7 +56,7 @@
     "area": ""
   },
   {
-    "title": "【福井県】ひるが海上釣堀｜予約不要・3時間3,700円〜・日向湖で手ぶらで高級魚を狙う釣り堀",
+    "title": "【福井県】ひるが海上釣堀｜予約不要・3時間4,000円（魚代3,000円分込み）・日向湖で手ぶらでタイを狙う釣り堀",
     "slug": "hiruga-sea-fishing-pond",
     "prefecture": "fukui",
     "latitude": 35.6133965,
@@ -168,7 +168,7 @@
     "area": ""
   },
   {
-    "title": "【静岡県】いかだ釣りの東海｜30分から遊べる！熱海・網代の手ぶら釣り堀",
+    "title": "【静岡県】網代港の筏釣りの東海｜30分から遊べる！熱海・網代の手ぶら釣り堀",
     "slug": "ikadatsuri-tokai",
     "prefecture": "shizuoka",
     "latitude": 35.0454289,
@@ -192,7 +192,7 @@
     "area": ""
   },
   {
-    "title": "【富山県】石田フィッシャリーナ 釣り桟橋｜入場無料！立山連峰を望む絶景スポット",
+    "title": "【富山県】石田フィッシャリーナ 釣り桟橋｜入場無料・貸し竿1,150円、立山連峰を望む黒部の海釣り桟橋",
     "slug": "ishida-fisherina",
     "prefecture": "toyama",
     "latitude": 36.8669453,
@@ -208,11 +208,27 @@
     "area": ""
   },
   {
-    "title": "【千葉県】太海フラワー磯釣りセンター｜1,500円・手ぶらOKの初心者向け完全ガイド",
+    "title": "【千葉県】太海フラワー磯釣りセンター｜2,000円・手ぶらOKの初心者向け完全ガイド",
     "slug": "futomi-flower-isotsuri-center",
     "prefecture": "chiba",
     "latitude": 35.0766412,
     "longitude": 140.0977396,
+    "area": ""
+  },
+  {
+    "title": "【千葉県】晴れパークたてやま｜館山の陸上釣り堀・釣り体験330円〜、釣った魚は塩焼きで（リリース不可）",
+    "slug": "hare-park-tateyama",
+    "prefecture": "chiba",
+    "latitude": 35.0271789,
+    "longitude": 139.8622132,
+    "area": ""
+  },
+  {
+    "title": "【千葉県】九十九里海釣りセンター｜関東最大級の陸上釣り堀・手ぶらOKで日帰り11,000円〜",
+    "slug": "kujukuri-umitsuri-center",
+    "prefecture": "chiba",
+    "latitude": 35.514495,
+    "longitude": 140.43899,
     "area": ""
   },
   {
@@ -232,7 +248,7 @@
     "area": ""
   },
   {
-    "title": "【休止中】勇払マリーナ海上釣り堀｜北海道初！幻の海上釣り堀の記録と今後の展望",
+    "title": "【閉業】勇払マリーナ海上釣り堀｜北海道初！幻の海上釣り堀の記録",
     "slug": "yuharai-pond",
     "prefecture": "hokkaido",
     "latitude": 42.6229306,
@@ -256,7 +272,15 @@
     "area": ""
   },
   {
-    "title": "【宮城県】仙台港中央公園（海の広場）｜仙台駅から25分！入場無料で楽しめるファミリー釣り公園",
+    "title": "【神奈川県・千葉県】横浜釣り堀王国（横浜本店・ホテル三日月店）｜平日2,680円〜の屋内釣り堀・釣った魚は無料で捌いてくれる",
+    "slug": "yokohama-tsuribori-okoku",
+    "prefecture": "kanagawa",
+    "latitude": 35.3808723,
+    "longitude": 139.6405868,
+    "area": ""
+  },
+  {
+    "title": "【宮城県】NX仙台港パーク（海の広場）｜仙台駅から25分！入場無料で楽しめるファミリー釣り公園",
     "slug": "sendai-port-central-park-sea-square",
     "prefecture": "miyagi",
     "latitude": 38.2715517,
@@ -312,7 +336,7 @@
     "area": ""
   },
   {
-    "title": "【福岡県】脇田（わいた）海釣り桟橋｜手ぶらセット800円！響灘のコスパ最強スポット",
+    "title": "【福岡県】脇田（わいた）海釣り桟橋｜手ぶらセット800円！響灘の格安スポット",
     "slug": "waita-sea-fishing-pier",
     "prefecture": "fukuoka",
     "latitude": 33.93175,
@@ -320,7 +344,7 @@
     "area": ""
   },
   {
-    "title": "【広島県】海上釣り堀 海遊｜阿多田島の離島で高級魚14種が釣り放題！瀬戸内の爆釣パラダイス",
+    "title": "【広島県】海上釣り堀 海遊｜阿多田島の離島で多彩な高級魚が釣り放題！瀬戸内の爆釣パラダイス",
     "slug": "kaijo-tsuribori-kaiyu",
     "prefecture": "hiroshima",
     "latitude": 34.185278,
@@ -360,7 +384,7 @@
     "area": ""
   },
   {
-    "title": "【兵庫県】姫路市立遊漁センター｜2024年休園・跡地情報と今も釣れる近隣3施設まとめ",
+    "title": "【兵庫県】姫路市立遊漁センター｜2024年休園・2026年廃止と、近隣の釣り場4施設",
     "slug": "himeji-city-fishing-center",
     "prefecture": "hyogo",
     "latitude": 34.772057,
@@ -384,7 +408,7 @@
     "area": ""
   },
   {
-    "title": "【兵庫県・無期限休業中】家島海上釣り堀 海恵（かいえい）｜播磨灘のメガ施設！姫路から渡船で渡る「爆釣の聖地」",
+    "title": "【閉業】家島海上釣り堀 海恵（かいえい）｜播磨灘のメガ施設！姫路から渡船で渡る「爆釣の聖地」",
     "slug": "sea-fishing-pond-kaikei",
     "prefecture": "hyogo",
     "latitude": 34.6975,
@@ -448,7 +472,7 @@
     "area": ""
   },
   {
-    "title": "【高知県】海上釣り堀 幸丸｜1匹保証コース5,000円〜・高級魚釣り放題も選べる浦ノ内湾の海上釣り堀",
+    "title": "【高知県】海上釣り堀 幸丸｜ちょい釣りコース4,000円〜・高級魚釣り放題も選べる浦ノ内湾の海上釣り堀",
     "slug": "kaijo-tsuribori-yukimaru",
     "prefecture": "kochi",
     "latitude": 33.4447433,
@@ -472,7 +496,7 @@
     "area": ""
   },
   {
-    "title": "【熊本県】天草釣堀レジャーランド｜入場料500円・キープシステム・予約不要で気軽に体験",
+    "title": "【熊本県】天草釣堀レジャーランド｜入場料700円・キープシステム・予約不要で気軽に体験",
     "slug": "amakusa-leisure-land",
     "prefecture": "kumamoto",
     "latitude": 32.5658138,
@@ -496,7 +520,7 @@
     "area": ""
   },
   {
-    "title": "【熊本県】海釣りランド｜格安700円・手ぶらセット2,000円・橋型桟橋で本格波止釣り体験",
+    "title": "【熊本県】海釣りランド｜格安800円・手ぶらセット2,100円・橋型桟橋で本格波止釣り体験",
     "slug": "sea-fishing-land",
     "prefecture": "kumamoto",
     "latitude": 32.35985,
@@ -512,7 +536,7 @@
     "area": ""
   },
   {
-    "title": "【京都府】舞鶴親海公園｜入場無料！365日楽しめる舞鶴湾のファミリー釣り場",
+    "title": "【京都府】舞鶴親海公園｜入場無料！柵つき護岸で家族と楽しむ舞鶴湾の釣り場",
     "slug": "maizuru-shinkai-park",
     "prefecture": "kyoto",
     "latitude": 35.5146292,
@@ -528,7 +552,7 @@
     "area": ""
   },
   {
-    "title": "【三重県】あなたに逢い鯛。釣り堀｜女性11,000円〜・少人数限定のプライベート海上釣り堀",
+    "title": "【三重県】あなたに逢い鯛。釣り堀｜女性12,000円〜・少人数限定のプライベート海上釣り堀",
     "slug": "anatani-aitai-fishing",
     "prefecture": "mie",
     "latitude": 34.3166961,
@@ -576,7 +600,7 @@
     "area": ""
   },
   {
-    "title": "【三重県】海上釣堀モンキー｜3時間5,500円〜！BBQも楽しめる鳥羽の手ぶら釣り堀",
+    "title": "【閉業】海上釣堀モンキー｜3時間5,500円〜！BBQも楽しめる鳥羽の手ぶら釣り堀",
     "slug": "kaijo-tsuribori-monkey",
     "prefecture": "mie",
     "latitude": 34.4425599,
@@ -656,7 +680,7 @@
     "area": ""
   },
   {
-    "title": "【三重県】釣り堀 正徳丸｜ICから7分！高級魚・設備・アクセス全てが「A級」のハイスペック釣り堀",
+    "title": "【三重県】釣り堀 正徳丸｜ICから7分！高級魚・設備・アクセスがそろった釣り堀",
     "slug": "tsuribori-shotokumaru",
     "prefecture": "mie",
     "latitude": 34.1993805,
@@ -672,7 +696,7 @@
     "area": ""
   },
   {
-    "title": "【宮崎県】志布志湾大黒イルカランド（天然釣堀）｜イルカショーも釣りも！釣った魚は全買取の「確実」な釣り堀",
+    "title": "【宮崎県】志布志湾大黒イルカランド（天然釣堀）｜貸し竿・全買取制の料金と家族の持ち帰り準備",
     "slug": "shibushi-bay-daikoku-dolphin-land",
     "prefecture": "miyazaki",
     "latitude": 31.460147,
@@ -720,7 +744,7 @@
     "area": ""
   },
   {
-    "title": "【大分県】かまえ海上釣り堀 釣っちゃ王｜女性9,500円〜・竿1本シェアOKでマダイ保証",
+    "title": "【閉業】かまえ海上釣り堀 釣っちゃ王｜女性9,500円〜・竿1本シェアOKでマダイ保証",
     "slug": "kamae-sea-fishing-tsunchaoh",
     "prefecture": "oita",
     "latitude": 32.791965,
@@ -728,7 +752,7 @@
     "area": ""
   },
   {
-    "title": "【沖縄県】糸満イカダ｜大人2,800円！那覇空港30分で高級魚タマンに挑む天然釣り場",
+    "title": "【沖縄県】糸満釣り筏｜大人2,800円！那覇空港から電車とバスで約30分、高級魚タマンに挑む天然イカダ",
     "slug": "itoman-ikada-tsurigu-no-zousan",
     "prefecture": "okinawa",
     "latitude": 26.142279,
@@ -760,7 +784,7 @@
     "area": ""
   },
   {
-    "title": "【大阪府】小島養漁場｜半日4,000円〜・入り江を丸ごと釣場にした超自然派釣り堀",
+    "title": "【大阪府】海洋釣り堀 小島養魚場｜半日4,000円〜・入り江を丸ごと釣場にした超自然派釣り堀",
     "slug": "koshima-sea-fishing-pond",
     "prefecture": "osaka",
     "latitude": 34.311814,
@@ -776,7 +800,7 @@
     "area": ""
   },
   {
-    "title": "【大阪府】大阪海上釣り堀サザン｜関空対岸で高級魚ハント！ナイターも人気の釣りパラダイス",
+    "title": "【大阪府】泉南フィッシング・パーク SAZAN｜関空対岸で高級魚ハント！ナイターも人気の釣りパラダイス",
     "slug": "osaka-sea-fishing-southern",
     "prefecture": "osaka",
     "latitude": 34.380463,
@@ -792,7 +816,7 @@
     "area": ""
   },
   {
-    "title": "【大阪府】海釣ぽーと田尻｜雨でも安心！橋の下にある全天候型・放流満載の釣り堀",
+    "title": "【大阪府】海釣ぽ～と 田尻｜雨でも安心！橋の下にある全天候型・放流満載の釣り堀",
     "slug": "umizuri-port-tajiri",
     "prefecture": "osaka",
     "latitude": 34.400258,
