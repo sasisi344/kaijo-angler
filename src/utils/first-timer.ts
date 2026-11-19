@@ -111,9 +111,13 @@ export function evaluateFirstTimer(details: FacilityDetails | undefined): FirstT
 
   // エサは貸し出しでなく受付で売っている施設が多いので、bait_sale も「手ぶらで揃う」に数える
   const baitSold = normalizeAmenityValue(details?.amenities?.bait_sale);
+  // 竿は借りられて仕掛け・エサが書かれていないときは、売店で買える施設が多いので「満たさない」でなく未確認にする
+  const gearAll = hasAll(ft.rental_items, baitSold ? ['rod', 'rig'] : ['rod', 'rig', 'bait']);
   const gear: CheckResult = ft.beginner_plan
     ? true
-    : hasAll(ft.rental_items, baitSold ? ['rod', 'rig'] : ['rod', 'rig', 'bait']);
+    : gearAll === false && ft.rental_items?.includes('rod')
+      ? null
+      : gearAll;
 
   const toiletRaw = details?.amenities?.toilet;
   const lifeJacket = hasAny(ft.lending, ['life_jacket']);

@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import Image from '~/components/common/Image.astro';
 import { getPermalink } from '~/utils/permalinks';
-import { getFishingFacilityEntries } from '~/utils/fishing-facility-collection';
+import { getCurrentFacilities, countByType } from '~/utils/fishing-facility-collection';
 import { travelRegions, travelNationwideId } from '~/data/travel-regions';
 import { topPicks } from '~/data/top-picks';
 
@@ -26,10 +26,8 @@ const uniqueByImage = <T extends { data: { image?: { src: string } } }>(list: T[
 };
 
 // 掲載中の施設（閉業・休止を除く。期間のある休業は含む。2026-11-19 筆者決定）
-const facilityEntries = (await getFishingFacilityEntries()).filter(
-  (p) => !p.data.draft && !p.data.status && p.data.slug && p.data.category === '施設紹介'
-);
-const typeCount = (t: string) => facilityEntries.filter((p) => p.data.facilityType === t).length;
+const facilityEntries = await getCurrentFacilities();
+const typeCount = (t: string) => countByType(facilityEntries, t);
 const pondCount = typeCount('sea-pond');
 
 // 施設タイトルの【三重県】から県名を取る
