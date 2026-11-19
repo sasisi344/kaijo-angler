@@ -213,9 +213,11 @@
 - **[NX仙台港パーク（海の広場）](../../src/content/blog/fishing-facility/east-japan/miyagi/sendai-port-central-park-sea-square/index.mdx)**：魚釣りが出来る護岸堤防、特にレンタルがあるわけじゃないし近隣に釣具店もないので、あらかじめ釣具を用意しておく必要がある。仙台港パーク自体が広い公園だが水遊びができるわけもないから、目的を魚釣りに絞るか公園のアクティビティにするかで考える。
 - **[シーロード八幡浜](../../src/content/blog/fishing-facility/west-japan/ehime/searoad-yawatahama/index.mdx)**：松山市や宇和島からでも車で1時間ほどかかるので交通アクセスはお世辞にも旅行者向けじゃない。レンタルもないため経験者向け。ただ1日1000円で海にういた桟橋で釣りができるため、釣り場の魅力としてはユーザーレビューが高く、天然マダイの釣果も多い。
 - **[福岡市海づり公園](../../src/content/blog/fishing-facility/west-japan/fukuoka/fukuoka-city-sea-fishing-park/index.mdx)**：公式TOPでイベント情報が確認できる。いろんな割引制度もあり公式の情報が充実している。
-- **[マリンガーデン・レジャー](../../src/content/blog/fishing-facility/center-japan/fukui/marine-garden-leisure/index.mdx)**：施設が存在しないので記事を削除する（筆者 2026-11-18）
+- **[マリンガーデン・レジャー](../../src/content/blog/fishing-facility/center-japan/fukui/marine-garden-leisure/index.mdx)**：施設が存在しないので記事を削除する（筆者 2026-11-18） → 日本海・北陸ランキング3位の差し替えと合わせ、全件確認の完了後に再考（筆者 2026-11-19）
 
 ## 全件確認後の処理（CC）
+
+- 2026-11-19 までの施設情報の修正は作業ブランチ `facility-info-fix-1119` にあり、main（公開）は筆者の承認待ち
 
 1. 確認欄・分類・保留理由を照合する。未確認・保留を勝手に埋めない
 2. 確定した分類だけを施設記事の`facilityType`へ反映する。施設名・URL・料金・営業状態の変更は混ぜない（分類以外のメモは別タスク）
