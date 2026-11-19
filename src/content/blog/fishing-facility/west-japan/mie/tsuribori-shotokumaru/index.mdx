@@ -19,6 +19,7 @@ description: >-
   「山道運転が辛い」「設備が心配」そんな悩みを解消するハイスペック釣り堀『正徳丸』。紀伊長島ICから7分という驚異のアクセスと、幻の高級魚クエやイシダイを放流する実力。清潔なウォシュレット完備で家族やデートにも最適なフィールドを紹介。
 image: ./cover.jpg
 google_maps:
+  website_url: 'https://syoutokumaru.com/'
   map_url: "https://maps.app.goo.gl/JycqmKMtBGARFa3u6"
   latitude: 34.1993805
   longitude: 136.3560367
@@ -37,8 +38,9 @@ facility_details:
     - シマアジ
   reservation: 要予約（公式サイトから予約可・空き状況カレンダーあり。ちょい釣りは予約不要）
   first_timer:
-    rental_items: [rod]
-    rental_note: レンタルロッドあり（有料）
+    rental_items: [rod, rig]
+    rental_price: 2500
+    rental_note: 貸し竿2,500円（ロッド＋仕掛け針付き。針の付け替え・仕掛け交換は無料）。借りる人はペンチ・ハサミ・タオルか軍手を持参
     staff_support: [instruction]
     beginner_plan: ちょい釣り正徳（30分以内または1尾釣れたら終了・竿とダンゴエサ付き・3,000円・平日限定・予約不要）
     source_url: https://syoutokumaru.com/hajimete/hajimete.html
@@ -107,9 +109,9 @@ import GoThere from "~/components/widgets/GoThere.astro";
 | <strong>中学生</strong>       | <strong>9,000円</strong>   | 男女共通。年齢がわかる保険証か身分証が必要 |
 | <strong>子供</strong>         | <strong>5,500円</strong>   | 小学1年生以上。年齢がわかる保険証か身分証が必要 |
 | <strong>見学</strong>         | 無料                       |                    |
-| <strong>貸竿セット</strong>   | <strong>2,000円〜</strong> | 仕掛け付（エサ別） |
+| <strong>貸竿</strong>         | <strong>2,500円</strong>   | ロッド＋仕掛け針付き（エサ別）。針の付け替え・仕掛けの交換は何回でも無料 |
 
-※完全予約制（8:00〜20:00受付）。<strong>公式サイトからも予約でき、カレンダーで空き状況を見られます。</strong>駐車場から乗船場までが至近で、荷物の運搬も楽々です。
+※貸竿を借りる場合は、針を外すペンチ・糸を切るハサミ・魚をつかむタオルか軍手の3点を持参します（公式の案内）。完全予約制（8:00〜20:00受付）。<strong>公式サイトからも予約でき、カレンダーで空き状況を見られます。</strong>駐車場から乗船場までが至近で、荷物の運搬も楽々です。
 
 - <strong>子供の竿の手伝い</strong>: 大人が手伝ってよいのは、ウキを立たせるまで・エサ付け・釣り上げた魚のタモ入れまで。大人が子供の竿でアワセをしたり、掛かった青物を代わりに釣り上げたりすると、その場で追加料金がかかります。子供の竿に青物が掛かったら、スタッフを呼べばサポートしてもらえます
 - <strong>入場券のサービス</strong>: 入場券を10枚集めると、釣り料金が半額になります。捨てずに取っておきましょう

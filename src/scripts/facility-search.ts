@@ -16,11 +16,6 @@ const PREFS: { name: string; label: Record<State, string>; read: (el: HTMLElemen
     read: (el) => el.dataset.rental as State,
   },
   {
-    name: "noReservation",
-    label: { yes: "✓ 予約なしで行ける", no: "× 予約が必要", unknown: "？ 予約の要否は未確認" },
-    read: (el) => el.dataset.noreservation as State,
-  },
-  {
     name: "firstTimer",
     label: { yes: "✓ はじめてでも安心（確認済み）", no: "× 道具を持っている人向け", unknown: "？ はじめて向けかは未確認" },
     read: (el) => el.dataset.firsttimer as State,
@@ -67,7 +62,7 @@ function init() {
   let trackTimer: number | undefined;
 
   const value = (n: string) => {
-    const el = form.elements.namedItem(n) as HTMLInputElement | HTMLSelectElement;
+    const el = form.elements.namedItem(n) as HTMLInputElement | HTMLSelectElement | RadioNodeList;
     return el instanceof HTMLInputElement && el.type === "checkbox" ? (el.checked ? "1" : "") : el.value;
   };
 
@@ -148,7 +143,10 @@ function init() {
     btn.addEventListener("click", () => {
       const r = btn.dataset.relax;
       if (r === "area") (form.elements.namedItem("area") as HTMLSelectElement).value = "";
-      if (r === "type") (form.elements.namedItem("type") as HTMLSelectElement).value = "";
+      if (r === "type") {
+        const all = form.querySelector<HTMLInputElement>('input[name="type"][value=""]');
+        if (all) all.checked = true;
+      }
       if (r === "closed") (form.elements.namedItem("showClosed") as HTMLInputElement).checked = true;
       apply();
     }),

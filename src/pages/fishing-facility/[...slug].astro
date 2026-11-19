@@ -26,6 +26,7 @@ import { getPrimaryDate } from "~/utils/date-helpers";
 import { normalizeAmenityValue } from "~/utils/facility-helpers";
 import { evaluateFirstTimer, isFirstTimerPick, LEVEL_LABEL } from "~/utils/first-timer";
 import FirstTimerSummary from "~/components/blog/FirstTimerSummary.astro";
+import FishStrategyLinks from "~/components/blog/FishStrategyLinks.astro";
 
 type FFPost = CollectionEntry<"fishing-facility">;
 type FacilityPageListItem = Pick<
@@ -485,6 +486,7 @@ if (type === "facility") {
             />
 
             <Content />
+            <FishStrategyLinks facilityId={post.id.replace(/\/index$/, "")} targetFish={post.data.facility_details?.target_fish} />
           </div>
         </article>
 

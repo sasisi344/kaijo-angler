@@ -39,8 +39,6 @@ const shortTitle = (title: string) => title.split("｜")[0].replace(/^【[^】]*
 
 /** yes / no / unknown。書かれていない項目を「なし」にしない */
 const rentalState = (v: unknown) => (v === undefined || v === null || v === "" ? "unknown" : normalizeAmenityValue(v) ? "yes" : "no");
-const reservationState = (t?: string) =>
-  t === "not_required" || t === "first_come" ? "yes" : t === "required" || t === "recommended" ? "no" : "unknown";
 
 const cards = entries
   .map((post) => {
@@ -59,7 +57,7 @@ const cards = entries
       reservation: fd?.reservation ?? "",
       verifiedAt: fd?.verified_at ?? fd?.first_timer?.verified_at ?? "",
       rental: rentalState(fd?.amenities?.rental_tackle),
-      noReservation: reservationState(fd?.reservation_type),
+      official: fd?.reservation_url || d.google_maps?.website_url || "",
       fish: (fd?.target_fish ?? []).join("|"),
       firstTimer: isFirstTimerPick(ft) ? "yes" : ft?.level === "experienced" ? "no" : "unknown",
       closures: JSON.stringify((fd?.seasonal_closures ?? []).map((c) => ({ from: c.from, to: c.to ?? null, reopen: c.reopen ?? null }))),
@@ -131,15 +129,21 @@ const metadata = {
           {AREAS.map((a) => <option value={a.key}>{a.name}</option>)}
         </select>
       </label>
-      <label class="text-sm font-bold flex flex-col gap-1">
-        施設の種類
-        <select name="type" class={inputCls}>
-          <option value="sea-pond" selected>海上釣り堀</option>
-          <option value="sea-park">海釣り施設</option>
-          <option value="raft">釣り筏</option>
-          <option value="">すべて</option>
-        </select>
-      </label>
+      <fieldset class="text-sm font-bold flex flex-col gap-1">
+        <legend class="mb-1">施設の種類</legend>
+        <div class="grid grid-cols-3 rounded border border-gray-300 dark:border-slate-700 overflow-hidden font-normal">
+          {[
+            { v: "sea-pond", l: "海上釣り堀" },
+            { v: "sea-park", l: "海釣り施設" },
+            { v: "", l: "すべて" },
+          ].map((o) => (
+            <label class="cursor-pointer text-center py-2 px-1 bg-white dark:bg-slate-800 has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:font-bold">
+              <input type="radio" name="type" value={o.v} checked={o.v === "sea-pond"} class="sr-only" />
+              {o.l}
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <label class="text-sm font-bold flex flex-col gap-1">
         行く日
         <input type="date" name="date" class={inputCls} />
@@ -153,7 +157,6 @@ const metadata = {
         <legend class="text-sm font-bold">希望の条件（合う施設から並べます）</legend>
         <div class="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-sm">
           <label class="flex items-center gap-2"><input type="checkbox" name="rental" />竿を借りたい</label>
-          <label class="flex items-center gap-2"><input type="checkbox" name="noReservation" />予約なしで行きたい</label>
           {firstTimerCount > 0 && (
             <label class="flex items-center gap-2"><input type="checkbox" name="firstTimer" />はじめてでも安心（確認済み）</label>
           )}
@@ -192,7 +195,6 @@ const metadata = {
             data-area={c.area}
             data-type={c.type}
             data-rental={c.rental}
-            data-noreservation={c.noReservation}
             data-firsttimer={c.firstTimer}
             data-fish={c.fish}
             data-closures={c.closures}
@@ -222,6 +224,17 @@ const metadata = {
                 <ul class="fs-reasons mt-3 flex flex-wrap gap-1.5 text-xs" />
               </div>
             </a>
+            {c.official && (
+              <a
+                href={c.official}
+                target="_blank"
+                rel="noopener"
+                class="mt-auto mx-4 mb-4 block text-center text-sm font-bold rounded-lg border border-primary text-primary py-2 hover:bg-primary hover:text-white transition"
+                data-placement={`facility-search-official-${c.slug}`}
+              >
+                公式で予約・空きを確認
+              </a>
+            )}
           </li>
         ))
       }
