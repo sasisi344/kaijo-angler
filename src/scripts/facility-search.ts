@@ -2,6 +2,8 @@
  * /fishing-facility/ の条件検索（KA-PORTAL-04）。
  * 必須: 地域・種類・行く日（休業期間に入る施設を外す）。希望: 合う数の多い順に並べる。
  * 書かれていない項目は「未確認」で、合わない扱いにしない。同じ数のときは初期 HTML の並び（北から・名前順）。
+ * 「現在地から近い順」: 要件 .workspace/_inbox/2026-11-19-KA-PORTAL-04-near-me-plan.md。
+ * 位置はブラウザーの中で距離の計算にだけ使い、どこにも送らない・残さない。
  */
 
 type State = "yes" | "no" | "unknown";
@@ -39,6 +41,17 @@ export function closureOn(closures: Closure[], date: string): Closure | null {
   return closures.find((c) => c.from <= date && (!c.to || date <= c.to)) ?? null;
 }
 
+/** 2点間の直線距離（km）。ハバーサイン式 */
+export function distanceKm(a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
+  const rad = (d: number) => (d * Math.PI) / 180;
+  const dLat = rad(b.lat - a.lat);
+  const dLng = rad(b.lng - a.lng);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLng / 2) ** 2;
+  return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+
+const fmtKm = (km: number) => (km < 10 ? km.toFixed(1) : String(Math.round(km)));
+
 function track(name: string, params: Record<string, string | number>) {
   const g = (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag;
   if (typeof g === "function") g("event", name, params);
@@ -60,6 +73,10 @@ function init() {
 
   let shown = PAGE;
   let trackTimer: number | undefined;
+  let origin: { lat: number; lng: number } | null = null;
+  const nearBtn = document.getElementById("fs-near") as HTMLButtonElement | null;
+  const nearMsg = document.getElementById("fs-near-msg");
+  const NEAR_LABEL = "📍 現在地から近い順";
 
   const value = (n: string) => {
     const el = form.elements.namedItem(n) as HTMLInputElement | HTMLSelectElement | RadioNodeList;
@@ -75,7 +92,7 @@ function init() {
     const fish = value("fish");
     const active = PREFS.filter((p) => (p.name === "fish" ? !!fish : form.elements.namedItem(p.name) ? !!value(p.name) : false));
 
-    const hits: { el: HTMLElement; score: number; idx: number }[] = [];
+    const hits: { el: HTMLElement; score: number; idx: number; km: number }[] = [];
     original.forEach((el, idx) => {
       const closures: Closure[] = JSON.parse(el.dataset.closures || "[]");
       const closed = closureOn(closures, date);
@@ -105,11 +122,30 @@ function init() {
         reasons.appendChild(li);
       });
 
+      // 近い順のときだけ距離を出す。座標がなければ「距離不明」で末尾へ
+      let km = Infinity;
+      const dist = el.querySelector<HTMLElement>(".fs-distance");
+      if (origin) {
+        const lat = Number(el.dataset.lat);
+        const lng = Number(el.dataset.lng);
+        if (el.dataset.lat && el.dataset.lng && Number.isFinite(lat) && Number.isFinite(lng)) {
+          km = distanceKm(origin, { lat, lng });
+        }
+        if (dist) {
+          dist.textContent =
+            km === Infinity ? "距離不明" : `直線で約${fmtKm(km)}km${el.dataset.ferry ? "（渡船あり）" : ""}`;
+          dist.classList.remove("hidden");
+        }
+      } else if (dist) {
+        dist.textContent = "";
+        dist.classList.add("hidden");
+      }
+
       el.style.display = "none";
-      if (ok) hits.push({ el, score, idx });
+      if (ok) hits.push({ el, score, idx, km });
     });
 
-    hits.sort((a, b) => b.score - a.score || a.idx - b.idx);
+    hits.sort((a, b) => (origin ? a.km - b.km || a.idx - b.idx : b.score - a.score || a.idx - b.idx));
     hits.forEach((h, i) => {
       list.appendChild(h.el);
       h.el.style.display = i >= shown ? "none" : "";
@@ -129,7 +165,55 @@ function init() {
     );
   };
 
-  form.addEventListener("change", () => apply());
+  const setNear = (on: boolean) => {
+    if (!nearBtn) return;
+    nearBtn.setAttribute("aria-pressed", on ? "true" : "false");
+    nearBtn.textContent = on ? "📍 近い順で表示中（解除）" : NEAR_LABEL;
+    if (nearMsg) nearMsg.textContent = on ? "距離は直線です。車や船の所要時間とは違います。" : "";
+  };
+  const clearNear = () => {
+    origin = null;
+    setNear(false);
+  };
+
+  nearBtn?.addEventListener("click", () => {
+    if (origin) {
+      clearNear();
+      apply();
+      return;
+    }
+    const fail = (result: string) => {
+      nearBtn.disabled = false;
+      nearBtn.textContent = NEAR_LABEL;
+      if (nearMsg) nearMsg.textContent = "位置情報を使えませんでした。地域から選んでください。";
+      (form.elements.namedItem("area") as HTMLSelectElement).focus();
+      track("facility_near_me", { result, results: 0 });
+    };
+    if (!("geolocation" in navigator)) return fail("unsupported");
+    nearBtn.disabled = true;
+    nearBtn.textContent = "現在地を確認しています…";
+    if (nearMsg) nearMsg.textContent = "";
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        nearBtn.disabled = false;
+        origin = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        (form.elements.namedItem("area") as HTMLSelectElement).value = "";
+        setNear(true);
+        apply();
+        const n = original.filter((el) => el.style.display !== "none").length;
+        track("facility_near_me", { result: "granted", results: n });
+      },
+      (err) => fail(err.code === err.PERMISSION_DENIED ? "denied" : err.code === err.TIMEOUT ? "timeout" : "error"),
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 },
+    );
+  });
+
+  form.addEventListener("change", (e) => {
+    // 地域と近い順は同時に使わない。地域を選んだら近い順を解除する
+    const t = e.target as HTMLElement | null;
+    if (origin && t?.getAttribute("name") === "area" && value("area")) clearNear();
+    apply();
+  });
   more.addEventListener("click", () => {
     shown += PAGE;
     apply(false);
@@ -137,6 +221,7 @@ function init() {
   document.getElementById("fs-reset")?.addEventListener("click", () => {
     form.reset();
     dateInput.value = todayJst();
+    clearNear();
     apply();
   });
   document.querySelectorAll<HTMLButtonElement>(".fs-relax").forEach((btn) =>
