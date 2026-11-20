@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { normalizeAmenityValue } from '~/utils/facility-helpers';
+
+interface Props {
+  details?: CollectionEntry<'fishing-facility'>['data']['facility_details'];
+}
+
+const { details } = Astro.props;
+const priceTypes = { 'entry-only': '入場料', 'pond-1day': '1日コース', course: 'コース別' };
+const rental = details?.amenities?.rental_tackle;
+const rentalLabel = rental === undefined || rental === null || rental === ''
+  ? '未確認'
+  : typeof rental === 'string' && rental.trim().startsWith('なし')
+    ? 'なし'
+    : normalizeAmenityValue(rental) ? 'あり' : 'なし';
+---
+
+<dl class="facility-comparison my-3 grid grid-cols-[5em_minmax(0,1fr)] gap-x-2 gap-y-1 text-xs not-prose">
+  <dt class="text-muted">料金</dt>
+  <dd class="break-words">{details?.average_price || '施設記事で確認'}</dd>
+  {details?.price_type && <><dt class="text-muted">料金方式</dt><dd>{priceTypes[details.price_type]}</dd></>}
+  {details?.includes_gear !== undefined && <><dt class="text-muted">道具代</dt><dd>{details.includes_gear ? '料金に含む' : '料金に含まない'}</dd></>}
+  <dt class="text-muted">貸し竿</dt>
+  <dd>{rentalLabel}</dd>
+  <dt class="text-muted">渡船</dt>
+  <dd>{details?.needs_ferry === true ? 'あり' : details?.needs_ferry === false ? 'なし' : '未確認'}</dd>
+  <dt class="text-muted">予約</dt>
+  <dd class="break-words">{details?.reservation || '施設記事で確認'}</dd>
+  <dt class="text-muted">確認日</dt>
+  <dd>{details?.verified_at || '未確認'}</dd>
+</dl>

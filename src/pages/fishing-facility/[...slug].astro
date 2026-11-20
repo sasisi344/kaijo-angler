@@ -27,6 +27,7 @@ import { normalizeAmenityValue } from "~/utils/facility-helpers";
 import { evaluateFirstTimer, isFirstTimerPick, LEVEL_LABEL } from "~/utils/first-timer";
 import FirstTimerSummary from "~/components/blog/FirstTimerSummary.astro";
 import FishStrategyLinks from "~/components/blog/FishStrategyLinks.astro";
+import FacilityComparison from "~/components/blog/FacilityComparison.astro";
 
 type FFPost = CollectionEntry<"fishing-facility">;
 type FacilityPageListItem = Pick<
@@ -154,7 +155,7 @@ if (type === "facility") {
 
   items = allFacilityPosts
     .filter((p) => {
-      const match = p.id.startsWith(post.id + "/") && p.id !== post.id;
+      const match = p.id.startsWith(post.id + "/") && p.id !== post.id && !p.data.draft && !p.data.status;
       return match;
     })
     .sort((a, b) => {
@@ -190,6 +191,7 @@ if (type === "facility") {
       const pid = p.id.replace(/\\/g, "/").replace(/\/index$/, "");
       return (
         pid.startsWith(slug + "/") &&
+        !p.data.draft && !p.data.status &&
         pid.split("/").length === slug.split("/").length + 1
       );
     })
@@ -438,11 +440,8 @@ if (type === "facility") {
                       <p class="text-muted line-clamp-2 text-xs text-slate-500 mb-2 leading-relaxed">
                         {item.google_maps?.business_hours ||
                           "時間: 施設へお問い合わせ"}
-                        <br />
-                        {item.facility_details?.average_price
-                          ? `予算: ${item.facility_details.average_price}`
-                          : ""}
                       </p>
+                      <FacilityComparison details={item.facility_details} />
                       <div class="flex flex-wrap gap-1 mt-auto">
                         {(item.facility_details?.target_fish || [])
                           .slice(0, 3)
@@ -522,6 +521,7 @@ if (type === "facility") {
                     {item.title}
                   </h3>
                   <p class="text-muted line-clamp-2">{item.description}</p>
+                  {item.facility_details && <FacilityComparison details={item.facility_details} />}
                 </a>
               ))}
             </div>

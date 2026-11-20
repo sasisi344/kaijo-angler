@@ -1,0 +1,84 @@
+[
+  {
+    "facility": "fishing-land-hyuga",
+    "title": "【福井県】フィッシングランド日向",
+    "source": "https://fl-hiruga.com/price_information/",
+    "verified": "2026-11-19",
+    "missing": [
+      "lending",
+      "staff_support",
+      "catch_assurance"
+    ]
+  },
+  {
+    "facility": "hiruga-sea-fishing-pond",
+    "title": "【福井県】ひるが海上釣堀",
+    "source": "https://ameblo.jp/hiruga-turibori/",
+    "verified": "2026-11-19",
+    "missing": [
+      "lending",
+      "staff_support",
+      "catch_assurance",
+      "processing"
+    ]
+  },
+  {
+    "facility": "kaijo-tsuribori-maruya",
+    "title": "【静岡県】海上釣り堀まるや",
+    "source": "https://maruya-maruya.com/price",
+    "verified": "2026-11-19",
+    "missing": [
+      "staff_support"
+    ]
+  },
+  {
+    "facility": "kaijo-tsuribori-kaiyu",
+    "title": "【広島県】海上釣り堀 海遊",
+    "source": "http://kaiyuu-turibori.com/",
+    "verified": "2026-11-19",
+    "missing": [
+      "lending",
+      "staff_support"
+    ]
+  },
+  {
+    "facility": "suihou-fishing-pond",
+    "title": "【兵庫県】海上釣り堀 水宝（すいほう）",
+    "source": "https://www.suihoh.com/annai.html",
+    "verified": "2026-11-19",
+    "missing": [
+      "lending",
+      "catch_assurance"
+    ]
+  },
+  {
+    "facility": "kaijo-tsuribori-benya",
+    "title": "【三重県】海上釣堀辨屋",
+    "source": "https://www.benya.tv/system/",
+    "verified": "2026-11-19",
+    "missing": [
+      "staff_support",
+      "processing"
+    ]
+  },
+  {
+    "facility": "tsuribori-shotokumaru",
+    "title": "【三重県】釣り堀 正徳丸",
+    "source": "https://syoutokumaru.com/hajimete/hajimete.html",
+    "verified": "2026-11-19",
+    "missing": [
+      "lending",
+      "catch_assurance",
+      "processing"
+    ]
+  },
+  {
+    "facility": "tsuribori-hamakatsu",
+    "title": "【長崎県】釣り堀はまかつ",
+    "source": "https://www.hamakatu.com/price/",
+    "verified": "2026-11-19",
+    "missing": [
+      "processing"
+    ]
+  }
+]

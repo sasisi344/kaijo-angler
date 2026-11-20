@@ -5,6 +5,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
+import { getPermalink } from '~/utils/permalinks';
 
 export async function getStaticPaths() {
   const posts = await getCollection('column');
@@ -17,6 +18,11 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const rankingArea = post.id.replace(/^ranking\//, '');
+const isRegionalRanking = post.id.startsWith('ranking/') && [
+  'tohoku-hokkaido', 'kanto-tokai', 'nihonkai-hokuriku', 'mie-wakayama',
+  'kansai', 'chugoku-shikoku', 'kyushu-okinawa',
+].includes(rankingArea);
 const rendered = await render(post);
 const Content = rendered.Content;
 const image = (await findImage(post.data.image)) as ImageMetadata | string | undefined;
@@ -47,8 +53,31 @@ const metadata = {
   </Hero>
 
   <article class="px-6 py-16 mx-auto max-w-4xl">
+    {isRegionalRanking && (
+      <nav aria-label="地域の施設検索" class="k-card p-4 mb-8">
+        <a
+          href={`${getPermalink('/fishing-facility/')}?area=${rankingArea}#search`}
+          class="text-primary underline font-bold"
+          data-placement={`ranking-search-${rankingArea}`}
+          data-ranking-area={rankingArea}
+        >この地域の施設を条件で探す</a>
+      </nav>
+    )}
     <div class="prose prose-lg prose-md dark:prose-invert max-w-none">
       <Content />
     </div>
   </article>
 </Layout>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const link = event.target instanceof Element
+      ? event.target.closest<HTMLAnchorElement>('a[data-ranking-area]')
+      : null;
+    if (!link) return;
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    if (typeof gtag === 'function') {
+      gtag('event', 'facility_ranking_search', { area: link.dataset.rankingArea });
+    }
+  });
+</script>
