@@ -16,6 +16,7 @@ Claude では進められない（管理画面へのログイン・GSC/GA4 の�
 - [ ] **ASP（VC）管理画面で宿泊・レンタカーの成約数を確認** — [[schedule-task]] M7（M6 の判断材料）
 - [ ] **GSC で削除済みの月報・週報19本の扱いを決める** — 2026-10-28 に `/blog/intelligence/2026-03-summary/` 〜 `2026-07-summary/`（summary 5本・w01〜w05 14本）を削除し、転送は設定していない（404 で自然に外れるのを待つ）。急いで外したい場合は GSC の「削除」ツールで一時非表示にする。特集4本（gw-2026-special-report／kansai-vs-kanto-spring／spring-2026-madai-report／summer-bluefish-forecast）は維持する
 - [ ] **スマホでヘッダー検索窓の動作を確認** — 2026-10-28 に修正（13c9b40）。PC 幅で入力→Enter で先頭結果へ移動するのは確認済み。スマホのメニュー内の検索窓は実機で未確認
+- [ ] **GA4 にポータル検索の計測項目を登録** — カスタムディメンション（イベントスコープ）に `date_mode`・`show_closed`・`excluded_closed`（`facility_search`）と `area`（`facility_ranking_search`）を追加。既にあれば不要。[[schedule-task]] M12 の前提（2026-11-20 追加）
 
 ### 運営者の判断待ち（2026-10-28）
 
