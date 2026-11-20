@@ -199,6 +199,14 @@
       "exclude": null,
       "rows": 1360,
       "fetchedAt": "2026-11-05T02:58:11.221Z"
+    },
+    "demand": {
+      "source": "ga4+gsc+bing",
+      "country": "Japan",
+      "min": 5,
+      "gscEnd": "2026-10-31",
+      "rows": 393,
+      "fetchedAt": "2026-11-20T04:55:31.999Z"
     }
   }
 }

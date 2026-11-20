@@ -1,0 +1,14 @@
+{
+  "fetchedAt": "2026-11-16T00:09:53.807Z",
+  "site": "KA",
+  "command": "gsc",
+  "args": {
+    "site": "KA",
+    "start": "2026-10-01",
+    "end": "2026-10-13",
+    "dims": "page",
+    "out": "C:/Users/sasis/344blog/kaijo-angler/.workspace/access-data/api/2026-11-16-mid-nov/prev-gsc-page"
+  },
+  "start": "2026-10-01",
+  "end": "2026-10-13"
+}

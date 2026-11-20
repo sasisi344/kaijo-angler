@@ -1,0 +1,15 @@
+{
+  "fetchedAt": "2026-11-16T00:09:49.069Z",
+  "site": "KA",
+  "command": "ga4",
+  "args": {
+    "site": "KA",
+    "start": "2026-11-01",
+    "end": "2026-11-15",
+    "dims": "eventName",
+    "metrics": "eventCount,totalUsers",
+    "out": "C:/Users/sasis/344blog/kaijo-angler/.workspace/access-data/api/2026-11-16-mid-nov/cur-ga4-event"
+  },
+  "start": "2026-11-01",
+  "end": "2026-11-15"
+}
