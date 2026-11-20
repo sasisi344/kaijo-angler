@@ -49,7 +49,7 @@ sessions_1101-15	slug	pref	kind	move	rental	lj	status	rewritten	slots	file
 4	jumbo-fishing-mura	nagasaki	ikesu	A-flight	yes	?			soft-cooler grip|glasses	src/content/blog/fishing-facility/west-japan/nagasaki/jumbo-fishing-mura/index.mdx
 4	kaijo-tsuribori-maruya	shizuoka	ikesu	C-ferry	yes	?			soft-cooler band grip|glasses	src/content/blog/fishing-facility/center-japan/shizuoka/kaijo-tsuribori-maruya/index.mdx
 4	kaijo-tsuribori-misaki	osaka	ikesu	E-metro	yes	?		done	cooler-mid mat? grip|glasses	src/content/blog/fishing-facility/west-japan/osaka/kaijo-tsuribori-misaki/index.mdx
-4	naize-fishing-center	mie	shore	E-metro	no	?			rod cooler-mid grip|glasses	src/content/blog/fishing-facility/west-japan/mie/naize-fishing-center/index.mdx
+4	naize-fishing-center	mie	shore	E-metro	yes	?			cooler-mid grip|glasses	src/content/blog/fishing-facility/west-japan/mie/naize-fishing-center/index.mdx
 4	naoetsu-port-3rd-east-breakwater	niigata	shore	B-far-car	no	lend			rod cooler-big mat? grip|glasses	src/content/blog/fishing-facility/center-japan/niigata/naoetsu-port-3rd-east-breakwater/index.mdx
 4	saltlake-hiketa-adoike	kagawa	ikesu	B-far-car	yes	?			cooler-big grip|glasses	src/content/blog/fishing-facility/west-japan/kagawa/saltlake-hiketa-adoike/index.mdx
 4	sea-fishing-land	kumamoto	shore	A-flight	yes	lend			soft-cooler grip|glasses	src/content/blog/fishing-facility/west-japan/kumamoto/sea-fishing-land/index.mdx
@@ -109,8 +109,6 @@ sessions_1101-15	slug	pref	kind	move	rental	lj	status	rewritten	slots	file
 1	yura-sea-fishing-park	wakayama	ikesu	E-metro	yes	?			cooler-mid grip|glasses	src/content/blog/fishing-facility/west-japan/wakayama/yura-sea-fishing-park/index.mdx
 0	atami-port-sea-fishing-facility	shizuoka	shore	E-metro	yes	lend			cooler-mid grip|glasses	src/content/blog/fishing-facility/center-japan/shizuoka/atami-port-sea-fishing-facility/index.mdx
 0	kaijo-tsuribori-fukujumaru	mie	ikesu	E-metro	yes	?			cooler-mid grip|glasses	src/content/blog/fishing-facility/west-japan/mie/kaijo-tsuribori-fukujumaru/index.mdx
-0	kaijo-tsuribori-monkey	mie	ikesu	E-metro	yes	?			cooler-mid grip|glasses	src/content/blog/fishing-facility/west-japan/mie/kaijo-tsuribori-monkey/index.mdx
+0	kaijo-tsuribori-monkey	mie	ikesu	E-metro	yes	?	closed		cooler-mid grip|glasses	src/content/blog/fishing-facility/west-japan/mie/kaijo-tsuribori-monkey/index.mdx
 0	kobe-hiraiso-sea-fishing-park	hyogo	shore	E-metro	yes	lend			cooler-mid grip|glasses	src/content/blog/fishing-facility/west-japan/hyogo/kobe-hiraiso-sea-fishing-park/index.mdx
-0	koueimaru	mie	shore	E-metro	yes	?			cooler-mid grip|glasses	src/content/blog/fishing-facility/west-japan/mie/koueimaru/index.mdx
-0	marine-garden-leisure	fukui	ikesu	B-far-car	yes	?			cooler-big grip|glasses	src/content/blog/fishing-facility/center-japan/fukui/marine-garden-leisure/index.mdx
 0	motobu-fishing-ikada-umiseikatsu	okinawa	shore	C-ferry	yes	?			soft-cooler band grip|glasses	src/content/blog/fishing-facility/west-japan/okinawa/motobu-fishing-ikada-umiseikatsu/index.mdx
