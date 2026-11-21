@@ -1,0 +1,65 @@
+[
+  {
+    "area": "chugoku-shikoku",
+    "initial": "chugoku-shikoku",
+    "entry": true,
+    "searchId": true,
+    "dataArea": true,
+    "tables": 7,
+    "wrappers": 7
+  },
+  {
+    "area": "kansai",
+    "initial": "kansai",
+    "entry": true,
+    "searchId": true,
+    "dataArea": true,
+    "tables": 6,
+    "wrappers": 6
+  },
+  {
+    "area": "kanto-tokai",
+    "initial": "kanto-tokai",
+    "entry": true,
+    "searchId": true,
+    "dataArea": true,
+    "tables": 7,
+    "wrappers": 7
+  },
+  {
+    "area": "kyushu-okinawa",
+    "initial": "kyushu-okinawa",
+    "entry": true,
+    "searchId": true,
+    "dataArea": true,
+    "tables": 9,
+    "wrappers": 9
+  },
+  {
+    "area": "mie-wakayama",
+    "initial": "mie-wakayama",
+    "entry": true,
+    "searchId": true,
+    "dataArea": true,
+    "tables": 6,
+    "wrappers": 6
+  },
+  {
+    "area": "nihonkai-hokuriku",
+    "initial": "nihonkai-hokuriku",
+    "entry": true,
+    "searchId": true,
+    "dataArea": true,
+    "tables": 6,
+    "wrappers": 6
+  },
+  {
+    "area": "tohoku-hokkaido",
+    "initial": "tohoku-hokkaido",
+    "entry": true,
+    "searchId": true,
+    "dataArea": true,
+    "tables": 5,
+    "wrappers": 5
+  }
+]
