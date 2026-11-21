@@ -6,7 +6,7 @@
 ## やったこと
 
 - `.workspace/_inbox/2026-11-18-mainkw-top6-portal-audit.md`：最新GSC、競合6サイト、当サイトとの差、既存資産・診断計画、9施策を整理。
-- `.workspace/_inbox/2026-11-18-kaijo-mainkw-data/`：GSCのquery・query,page・前28日queryと各meta、および公開HTML/APIの観察記録を保存。
+- `.workspace/archive/2026-11-18-kaijo-mainkw-data/`：GSCのquery・query,page・前28日queryと各meta、および公開HTML/APIの観察記録を保存。
 - 公開用記事・実装・設定・タスクの正本は変更していない。
 
 ## 確認
@@ -30,7 +30,7 @@
 ## 追加依頼：筆者のforAIメモによるタスク改訂
 
 - forAI原文3点を保持し、結論・該当課題・導線・タスク・依存・測定を更新。ID01〜09を維持し、地域内の条件診断を10へ分離。
-- `.workspace/_inbox/2026-11-18-facility-type-review.md`を作成。施設原稿118件を現行sea-pond51・sea-park33・other21・未設定13に分け、本人の確定欄を用意。公開API未収録3件も対象。正式分類・記事パラメータは未変更。
+- `.workspace/archive/2026-11-18-facility-type-review.md`を作成。施設原稿118件を現行sea-pond51・sea-park33・other21・未設定13に分け、本人の確定欄を用意。公開API未収録3件も対象。正式分類・記事パラメータは未変更。
 - 期間付き休業は所在表示と予定日の推薦を分離する案。prerender実装を確認し、ビルド時に期間を渡しクライアントで日付判定、新告知には更新・再生成が必要と具体化。
 - 地域内の必須・希望条件と推薦理由を基本にし、Googleレビュー点・件数を主順位にしない案を記載。既存アクセス順位と診断を区別。
 - 休業期間の不足項目は設計・所定の確認を経る将来タスク。スキーマは変更していない。

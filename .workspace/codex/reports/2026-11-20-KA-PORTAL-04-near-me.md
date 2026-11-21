@@ -1,6 +1,6 @@
 # KA-PORTAL-04 現在地から近い順 報告
 
-- 指示書: `.workspace/_inbox/2026-11-19-KA-PORTAL-04-near-me-plan.md`
+- 指示書: `.workspace/archive/2026-11-19-KA-PORTAL-04-near-me-plan.md`
 - 状態: 完了（2026-11-20、ユーザーの機能確認・完了判断済み。本番反映はCCへ引き継ぎ）
 
 ## ユーザーの完了判断（2026-11-20）

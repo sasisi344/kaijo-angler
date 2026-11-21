@@ -8,7 +8,7 @@
     "end": "2026-10-18",
     "dims": "query",
     "query": "海上",
-    "out": ".workspace/_inbox/2026-11-18-kaijo-mainkw-data/previous-query"
+    "out": ".workspace/archive/2026-11-18-kaijo-mainkw-data/previous-query"
   },
   "start": "2026-09-21",
   "end": "2026-10-18"
