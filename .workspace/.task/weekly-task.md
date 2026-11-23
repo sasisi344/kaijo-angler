@@ -41,6 +41,13 @@
 
 ---
 
+## 検収の持ち越し（2026-11-23・RB 波5／H-46 地域の波2）
+
+- [ ] 施設記事の事実の確認: 小島養魚場の電話番号（frontmatter 072-494-5005／本文 072-495-5005）、海上釣堀 岬の予約受付（表 8:00〜16:00／注記 8:00〜20:00）、あっとしぃーの「帰港後の魚締め」（陸続き）。公式で確かめて施設記事を直す（`admin-review/2026-11-23-H46-R2.md`）
+- [ ] SAZAN の施設記事に、フグの裁き代・免許のあるスタッフ・真鯛との交換を公式から足す（放流の開始日は施設記事 11/16／`fugu.md` 11/17 で食い違い）。水宝の料理料金表のトラフグの欄も（`admin-review/2026-11-23-RB-W5.md`）
+- [ ] 岬のソフトクーラーを料金表のあとへ移して facility-cooler に、5段に（H-46 の次の波）
+- [ ] 受けるリンクの候補: `column/trivia/tsuyu-target-fish-guide` → `isaki/`、`column/trivia/june-fresh-fish-quick-recipe-guide` → `isaki/gourmet/`、`tactics/fish-strategy/kue/index` → `fugu/`
+
 ## 冬の収益最大化 起票（2026-11-05・[[winter-monetization-plan]]）
 
 **軸: 冬だからこそ、大物を釣って鍋を囲みに行く。** 行き先は太平洋側の、観光と相性がよく設備の整った人気スポットに絞る。根拠・タイトル案・順番は[[winter-monetization-plan]]。データ: GSC m10（確定）、GA4 m10、GSC 2025-11〜2026-03（昨冬）。**魚種に触れる記事はすべて `kaijo-fish-knowledge` を通す。「確実に釣れる」とは書かない。旧記事は全面リライトする。** W0 は[[next-task]]項目6。
