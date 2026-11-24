@@ -213,7 +213,7 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/chinu/intermediate/': '/tactics/fish-strategy/chinu/', // 2026-11-17: RB 波4
   '/blog/tactics/fish-strategy/chinu/theory/': '/tactics/fish-strategy/chinu/', // 2026-11-17: RB 波4
   '/blog/tactics/fish-strategy/fugu/advanced/': '/tactics/fish-strategy/fugu/advanced/',
-  '/blog/tactics/fish-strategy/fugu/gourmet/': '/tactics/fish-strategy/fugu/gourmet/',
+  '/blog/tactics/fish-strategy/fugu/gourmet/': '/tactics/fish-strategy/fugu/', // 2026-11-23: RB 波5
   '/blog/tactics/fish-strategy/fugu/intermediate/': '/tactics/fish-strategy/fugu/intermediate/',
   '/blog/tactics/fish-strategy/fugu/theory/': '/tactics/fish-strategy/fugu/theory/',
   '/blog/tactics/fish-strategy/hiramasa/': '/tactics/fish-strategy/hiramasa/',
@@ -222,7 +222,7 @@ export const blogLegacyRedirects: Record<string, string> = {
   '/blog/tactics/fish-strategy/isaki/': '/tactics/fish-strategy/isaki/',
   '/blog/tactics/fish-strategy/isaki/advanced/': '/tactics/fish-strategy/isaki/advanced/',
   '/blog/tactics/fish-strategy/isaki/gourmet/': '/tactics/fish-strategy/isaki/gourmet/',
-  '/blog/tactics/fish-strategy/isaki/intermediate/': '/tactics/fish-strategy/isaki/intermediate/',
+  '/blog/tactics/fish-strategy/isaki/intermediate/': '/tactics/fish-strategy/isaki/', // 2026-11-23: RB 波5
   '/blog/tactics/fish-strategy/isaki/theory/': '/tactics/fish-strategy/isaki/theory/',
   '/blog/tactics/fish-strategy/ishidai/': '/tactics/fish-strategy/ishidai/',
   '/blog/tactics/fish-strategy/ishidai/advanced/': '/tactics/fish-strategy/ishidai/', // 2026-11-17: RB 波1で統合
@@ -307,6 +307,9 @@ export const blogLegacyRedirects: Record<string, string> = {
   // 2026-11-17: RB 波3（真夏の氷はクーラーの選び方へ、春の放流エサは春の水温へ統合）
   '/column/trivia/july-ice-management-guide/': '/tactics/gear/cooler-box-selection/',
   '/column/trivia/march-spring-stocking-feeding-frenzy-bait-guide/': '/column/trivia/march-sankan-shion-temperature-guide/',
+  // 2026-11-23: RB 波5 でフグ gourmet・イサキ intermediate を各 index に統合
+  '/tactics/fish-strategy/fugu/gourmet/': '/tactics/fish-strategy/fugu/',
+  '/tactics/fish-strategy/isaki/intermediate/': '/tactics/fish-strategy/isaki/',
   // 2026-11-17: RB 波4 でメジナ・スズキ・クロダイのサブ記事を統合
   '/tactics/fish-strategy/mejina/advanced/': '/tactics/fish-strategy/mejina/',
   '/tactics/fish-strategy/mejina/intermediate/': '/tactics/fish-strategy/mejina/',
