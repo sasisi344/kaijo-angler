@@ -40,6 +40,16 @@
 - `created:` フィールドはスキーマにないため使用しない
 - **`src/content/config.ts`（スキーマ）は、ユーザーの確認なしに変更しない**。1記事で複数店舗を扱う場合も、スキーマは増やさず `google_maps` / `facility_details` を1組に統合する（詳細は `kaijo-content-schema` スキル）
 
+## 休業情報だけの deploy（2026-11-24 ユーザーの包括承認）
+
+ルート `CLAUDE.md` の「deploy が走る変更は、main に入れる前に承認をもらう」の例外。次の範囲だけの変更は、承認の表を出さずに main へ入れてよい。
+
+- <strong>範囲</strong>: 公式の告知（URL あり）に基づく、施設記事の `seasonal_closures`・`verified_at`・`status` の休止と再開、本文の休業の記述、同じ施設が出るまとめ・ランキング・トップの追随
+- <strong>範囲の外（今までどおり承認）</strong>: 閉業、記事の削除と301、順位の入れ替え、料金・営業時間の変更、公式の告知がない情報
+- <strong>条件</strong>: ビルド成功、push は1日1回まで、公開後に本番の `/api/facilities.json` を確かめて事後に報告する
+- 電話確認はしない。公式に告知・記載がない項目は現状のまま置き、「未確認」の表記を新しく足さない
+- 手順と確認の頻度（通年で月1回ほか）: `.workspace/_inbox/2026-11-21-KA-PORTAL-09-closure-ops.md`
+
 ## import パス
 
 MDX ファイルからコンポーネントを import する場合は `~/` エイリアスを使用する（`@/` は使用不可）。
