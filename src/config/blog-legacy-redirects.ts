@@ -350,4 +350,10 @@ export const blogLegacyRedirects: Record<string, string> = {
   // 2026-11-19: KA-PORTAL-02 の確認で削除（マリンガーデン＝施設が存在しない、光栄丸＝釣船）
   '/fishing-facility/marine-garden-leisure/': '/column/ranking/nihonkai-hokuriku/',
   '/fishing-facility/koueimaru/': '/column/ranking/mie-wakayama/',
+  // 2026-11-24: 施設記事がなくなり、施設コンテンツからの自動生成に乗らなくなった旧URL
+  '/blog/marine-garden-leisure/': '/column/ranking/nihonkai-hokuriku/',
+  '/fishing-facility/center-japan/fukui/marine-garden-leisure/': '/column/ranking/nihonkai-hokuriku/',
+  '/blog/fishing-facility/center-japan/fukui/marine-garden-leisure/': '/column/ranking/nihonkai-hokuriku/',
+  '/fishing-facility/west-japan/mie/koueimaru/': '/column/ranking/mie-wakayama/',
+  '/blog/fishing-facility/west-japan/mie/koueimaru/': '/column/ranking/mie-wakayama/',
 };

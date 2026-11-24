@@ -344,6 +344,11 @@ ErrorDocument 404 /404.html
   RedirectMatch 301 ^/column/trivia/may-gomoku-tana-strategy/?$ /column/trivia/tana-basics/
   RedirectMatch 301 ^/fishing-facility/marine-garden-leisure/?$ /column/ranking/nihonkai-hokuriku/
   RedirectMatch 301 ^/fishing-facility/koueimaru/?$ /column/ranking/mie-wakayama/
+  RedirectMatch 301 ^/blog/marine-garden-leisure/?$ /column/ranking/nihonkai-hokuriku/
+  RedirectMatch 301 ^/fishing-facility/center-japan/fukui/marine-garden-leisure/?$ /column/ranking/nihonkai-hokuriku/
+  RedirectMatch 301 ^/blog/fishing-facility/center-japan/fukui/marine-garden-leisure/?$ /column/ranking/nihonkai-hokuriku/
+  RedirectMatch 301 ^/fishing-facility/west-japan/mie/koueimaru/?$ /column/ranking/mie-wakayama/
+  RedirectMatch 301 ^/blog/fishing-facility/west-japan/mie/koueimaru/?$ /column/ranking/mie-wakayama/
   RedirectMatch 301 ^/fishing-facility/center-japan/aichi/bakucho-mihama-fishing-park/?$ /fishing-facility/bakucho-mihama-fishing-park/
   RedirectMatch 301 ^/blog/fishing-facility/center-japan/aichi/bakucho-mihama-fishing-park/?$ /fishing-facility/bakucho-mihama-fishing-park/
   RedirectMatch 301 ^/fishing-facility/center-japan/aichi/shinmaiko-marine-park-fishing/?$ /fishing-facility/shinmaiko-marine-park-fishing/
