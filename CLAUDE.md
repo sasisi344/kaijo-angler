@@ -61,7 +61,7 @@ import TackleCard from "~/components/common/TackleCard.astro";
 ## 主なパス
 
 - アクセスデータ: 正本は `.workspace/access-data/api/`。w42 までの週次は `.workspace/.task/access-data/`（ルールは同フォルダの `CLAUDE.md`）
-- 画像生成: `scripts/image-tools/generate-image.js`（手順は `.agents/skills/image-create.md`。記事にプロンプトを書いた段階で実行してよい。2026-11-06 ユーザー決定）
+- 画像生成: Codex に任せ、Codex の組み込み画像生成 `image_gen` で作る。Codex のリソースがないときだけ `scripts/image-tools/generate-image.js`（2026-11-27 ユーザー決定。`.workspace/codex/image-style.md` §5。プロンプトの作り方は `.agents/skills/image-create.md`。記事にプロンプトを書いた段階で生成してよい。2026-11-06 ユーザー決定）
 - 旧URLのリダイレクト: `src/config/blog-legacy-redirects.ts`
 
 ## タスク管理（GitHub Project 統合、2026-09-25〜）

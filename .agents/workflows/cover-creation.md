@@ -13,7 +13,7 @@ description: サムネイル画像作成
    - **魚種の特定**: `target_fish` に記載されている代表的な魚（真鯛、ブリ等）をプロンプトのメインにします。
    - **情景描写**: `description` や `tags` から、ダイナミック、静謐、プレミアム、レジャー、BBQといった雰囲気を抽出します。
    - **Aspect Ratio**: 16:9（thumbnail）または 3:2（eyecatch/infographic）を必ず含めます。
-3. 作成したプロンプトを使用して、以下のコマンドで画像を生成します。
+3. 作成したプロンプトで画像を生成します。**生成は Codex に任せ、組み込みの画像生成 `image_gen` で作ります**（2026-11-27 ユーザー決定。`.workspace/codex/image-style.md` §5）。Codex のリソースがないときだけ、以下のコマンドで生成します。
    ```bash
    node scripts/image-tools/generate-image.js "<nanobanana_prompt>" "src/content/blog/fishing-facility/<path-to-facility>/cover.jpg"
    ```
